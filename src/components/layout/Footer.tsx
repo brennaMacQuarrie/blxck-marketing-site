@@ -11,7 +11,7 @@ export function Footer() {
         {/* CTA */}
         <div className="flex flex-col items-start gap-8 py-20 md:py-28">
           <Reveal>
-            <span className="eyebrow">Let&apos;s build something loud</span>
+            <span className="eyebrow">Start the conversation</span>
           </Reveal>
           <Reveal delay={0.05}>
             <h2 className="max-w-4xl text-balance font-display text-4xl uppercase leading-[0.95] text-hi sm:text-6xl">

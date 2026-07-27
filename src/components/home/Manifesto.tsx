@@ -42,7 +42,7 @@ export function Manifesto() {
     >
       <div className="mx-auto max-w-4xl px-(--spacing-gutter)">
         <span className="eyebrow mb-10 block">Why BLXCK</span>
-        <p className="font-heading text-2xl leading-[1.4] sm:text-3xl md:text-[2.6rem] md:leading-[1.35]">
+        <p className="text-2xl font-medium leading-[1.4] tracking-tight sm:text-3xl md:text-[2.6rem] md:leading-[1.35]">
           {words.map((w, i) => (
             <span key={i} className="mf-word text-[#3a3d44]">
               {w}{" "}

@@ -31,9 +31,10 @@ export default function SmoothScroll({
     }
 
     const lenis = new Lenis({
-      lerp: 0.1,
+      // Higher lerp = tighter tracking = snappier (less floaty smoothing).
+      lerp: 0.16,
       smoothWheel: true,
-      wheelMultiplier: 1,
+      wheelMultiplier: 1.1,
       touchMultiplier: 1.6,
       // Touch scroll stays native for reliability on mobile.
     });

@@ -43,7 +43,9 @@ export function ServicesPreview() {
                     style={{ background: "var(--ac)" }}
                   />
                 </div>
-                <h3 className="font-heading text-2xl text-hi">{g.title}</h3>
+                <h3 className="text-xl font-semibold tracking-tight text-hi">
+                  {g.title}
+                </h3>
                 <p className="text-sm leading-relaxed text-mid">{g.blurb}</p>
                 <ul className="mt-auto flex flex-col gap-1.5 pt-4">
                   {g.items.map((it) => (
