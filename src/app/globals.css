@@ -1,26 +1,241 @@
 @import "tailwindcss";
 
+/* ============================================================
+   BLXCK MARKETING — Design System
+   Theme: "space, used loosely" — an event-horizon / eclipse motif.
+   Palette anchored to the brand kit:
+     gold #cca95d · teal #7ebec5 · black #000 · lavender #b794df · silver #bcbebe
+   ============================================================ */
+
+@theme {
+  /* Core surfaces */
+  --color-void: #000000;
+  --color-ink: #050506;
+  --color-carbon: #0a0b0f;
+  --color-slate: #14161d;
+  --color-edge: #23262f;
+
+  /* Brand accents */
+  --color-teal: #7ebec5;
+  --color-lavender: #b794df;
+  --color-gold: #cca95d;
+  --color-silver: #bcbebe;
+
+  /* Text */
+  --color-hi: #f4f5f7;
+  --color-mid: #bcbebe;
+  --color-lo: #7c8088;
+
+  /* Type */
+  --font-display: var(--font-space-age), "Arial Narrow", sans-serif;
+  --font-heading: var(--font-milker), Arial, Helvetica, sans-serif;
+  --font-body: Arial, Helvetica, "Helvetica Neue", sans-serif;
+
+  /* Motion */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-quint: cubic-bezier(0.83, 0, 0.17, 1);
+
+  /* Layout */
+  --spacing-gutter: clamp(1.25rem, 5vw, 6rem);
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: var(--color-ink);
+  --foreground: var(--color-hi);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ---------- Base ---------- */
+
+* {
+  border-color: var(--color-edge);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  /* Lenis drives smooth scroll; keep native behavior instant. */
+  -webkit-text-size-adjust: 100%;
+  scrollbar-gutter: stable;
 }
 
 body {
-  background: var(--background);
+  background: var(--color-ink);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+/* When Lenis is active it sets html.lenis; give it momentum feel. */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+::selection {
+  background: color-mix(in oklab, var(--color-teal) 40%, transparent);
+  color: #fff;
+}
+
+/* Headings pick up the brand faces. */
+h1 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  line-height: 0.95;
+}
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  letter-spacing: 0.005em;
+  line-height: 1.05;
+}
+
+/* ---------- Custom scrollbar ---------- */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-void);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--color-teal), var(--color-lavender));
+  border-radius: 999px;
+  border: 2px solid var(--color-void);
+}
+
+/* ---------- Focus visibility ---------- */
+:focus-visible {
+  outline: 2px solid var(--color-teal);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ============================================================
+   Utilities
+   ============================================================ */
+
+@layer utilities {
+  /* Subtle text glow, tuned per-accent via --glow. Kept restrained. */
+  .text-glow {
+    text-shadow:
+      0 0 18px color-mix(in oklab, var(--glow, var(--color-teal)) 22%, transparent);
+  }
+
+  .glow-teal {
+    --glow: var(--color-teal);
+  }
+  .glow-lavender {
+    --glow: var(--color-lavender);
+  }
+  .glow-gold {
+    --glow: var(--color-gold);
+  }
+
+  /* Gradient text in the brand spectrum. */
+  .text-spectrum {
+    background: linear-gradient(
+      100deg,
+      var(--color-silver) 0%,
+      var(--color-teal) 42%,
+      var(--color-lavender) 72%,
+      var(--color-gold) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Thin uppercase eyebrow label. */
+  .eyebrow {
+    font-family: var(--font-body);
+    text-transform: uppercase;
+    letter-spacing: 0.42em;
+    font-size: 0.72rem;
+    color: var(--color-lo);
+  }
+
+  /* The event-horizon radial glow used behind hero + section anchors. */
+  .eclipse {
+    position: absolute;
+    border-radius: 999px;
+    background: radial-gradient(
+      circle at center,
+      color-mix(in oklab, var(--eclipse-color, var(--color-teal)) 55%, transparent) 0%,
+      color-mix(in oklab, var(--eclipse-color, var(--color-teal)) 18%, transparent) 35%,
+      transparent 68%
+    );
+    filter: blur(24px);
+    pointer-events: none;
+    will-change: transform, opacity;
+  }
+
+  /* Faint grid / starfield texture overlay. */
+  .grid-veil {
+    background-image:
+      linear-gradient(color-mix(in oklab, var(--color-edge) 40%, transparent) 1px, transparent 1px),
+      linear-gradient(90deg, color-mix(in oklab, var(--color-edge) 40%, transparent) 1px, transparent 1px);
+    background-size: 64px 64px;
+    -webkit-mask-image: radial-gradient(ellipse at center, black 25%, transparent 75%);
+    mask-image: radial-gradient(ellipse at center, black 25%, transparent 75%);
+  }
+
+  /* Hairline top border that lights up in brand gradient. */
+  .rule-glow {
+    border-image: linear-gradient(
+        90deg,
+        transparent,
+        var(--color-teal),
+        var(--color-lavender),
+        transparent
+      )
+      1;
+  }
+
+  /* Glassy elevated surface for cards. */
+  .surface {
+    background: color-mix(in oklab, var(--color-carbon) 82%, transparent);
+    border: 1px solid var(--color-edge);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+  }
+
+  .balance {
+    text-wrap: balance;
+  }
+
+  /* Hide scrollbar for horizontal marquee rows. */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* ============================================================
+   Reduced motion — collapse the "wow" gracefully.
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .eclipse {
+    filter: blur(24px);
+  }
 }
