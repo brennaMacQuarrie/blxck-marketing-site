@@ -11,96 +11,93 @@ import {
 } from "motion/react";
 
 /**
- * Interactive neon orb — a textless take on the BLXCK logo circle.
- * The whole thing tilts toward the cursor and its glow (box-shadow) shifts
- * direction as if lit by a moving light source. Idle-floats; static and
- * calm under reduced-motion.
+ * Minimal, precise hero mark: hairline concentric rings (echoing the BLXCK
+ * logo circle) with a single light node that orbits the outer ring and eases
+ * toward the cursor's angle. Line-art only — no filled body, no lens depth.
  */
 export function HeroOrb({ className = "" }: { className?: string }) {
   const ref = useRef<HTMLDivElement>(null);
   const reduce = useReducedMotion();
 
-  const mx = useMotionValue(0);
-  const my = useMotionValue(0);
-  const spring = { stiffness: 80, damping: 18, mass: 0.7 };
-  const smx = useSpring(mx, spring);
-  const smy = useSpring(my, spring);
+  // Angle (radians) of the node around the ring.
+  const angle = useMotionValue(-Math.PI / 2); // start at top
+  const a = useSpring(angle, { stiffness: 90, damping: 20, mass: 0.6 });
 
   useEffect(() => {
     if (reduce) return;
+    const el = ref.current;
+    if (!el) return;
+
+    let idle = 0;
     const onMove = (e: MouseEvent) => {
-      const el = ref.current;
-      if (!el) return;
       const r = el.getBoundingClientRect();
       const cx = r.left + r.width / 2;
       const cy = r.top + r.height / 2;
-      const nx = (e.clientX - cx) / (window.innerWidth / 2);
-      const ny = (e.clientY - cy) / (window.innerHeight / 2);
-      mx.set(Math.max(-1, Math.min(1, nx)));
-      my.set(Math.max(-1, Math.min(1, ny)));
+      const target = Math.atan2(e.clientY - cy, e.clientX - cx);
+      // Unwrap so the node takes the short path around the circle.
+      const cur = angle.get();
+      let delta = target - (cur % (Math.PI * 2));
+      if (delta > Math.PI) delta -= Math.PI * 2;
+      if (delta < -Math.PI) delta += Math.PI * 2;
+      angle.set(cur + delta);
+      idle = 0;
+    };
+
+    // Gentle idle drift when the cursor is still.
+    let raf = 0;
+    const tick = () => {
+      idle += 1;
+      if (idle > 90) angle.set(angle.get() + 0.004);
+      raf = requestAnimationFrame(tick);
     };
     window.addEventListener("mousemove", onMove);
-    return () => window.removeEventListener("mousemove", onMove);
-  }, [reduce, mx, my]);
+    raf = requestAnimationFrame(tick);
+    return () => {
+      window.removeEventListener("mousemove", onMove);
+      cancelAnimationFrame(raf);
+    };
+  }, [reduce, angle]);
 
-  const rotateX = useTransform(smy, [-1, 1], [12, -12]);
-  const rotateY = useTransform(smx, [-1, 1], [-12, 12]);
-
-  // Glow offset trails the light source (opposite the cursor side).
-  const glowX = useTransform(smx, [-1, 1], [46, -46]);
-  const glowY = useTransform(smy, [-1, 1], [46, -46]);
-  const boxShadow = useMotionTemplate`${glowX}px ${glowY}px 120px 6px rgba(126,190,197,0.30), 0 0 70px 0 rgba(183,148,223,0.16)`;
-
-  // Specular highlight follows the cursor across the surface.
-  const hlX = useTransform(smx, [-1, 1], [70, 30]);
-  const hlY = useTransform(smy, [-1, 1], [70, 30]);
-  const highlight = useMotionTemplate`radial-gradient(circle at ${hlX}% ${hlY}%, rgba(255,255,255,0.55), rgba(126,190,197,0.18) 28%, transparent 55%)`;
+  // Node position on the outer ring (radius ~48% of the box).
+  const nodeX = useTransform(a, (v) => `${50 + 48 * Math.cos(v)}%`);
+  const nodeY = useTransform(a, (v) => `${50 + 48 * Math.sin(v)}%`);
+  // A faint glow that leans in the node's direction for depth.
+  const glowX = useTransform(a, (v) => 50 + 22 * Math.cos(v));
+  const glowY = useTransform(a, (v) => 50 + 22 * Math.sin(v));
+  const glow = useMotionTemplate`radial-gradient(circle at ${glowX}% ${glowY}%, rgba(126,190,197,0.14), transparent 55%)`;
 
   return (
     <div ref={ref} className={className}>
-      <motion.div
-        style={reduce ? undefined : { rotateX, rotateY, transformPerspective: 900 }}
-        className="relative aspect-square w-full"
-        animate={reduce ? undefined : { y: [0, -14, 0] }}
-        transition={
-          reduce
-            ? undefined
-            : { duration: 9, repeat: Infinity, ease: "easeInOut" }
-        }
-      >
-        {/* Sphere + outer neon glow (direction reacts to cursor). */}
+      <div className="relative aspect-square w-full">
+        {/* Directional wash tied to the node — subtle, not a filled body. */}
         <motion.div
-          style={reduce ? undefined : { boxShadow }}
-          className="absolute inset-0 rounded-full bg-black shadow-[0_0_90px_6px_rgba(126,190,197,0.22)]"
+          style={reduce ? undefined : { background: glow }}
+          className="absolute inset-[6%] rounded-full"
         />
 
-        {/* Bright neon rim — the logo's signature ring. */}
-        <div className="absolute inset-0 rounded-full border-[3px] border-teal shadow-[inset_0_0_70px_rgba(126,190,197,0.55),0_0_70px_rgba(126,190,197,0.6)]" />
-        <div className="absolute inset-[2%] rounded-full border border-white/75 shadow-[0_0_20px_rgba(255,255,255,0.45)] blur-[0.3px]" />
-        <div className="absolute inset-[8%] rounded-full border border-lavender/45 shadow-[0_0_24px_rgba(183,148,223,0.35)]" />
+        {/* Hairline concentric rings. */}
+        <div className="absolute inset-0 rounded-full border border-white/12" />
+        <div className="absolute inset-[13%] rounded-full border border-white/[0.07]" />
+        <div className="absolute inset-[27%] rounded-full border border-white/[0.05]" />
+        <div className="absolute inset-[43%] rounded-full border border-white/[0.04]" />
 
-        {/* Slow rotating conic sheen for life. */}
-        {!reduce && (
-          <motion.div
-            className="absolute inset-[3%] rounded-full opacity-40 [mask-image:radial-gradient(circle,transparent_58%,black_62%)]"
-            style={{
-              background:
-                "conic-gradient(from 0deg, transparent, rgba(126,190,197,0.6), transparent 40%, rgba(183,148,223,0.5), transparent 70%)",
-            }}
-            animate={{ rotate: 360 }}
-            transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
-          />
-        )}
+        {/* Crosshair ticks — a touch of instrument precision. */}
+        <div className="absolute left-1/2 top-0 h-3 w-px -translate-x-1/2 bg-white/15" />
+        <div className="absolute bottom-0 left-1/2 h-3 w-px -translate-x-1/2 bg-white/15" />
+        <div className="absolute left-0 top-1/2 h-px w-3 -translate-y-1/2 bg-white/15" />
+        <div className="absolute right-0 top-1/2 h-px w-3 -translate-y-1/2 bg-white/15" />
 
-        {/* Moving specular highlight. */}
+        {/* Center point. */}
+        <div className="absolute left-1/2 top-1/2 h-1 w-1 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/30" />
+
+        {/* Orbiting light node. */}
         <motion.div
-          style={reduce ? undefined : { background: highlight }}
-          className="absolute inset-0 rounded-full mix-blend-screen"
-        />
-
-        {/* Dark event-horizon core. */}
-        <div className="absolute inset-[14%] rounded-full bg-[radial-gradient(circle_at_50%_38%,#0b0e13,#000_72%)] shadow-[inset_0_0_60px_rgba(0,0,0,0.9)]" />
-      </motion.div>
+          style={{ left: reduce ? "50%" : nodeX, top: reduce ? "0%" : nodeY }}
+          className="absolute h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-teal shadow-[0_0_16px_4px_rgba(126,190,197,0.7)]"
+        >
+          <span className="absolute inset-0 rounded-full bg-white/80 [transform:scale(0.4)]" />
+        </motion.div>
+      </div>
     </div>
   );
 }

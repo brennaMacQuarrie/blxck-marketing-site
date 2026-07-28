@@ -33,8 +33,8 @@ export function Hero() {
       ref={root}
       className="relative flex min-h-[100svh] items-center overflow-hidden pt-16"
     >
-      {/* Interactive neon orb — the hero centerpiece. */}
-      <HeroOrb className="pointer-events-none absolute right-[-24%] top-[4%] z-0 aspect-square w-[92vw] max-w-[640px] opacity-30 sm:right-[-12%] sm:w-[72vw] md:opacity-60 lg:right-[-2%] lg:top-1/2 lg:w-[44vw] lg:-translate-y-1/2 lg:opacity-100" />
+      {/* Minimal, precise line-art mark — the hero centerpiece. */}
+      <HeroOrb className="pointer-events-none absolute right-[-18%] top-[6%] z-0 aspect-square w-[80vw] max-w-[560px] opacity-45 sm:right-[-8%] sm:w-[62vw] md:opacity-70 lg:right-[2%] lg:top-1/2 lg:w-[40vw] lg:-translate-y-1/2 lg:opacity-100" />
 
       <div
         aria-hidden
