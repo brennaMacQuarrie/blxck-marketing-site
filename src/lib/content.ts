@@ -151,63 +151,63 @@ export const auditOffer = {
 export type Project = {
   name: string;
   sector: string;
-  blurb: string;
+  image: string;
   accent: "teal" | "lavender" | "gold" | "silver";
 };
 
 export const projects: Project[] = [
   {
     name: "Hansen Distillery",
-    sector: "Spirits · E-commerce",
-    blurb: "Craft distillery brand and storefront built to pour off the shelf.",
+    sector: "E-Commerce",
+    image: "/portfolio/hansen.jpg",
     accent: "gold",
   },
   {
     name: "ATMA CENA",
-    sector: "Lifestyle · Brand",
-    blurb: "A premium identity system with content to match.",
+    sector: "Medical",
+    image: "/portfolio/atma-cena.webp",
     accent: "lavender",
   },
   {
     name: "REX Equipment",
-    sector: "Industrial · Web",
-    blurb: "Heavy equipment, meet a site that actually converts.",
+    sector: "E-Commerce",
+    image: "/portfolio/rex-equipment.jpg",
     accent: "teal",
   },
   {
     name: "Tiger Gold",
-    sector: "Retail · Campaign",
-    blurb: "Paid media and creative that made the brand impossible to miss.",
+    sector: "Capital",
+    image: "/portfolio/tiger-gold.webp",
     accent: "gold",
   },
   {
     name: "Natural History",
-    sector: "Culture · Non-profit",
-    blurb: "Storytelling and reach for a mission that deserved both.",
+    sector: "Cannabis",
+    image: "/portfolio/natural-history.jpg",
     accent: "silver",
   },
   {
     name: "Optometrists' Clinic",
-    sector: "Medical · Local SEO",
-    blurb: "Local search dominance for a practice on the grow.",
+    sector: "Medical",
+    image: "/portfolio/optometrists.png",
     accent: "teal",
   },
   {
     name: "Apex Labs",
-    sector: "Cannabis · Brand",
-    blurb: "A compliant, elevated brand in a crowded category.",
+    sector: "Psychedelics",
+    image: "/portfolio/apex-labs.png",
     accent: "lavender",
   },
   {
     name: "Azimuth Collective",
-    sector: "Creative · Studio",
-    blurb: "Positioning and presence for a studio with range.",
+    sector: "Cannabis",
+    image: "/portfolio/azimuth.png",
     accent: "silver",
   },
   {
     name: "Canadian Sniper Association",
-    sector: "Membership · Non-profit",
-    blurb: "Digital presence for a community with a precise mission.",
+    sector: "Non-Profit",
+    image: "/portfolio/csa.jpg",
     accent: "gold",
   },
 ];
