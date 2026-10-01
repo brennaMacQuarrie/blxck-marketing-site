@@ -39,7 +39,7 @@ export default function MedicalMarketingPage() {
             </span>
           </Reveal>
           <Reveal delay={0.05}>
-            <h1 className="mt-7 font-body text-[clamp(2.3rem,6vw,4.5rem)] font-bold leading-[1.02] tracking-[-0.03em] text-hi">
+            <h1 className="mt-7 font-heading text-[clamp(2.3rem,6vw,4.5rem)] font-normal leading-[1.02] tracking-[-0.01em] text-hi">
               Marketing for clinics that want a{" "}
               <span className="text-spectrum">fuller calendar.</span>
             </h1>

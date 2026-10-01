@@ -40,7 +40,7 @@ export default function PortfolioPage() {
             </span>
           </Reveal>
           <Reveal delay={0.05}>
-            <h1 className="mt-6 font-body text-[clamp(2.6rem,8vw,6rem)] font-bold leading-[0.98] tracking-[-0.03em] text-hi">
+            <h1 className="mt-6 font-heading text-[clamp(2.6rem,8vw,6rem)] font-normal leading-[0.98] tracking-[-0.01em] text-hi">
               The work.
             </h1>
           </Reveal>

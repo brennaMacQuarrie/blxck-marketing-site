@@ -86,10 +86,10 @@ html.lenis body {
    (font-body / font-heading / font-display) override per element. */
 @layer base {
   h1 {
-    font-family: var(--font-display);
+    font-family: var(--font-heading);
     font-weight: 400;
-    letter-spacing: 0.01em;
-    line-height: 0.95;
+    letter-spacing: 0.005em;
+    line-height: 1;
   }
   /* Default headings are clean (Arial), tight and confident.
      Milker is applied deliberately via the `font-heading` utility as an accent. */

@@ -48,7 +48,7 @@ export function Hero() {
             Edmonton-based · Working globally
           </span>
 
-          <h1 className="font-display text-[clamp(2.6rem,8vw,6.5rem)] uppercase leading-[0.92] tracking-[-0.01em] text-hi">
+          <h1 className="font-heading text-[clamp(2.6rem,8vw,6.5rem)] uppercase leading-[0.95] tracking-[-0.01em] text-hi">
             <span className="h-line block overflow-hidden">
               <span className="block">Grow your</span>
             </span>

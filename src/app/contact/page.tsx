@@ -38,7 +38,7 @@ export default function ContactPage() {
             </span>
           </Reveal>
           <Reveal delay={0.05}>
-            <h1 className="mt-6 font-body text-[clamp(2.4rem,6.5vw,5rem)] font-bold leading-[1.02] tracking-[-0.03em] text-hi">
+            <h1 className="mt-6 font-heading text-[clamp(2.4rem,6.5vw,5rem)] font-normal leading-[1.02] tracking-[-0.01em] text-hi">
               Let&apos;s make you{" "}
               <span className="text-spectrum">impossible to ignore.</span>
             </h1>
