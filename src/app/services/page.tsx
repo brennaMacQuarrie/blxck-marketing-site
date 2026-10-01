@@ -137,7 +137,7 @@ export default function ServicesPage() {
                         </h3>
                       </div>
                       <p className="text-sm leading-relaxed text-mid">
-                        {it.detail}
+                        {it.long ?? it.detail}
                       </p>
                     </div>
                   </RevealItem>

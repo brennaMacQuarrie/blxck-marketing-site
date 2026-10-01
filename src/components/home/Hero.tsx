@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ButtonLink } from "@/components/ui/Button";
-import { HeroNebula } from "@/components/home/HeroNebula";
+import { HeroOrb } from "@/components/home/HeroOrb";
 
 gsap.registerPlugin(useGSAP);
 
@@ -33,13 +33,12 @@ export function Hero() {
       ref={root}
       className="relative flex min-h-[100svh] items-center overflow-hidden pt-16"
     >
-      {/* Morphing nebula — the atmospheric hero backdrop. */}
-      <HeroNebula className="pointer-events-none absolute right-[-28%] top-1/2 z-0 aspect-square w-[122vw] max-w-[880px] -translate-y-1/2 opacity-80 sm:right-[-16%] sm:w-[92vw] lg:right-[-6%] lg:w-[66vw] lg:opacity-100" />
+      {/* Minimal, precise line-art mark — the hero centerpiece. */}
+      <HeroOrb className="pointer-events-none absolute right-[-18%] top-[6%] z-0 aspect-square w-[80vw] max-w-[560px] opacity-45 sm:right-[-8%] sm:w-[62vw] md:opacity-70 lg:right-[2%] lg:top-1/2 lg:w-[40vw] lg:-translate-y-1/2 lg:opacity-100" />
 
-      {/* Keep the text side legible over the cloud. */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-r from-ink via-ink/55 to-transparent sm:via-ink/25"
+        className="pointer-events-none absolute inset-0 grid-veil opacity-[0.08]"
       />
 
       <div className="relative z-10 mx-auto w-full max-w-6xl px-(--spacing-gutter)">

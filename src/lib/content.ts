@@ -9,7 +9,9 @@ export type ServiceGroup = {
   title: string;
   blurb: string;
   accent: "teal" | "lavender" | "gold";
-  items: { name: string; detail: string }[];
+  // `detail` = short line (home preview). `long` = full copy from the
+  // original site where it exists (shown on the Services page).
+  items: { name: string; detail: string; long?: string }[];
 };
 
 export const serviceGroups: ServiceGroup[] = [
@@ -23,19 +25,23 @@ export const serviceGroups: ServiceGroup[] = [
       {
         name: "Video for Socials",
         detail: "Short-form video strategy engineered to stop the scroll.",
+        long: "Most businesses know they need video — they just don't know where to start, what to make, or why their current content isn't landing. We help you cut through that noise and build a video approach that actually fits how your audience consumes content and how your team can realistically execute it.",
       },
       {
         name: "Digital Ads",
         detail: "Paid media planning that turns spend into measurable return.",
+        long: "Running ads without a strategic foundation is just burning money with extra steps. Before we touch a campaign, we make sure we understand your goals, your margins, your audience, and what success actually looks like for your business.",
       },
       {
         name: "Business & Marketing Audits",
         detail:
-          "A proper audit gives you a clear, honest look at what's working — and what's quietly wasting money.",
+          "A clear, honest look at what's working — and what's quietly wasting money.",
+        long: "You can't fix what you don't know is broken. A proper audit gives you a clear, honest look at where your marketing is working, where it's wasting money, and what gaps are quietly costing you leads and sales.",
       },
       {
         name: "Goal Setting & Brand Positioning",
         detail: "Define the target, then position the brand to own it.",
+        long: "If your team doesn't agree on where you're going, your marketing will reflect that. We facilitate focused goal setting sessions that get your goals out of someone's head and into a framework your whole team can execute against.",
       },
     ],
   },
@@ -46,14 +52,31 @@ export const serviceGroups: ServiceGroup[] = [
       "The always-on engine — advertising, analytics, and social that compounds month over month.",
     accent: "lavender",
     items: [
-      { name: "Advertising", detail: "Full-funnel campaigns across the platforms that matter." },
-      { name: "Analytics", detail: "Every decision backed by data you can actually read." },
-      { name: "Branding", detail: "A cohesive identity that's unmistakably yours." },
+      {
+        name: "Advertising",
+        detail: "Full-funnel campaigns across the platforms that matter.",
+        long: "Full-funnel paid campaigns across the platforms that matter, built and managed to turn spend into measurable, trackable return.",
+      },
+      {
+        name: "Analytics",
+        detail: "Every decision backed by data you can actually read.",
+        long: "Every decision backed by numbers you can actually read — so you always know what's working, what isn't, and where to put the next dollar.",
+      },
+      {
+        name: "Branding",
+        detail: "A cohesive identity that's unmistakably yours.",
+        long: "A cohesive identity — look, voice, and feel — that's unmistakably yours and holds up across every touchpoint.",
+      },
       {
         name: "Social Media Management",
         detail: "Consistent, on-brand presence that builds an audience.",
+        long: "Consistent, on-brand presence that builds an audience and keeps you top of mind — planned, produced, and posted so you don't have to.",
       },
-      { name: "Strategy", detail: "The roadmap that ties every channel to a goal." },
+      {
+        name: "Strategy",
+        detail: "The roadmap that ties every channel to a goal.",
+        long: "We get clear on your positioning, your audience, and your message — then build campaigns around it that have a real reason to exist.",
+      },
     ],
   },
   {
@@ -63,10 +86,26 @@ export const serviceGroups: ServiceGroup[] = [
       "In-house production — the content that makes the strategy real and the brand feel premium.",
     accent: "gold",
     items: [
-      { name: "Videography", detail: "Cinematic video from concept to final cut." },
-      { name: "Photography", detail: "Product and brand imagery that sells." },
-      { name: "Jingles & Radio Ads", detail: "Sound that sticks — written, scored, produced." },
-      { name: "Graphic Design", detail: "Visual assets built to convert, not just decorate." },
+      {
+        name: "Videography",
+        detail: "Cinematic video from concept to final cut.",
+        long: "From concept to delivery, we produce high-end video content built to showcase your brand, connect with your audience, and convert.",
+      },
+      {
+        name: "Photography",
+        detail: "Product and brand imagery that sells.",
+        long: "Good photography is one of the highest-leverage investments a business can make. It shows up everywhere — your website, your ads, your social, your proposals — and the quality of those images signals the quality of your business before anyone reads a single word.",
+      },
+      {
+        name: "Jingles & Radio Ads",
+        detail: "Sound that sticks — written, scored, produced.",
+        long: "Audio advertising is one of the most underused tools in a local marketing mix — and when it's done well, it's remarkably sticky. A great jingle or a well-written radio spot doesn't just get heard, it gets remembered.",
+      },
+      {
+        name: "Graphic Design",
+        detail: "Visual assets built to convert, not just decorate.",
+        long: "Every visual your business puts into the world is making an impression — good graphic design makes sure it's the right one. We create graphics that are on-brand, built for their intended use, and designed to actually work as marketing collateral, not just look good in a mockup.",
+      },
     ],
   },
   {
@@ -76,12 +115,21 @@ export const serviceGroups: ServiceGroup[] = [
       "The foundation everything else drives traffic to — fast, found, and built to last.",
     accent: "teal",
     items: [
-      { name: "Web Development", detail: "Sites that load fast and convert faster." },
+      {
+        name: "Web Development",
+        detail: "Sites that load fast and convert faster.",
+        long: "Fast, trustworthy sites that load quickly and convert — the foundation everything else drives traffic toward.",
+      },
       {
         name: "Hosting",
         detail: "Bad web hosting is a silent killer — ours keeps you fast and online.",
+        long: "Bad web hosting is a silent killer. Slow load times, unexpected downtime, and security gaps cost you traffic, rankings, and customers — often without you even knowing it's happening. We manage reliable, fast hosting so your site stays up, stays secure, and stays out of your way.",
       },
-      { name: "SEO", detail: "Get found by the people already searching for you." },
+      {
+        name: "SEO",
+        detail: "Get found by the people already searching for you.",
+        long: "Get found by the people already searching for you — on-page, technical, and local SEO that earns rankings and keeps them.",
+      },
     ],
   },
 ];
