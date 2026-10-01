@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import { pillars } from "@/lib/content";
+import { processSteps } from "@/lib/content";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
@@ -86,18 +86,18 @@ export function Pillars() {
             How we work
           </span>
           <h2 className="max-w-xl text-balance text-4xl leading-[1.05] tracking-tight text-hi sm:text-5xl">
-            Four moving parts.
+            Not a deliverable.
             <br />
-            One growth engine.
+            A loop that compounds.
           </h2>
           <p className="mt-6 max-w-md text-mid">
-            Strategy, creation, advertising, and web — engineered to work
-            together, not in silos.
+            We don&apos;t hand over a file and disappear. This is the five-step
+            rhythm we run with every partner — each cycle sharper than the last.
           </p>
         </div>
 
-        {/* Pillar cards */}
-        {pillars.map((p, i) => (
+        {/* Process step cards */}
+        {processSteps.map((p, i) => (
           <article
             key={p.n}
             className="pillar-panel group relative flex shrink-0 flex-col justify-center border-t border-white/[0.06] px-(--spacing-gutter) py-16 transition-colors duration-500 hover:bg-white/[0.015] md:h-full md:w-[46vw] md:border-l md:border-t-0 md:py-0 lg:w-[30vw]"

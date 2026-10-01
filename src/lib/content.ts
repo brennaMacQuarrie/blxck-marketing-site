@@ -212,26 +212,131 @@ export const projects: Project[] = [
   },
 ];
 
-/** High-level pillars used on the home page overview. */
-export const pillars = [
+/**
+ * Our process — the engagement loop (distinct from the services list).
+ * Used in the pinned horizontal "How we work" section.
+ */
+export const processSteps = [
   {
     n: "01",
-    title: "Strategy",
-    copy: "We start with the plan — goals, positioning, and the channels that get you there.",
+    title: "Audit",
+    copy: "We start with a clear-eyed look at where you stand — your numbers, your market, and what's quietly holding growth back.",
   },
   {
     n: "02",
-    title: "Creation",
-    copy: "In-house video, photo, and design that make the brand feel premium.",
+    title: "Strategy",
+    copy: "Then the plan: goals, positioning, and the exact channels that will move them — written down and agreed on.",
   },
   {
     n: "03",
-    title: "Advertising",
-    copy: "Full-funnel paid media that turns spend into measurable return.",
+    title: "Create",
+    copy: "In-house production brings it to life — video, photography, and design built to perform, not just to look good.",
   },
   {
     n: "04",
-    title: "Web & SEO",
-    copy: "Fast sites that get found — the foundation everything drives toward.",
+    title: "Amplify",
+    copy: "We put it in market with paid media engineered to turn spend into measurable, trackable return.",
+  },
+  {
+    n: "05",
+    title: "Optimize",
+    copy: "Then we read the data and sharpen. Nothing is set-and-forget — every month compounds on the last.",
   },
 ];
+
+/* ------------------------------------------------------------------ */
+/*  Medical Marketing Solutions — vertical landing page                */
+/* ------------------------------------------------------------------ */
+
+export const medical = {
+  eyebrow: "Medical Marketing Solutions",
+  headline: "Marketing for clinics that want a fuller calendar.",
+  sub: "We help medical and health practices attract the right patients, book more of them, and build a reputation that compounds — without running campaigns that put your licence at risk.",
+  // Honest, qualitative pain points (no fabricated stats).
+  problems: [
+    {
+      title: "Patients pick whoever shows up first",
+      copy: "If you're not at the top of local search and maps, the clinic down the street is booking the patients who were looking for you.",
+    },
+    {
+      title: "Gaps in the calendar you can't explain",
+      copy: "Inconsistent new-patient flow makes revenue lumpy and makes it hard to staff and plan with confidence.",
+    },
+    {
+      title: "Ad accounts flagged or rejected",
+      copy: "Health is a sensitive category. Campaigns built without regard for medical ad policy get disapproved — or quietly throttled.",
+    },
+    {
+      title: "A website that informs but doesn't book",
+      copy: "Plenty of practice sites explain services beautifully and still make it hard to actually take the next step.",
+    },
+  ],
+  // Tailored capabilities (a medical framing of the core services).
+  services: [
+    {
+      title: "Patient-Acquisition Ads",
+      copy: "Google & Meta campaigns designed around real appointment value — and built to stay inside medical advertising policy.",
+    },
+    {
+      title: "Local SEO & Google Business",
+      copy: "Own your city's search results and map pack so nearby patients find you first.",
+    },
+    {
+      title: "Websites & Online Booking",
+      copy: "Fast, trustworthy sites with a clear path from 'just looking' to 'booked'.",
+    },
+    {
+      title: "Reputation & Reviews",
+      copy: "A steady, ethical review engine that turns happy patients into your best marketing.",
+    },
+    {
+      title: "Brand & Content",
+      copy: "Photography, video, and design that make an established practice look the part.",
+    },
+    {
+      title: "Tracking & Reporting",
+      copy: "Know what a new patient costs and where they came from — reported in plain language.",
+    },
+  ],
+  why: [
+    {
+      title: "Compliance-aware by default",
+      copy: "We build campaigns with medical advertising guidelines and patient privacy in mind — not as an afterthought.",
+    },
+    {
+      title: "We speak clinic",
+      copy: "We've worked across optometry, aesthetics, mental health, and specialty practices — so we start with context, not a template.",
+    },
+    {
+      title: "Measured on patients, not vanity",
+      copy: "Impressions are nice. Booked appointments pay the bills — so that's what we optimize toward.",
+    },
+    {
+      title: "Discreet and senior-led",
+      copy: "Sensitive category, senior strategy. Your account isn't handed to a junior and forgotten.",
+    },
+  ],
+  // Real medical-sector clients pulled from the portfolio.
+  clients: [
+    { name: "ATMA CENA", sector: "Mental Health", image: "/portfolio/atma-cena.webp" },
+    { name: "Optometrists' Clinic", sector: "Optometry", image: "/portfolio/optometrists.png" },
+    { name: "Apex Labs", sector: "Psychedelic Therapy", image: "/portfolio/apex-labs.png" },
+  ],
+  steps: [
+    {
+      n: "01",
+      title: "Free clinic audit",
+      copy: "We review your current marketing, search presence, and patient flow — and show you exactly where the leaks are.",
+    },
+    {
+      n: "02",
+      title: "Compliant campaigns, live",
+      copy: "We build and launch the ads, pages, and local SEO that bring the right patients to your door.",
+    },
+    {
+      n: "03",
+      title: "A calendar that fills",
+      copy: "We measure booked appointments and optimize monthly — so growth keeps compounding.",
+    },
+  ],
+} as const;
