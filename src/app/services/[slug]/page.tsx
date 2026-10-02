@@ -1,13 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import {
   allServices,
   getService,
   siblingServices,
+  getServicePoints,
+  getServiceWork,
 } from "@/lib/content";
 import { site } from "@/lib/site";
-import { Reveal } from "@/components/motion/Reveal";
+import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
 import { ButtonLink } from "@/components/ui/Button";
 import { Eclipse } from "@/components/ui/Eclipse";
 import { AuditBanner } from "@/components/home/AuditBanner";
@@ -51,6 +54,8 @@ export default async function ServiceDetailPage({
   if (!svc) notFound();
 
   const siblings = siblingServices(slug);
+  const points = getServicePoints(slug);
+  const relatedWork = getServiceWork(slug);
   const ac = accentColor[svc.accent];
 
   return (
@@ -96,6 +101,87 @@ export default async function ServiceDetailPage({
           </Reveal>
         </div>
       </section>
+
+      {/* ---------------- What's included ---------------- */}
+      {points.length > 0 && (
+        <section
+          className="border-t border-white/[0.06] bg-void py-20 md:py-28"
+          style={{ ["--ac" as string]: ac }}
+        >
+          <div className="mx-auto max-w-4xl px-(--spacing-gutter)">
+            <Reveal>
+              <span className="eyebrow flex items-center gap-3">
+                <span className="inline-block h-px w-8" style={{ background: ac }} />
+                What&apos;s included
+              </span>
+            </Reveal>
+            <RevealGroup className="mt-8 grid gap-px overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.08] sm:grid-cols-3">
+              {points.map((p, i) => (
+                <RevealItem key={i} className="h-full">
+                  <div className="flex h-full flex-col gap-3 bg-void p-6">
+                    <span className="text-xs tabular-nums" style={{ color: ac }}>
+                      0{i + 1}
+                    </span>
+                    <p className="text-sm leading-relaxed text-mid">{p}</p>
+                  </div>
+                </RevealItem>
+              ))}
+            </RevealGroup>
+          </div>
+        </section>
+      )}
+
+      {/* ---------------- Selected work ---------------- */}
+      {relatedWork.length > 0 && (
+        <section className="border-t border-white/[0.06] bg-ink py-20 md:py-28">
+          <div className="mx-auto max-w-6xl px-(--spacing-gutter)">
+            <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
+              <Reveal>
+                <span className="eyebrow mb-4 flex items-center gap-3">
+                  <span className="inline-block h-px w-8" style={{ background: ac }} />
+                  Selected work
+                </span>
+                <h2 className="text-balance text-3xl tracking-tight text-hi sm:text-4xl">
+                  {svc.name}, in the wild.
+                </h2>
+              </Reveal>
+              <div className="shrink-0">
+                <ButtonLink href="/portfolio" variant="ghost" withArrow>
+                  View portfolio
+                </ButtonLink>
+              </div>
+            </div>
+
+            <RevealGroup className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {relatedWork.map((w) => (
+                <RevealItem key={w.name} className="h-full">
+                  <Link
+                    href="/portfolio"
+                    className="group relative block overflow-hidden rounded-2xl border border-white/[0.08]"
+                  >
+                    <div className="relative aspect-square w-full">
+                      <Image
+                        src={w.image}
+                        alt={`${w.name} — ${w.type} by BLXCK Marketing`}
+                        fill
+                        sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                        className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                      />
+                      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                    </div>
+                    <div className="absolute bottom-0 left-0 right-0 flex items-end justify-between p-5">
+                      <span className="font-heading text-lg text-hi">{w.name}</span>
+                      <span className="text-[0.68rem] uppercase tracking-[0.16em] text-mid">
+                        {w.type}
+                      </span>
+                    </div>
+                  </Link>
+                </RevealItem>
+              ))}
+            </RevealGroup>
+          </div>
+        </section>
+      )}
 
       {/* ---------------- Related in group ---------------- */}
       {siblings.length > 0 && (

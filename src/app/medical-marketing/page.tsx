@@ -73,8 +73,8 @@ export default function MedicalMarketingPage() {
         <div className="mx-auto max-w-6xl px-(--spacing-gutter)">
           <SectionHeading
             eyebrow="The problem"
-            title="Growth has more moving parts than more patients."
-            lede="The gaps are rarely where you'd expect. Usually they're in the systems, the follow-up, and the presence you can't see from the inside."
+            title="Growth has more moving parts than you'd think."
+            lede="Getting new patients in the door is one piece. The rest is usually hiding in the systems, the follow-up, and the presence you can't see from the inside."
           />
           <RevealGroup className="mt-14 grid gap-5 sm:grid-cols-2">
             {medical.problems.map((p) => (

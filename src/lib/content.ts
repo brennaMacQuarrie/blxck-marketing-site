@@ -172,6 +172,135 @@ export function siblingServices(slug: string): ServiceEntry[] {
   return allServices.filter((s) => s.groupKey === svc.groupKey && s.slug !== slug);
 }
 
+/** "What's included" bullets per service slug — concrete, no fabricated stats. */
+export const servicePoints: Record<string, string[]> = {
+  "video-for-socials": [
+    "A content plan matched to your audience and your team's capacity",
+    "Hooks, formats, and pacing built for each platform",
+    "A realistic shooting and posting cadence you can actually sustain",
+  ],
+  "digital-ads": [
+    "Account and campaign structure built around real appointment or sale value",
+    "Audience, budget, and bid strategy agreed before anything goes live",
+    "Clear reporting on cost per result — not vanity metrics",
+  ],
+  "business-and-marketing-audits": [
+    "A full review of your current marketing, spend, and presence",
+    "A clear picture of where money is working and where it's leaking",
+    "A prioritized list of fixes — biggest, fastest wins first",
+  ],
+  "goal-setting-and-brand-positioning": [
+    "Facilitated goal-setting your whole team can rally behind",
+    "Clear positioning: who you're for and why you win",
+    "A written framework to execute against, not just talk about",
+  ],
+  advertising: [
+    "Full-funnel campaigns across the platforms that fit your audience",
+    "Creative and copy built to convert, not just to impress",
+    "Ongoing optimization toward measurable return",
+  ],
+  analytics: [
+    "Tracking set up correctly from the start",
+    "Dashboards in plain language, not jargon",
+    "Monthly reads on what's working and what to change",
+  ],
+  branding: [
+    "A cohesive identity — logo, type, colour, and voice",
+    "Guidelines so everything stays consistent as you grow",
+    "Assets ready for web, social, and print",
+  ],
+  "social-media-management": [
+    "A content calendar planned ahead, not scrambled day-of",
+    "On-brand posts produced, scheduled, and published",
+    "Community engagement and clear monthly reporting",
+  ],
+  strategy: [
+    "Clarity on positioning, audience, and message",
+    "A channel plan tied to real business goals",
+    "A living roadmap — not a one-off deck",
+  ],
+  videography: [
+    "Concept, script, and shot planning up front",
+    "Professional production and editing, start to finish",
+    "Deliverables cut for every platform you need",
+  ],
+  photography: [
+    "Product, brand, and team photography",
+    "Art direction that matches your brand",
+    "Edited, web-ready image libraries you own",
+  ],
+  "jingles-and-radio-ads": [
+    "Scriptwriting and concept development",
+    "Original music and professional voiceover",
+    "Spots mixed and delivered broadcast-ready",
+  ],
+  "graphic-design": [
+    "On-brand design for any format you need",
+    "Built for its actual use — not just the mockup",
+    "Source files handed over, ready to go",
+  ],
+  "web-development": [
+    "Fast, responsive sites built to convert",
+    "A clear path from first visit to enquiry",
+    "Built on a platform your team can actually manage",
+  ],
+  hosting: [
+    "Reliable, fast, monitored hosting",
+    "Security, backups, and uptime handled for you",
+    "One less thing you have to think about",
+  ],
+  seo: [
+    "On-page, technical, and local SEO",
+    "Google Business Profile and listings tuned",
+    "Reporting on the rankings and traffic that matter",
+  ],
+};
+
+export function getServicePoints(slug: string): string[] {
+  return servicePoints[slug] ?? [];
+}
+
+/* ------------------------------------------------------------------ */
+/*  Work — portfolio pieces tagged so they surface on service pages    */
+/* ------------------------------------------------------------------ */
+
+export type WorkItem = { name: string; type: string; image: string; tags: string[] };
+
+export const work: WorkItem[] = [
+  { name: "Inferno Defence Systems", type: "Website", image: "/work/inferno.webp", tags: ["web"] },
+  { name: "Simply Decks", type: "Website", image: "/work/simply-decks.webp", tags: ["web"] },
+  { name: "TiOS", type: "Website & Branding", image: "/work/tios.webp", tags: ["web", "branding"] },
+  { name: "True Aesthetics", type: "Website", image: "/work/true-aesthetics.webp", tags: ["web"] },
+  {
+    name: "Transcend Together",
+    type: "Website & Branding",
+    image: "/work/transcend.webp",
+    tags: ["web", "branding"],
+  },
+  { name: "Solar Ninjas", type: "Website", image: "/work/solar-ninjas.webp", tags: ["web"] },
+  {
+    name: "Ardent Roof Systems",
+    type: "Website, Branding & Video",
+    image: "/work/ardent.webp",
+    tags: ["web", "branding", "video"],
+  },
+  { name: "ATMA CENA", type: "Brand Story Video", image: "/work/atma-cena-video.webp", tags: ["video"] },
+];
+
+/** Which work tag (if any) a given service slug should showcase. */
+const serviceWorkTag: Record<string, string> = {
+  "web-development": "web",
+  hosting: "web",
+  seo: "web",
+  branding: "branding",
+  videography: "video",
+};
+
+export function getServiceWork(slug: string): WorkItem[] {
+  const tag = serviceWorkTag[slug];
+  return tag ? work.filter((w) => w.tags.includes(tag)) : [];
+}
+
 export type Package = {
   name: string;
   price: string;
@@ -339,9 +468,9 @@ export const medical = {
   headlineLead: "Support across",
   headlineAccent: "every facet",
   headlineTail: "of your health business.",
-  sub: "More patients is one goal — but it's rarely the only one. We help medical and health businesses audit the tools and systems they already run, find where revenue is quietly leaking, and bring their whole online presence into focus. Filling a schedule, launching training, onboarding clinics across the country — we support the business behind all of it.",
+  sub: "Bringing in the right patients matters — and we do that well. But we go further, helping health businesses sharpen the tools and systems they already run, find where revenue is quietly leaking, and bring their whole online presence into focus. Patient growth, training, new locations, member clinics — we support the business behind all of it.",
   trustLine:
-    "Working across optometry · aesthetics · mental health · clinic networks · specialty",
+    "Psychedelics • optometry • medical aesthetics • medical & recreational cannabis • national clinic networks • specialty",
   problems: [
     {
       title: "You're paying for tools you barely use",
@@ -356,8 +485,8 @@ export const medical = {
       copy: "Website, listings, search, and social drift out of sync — so patients and partners get a slightly different message everywhere they look.",
     },
     {
-      title: "Growth means more than more patients",
-      copy: "Training programs, new services, additional locations, member clinics — most marketing isn't built to grow those at the same time.",
+      title: "More patients is just the start",
+      copy: "Bringing people through the door matters — but so does what comes next: training, new services, locations, and the systems that keep it all running smoothly.",
     },
   ],
   services: [
