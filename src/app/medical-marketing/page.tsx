@@ -68,13 +68,36 @@ export default function MedicalMarketingPage() {
         </div>
       </section>
 
+      {/* ---------------- Industries ---------------- */}
+      <section className="border-t border-white/[0.06] bg-ink py-24 md:py-32">
+        <div className="mx-auto max-w-6xl px-(--spacing-gutter)">
+          <SectionHeading
+            eyebrow="Who we work with"
+            title="We know your category."
+            lede="These are categories where the usual marketing playbook doesn't apply. We've learned the rules — and how to grow inside them."
+          />
+          <RevealGroup className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.08] sm:grid-cols-2 lg:grid-cols-3">
+            {medical.industries.map((ind) => (
+              <RevealItem key={ind.name} className="h-full">
+                <div className="flex h-full flex-col gap-3 bg-ink p-7">
+                  <h3 className="text-base font-semibold tracking-tight text-hi">
+                    {ind.name}
+                  </h3>
+                  <p className="text-sm leading-relaxed text-mid">{ind.copy}</p>
+                </div>
+              </RevealItem>
+            ))}
+          </RevealGroup>
+        </div>
+      </section>
+
       {/* ---------------- Problem ---------------- */}
       <section className="border-t border-white/[0.06] bg-void py-24 md:py-32">
         <div className="mx-auto max-w-6xl px-(--spacing-gutter)">
           <SectionHeading
             eyebrow="The problem"
-            title="Growth has more moving parts than you'd think."
-            lede="Getting new patients in the door is one piece. The rest is usually hiding in the systems, the follow-up, and the presence you can't see from the inside."
+            title="The usual playbook doesn't work here."
+            lede="In regulated, high-trust categories, 'just run more ads' isn't an option — and the gaps that hold you back are rarely the obvious ones."
           />
           <RevealGroup className="mt-14 grid gap-5 sm:grid-cols-2">
             {medical.problems.map((p) => (
@@ -98,8 +121,8 @@ export default function MedicalMarketingPage() {
       >
         <div className="mx-auto max-w-6xl px-(--spacing-gutter)">
           <SectionHeading
-            eyebrow="What we cover"
-            title="Support across the whole business."
+            eyebrow="What we do"
+            title="Growth that doesn't rely on ads alone."
           />
           <RevealGroup className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.08] sm:grid-cols-2 lg:grid-cols-3">
             {medical.services.map((s, i) => (
@@ -125,7 +148,7 @@ export default function MedicalMarketingPage() {
           <SectionHeading
             eyebrow="Proof"
             title="We've already done this in healthcare."
-            lede="A few of the health businesses we support — across care, training, and clinic networks."
+            lede="Psychedelics, cannabis, optometry — brands we support across the categories most agencies avoid."
           />
           <RevealGroup className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {medical.clients.map((c) => (

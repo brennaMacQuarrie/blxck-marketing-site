@@ -527,82 +527,106 @@ export const processSteps = [
 
 export const medical = {
   eyebrow: "Medical Marketing Solutions",
-  headlineLead: "Support across",
-  headlineAccent: "every facet",
-  headlineTail: "of your health business.",
-  sub: "Bringing in the right patients matters — and we do that well. But we go further, helping health businesses sharpen the tools and systems they already run, find where revenue is quietly leaking, and bring their whole online presence into focus. Patient growth, training, new locations, member clinics — we support the business behind all of it.",
+  headlineLead: "Built for the health categories",
+  headlineAccent: "that are hard to market.",
+  headlineTail: "",
+  sub: "Psychedelics, cannabis, medical aesthetics, optometry, multi-clinic networks — categories where ad platforms say no, compliance isn't optional, and trust is everything. We help these brands grow anyway: sharper systems, a presence people believe, and more of the right patients and customers.",
   trustLine:
     "Psychedelics • optometry • medical aesthetics • medical & recreational cannabis • national clinic networks • specialty",
+  industries: [
+    {
+      name: "Psychedelics & Mental Health",
+      copy: "Emerging, scrutinized, and education-first. We build demand and trust without overstepping the claims you're allowed to make.",
+    },
+    {
+      name: "Medical & Recreational Cannabis",
+      copy: "Locked out of most ad platforms. We grow you through search, content, and brand — the channels that are actually open to you.",
+    },
+    {
+      name: "Medical Aesthetics",
+      copy: "Visual, competitive, and high-ticket. We make you the obvious choice, with compliant before-and-afters and a brand that signals quality.",
+    },
+    {
+      name: "Optometry & Eye Care",
+      copy: "Local-first and retention-driven. We own your local search and keep patients coming back — clinical and retail alike.",
+    },
+    {
+      name: "National Clinic Networks",
+      copy: "Many locations, one brand. Every clinic gets a consistent, locally-visible presence as you scale across the country.",
+    },
+    {
+      name: "Specialty & Niche",
+      copy: "Hard to target and easy to misjudge. We find your specific audience and speak to them with precision.",
+    },
+  ],
   problems: [
     {
-      title: "You're paying for tools you barely use",
-      copy: "Most practices run a stack of software that's half-configured and barely talking to each other — paying for capability they never actually use.",
+      title: "Ad platforms keep saying no",
+      copy: "Cannabis, psychedelics, and even aesthetics get disapproved or throttled. You need growth that doesn't depend on channels that won't have you.",
+    },
+    {
+      title: "One compliance misstep is expensive",
+      copy: "Health claims, privacy, advertising standards — in these categories, getting it wrong costs far more than getting it right ever would.",
+    },
+    {
+      title: "Your online presence tells three different stories",
+      copy: "Website, listings, search, and social drift out of sync — so patients and partners get a different message everywhere they look.",
     },
     {
       title: "Revenue is leaking where you can't see it",
-      copy: "It's rarely just ad spend. Follow-up, retention, pricing, and clunky process quietly cost more than any campaign ever will.",
-    },
-    {
-      title: "Your online presence is telling three different stories",
-      copy: "Website, listings, search, and social drift out of sync — so patients and partners get a slightly different message everywhere they look.",
-    },
-    {
-      title: "More patients is just the start",
-      copy: "Bringing people through the door matters — but so does what comes next: training, new services, locations, and the systems that keep it all running smoothly.",
+      copy: "It's rarely just ad spend. Follow-up, retention, pricing, and clunky systems quietly cost more than any campaign ever will.",
     },
   ],
   services: [
     {
-      title: "Technical & Systems Audit",
-      copy: "We map the tools you already pay for, find what's underused or redundant, and help you make the whole stack leaner and more impactful.",
+      title: "Compliant Acquisition",
+      copy: "Paid media where it's allowed — and the channels that actually work when it isn't.",
     },
     {
-      title: "Revenue-Leak Analysis",
-      copy: "A clear, honest look at where money slips away — well beyond ad spend: follow-up, retention, pricing, and the gaps in between.",
+      title: "SEO & Owned Search",
+      copy: "Own the searches your category still ranks for. Often your biggest lever when ads are off the table.",
     },
     {
-      title: "Online Presence Audit",
-      copy: "Your website, search, listings, and social reviewed as one system, so everything points patients and partners in the same direction.",
+      title: "Brand, Content & Education",
+      copy: "Build trust and demand in categories where hype backfires and education wins.",
     },
     {
-      title: "Patient & Client Acquisition",
-      copy: "When filling the schedule is the goal, compliance-aware campaigns that bring the right people through the door.",
+      title: "Websites & Reputation",
+      copy: "A credible home with a clear next step, plus a steady, ethical review engine.",
     },
     {
-      title: "Training & Program Marketing",
-      copy: "Selling courses, certifications, or memberships? We build the content and funnels that actually get people enrolled.",
+      title: "Systems & Revenue Audit",
+      copy: "Find the underused tools and the places revenue leaks — then make the whole thing leaner.",
     },
     {
-      title: "Multi-Location & Network Enablement",
-      copy: "Scaling across regions or onboarding member clinics? We give every location a consistent, on-brand presence from day one.",
+      title: "Multi-Location Enablement",
+      copy: "Consistent, locally-visible presence across every clinic as you grow or onboard new ones.",
     },
   ],
   why: [
     {
-      title: "We start with an audit, not a pitch",
-      copy: "Before we recommend anything, we dig into your tools, your numbers, and your presence. You walk away with clarity — even if we never work together.",
-    },
-    {
-      title: "We support the whole business",
-      copy: "We've helped health businesses across patient care, training, and multi-clinic networks — like ATMA CENA, who we support across every facet of what they do.",
+      title: "We work where ads are restricted",
+      copy: "Cannabis, psychedelics, aesthetics — we know which channels are open, which aren't, and how to grow without the ones that won't have you.",
     },
     {
       title: "Compliance-aware by default",
-      copy: "We work with medical advertising guidelines and patient privacy in mind from the start — not as an afterthought once something gets flagged.",
+      copy: "We work with advertising guidelines and patient privacy in mind from the first step — not once something gets flagged.",
     },
     {
-      title: "Discreet and senior-led",
-      copy: "Sensitive category, senior strategy. Your account isn't handed to a junior and forgotten.",
+      title: "We start with an audit, not a pitch",
+      copy: "We dig into your tools, numbers, and presence first. You leave with clarity, even if we never work together.",
+    },
+    {
+      title: "We support the whole business",
+      copy: "From acquisition to training to multi-clinic networks — like ATMA CENA, who we support across every facet of what they do.",
     },
   ],
   clients: [
-    {
-      name: "ATMA CENA",
-      sector: "Mental Health · Training · Network",
-      image: "/portfolio/atma-cena.webp",
-    },
+    { name: "ATMA CENA", sector: "Psychedelic Therapy · Network", image: "/portfolio/atma-cena.webp" },
+    { name: "Apex Labs", sector: "Psychedelics", image: "/portfolio/apex-labs.png" },
+    { name: "Natural History", sector: "Cannabis", image: "/portfolio/natural-history.jpg" },
+    { name: "Azimuth Collective", sector: "Cannabis", image: "/portfolio/azimuth.png" },
     { name: "Optometrists' Clinic", sector: "Optometry", image: "/portfolio/optometrists.png" },
-    { name: "Apex Labs", sector: "Psychedelic Therapy", image: "/portfolio/apex-labs.png" },
   ],
   steps: [
     {
