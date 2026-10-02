@@ -66,9 +66,9 @@ export default function ServicesPage() {
               </span>
             </Reveal>
             <Reveal delay={0.05}>
-              <h1 className="mt-7 font-heading text-[clamp(2.4rem,6.5vw,5rem)] font-normal leading-[1.02] tracking-[-0.01em] text-hi">
-                Everything a growing brand needs,{" "}
-                <span className="text-spectrum">under one roof.</span>
+              <h1 className="mt-7 font-heading text-[clamp(2.6rem,7vw,5.5rem)] font-normal leading-[1.02] tracking-[-0.01em] text-hi">
+                Everything it takes{" "}
+                <span className="text-spectrum">to grow.</span>
               </h1>
             </Reveal>
             <Reveal delay={0.1}>

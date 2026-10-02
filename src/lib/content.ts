@@ -336,93 +336,98 @@ export const processSteps = [
 
 export const medical = {
   eyebrow: "Medical Marketing Solutions",
-  headline: "Marketing for clinics that want a fuller calendar.",
-  sub: "We help medical and health practices attract the right patients, book more of them, and build a reputation that compounds — without running campaigns that put your licence at risk.",
-  // Honest, qualitative pain points (no fabricated stats).
+  headlineLead: "Support across",
+  headlineAccent: "every facet",
+  headlineTail: "of your health business.",
+  sub: "More patients is one goal — but it's rarely the only one. We help medical and health businesses audit the tools and systems they already run, find where revenue is quietly leaking, and bring their whole online presence into focus. Filling a schedule, launching training, onboarding clinics across the country — we support the business behind all of it.",
+  trustLine:
+    "Working across optometry · aesthetics · mental health · clinic networks · specialty",
   problems: [
     {
-      title: "Patients pick whoever shows up first",
-      copy: "If you're not at the top of local search and maps, the clinic down the street is booking the patients who were looking for you.",
+      title: "You're paying for tools you barely use",
+      copy: "Most practices run a stack of software that's half-configured and barely talking to each other — paying for capability they never actually use.",
     },
     {
-      title: "Gaps in the calendar you can't explain",
-      copy: "Inconsistent new-patient flow makes revenue lumpy and makes it hard to staff and plan with confidence.",
+      title: "Revenue is leaking where you can't see it",
+      copy: "It's rarely just ad spend. Follow-up, retention, pricing, and clunky process quietly cost more than any campaign ever will.",
     },
     {
-      title: "Ad accounts flagged or rejected",
-      copy: "Health is a sensitive category. Campaigns built without regard for medical ad policy get disapproved — or quietly throttled.",
+      title: "Your online presence is telling three different stories",
+      copy: "Website, listings, search, and social drift out of sync — so patients and partners get a slightly different message everywhere they look.",
     },
     {
-      title: "A website that informs but doesn't book",
-      copy: "Plenty of practice sites explain services beautifully and still make it hard to actually take the next step.",
+      title: "Growth means more than more patients",
+      copy: "Training programs, new services, additional locations, member clinics — most marketing isn't built to grow those at the same time.",
     },
   ],
-  // Tailored capabilities (a medical framing of the core services).
   services: [
     {
-      title: "Patient-Acquisition Ads",
-      copy: "Google & Meta campaigns designed around real appointment value — and built to stay inside medical advertising policy.",
+      title: "Technical & Systems Audit",
+      copy: "We map the tools you already pay for, find what's underused or redundant, and help you make the whole stack leaner and more impactful.",
     },
     {
-      title: "Local SEO & Google Business",
-      copy: "Own your city's search results and map pack so nearby patients find you first.",
+      title: "Revenue-Leak Analysis",
+      copy: "A clear, honest look at where money slips away — well beyond ad spend: follow-up, retention, pricing, and the gaps in between.",
     },
     {
-      title: "Websites & Online Booking",
-      copy: "Fast, trustworthy sites with a clear path from 'just looking' to 'booked'.",
+      title: "Online Presence Audit",
+      copy: "Your website, search, listings, and social reviewed as one system, so everything points patients and partners in the same direction.",
     },
     {
-      title: "Reputation & Reviews",
-      copy: "A steady, ethical review engine that turns happy patients into your best marketing.",
+      title: "Patient & Client Acquisition",
+      copy: "When filling the schedule is the goal, compliance-aware campaigns that bring the right people through the door.",
     },
     {
-      title: "Brand & Content",
-      copy: "Photography, video, and design that make an established practice look the part.",
+      title: "Training & Program Marketing",
+      copy: "Selling courses, certifications, or memberships? We build the content and funnels that actually get people enrolled.",
     },
     {
-      title: "Tracking & Reporting",
-      copy: "Know what a new patient costs and where they came from — reported in plain language.",
+      title: "Multi-Location & Network Enablement",
+      copy: "Scaling across regions or onboarding member clinics? We give every location a consistent, on-brand presence from day one.",
     },
   ],
   why: [
     {
+      title: "We start with an audit, not a pitch",
+      copy: "Before we recommend anything, we dig into your tools, your numbers, and your presence. You walk away with clarity — even if we never work together.",
+    },
+    {
+      title: "We support the whole business",
+      copy: "We've helped health businesses across patient care, training, and multi-clinic networks — like ATMA CENA, who we support across every facet of what they do.",
+    },
+    {
       title: "Compliance-aware by default",
-      copy: "We build campaigns with medical advertising guidelines and patient privacy in mind — not as an afterthought.",
-    },
-    {
-      title: "We speak clinic",
-      copy: "We've worked across optometry, aesthetics, mental health, and specialty practices — so we start with context, not a template.",
-    },
-    {
-      title: "Measured on patients, not vanity",
-      copy: "Impressions are nice. Booked appointments pay the bills — so that's what we optimize toward.",
+      copy: "We work with medical advertising guidelines and patient privacy in mind from the start — not as an afterthought once something gets flagged.",
     },
     {
       title: "Discreet and senior-led",
       copy: "Sensitive category, senior strategy. Your account isn't handed to a junior and forgotten.",
     },
   ],
-  // Real medical-sector clients pulled from the portfolio.
   clients: [
-    { name: "ATMA CENA", sector: "Mental Health", image: "/portfolio/atma-cena.webp" },
+    {
+      name: "ATMA CENA",
+      sector: "Mental Health · Training · Network",
+      image: "/portfolio/atma-cena.webp",
+    },
     { name: "Optometrists' Clinic", sector: "Optometry", image: "/portfolio/optometrists.png" },
     { name: "Apex Labs", sector: "Psychedelic Therapy", image: "/portfolio/apex-labs.png" },
   ],
   steps: [
     {
       n: "01",
-      title: "Free clinic audit",
-      copy: "We review your current marketing, search presence, and patient flow — and show you exactly where the leaks are.",
+      title: "The audit",
+      copy: "We review your systems, your numbers, and your entire online presence — and show you exactly where the gaps and leaks are.",
     },
     {
       n: "02",
-      title: "Compliant campaigns, live",
-      copy: "We build and launch the ads, pages, and local SEO that bring the right patients to your door.",
+      title: "The plan",
+      copy: "A prioritized roadmap: what to fix, what to cut, and what to build — across marketing and the business running behind it.",
     },
     {
       n: "03",
-      title: "A calendar that fills",
-      copy: "We measure booked appointments and optimize monthly — so growth keeps compounding.",
+      title: "Build & grow",
+      copy: "We execute and optimize — leaner systems, a sharper presence, and growth you can actually measure.",
     },
   ],
 } as const;

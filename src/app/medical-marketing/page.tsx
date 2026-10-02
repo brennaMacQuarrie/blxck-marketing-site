@@ -10,11 +10,11 @@ import { Eclipse } from "@/components/ui/Eclipse";
 export const metadata: Metadata = {
   title: "Medical Marketing Solutions",
   description:
-    "Compliance-aware marketing for medical and health practices — patient-acquisition ads, local SEO, websites, and reputation. More of the right patients, booked.",
+    "Full-business growth for medical and health companies — systems and technical audits, revenue-leak analysis, online-presence clarity, patient acquisition, training, and multi-clinic enablement.",
   openGraph: {
     title: `Medical Marketing Solutions — ${site.name}`,
     description:
-      "Marketing for clinics that want a fuller calendar. Compliance-aware ads, local SEO, websites, and reputation for medical practices.",
+      "Support across every facet of your health business — audits, systems, revenue, presence, acquisition, training, and multi-location growth.",
   },
 };
 
@@ -40,8 +40,9 @@ export default function MedicalMarketingPage() {
           </Reveal>
           <Reveal delay={0.05}>
             <h1 className="mt-7 font-heading text-[clamp(2.3rem,6vw,4.5rem)] font-normal leading-[1.02] tracking-[-0.01em] text-hi">
-              Marketing for clinics that want a{" "}
-              <span className="text-spectrum">fuller calendar.</span>
+              {medical.headlineLead}{" "}
+              <span className="text-spectrum">{medical.headlineAccent}</span>{" "}
+              {medical.headlineTail}
             </h1>
           </Reveal>
           <Reveal delay={0.1}>
@@ -52,16 +53,16 @@ export default function MedicalMarketingPage() {
           <Reveal delay={0.15}>
             <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
               <ButtonLink href="/contact" variant="primary" withArrow>
-                Book a free clinic audit
+                Book a free audit
               </ButtonLink>
               <ButtonLink href="#services" variant="ghost" withArrow={false}>
-                What&apos;s included
+                What we cover
               </ButtonLink>
             </div>
           </Reveal>
           <Reveal delay={0.2}>
             <p className="mt-10 text-xs uppercase tracking-[0.22em] text-lo">
-              Trusted across optometry · aesthetics · mental health · specialty
+              {medical.trustLine}
             </p>
           </Reveal>
         </div>
@@ -72,8 +73,8 @@ export default function MedicalMarketingPage() {
         <div className="mx-auto max-w-6xl px-(--spacing-gutter)">
           <SectionHeading
             eyebrow="The problem"
-            title="Great care doesn't market itself."
-            lede="You're busy running a practice. Meanwhile the patients you should be seeing are being won — or lost — online, every day."
+            title="Growth has more moving parts than more patients."
+            lede="The gaps are rarely where you'd expect. Usually they're in the systems, the follow-up, and the presence you can't see from the inside."
           />
           <RevealGroup className="mt-14 grid gap-5 sm:grid-cols-2">
             {medical.problems.map((p) => (
@@ -97,8 +98,8 @@ export default function MedicalMarketingPage() {
       >
         <div className="mx-auto max-w-6xl px-(--spacing-gutter)">
           <SectionHeading
-            eyebrow="What we do for clinics"
-            title="A complete growth system, tuned for healthcare."
+            eyebrow="What we cover"
+            title="Support across the whole business."
           />
           <RevealGroup className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.08] sm:grid-cols-2 lg:grid-cols-3">
             {medical.services.map((s, i) => (
@@ -124,7 +125,7 @@ export default function MedicalMarketingPage() {
           <SectionHeading
             eyebrow="Proof"
             title="We've already done this in healthcare."
-            lede="A few of the practices and health brands we've helped grow."
+            lede="A few of the health businesses we support — across care, training, and clinic networks."
           />
           <RevealGroup className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {medical.clients.map((c) => (
@@ -157,7 +158,7 @@ export default function MedicalMarketingPage() {
       <section className="border-t border-white/[0.06] bg-ink py-24 md:py-32">
         <div className="mx-auto max-w-6xl px-(--spacing-gutter)">
           <SectionHeading
-            eyebrow="Why BLXCK for medical"
+            eyebrow="Why BLXCK for health"
             title="Built for a sensitive, high-trust category."
           />
           <RevealGroup className="mt-14 grid gap-10 sm:grid-cols-2">
@@ -185,7 +186,7 @@ export default function MedicalMarketingPage() {
         <div className="mx-auto max-w-6xl px-(--spacing-gutter)">
           <SectionHeading
             eyebrow="How it works"
-            title="From first audit to a calendar that fills."
+            title="From first audit to measurable growth."
           />
           <RevealGroup className="mt-14 grid gap-5 md:grid-cols-3">
             {medical.steps.map((s) => (
@@ -213,15 +214,16 @@ export default function MedicalMarketingPage() {
             />
             <div className="relative flex flex-col items-center gap-6">
               <h2 className="max-w-2xl text-balance text-3xl font-bold leading-[1.1] tracking-tight text-hi sm:text-4xl md:text-5xl">
-                Let&apos;s fill your calendar.
+                Start with a real audit.
               </h2>
               <p className="max-w-xl text-base leading-relaxed text-mid">
-                Start with a free audit of your clinic&apos;s marketing. We&apos;ll
-                show you exactly where the patients are leaking out — no obligation.
+                We&apos;ll show you where your business is leaking revenue, which
+                tools you&apos;re underusing, and where the fastest wins are — no
+                obligation.
               </p>
               <div className="flex flex-wrap items-center justify-center gap-4">
                 <ButtonLink href="/contact" variant="primary" withArrow>
-                  Book a free clinic audit
+                  Book a free audit
                 </ButtonLink>
                 <a
                   href={`tel:${site.contact.phone}`}
