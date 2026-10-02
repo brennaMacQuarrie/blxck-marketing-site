@@ -25,7 +25,7 @@ export default function ContactPage() {
   return (
     <>
       {/* ---------------- Intro ---------------- */}
-      <section className="relative overflow-hidden pt-28 pb-14 md:pt-36">
+      <section className="relative overflow-hidden pt-32 pb-14 md:pt-40">
         <Eclipse
           color="teal"
           className="right-[-6%] top-[-16%] h-[52vmin] w-[52vmin] opacity-40"
@@ -46,7 +46,7 @@ export default function ContactPage() {
           <Reveal delay={0.1}>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-mid">
               Tell us where you want to grow. We&apos;ll come back within one
-              business day with a clear next step — no pressure, no jargon.
+              business day with a clear next step.
             </p>
           </Reveal>
         </div>

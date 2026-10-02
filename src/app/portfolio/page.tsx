@@ -27,7 +27,7 @@ export default function PortfolioPage() {
   return (
     <>
       {/* ---------------- Intro ---------------- */}
-      <section className="relative overflow-hidden pt-28 pb-14 md:pt-36">
+      <section className="relative overflow-hidden pt-32 pb-14 md:pt-40">
         <Eclipse
           color="lavender"
           className="left-1/2 top-[-18%] h-[56vmin] w-[80vmin] -translate-x-1/2 opacity-35"

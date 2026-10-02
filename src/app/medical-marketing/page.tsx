@@ -22,7 +22,7 @@ export default function MedicalMarketingPage() {
   return (
     <>
       {/* ---------------- Hero ---------------- */}
-      <section className="relative flex min-h-[86svh] items-center overflow-hidden pt-16">
+      <section className="relative flex min-h-[86svh] items-center overflow-hidden pt-32 pb-12 md:pt-28">
         <Eclipse
           color="teal"
           className="left-1/2 top-[-18%] h-[70vmin] w-[90vmin] -translate-x-1/2 opacity-50"

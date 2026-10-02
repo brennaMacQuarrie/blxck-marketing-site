@@ -134,6 +134,44 @@ export const serviceGroups: ServiceGroup[] = [
   },
 ];
 
+/** kebab-case slug for routing (e.g. "Jingles & Radio Ads" → "jingles-and-radio-ads"). */
+export function slugify(s: string): string {
+  return s
+    .toLowerCase()
+    .replace(/&/g, "and")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+}
+
+export type ServiceEntry = ServiceGroup["items"][number] & {
+  slug: string;
+  group: string;
+  groupKey: string;
+  accent: ServiceGroup["accent"];
+};
+
+/** Flat list of every service, with its slug and parent group. */
+export const allServices: ServiceEntry[] = serviceGroups.flatMap((g) =>
+  g.items.map((it) => ({
+    ...it,
+    slug: slugify(it.name),
+    group: g.title,
+    groupKey: g.key,
+    accent: g.accent,
+  })),
+);
+
+export function getService(slug: string): ServiceEntry | undefined {
+  return allServices.find((s) => s.slug === slug);
+}
+
+/** Sibling services within the same group (excluding the given slug). */
+export function siblingServices(slug: string): ServiceEntry[] {
+  const svc = getService(slug);
+  if (!svc) return [];
+  return allServices.filter((s) => s.groupKey === svc.groupKey && s.slug !== slug);
+}
+
 export type Package = {
   name: string;
   price: string;

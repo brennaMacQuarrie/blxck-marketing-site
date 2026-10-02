@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { serviceGroups, packages } from "@/lib/content";
+import Link from "next/link";
+import { serviceGroups, packages, slugify } from "@/lib/content";
 import { site } from "@/lib/site";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
@@ -47,7 +48,7 @@ export default function ServicesPage() {
   return (
     <>
       {/* ---------------- Intro ---------------- */}
-      <section className="relative flex min-h-[60svh] items-center overflow-hidden pt-16">
+      <section className="relative flex min-h-[60svh] items-center overflow-hidden pt-32 pb-12 md:pt-28">
         <Eclipse
           color="teal"
           className="right-[-8%] top-[-20%] h-[60vmin] w-[60vmin] opacity-40"
@@ -126,20 +127,31 @@ export default function ServicesPage() {
               <RevealGroup className="grid gap-px overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.08] sm:grid-cols-2">
                 {g.items.map((it) => (
                   <RevealItem key={it.name} className="h-full">
-                    <div className="group flex h-full flex-col gap-2 bg-void p-6 transition-colors duration-300 hover:bg-carbon">
-                      <div className="flex items-center gap-2">
+                    <Link
+                      href={`/services/${slugify(it.name)}`}
+                      className="group flex h-full flex-col gap-2 bg-void p-6 transition-colors duration-300 hover:bg-carbon"
+                    >
+                      <div className="flex items-center justify-between gap-2">
+                        <div className="flex items-center gap-2">
+                          <span
+                            className="h-1.5 w-1.5 rounded-full opacity-50 transition-opacity group-hover:opacity-100"
+                            style={{ background: "var(--ac)" }}
+                          />
+                          <h3 className="text-[0.98rem] font-semibold tracking-tight text-hi">
+                            {it.name}
+                          </h3>
+                        </div>
                         <span
-                          className="h-1.5 w-1.5 rounded-full opacity-50 transition-opacity group-hover:opacity-100"
-                          style={{ background: "var(--ac)" }}
-                        />
-                        <h3 className="text-[0.98rem] font-semibold tracking-tight text-hi">
-                          {it.name}
-                        </h3>
+                          className="text-lo opacity-0 transition-all duration-300 group-hover:translate-x-0.5 group-hover:opacity-100"
+                          aria-hidden
+                        >
+                          →
+                        </span>
                       </div>
                       <p className="text-sm leading-relaxed text-mid">
                         {it.long ?? it.detail}
                       </p>
-                    </div>
+                    </Link>
                   </RevealItem>
                 ))}
               </RevealGroup>

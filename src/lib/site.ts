@@ -24,7 +24,8 @@ export const site = {
   },
   // Set NEXT_PUBLIC_CALENDLY_URL in the environment to enable the embedded booker.
   calendlyUrl:
-    process.env.NEXT_PUBLIC_CALENDLY_URL ?? "https://calendly.com/blxckmarketing/discovery",
+    process.env.NEXT_PUBLIC_CALENDLY_URL ??
+    "https://calendly.com/blxckmarketing/blxck-meeting",
 } as const;
 
 export const nav = [
