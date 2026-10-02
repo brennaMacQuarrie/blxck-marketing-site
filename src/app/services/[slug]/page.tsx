@@ -154,12 +154,14 @@ export default async function ServiceDetailPage({
 
             <RevealGroup className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {relatedWork.map((w) => (
-                <RevealItem key={w.name} className="h-full">
-                  <Link
-                    href="/portfolio"
+                <RevealItem key={`${w.name}-${w.type}`} className="h-full">
+                  <a
+                    href={w.href ?? "/portfolio"}
+                    target={w.video ? "_blank" : undefined}
+                    rel={w.video ? "noopener noreferrer" : undefined}
                     className="group relative block overflow-hidden rounded-2xl border border-white/[0.08]"
                   >
-                    <div className="relative aspect-square w-full">
+                    <div className="relative aspect-[4/3] w-full">
                       <Image
                         src={w.image}
                         alt={`${w.name} — ${w.type} by BLXCK Marketing`}
@@ -168,6 +170,22 @@ export default async function ServiceDetailPage({
                         className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                       />
                       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                      {w.video && (
+                        <span className="pointer-events-none absolute inset-0 flex items-center justify-center">
+                          <span className="flex h-14 w-14 items-center justify-center rounded-full border border-white/40 bg-black/40 backdrop-blur-sm transition-transform duration-300 group-hover:scale-110">
+                            <svg
+                              width="18"
+                              height="18"
+                              viewBox="0 0 16 16"
+                              fill="currentColor"
+                              aria-hidden
+                              className="ml-0.5 text-hi"
+                            >
+                              <path d="M4 2.5v11l9-5.5z" />
+                            </svg>
+                          </span>
+                        </span>
+                      )}
                     </div>
                     <div className="absolute bottom-0 left-0 right-0 flex items-end justify-between p-5">
                       <span className="font-heading text-lg text-hi">{w.name}</span>
@@ -175,7 +193,7 @@ export default async function ServiceDetailPage({
                         {w.type}
                       </span>
                     </div>
-                  </Link>
+                  </a>
                 </RevealItem>
               ))}
             </RevealGroup>

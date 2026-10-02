@@ -264,9 +264,17 @@ export function getServicePoints(slug: string): string[] {
 /*  Work — portfolio pieces tagged so they surface on service pages    */
 /* ------------------------------------------------------------------ */
 
-export type WorkItem = { name: string; type: string; image: string; tags: string[] };
+export type WorkItem = {
+  name: string;
+  type: string;
+  image: string;
+  tags: string[];
+  href?: string; // where the card links (defaults to /portfolio)
+  video?: boolean; // show a play overlay and open the video externally
+};
 
 export const work: WorkItem[] = [
+  // Web builds (website screenshots)
   { name: "Inferno Defence Systems", type: "Website", image: "/work/inferno.webp", tags: ["web"] },
   { name: "Simply Decks", type: "Website", image: "/work/simply-decks.webp", tags: ["web"] },
   { name: "TiOS", type: "Website & Branding", image: "/work/tios.webp", tags: ["web", "branding"] },
@@ -280,11 +288,62 @@ export const work: WorkItem[] = [
   { name: "Solar Ninjas", type: "Website", image: "/work/solar-ninjas.webp", tags: ["web"] },
   {
     name: "Ardent Roof Systems",
-    type: "Website, Branding & Video",
+    type: "Website & Branding",
     image: "/work/ardent.webp",
-    tags: ["web", "branding", "video"],
+    tags: ["web", "branding"],
   },
-  { name: "ATMA CENA", type: "Brand Story Video", image: "/work/atma-cena-video.webp", tags: ["video"] },
+
+  // Videography (actual videos)
+  {
+    name: "ATMA CENA",
+    type: "Brand Story Video",
+    image: "/work/yt-atma-cena.jpg",
+    tags: ["video"],
+    href: "https://youtu.be/O08zHqvd3U4",
+    video: true,
+  },
+  {
+    name: "Ardent Roof Systems",
+    type: "Brand Story Video",
+    image: "/work/yt-ardent.jpg",
+    tags: ["video"],
+    href: "https://youtu.be/nM_kcDVCEg4",
+    video: true,
+  },
+  {
+    name: "ARPA & YMCA",
+    type: "Working in Recreation",
+    image: "/work/yt-arpa-ymca.jpg",
+    tags: ["video"],
+    href: "https://youtu.be/fsgf5bFTLhM",
+    video: true,
+  },
+
+  // Social content (reels)
+  {
+    name: "Token Naturals",
+    type: "Social Reel",
+    image: "/work/yt-token-naturals.jpg",
+    tags: ["social"],
+    href: "https://youtu.be/YYmersiLrqA",
+    video: true,
+  },
+  {
+    name: "Hansen",
+    type: "Social Reel",
+    image: "/work/yt-hansen-reel.jpg",
+    tags: ["social"],
+    href: "https://youtu.be/L2Zbyiamb2I",
+    video: true,
+  },
+  {
+    name: "Dynaline",
+    type: "Social Reel",
+    image: "/work/yt-dynaline.jpg",
+    tags: ["social"],
+    href: "https://youtu.be/xbkWyX3APnQ",
+    video: true,
+  },
 ];
 
 /** Which work tag (if any) a given service slug should showcase. */
@@ -293,7 +352,10 @@ const serviceWorkTag: Record<string, string> = {
   hosting: "web",
   seo: "web",
   branding: "branding",
+  "graphic-design": "branding",
   videography: "video",
+  "video-for-socials": "social",
+  "social-media-management": "social",
 };
 
 export function getServiceWork(slug: string): WorkItem[] {
