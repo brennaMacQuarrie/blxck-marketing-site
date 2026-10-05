@@ -62,7 +62,7 @@ export function Navbar() {
           <Link
             href="/"
             aria-label="BLXCK Marketing home"
-            className="font-heading text-[1.05rem] tracking-[0.28em] text-hi transition-opacity hover:opacity-80"
+            className="font-display text-[1.15rem] tracking-[0.3em] text-hi transition-opacity hover:opacity-80"
           >
             BLXCK
           </Link>
