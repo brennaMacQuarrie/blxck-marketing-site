@@ -23,14 +23,14 @@ export const serviceGroups: ServiceGroup[] = [
     accent: "teal",
     items: [
       {
-        name: "Video for Socials",
-        detail: "Short-form video strategy engineered to stop the scroll.",
-        long: "Most businesses know they need video — they just don't know where to start, what to make, or why their current content isn't landing. We help you cut through that noise and build a video approach that actually fits how your audience consumes content and how your team can realistically execute it.",
+        name: "Social Content Consulting",
+        detail: "We teach your team to make social content that actually lands.",
+        long: "Most businesses know they need social content — they just don't know what to make, why their current posts aren't landing, or how to keep up. We sit down with your team and teach you the formats, hooks, and cadence that work for your audience, so you can plan and produce content in-house with real confidence instead of guessing.",
       },
       {
         name: "Digital Ads",
-        detail: "Paid media planning that turns spend into measurable return.",
-        long: "Running ads without a strategic foundation is just burning money with extra steps. Before we touch a campaign, we make sure we understand your goals, your margins, your audience, and what success actually looks like for your business.",
+        detail: "We help you understand paid media before you spend on it.",
+        long: "Running ads without understanding them is just burning money with extra steps. We walk you through how campaigns are structured, what the numbers actually mean, and how to brief or run paid media yourself — so every dollar you put behind ads is a decision you understand, not a leap of faith.",
       },
       {
         name: "Business & Marketing Audits",
@@ -174,15 +174,15 @@ export function siblingServices(slug: string): ServiceEntry[] {
 
 /** "What's included" bullets per service slug — concrete, no fabricated stats. */
 export const servicePoints: Record<string, string[]> = {
-  "video-for-socials": [
-    "A content plan matched to your audience and your team's capacity",
-    "Hooks, formats, and pacing built for each platform",
-    "A realistic shooting and posting cadence you can actually sustain",
+  "social-content-consulting": [
+    "A content playbook your team can actually run",
+    "The hooks, formats, and cadence that work for your audience",
+    "Hands-on training so you're confident producing in-house",
   ],
   "digital-ads": [
-    "Account and campaign structure built around real appointment or sale value",
-    "Audience, budget, and bid strategy agreed before anything goes live",
-    "Clear reporting on cost per result — not vanity metrics",
+    "A plain-English breakdown of how paid media really works",
+    "How to read the numbers that actually matter",
+    "The know-how to brief or run campaigns without wasting budget",
   ],
   "business-and-marketing-audits": [
     "A full review of your current marketing, spend, and presence",
@@ -258,6 +258,46 @@ export const servicePoints: Record<string, string[]> = {
 
 export function getServicePoints(slug: string): string[] {
   return servicePoints[slug] ?? [];
+}
+
+/** A short "how we approach it" paragraph per service slug. */
+export const serviceApproach: Record<string, string> = {
+  "social-content-consulting":
+    "We start by understanding your audience, your resources, and what you've already tried. Then we hand you a repeatable system — formats, hooks, a content calendar — and coach your team until posting feels like second nature rather than a scramble.",
+  "digital-ads":
+    "We demystify the platforms and the metrics, then walk you through how to plan, brief, and judge a campaign. You come away able to spend with intent — reading results and adjusting — instead of hoping something works.",
+  "business-and-marketing-audits":
+    "We dig into your analytics, spend, funnel, and online presence, then lay it all out in plain language. No jargon, no upsell — just a clear picture of where you stand and a prioritized list of what to do next.",
+  "goal-setting-and-brand-positioning":
+    "We facilitate the harder conversations about where you're headed and what genuinely sets you apart, then capture the answers in a framework your whole team can actually execute against.",
+  advertising:
+    "We plan around your margins and real conversion value, launch lean, and optimize relentlessly — so budget keeps flowing toward what's working and away from what isn't.",
+  analytics:
+    "We make sure you're tracking the right things, set up correctly, then translate the numbers into decisions — not dashboards nobody opens.",
+  branding:
+    "We define how your brand should look, sound, and feel, then build the assets and guidelines that keep it consistent as more people touch it.",
+  "social-media-management":
+    "We plan content ahead, produce it on-brand, and stay on top of engagement — so your presence stays active and intentional without eating your week.",
+  strategy:
+    "We get clear on positioning, audience, and message, then build a channel plan with a real reason behind every move — and revisit it as you grow.",
+  videography:
+    "From concept and script through to the final cut, we handle production end to end — then deliver versions sized and formatted for wherever they'll actually live.",
+  photography:
+    "We art-direct and shoot to your brand, then hand over a polished, web-ready image library you own outright.",
+  "jingles-and-radio-ads":
+    "We write, score, and produce audio that sticks — from the first concept to a broadcast-ready spot.",
+  "graphic-design":
+    "We design for the job each asset has to do, not just how it looks in a mockup — and hand over editable source files so you're never stuck.",
+  "web-development":
+    "We build fast, well-structured sites with a clear path from first visit to enquiry — on a platform your team can maintain without needing us for every change.",
+  hosting:
+    "We handle speed, security, backups, and uptime quietly in the background, so your site simply works and you never have to think about it.",
+  seo:
+    "We cover the on-page, technical, and local foundations, then report on the rankings and traffic that actually move the needle for your business.",
+};
+
+export function getServiceApproach(slug: string): string {
+  return serviceApproach[slug] ?? "";
 }
 
 /* ------------------------------------------------------------------ */
@@ -354,7 +394,7 @@ const serviceWorkTag: Record<string, string> = {
   branding: "branding",
   "graphic-design": "branding",
   videography: "video",
-  "video-for-socials": "social",
+  "social-content-consulting": "social",
   "social-media-management": "social",
 };
 
@@ -419,10 +459,9 @@ export const packages: Package[] = [
 ];
 
 export const auditOffer = {
-  price: "$1,500",
-  headline: "The Marketing Audit",
-  body: "A proper audit gives you a clear, honest look at where your marketing is working — and where it isn't. Sign onto monthly services within six months and we credit $500 of it back.",
-  note: "$500 credited toward monthly services",
+  headline: "The Full Brand Audit",
+  body: "A clear, honest look at where your brand and marketing stand today — what's working, what's quietly leaking, and the highest-impact moves to make next. It's the best first step, whether or not we end up working together.",
+  note: "Your clearest next step",
 };
 
 export type Project = {
@@ -430,62 +469,73 @@ export type Project = {
   sector: string;
   image: string;
   accent: "teal" | "lavender" | "gold" | "silver";
+  blurb: string;
 };
 
 export const projects: Project[] = [
   {
     name: "Hansen Distillery",
-    sector: "E-Commerce",
+    sector: "Alcohol",
     image: "/portfolio/hansen.jpg",
     accent: "gold",
+    blurb: "Craft-spirits brand and storefront built to pour off the shelf.",
   },
   {
     name: "ATMA CENA",
     sector: "Medical",
     image: "/portfolio/atma-cena.webp",
     accent: "lavender",
+    blurb:
+      "A premium identity and content system for a psychedelic-therapy brand.",
   },
   {
     name: "REX Equipment",
-    sector: "E-Commerce",
+    sector: "Farm Equipment",
     image: "/portfolio/rex-equipment.jpg",
     accent: "teal",
+    blurb: "Heavy equipment, meet a site that actually converts.",
   },
   {
     name: "Tiger Gold",
     sector: "Capital",
     image: "/portfolio/tiger-gold.webp",
     accent: "gold",
+    blurb: "Paid media and creative that made the brand impossible to miss.",
   },
   {
     name: "Natural History",
     sector: "Cannabis",
     image: "/portfolio/natural-history.jpg",
     accent: "silver",
+    blurb: "Brand and presence for cannabis, handled with restraint.",
   },
   {
     name: "Optometrists' Clinic",
     sector: "Medical",
     image: "/portfolio/optometrists.png",
     accent: "teal",
+    blurb: "Local-search dominance for a growing optometry practice.",
   },
   {
     name: "Apex Labs",
     sector: "Psychedelics",
     image: "/portfolio/apex-labs.png",
     accent: "lavender",
+    blurb: "A compliant, elevated brand in an emerging category.",
   },
   {
     name: "Azimuth Collective",
     sector: "Cannabis",
     image: "/portfolio/azimuth.png",
     accent: "silver",
+    blurb: "Positioning and presence for a cannabis brand with range.",
   },
   {
     name: "Canadian Sniper Association",
     sector: "Non-Profit",
     image: "/portfolio/csa.jpg",
     accent: "gold",
+    blurb: "Digital presence for a community with a precise mission.",
   },
 ];
 

@@ -8,12 +8,12 @@
    ============================================================ */
 
 @theme {
-  /* Core surfaces */
-  --color-void: #000000;
-  --color-ink: #050506;
-  --color-carbon: #0a0b0f;
-  --color-slate: #14161d;
-  --color-edge: #23262f;
+  /* Core surfaces — off-black with deep greys (not pure black) */
+  --color-void: #0a0b0e;
+  --color-ink: #101217;
+  --color-carbon: #191c23;
+  --color-slate: #24272f;
+  --color-edge: #323640;
 
   /* Brand accents */
   --color-teal: #7ebec5;
@@ -85,23 +85,29 @@ html.lenis body {
 /* Base typography lives in @layer base so font utilities
    (font-body / font-heading / font-display) override per element. */
 @layer base {
+  /* H1 → Milker. */
   h1 {
     font-family: var(--font-heading);
     font-weight: 400;
     letter-spacing: 0.005em;
     line-height: 1;
   }
-  /* Default headings are clean (Arial), tight and confident.
-     Milker is applied deliberately via the `font-heading` utility as an accent. */
-  h2,
+  /* Subheaders (section titles) → Space Age. */
+  h2 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    line-height: 1.08;
+  }
+  /* Smaller headings (card titles, etc.) stay clean and legible. */
   h3,
   h4,
   h5,
   h6 {
     font-family: var(--font-body);
     font-weight: 700;
-    letter-spacing: -0.022em;
-    line-height: 1.06;
+    letter-spacing: -0.015em;
+    line-height: 1.1;
   }
 }
 
@@ -164,9 +170,10 @@ html.lenis body {
   .eyebrow {
     font-family: var(--font-body);
     text-transform: uppercase;
-    letter-spacing: 0.42em;
-    font-size: 0.72rem;
-    color: var(--color-lo);
+    letter-spacing: 0.28em;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-mid);
   }
 
   /* The event-horizon radial glow used behind hero + section anchors. */

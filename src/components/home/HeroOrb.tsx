@@ -75,28 +75,26 @@ export function HeroOrb({ className = "" }: { className?: string }) {
           className="absolute inset-[6%] rounded-full"
         />
 
-        {/* Hairline concentric rings. */}
-        <div className="absolute inset-0 rounded-full border border-white/12" />
-        <div className="absolute inset-[13%] rounded-full border border-white/[0.07]" />
-        <div className="absolute inset-[27%] rounded-full border border-white/[0.05]" />
-        <div className="absolute inset-[43%] rounded-full border border-white/[0.04]" />
+        {/* Concentric rings — brand colours. */}
+        <div className="absolute inset-0 rounded-full border border-teal/70" />
+        <div className="absolute inset-[13%] rounded-full border border-lavender/60" />
+        <div className="absolute inset-[27%] rounded-full border border-gold/55" />
+        <div className="absolute inset-[43%] rounded-full border border-teal/45" />
 
-        {/* Crosshair ticks — a touch of instrument precision. */}
-        <div className="absolute left-1/2 top-0 h-3 w-px -translate-x-1/2 bg-white/15" />
-        <div className="absolute bottom-0 left-1/2 h-3 w-px -translate-x-1/2 bg-white/15" />
-        <div className="absolute left-0 top-1/2 h-px w-3 -translate-y-1/2 bg-white/15" />
-        <div className="absolute right-0 top-1/2 h-px w-3 -translate-y-1/2 bg-white/15" />
+        {/* Crosshair ticks. */}
+        <div className="absolute left-1/2 top-0 h-3 w-px -translate-x-1/2 bg-white/20" />
+        <div className="absolute bottom-0 left-1/2 h-3 w-px -translate-x-1/2 bg-white/20" />
+        <div className="absolute left-0 top-1/2 h-px w-3 -translate-y-1/2 bg-white/20" />
+        <div className="absolute right-0 top-1/2 h-px w-3 -translate-y-1/2 bg-white/20" />
 
         {/* Center point. */}
-        <div className="absolute left-1/2 top-1/2 h-1 w-1 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/30" />
+        <div className="absolute left-1/2 top-1/2 h-1 w-1 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/35" />
 
-        {/* Orbiting light node. */}
+        {/* Orbiting node — black, with a crisp rim so it reads against the glow. */}
         <motion.div
           style={{ left: reduce ? "50%" : nodeX, top: reduce ? "0%" : nodeY }}
-          className="absolute h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-teal shadow-[0_0_16px_4px_rgba(126,190,197,0.7)]"
-        >
-          <span className="absolute inset-0 rounded-full bg-white/80 [transform:scale(0.4)]" />
-        </motion.div>
+          className="absolute h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-white/85 bg-black shadow-[0_0_0_5px_rgba(10,11,14,0.65),0_0_14px_2px_rgba(0,0,0,0.6)]"
+        />
       </div>
     </div>
   );

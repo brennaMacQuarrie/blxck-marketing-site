@@ -8,7 +8,7 @@ import { useGSAP } from "@gsap/react";
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 const text =
-  "Most marketing blends in. We build brands that don't — sharp strategy, cinematic content, and paid media that performs, so the right people can't scroll past you.";
+  "Strategy, content, and media — handled by one team that treats your growth like its own. We build it, run it, read the numbers, and make it sharper every single month.";
 
 export function Manifesto() {
   const root = useRef<HTMLDivElement>(null);

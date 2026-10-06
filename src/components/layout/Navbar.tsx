@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "motion/react";
 import { nav, site } from "@/lib/site";
@@ -62,9 +63,16 @@ export function Navbar() {
           <Link
             href="/"
             aria-label="BLXCK Marketing home"
-            className="font-display text-[1.15rem] tracking-[0.3em] text-hi transition-opacity hover:opacity-80"
+            className="flex items-center transition-opacity hover:opacity-80"
           >
-            BLXCK
+            <Image
+              src="/logos/blxck-wordmark-trimmed.png"
+              alt="BLXCK Marketing"
+              width={115}
+              height={26}
+              priority
+              className="h-[26px] w-auto"
+            />
           </Link>
 
           {/* Desktop links — centered */}

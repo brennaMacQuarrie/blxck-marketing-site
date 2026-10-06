@@ -129,12 +129,12 @@ export default function ServicesPage() {
                   <RevealItem key={it.name} className="h-full">
                     <Link
                       href={`/services/${slugify(it.name)}`}
-                      className="group flex h-full flex-col gap-2 bg-void p-6 transition-colors duration-300 hover:bg-carbon"
+                      className="group flex h-full flex-col gap-2 bg-void p-6 ring-1 ring-inset ring-transparent transition-all duration-300 hover:bg-carbon hover:ring-white/10"
                     >
                       <div className="flex items-center justify-between gap-2">
                         <div className="flex items-center gap-2">
                           <span
-                            className="h-1.5 w-1.5 rounded-full opacity-50 transition-opacity group-hover:opacity-100"
+                            className="h-1.5 w-1.5 rounded-full opacity-60 transition-opacity group-hover:opacity-100"
                             style={{ background: "var(--ac)" }}
                           />
                           <h3 className="text-[0.98rem] font-semibold tracking-tight text-hi">
@@ -142,7 +142,7 @@ export default function ServicesPage() {
                           </h3>
                         </div>
                         <span
-                          className="text-lo opacity-0 transition-all duration-300 group-hover:translate-x-0.5 group-hover:opacity-100"
+                          className="shrink-0 text-mid transition-all duration-300 group-hover:translate-x-0.5 group-hover:text-[var(--ac)]"
                           aria-hidden
                         >
                           →
@@ -151,6 +151,9 @@ export default function ServicesPage() {
                       <p className="text-sm leading-relaxed text-mid">
                         {it.long ?? it.detail}
                       </p>
+                      <span className="mt-auto pt-3 text-xs font-medium uppercase tracking-[0.15em] text-lo transition-colors group-hover:text-[var(--ac)]">
+                        Learn more
+                      </span>
                     </Link>
                   </RevealItem>
                 ))}
@@ -167,9 +170,9 @@ export default function ServicesPage() {
       >
         <div className="mx-auto max-w-6xl px-(--spacing-gutter)">
           <SectionHeading
-            eyebrow="Monthly packages"
-            title="Pick the engine that fits."
-            lede="Transparent monthly retainers — scale up as you grow. Every tier includes a direct line to your strategist."
+            eyebrow="Popular bundles"
+            title="Every brand is different. So is every plan."
+            lede="We build each engagement around your goals, your stage, and your budget — there are no rigid tiers. These are a few bundles clients start with most often. Want a real number for your business? Run a quick estimate."
           />
 
           <RevealGroup className="mt-14 grid items-stretch gap-5 lg:grid-cols-3">
@@ -189,15 +192,9 @@ export default function ServicesPage() {
                     </span>
                   )}
                   <div className="flex flex-col gap-3">
-                    <h3 className="text-lg font-semibold tracking-tight text-hi">
+                    <h3 className="text-xl font-semibold tracking-tight text-hi">
                       {p.name}
                     </h3>
-                    <div className="flex items-baseline gap-1.5">
-                      <span className="font-heading text-4xl text-hi">
-                        {p.price}
-                      </span>
-                      <span className="text-sm text-lo">{p.cadence}</span>
-                    </div>
                     <p className="text-sm leading-relaxed text-mid">
                       {p.summary}
                     </p>
@@ -218,12 +215,12 @@ export default function ServicesPage() {
 
                   <div className="mt-auto pt-2">
                     <ButtonLink
-                      href="/contact"
+                      href={site.calculatorUrl}
                       variant={p.featured ? "primary" : "ghost"}
                       withArrow
                       className="w-full"
                     >
-                      Get started
+                      Get an estimate
                     </ButtonLink>
                   </div>
                 </div>
@@ -233,11 +230,14 @@ export default function ServicesPage() {
 
           <Reveal delay={0.1} className="mt-8">
             <p className="text-center text-sm text-lo">
-              Not sure which fits?{" "}
-              <a href="/contact" className="text-mid underline-offset-4 hover:text-hi hover:underline">
-                Book a free audit
+              Not sure where to start?{" "}
+              <a
+                href="/contact"
+                className="text-mid underline-offset-4 hover:text-hi hover:underline"
+              >
+                Book a Full Brand Audit
               </a>{" "}
-              and we&apos;ll point you to the right one.
+              and we&apos;ll map it out together.
             </p>
           </Reveal>
         </div>

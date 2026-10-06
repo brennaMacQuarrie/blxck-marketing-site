@@ -7,6 +7,7 @@ import {
   getService,
   siblingServices,
   getServicePoints,
+  getServiceApproach,
   getServiceWork,
 } from "@/lib/content";
 import { site } from "@/lib/site";
@@ -55,6 +56,7 @@ export default async function ServiceDetailPage({
 
   const siblings = siblingServices(slug);
   const points = getServicePoints(slug);
+  const approach = getServiceApproach(slug);
   const relatedWork = getServiceWork(slug);
   const ac = accentColor[svc.accent];
 
@@ -101,6 +103,28 @@ export default async function ServiceDetailPage({
           </Reveal>
         </div>
       </section>
+
+      {/* ---------------- Approach ---------------- */}
+      {approach && (
+        <section
+          className="border-t border-white/[0.06] bg-ink py-20 md:py-28"
+          style={{ ["--ac" as string]: ac }}
+        >
+          <div className="mx-auto grid max-w-5xl gap-8 px-(--spacing-gutter) md:grid-cols-[0.5fr_1fr] md:gap-16">
+            <Reveal>
+              <span className="eyebrow flex items-center gap-3">
+                <span className="inline-block h-px w-8" style={{ background: ac }} />
+                How we approach it
+              </span>
+            </Reveal>
+            <Reveal delay={0.05}>
+              <p className="text-balance text-xl leading-relaxed text-mid sm:text-2xl">
+                {approach}
+              </p>
+            </Reveal>
+          </div>
+        </section>
+      )}
 
       {/* ---------------- What's included ---------------- */}
       {points.length > 0 && (

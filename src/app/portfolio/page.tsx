@@ -72,22 +72,26 @@ export default function PortfolioPage() {
                     sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                     className="object-cover transition-transform duration-[900ms] ease-out group-hover:scale-105"
                   />
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent" />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
                   {/* accent line that grows on hover */}
                   <span
                     className="absolute bottom-0 left-0 h-[3px] w-0 transition-all duration-500 ease-out group-hover:w-full"
                     style={{ background: "var(--ac)" }}
                   />
                 </div>
-                <div className="absolute bottom-0 left-0 right-0 flex items-end justify-between p-6">
+
+                {/* sector badge */}
+                <span className="absolute left-4 top-4 rounded-full border border-white/15 bg-black/40 px-3 py-1 text-[0.62rem] uppercase tracking-[0.18em] text-mid backdrop-blur-sm">
+                  {p.sector}
+                </span>
+
+                <div className="absolute inset-x-0 bottom-0 flex flex-col gap-1.5 p-6">
                   <h2 className="font-heading text-xl text-hi md:text-2xl">
                     {p.name}
                   </h2>
-                  <span
-                    className="text-[0.7rem] uppercase tracking-[0.18em] text-mid"
-                  >
-                    {p.sector}
-                  </span>
+                  <p className="max-h-0 overflow-hidden text-sm leading-relaxed text-mid opacity-0 transition-all duration-500 ease-out group-hover:max-h-24 group-hover:opacity-100">
+                    {p.blurb}
+                  </p>
                 </div>
               </a>
             </RevealItem>

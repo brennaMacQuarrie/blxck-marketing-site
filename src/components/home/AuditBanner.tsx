@@ -15,9 +15,8 @@ export function AuditBanner() {
           />
           <div className="relative flex flex-col items-start gap-6">
             <span className="eyebrow">Start with clarity</span>
-            <h2 className="max-w-2xl text-balance font-heading text-3xl leading-[1.12] text-hi sm:text-4xl md:text-5xl">
-              {auditOffer.headline} —{" "}
-              <span className="text-gold">{auditOffer.price}</span>
+            <h2 className="max-w-2xl text-balance text-3xl leading-[1.12] text-hi sm:text-4xl md:text-5xl">
+              {auditOffer.headline}
             </h2>
             <p className="max-w-2xl text-base leading-relaxed text-mid">
               {auditOffer.body}

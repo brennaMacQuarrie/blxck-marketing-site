@@ -20,8 +20,7 @@ export function Hero() {
       const tl = gsap.timeline({
         defaults: { ease: "expo.out", duration: reduce ? 0.001 : 1 },
       });
-      tl.from(".h-badge", { y: 16, opacity: 0 })
-        .from(".h-line span", { yPercent: 115, stagger: 0.1 }, "-=0.8")
+      tl.from(".h-line span", { yPercent: 115, stagger: 0.1 })
         .from(".h-sub", { y: 18, opacity: 0 }, "-=0.7")
         .from(".h-cta", { y: 18, opacity: 0 }, "-=0.6");
     },
@@ -43,11 +42,6 @@ export function Hero() {
 
       <div className="relative z-10 mx-auto w-full max-w-6xl px-(--spacing-gutter)">
         <div className="flex max-w-3xl flex-col items-start">
-          <span className="h-badge mb-8 inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/[0.03] px-3.5 py-1.5 text-[0.78rem] text-mid backdrop-blur-sm">
-            <span className="h-1.5 w-1.5 rounded-full bg-teal shadow-[0_0_8px_var(--color-teal)]" />
-            Edmonton-based · Working globally
-          </span>
-
           <h1 className="font-heading text-[clamp(2.6rem,8vw,6.5rem)] uppercase leading-[0.95] tracking-[-0.01em] text-hi">
             <span className="h-line block overflow-hidden">
               <span className="block">Grow your</span>
