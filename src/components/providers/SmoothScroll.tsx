@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import Lenis from "lenis";
 import { gsap } from "gsap";
@@ -17,6 +17,7 @@ export default function SmoothScroll({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
+  const lenisRef = useRef<Lenis | null>(null);
 
   useEffect(() => {
     const prefersReduced = window.matchMedia(
@@ -38,6 +39,7 @@ export default function SmoothScroll({
       touchMultiplier: 1.6,
       // Touch scroll stays native for reliability on mobile.
     });
+    lenisRef.current = lenis;
 
     lenis.on("scroll", ScrollTrigger.update);
 
@@ -60,13 +62,24 @@ export default function SmoothScroll({
       cancelAnimationFrame(raf);
       gsap.ticker.remove(onTick);
       lenis.destroy();
+      lenisRef.current = null;
     };
   }, []);
 
   // On client-side navigation, jump to top and recompute triggers.
+  // Deferred to the next frame so it runs AFTER the browser's own scroll
+  // handling, then re-synced so Lenis and the window agree on 0.
   useEffect(() => {
-    window.scrollTo(0, 0);
-    ScrollTrigger.refresh();
+    const id = requestAnimationFrame(() => {
+      const lenis = lenisRef.current;
+      window.scrollTo(0, 0);
+      if (lenis) {
+        lenis.scrollTo(0, { immediate: true, force: true });
+        lenis.resize();
+      }
+      ScrollTrigger.refresh();
+    });
+    return () => cancelAnimationFrame(id);
   }, [pathname]);
 
   return <>{children}</>;

@@ -2,11 +2,11 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "motion/react";
 import { nav, site } from "@/lib/site";
 import { serviceGroups, slugify } from "@/lib/content";
+import { Logo } from "@/components/layout/Logo";
 
 const accentColor: Record<string, string> = {
   teal: "var(--color-teal)",
@@ -65,14 +65,7 @@ export function Navbar() {
             aria-label="BLXCK Marketing home"
             className="flex items-center transition-opacity hover:opacity-80"
           >
-            <Image
-              src="/logos/blxck-wordmark-trimmed.png"
-              alt="BLXCK Marketing"
-              width={115}
-              height={26}
-              priority
-              className="h-[26px] w-auto"
-            />
+            <Logo priority markClass="h-[22px]" labelClass="text-[8.5px] tracking-[0.46em]" />
           </Link>
 
           {/* Desktop links — centered */}

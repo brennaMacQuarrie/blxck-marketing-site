@@ -1,6 +1,6 @@
 import Link from "next/link";
-import Image from "next/image";
 import { nav, site } from "@/lib/site";
+import { Logo } from "@/components/layout/Logo";
 import { ButtonLink } from "@/components/ui/Button";
 import { Reveal } from "@/components/motion/Reveal";
 
@@ -36,13 +36,7 @@ export function Footer() {
         <div className="grid gap-12 border-t border-white/[0.06] py-14 md:grid-cols-[1.6fr_1fr_1fr]">
           <div className="flex flex-col gap-4">
             <Link href="/" aria-label="BLXCK Marketing home" className="inline-flex">
-              <Image
-                src="/logos/blxck-wordmark-trimmed.png"
-                alt="BLXCK Marketing"
-                width={160}
-                height={36}
-                className="h-9 w-auto"
-              />
+              <Logo markClass="h-8" labelClass="text-[11px] tracking-[0.5em]" />
             </Link>
             <p className="max-w-xs text-sm leading-relaxed text-lo">
               {site.tagline} A full-service marketing agency in {site.location}.
