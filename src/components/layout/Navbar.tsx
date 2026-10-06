@@ -65,7 +65,7 @@ export function Navbar() {
             aria-label="BLXCK Marketing home"
             className="flex items-center transition-opacity hover:opacity-80"
           >
-            <Logo priority markClass="h-[22px]" labelClass="text-[8.5px] tracking-[0.46em]" />
+            <Logo priority height={30} />
           </Link>
 
           {/* Desktop links — centered */}
