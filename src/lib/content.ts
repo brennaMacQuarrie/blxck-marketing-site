@@ -1040,27 +1040,37 @@ export const work: WorkItem[] = [
 ];
 
 /** Portfolio sections, in the order the original site presented them. */
-export const workSections: { tag: string; title: string; service: string; blurb: string }[] = [
+export const workSections: {
+  tag: string;
+  title: string;
+  service: string;
+  blurb: string;
+  accent: "teal" | "lavender" | "gold" | "silver";
+}[] = [
   {
     tag: "web",
+    accent: "teal",
     title: "Web Development",
     service: "web-development",
     blurb: "Fast, conversion-focused sites built for the businesses behind them.",
   },
   {
     tag: "social",
+    accent: "lavender",
     title: "Social Media Content",
     service: "social-media-management",
     blurb: "Short-form content made to stop the scroll and build an audience.",
   },
   {
     tag: "video",
+    accent: "gold",
     title: "Videography",
     service: "videography",
     blurb: "Brand stories and campaign video, from concept to final cut.",
   },
   {
     tag: "branding",
+    accent: "silver",
     title: "Branding",
     service: "branding",
     blurb: "Identities built to be recognized — and carried across every touchpoint.",

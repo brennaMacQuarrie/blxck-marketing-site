@@ -7,6 +7,7 @@ import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
 import { ButtonLink } from "@/components/ui/Button";
 import { Eclipse } from "@/components/ui/Eclipse";
 import { AuditBanner } from "@/components/home/AuditBanner";
+import { SectionNav, type NavSection } from "@/components/ui/SectionNav";
 
 export const metadata: Metadata = {
   title: "Services",
@@ -45,6 +46,15 @@ const check = (
 );
 
 export default function ServicesPage() {
+  const sections: NavSection[] = [
+    ...serviceGroups.map((g) => ({
+      id: g.key,
+      label: g.title,
+      accent: accentColor[g.accent],
+    })),
+    { id: "packages", label: "Bundles", accent: "var(--color-gold)" },
+  ];
+
   return (
     <>
       {/* ---------------- Intro ---------------- */}
@@ -92,29 +102,26 @@ export default function ServicesPage() {
         </div>
       </section>
 
+      <SectionNav page="Services" pageAccent="var(--color-teal)" sections={sections} />
+
       {/* ---------------- Service groups ---------------- */}
-      <section className="border-t border-white/[0.06] bg-void">
+      <section className="bg-void">
         {serviceGroups.map((g, idx) => (
           <div
             key={g.key}
-            className="border-b border-white/[0.06]"
+            id={g.key}
+            className={`section-accent ${idx % 2 === 0 ? "bg-void" : "bg-ink"}`}
             style={{ ["--ac" as string]: accentColor[g.accent] }}
           >
             <div className="mx-auto grid max-w-6xl gap-10 px-(--spacing-gutter) py-20 md:py-24 lg:grid-cols-[0.85fr_1.15fr]">
               {/* group header */}
               <Reveal>
-                <div className="flex flex-col gap-5 lg:sticky lg:top-28">
+                <div className="flex flex-col gap-5 lg:sticky lg:top-36">
                   <div className="flex items-center gap-3">
-                    <span
-                      className="text-sm font-semibold tabular-nums"
-                      style={{ color: "var(--ac)" }}
-                    >
-                      0{idx + 1}
+                    <span className="section-chip">0{idx + 1}</span>
+                    <span className="eyebrow" style={{ color: "var(--ac)" }}>
+                      {g.items.length} services
                     </span>
-                    <span
-                      className="h-px w-10"
-                      style={{ background: "var(--ac)" }}
-                    />
                   </div>
                   <h2 className="font-heading text-4xl leading-none text-hi md:text-5xl">
                     {g.title}
@@ -166,7 +173,8 @@ export default function ServicesPage() {
       {/* ---------------- Packages ---------------- */}
       <section
         id="packages"
-        className="scroll-mt-24 border-b border-white/[0.06] bg-ink py-24 md:py-32"
+        className="section-accent border-b border-white/[0.06] bg-ink py-24 md:py-32"
+        style={{ ["--ac" as string]: "var(--color-gold)" }}
       >
         <div className="mx-auto max-w-6xl px-(--spacing-gutter)">
           <SectionHeading

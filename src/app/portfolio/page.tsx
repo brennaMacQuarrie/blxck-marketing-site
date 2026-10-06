@@ -7,6 +7,8 @@ import { site } from "@/lib/site";
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
 import { ButtonLink } from "@/components/ui/Button";
 import { Eclipse } from "@/components/ui/Eclipse";
+import { SectionNav, type NavSection } from "@/components/ui/SectionNav";
+import { SectionHeader } from "@/components/ui/SectionHeader";
 
 export const metadata: Metadata = {
   title: "Portfolio",
@@ -24,6 +26,17 @@ const accentColor: Record<string, string> = {
   gold: "var(--color-gold)",
   silver: "var(--color-silver)",
 };
+
+const navSections: NavSection[] = [
+  { id: "clients", label: "Clients", accent: "var(--color-silver)" },
+  ...workSections.map((sec) => ({
+    id: sec.tag,
+    label: sec.title.replace(" Content", ""),
+    accent: accentColor[sec.accent],
+  })),
+  { id: "industries", label: "Industries", accent: "var(--color-teal)" },
+];
+const num = (id: string) => navSections.findIndex((x) => x.id === id) + 1;
 
 export default function PortfolioPage() {
   return (
@@ -56,15 +69,16 @@ export default function PortfolioPage() {
         </div>
       </section>
 
+      <SectionNav page="Portfolio" pageAccent="var(--color-lavender)" sections={navSections} />
+
       {/* ---------------- Client logos ---------------- */}
-      <section className="pb-20 md:pb-28">
+      <section
+        id="clients"
+        className="section-accent bg-void py-20 md:py-24"
+        style={{ ["--ac" as string]: "var(--color-silver)" }}
+      >
         <div className="mx-auto max-w-6xl px-(--spacing-gutter)">
-          <Reveal>
-            <span className="eyebrow flex items-center gap-3">
-              <span className="inline-block h-px w-8 bg-teal/60" />
-              Trusted by
-            </span>
-          </Reveal>
+          <SectionHeader n={num("clients")} label="Trusted by" title="Brands we work with." />
           <RevealGroup className="mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.08] sm:grid-cols-4">
             {clientLogos.map((l) => (
               <RevealItem key={l.name} className="h-full">
@@ -90,22 +104,18 @@ export default function PortfolioPage() {
         return (
           <section
             key={sec.tag}
-            className={`border-t border-white/[0.06] py-20 md:py-28 ${si % 2 === 0 ? "bg-ink" : "bg-void"}`}
+            id={sec.tag}
+            className={`section-accent py-20 md:py-28 ${si % 2 === 0 ? "bg-ink" : "bg-void"}`}
+            style={{ ["--ac" as string]: accentColor[sec.accent] }}
           >
             <div className="mx-auto max-w-6xl px-(--spacing-gutter)">
               <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
-                <Reveal>
-                  <span className="eyebrow mb-4 flex items-center gap-3">
-                    <span className="text-xs tabular-nums text-lo">
-                      {String(si + 1).padStart(2, "0")}
-                    </span>
-                    <span className="inline-block h-px w-8 bg-teal/60" />
-                  </span>
-                  <h2 className="text-balance text-3xl tracking-tight text-hi sm:text-4xl">
-                    {sec.title}
-                  </h2>
-                  <p className="mt-3 max-w-xl text-mid">{sec.blurb}</p>
-                </Reveal>
+                <SectionHeader
+                  n={num(sec.tag)}
+                  label="Selected work"
+                  title={sec.title}
+                  lede={sec.blurb}
+                />
                 <div className="shrink-0">
                   <ButtonLink href={`/services/${sec.service}`} variant="ghost" withArrow>
                     View service
@@ -126,17 +136,17 @@ export default function PortfolioPage() {
       })}
 
       {/* ---------------- Brands & industries ---------------- */}
-      <section className="border-t border-white/[0.06] py-20 md:py-28">
+      <section
+        id="industries"
+        className="section-accent py-20 md:py-28"
+        style={{ ["--ac" as string]: "var(--color-teal)" }}
+      >
         <div className="mx-auto max-w-6xl px-(--spacing-gutter)">
-          <Reveal>
-            <span className="eyebrow mb-4 flex items-center gap-3">
-              <span className="inline-block h-px w-8 bg-teal/60" />
-              Across industries
-            </span>
-            <h2 className="text-balance text-3xl tracking-tight text-hi sm:text-4xl">
-              Brands we&apos;ve grown.
-            </h2>
-          </Reveal>
+          <SectionHeader
+            n={num("industries")}
+            label="Across industries"
+            title="Brands we've grown."
+          />
         </div>
         <RevealGroup className="mx-auto mt-10 grid max-w-6xl gap-5 px-(--spacing-gutter) sm:grid-cols-2 lg:grid-cols-3">
           {projects.map((p) => (
@@ -201,7 +211,7 @@ function WorkCard({ w }: { w: WorkItem }) {
       href={href}
       target={external ? "_blank" : undefined}
       rel={external ? "noopener noreferrer" : undefined}
-      className="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/[0.08] bg-void transition-colors duration-300 hover:border-white/20"
+      className="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/[0.08] bg-void transition-colors duration-300 hover:border-[color:var(--ac)]"
     >
       <div className="relative aspect-[4/3] w-full overflow-hidden">
         <Image
@@ -235,7 +245,7 @@ function WorkCard({ w }: { w: WorkItem }) {
             {w.type}
           </span>
         </div>
-        <span className="shrink-0 text-sm text-mid transition-colors group-hover:text-hi">
+        <span className="shrink-0 text-sm transition-colors group-hover:text-hi" style={{ color: "var(--ac)" }}>
           {w.url ? "See it live ↗" : w.video ? "Watch ↗" : "→"}
         </span>
       </div>

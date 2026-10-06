@@ -6,6 +6,19 @@ import Lenis from "lenis";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+/** The active Lenis instance (null when reduced motion / not mounted). */
+let activeLenis: Lenis | null = null;
+
+/** Scroll to an element, through Lenis when it's running. */
+export function scrollToElement(el: HTMLElement, offset = 0) {
+  const top = el.getBoundingClientRect().top + window.scrollY - offset;
+  if (activeLenis) {
+    activeLenis.scrollTo(top);
+  } else {
+    window.scrollTo({ top, behavior: "smooth" });
+  }
+}
+
 /**
  * Wires Lenis smooth-scroll into the GSAP ticker so ScrollTrigger and the
  * momentum scroll stay perfectly in sync. Skips entirely when the user
@@ -37,9 +50,12 @@ export default function SmoothScroll({
       smoothWheel: true,
       wheelMultiplier: 1.1,
       touchMultiplier: 1.6,
+      // Smooth in-page #anchor links, clearing the fixed navbar + section bar.
+      anchors: { offset: -112 },
       // Touch scroll stays native for reliability on mobile.
     });
     lenisRef.current = lenis;
+    activeLenis = lenis;
 
     lenis.on("scroll", ScrollTrigger.update);
 
@@ -63,6 +79,7 @@ export default function SmoothScroll({
       gsap.ticker.remove(onTick);
       lenis.destroy();
       lenisRef.current = null;
+      activeLenis = null;
     };
   }, []);
 
