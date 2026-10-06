@@ -9,6 +9,7 @@ import {
   getServicePoints,
   getServiceApproach,
   getServiceWork,
+  getServiceWriteup,
 } from "@/lib/content";
 import { site } from "@/lib/site";
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
@@ -58,6 +59,8 @@ export default async function ServiceDetailPage({
   const points = getServicePoints(slug);
   const approach = getServiceApproach(slug);
   const relatedWork = getServiceWork(slug);
+  const writeup = getServiceWriteup(slug);
+  const intro = writeup?.intro ?? [svc.long ?? svc.detail];
   const ac = accentColor[svc.accent];
 
   return (
@@ -87,9 +90,20 @@ export default async function ServiceDetailPage({
             </h1>
           </Reveal>
           <Reveal delay={0.1}>
-            <p className="mt-7 max-w-2xl text-lg leading-relaxed text-mid">
-              {svc.long ?? svc.detail}
-            </p>
+            <div className="mt-7 flex max-w-2xl flex-col gap-5">
+              {intro.map((para, i) => (
+                <p
+                  key={i}
+                  className={
+                    i === 0
+                      ? "text-lg leading-relaxed text-mid"
+                      : "leading-relaxed text-lo"
+                  }
+                >
+                  {para}
+                </p>
+              ))}
+            </div>
           </Reveal>
           <Reveal delay={0.15}>
             <div className="mt-10 flex flex-wrap items-center gap-3">
@@ -126,9 +140,75 @@ export default async function ServiceDetailPage({
         </section>
       )}
 
-      {/* ---------------- What's included ---------------- */}
-      {points.length > 0 && (
+      {/* ---------------- What we offer ---------------- */}
+      {writeup && writeup.offerings.length > 0 ? (
         <section
+          className="border-t border-white/[0.06] bg-void py-20 md:py-28"
+          style={{ ["--ac" as string]: ac }}
+        >
+          <div className="mx-auto max-w-5xl px-(--spacing-gutter)">
+            <Reveal>
+              <span className="eyebrow flex items-center gap-3">
+                <span className="inline-block h-px w-8" style={{ background: ac }} />
+                What we offer
+              </span>
+            </Reveal>
+            <div className="mt-10 border-t border-white/[0.08]">
+              {writeup.offerings.map((o, i) => (
+                <Reveal key={o.title}>
+                  <div className="grid gap-5 border-b border-white/[0.08] py-10 md:grid-cols-[0.42fr_1fr] md:gap-12 md:py-12">
+                    <div className="flex items-baseline gap-4">
+                      <span className="text-xs tabular-nums" style={{ color: ac }}>
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <h2 className="text-xl tracking-tight text-hi sm:text-2xl">
+                        {o.title}
+                      </h2>
+                    </div>
+                    <div>
+                      <p className="leading-relaxed text-mid">{o.copy}</p>
+                      {o.bullets && o.bullets.length > 0 && (
+                        <ul className="mt-6 grid gap-x-8 gap-y-3 sm:grid-cols-2">
+                          {o.bullets.map((b) => (
+                            <li
+                              key={b}
+                              className="flex gap-3 text-sm leading-relaxed text-mid"
+                            >
+                              <span
+                                className="mt-[0.6em] inline-block h-px w-3 shrink-0"
+                                style={{ background: ac }}
+                                aria-hidden
+                              />
+                              {b}
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+            <Reveal className="mt-12 flex flex-col items-start justify-between gap-6 rounded-2xl border border-white/[0.08] bg-ink p-6 sm:flex-row sm:items-center md:p-8">
+              <div>
+                <p className="text-base font-semibold tracking-tight text-hi">
+                  Custom packages available.
+                </p>
+                <p className="mt-1 text-sm leading-relaxed text-mid">
+                  Every engagement is scoped to your goals, your stage, and your budget.
+                </p>
+              </div>
+              <div className="shrink-0">
+                <ButtonLink href="/contact" variant="primary" withArrow>
+                  Get an estimate
+                </ButtonLink>
+              </div>
+            </Reveal>
+          </div>
+        </section>
+      ) : (
+        points.length > 0 && (
+<section
           className="border-t border-white/[0.06] bg-void py-20 md:py-28"
           style={{ ["--ac" as string]: ac }}
         >
@@ -153,6 +233,7 @@ export default async function ServiceDetailPage({
             </RevealGroup>
           </div>
         </section>
+        )
       )}
 
       {/* ---------------- Selected work ---------------- */}

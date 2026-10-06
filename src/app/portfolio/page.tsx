@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { projects } from "@/lib/content";
+import Link from "next/link";
+import { projects, work, workSections, clientLogos } from "@/lib/content";
+import type { WorkItem } from "@/lib/content";
 import { site } from "@/lib/site";
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
 import { ButtonLink } from "@/components/ui/Button";
@@ -46,20 +48,100 @@ export default function PortfolioPage() {
           </Reveal>
           <Reveal delay={0.1}>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-mid">
-              A selection of brands we&apos;ve helped grow — across e-commerce,
-              medical, cannabis, capital, and non-profit. Strategy, creative, and
-              media, built to perform.
+              A selection of brands we&apos;ve helped grow — websites, social
+              content, video, and branding across e-commerce, medical, cannabis,
+              capital, and non-profit.
             </p>
           </Reveal>
         </div>
       </section>
 
-      {/* ---------------- Grid ---------------- */}
-      <section className="pb-24 md:pb-32">
-        <RevealGroup className="mx-auto grid max-w-6xl gap-5 px-(--spacing-gutter) sm:grid-cols-2 lg:grid-cols-3">
+      {/* ---------------- Client logos ---------------- */}
+      <section className="pb-20 md:pb-28">
+        <div className="mx-auto max-w-6xl px-(--spacing-gutter)">
+          <Reveal>
+            <span className="eyebrow flex items-center gap-3">
+              <span className="inline-block h-px w-8 bg-teal/60" />
+              Trusted by
+            </span>
+          </Reveal>
+          <RevealGroup className="mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.08] sm:grid-cols-4">
+            {clientLogos.map((l) => (
+              <RevealItem key={l.name} className="h-full">
+                <div className="flex h-24 items-center justify-center bg-void px-6 md:h-28 md:px-8">
+                  <Image
+                    src={l.src}
+                    alt={l.name}
+                    width={160}
+                    height={64}
+                    className="h-auto max-h-12 w-auto max-w-full object-contain opacity-60 transition-opacity duration-300 hover:opacity-100 md:max-h-14"
+                  />
+                </div>
+              </RevealItem>
+            ))}
+          </RevealGroup>
+        </div>
+      </section>
+
+      {/* ---------------- Work by discipline ---------------- */}
+      {workSections.map((sec, si) => {
+        const items = work.filter((w) => w.tags.includes(sec.tag));
+        if (items.length === 0) return null;
+        return (
+          <section
+            key={sec.tag}
+            className={`border-t border-white/[0.06] py-20 md:py-28 ${si % 2 === 0 ? "bg-ink" : "bg-void"}`}
+          >
+            <div className="mx-auto max-w-6xl px-(--spacing-gutter)">
+              <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
+                <Reveal>
+                  <span className="eyebrow mb-4 flex items-center gap-3">
+                    <span className="text-xs tabular-nums text-lo">
+                      {String(si + 1).padStart(2, "0")}
+                    </span>
+                    <span className="inline-block h-px w-8 bg-teal/60" />
+                  </span>
+                  <h2 className="text-balance text-3xl tracking-tight text-hi sm:text-4xl">
+                    {sec.title}
+                  </h2>
+                  <p className="mt-3 max-w-xl text-mid">{sec.blurb}</p>
+                </Reveal>
+                <div className="shrink-0">
+                  <ButtonLink href={`/services/${sec.service}`} variant="ghost" withArrow>
+                    View service
+                  </ButtonLink>
+                </div>
+              </div>
+
+              <RevealGroup className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                {items.map((w) => (
+                  <RevealItem key={`${sec.tag}-${w.name}-${w.type}`} className="h-full">
+                    <WorkCard w={w} />
+                  </RevealItem>
+                ))}
+              </RevealGroup>
+            </div>
+          </section>
+        );
+      })}
+
+      {/* ---------------- Brands & industries ---------------- */}
+      <section className="border-t border-white/[0.06] py-20 md:py-28">
+        <div className="mx-auto max-w-6xl px-(--spacing-gutter)">
+          <Reveal>
+            <span className="eyebrow mb-4 flex items-center gap-3">
+              <span className="inline-block h-px w-8 bg-teal/60" />
+              Across industries
+            </span>
+            <h2 className="text-balance text-3xl tracking-tight text-hi sm:text-4xl">
+              Brands we&apos;ve grown.
+            </h2>
+          </Reveal>
+        </div>
+        <RevealGroup className="mx-auto mt-10 grid max-w-6xl gap-5 px-(--spacing-gutter) sm:grid-cols-2 lg:grid-cols-3">
           {projects.map((p) => (
             <RevealItem key={p.name} className="h-full">
-              <a
+              <Link
                 href="/contact"
                 className="group relative block overflow-hidden rounded-2xl border border-white/[0.08]"
                 style={{ ["--ac" as string]: accentColor[p.accent] }}
@@ -86,14 +168,14 @@ export default function PortfolioPage() {
                 </span>
 
                 <div className="absolute inset-x-0 bottom-0 flex flex-col gap-1.5 p-6">
-                  <h2 className="font-heading text-xl text-hi md:text-2xl">
+                  <h3 className="font-heading text-xl text-hi md:text-2xl">
                     {p.name}
-                  </h2>
+                  </h3>
                   <p className="max-h-0 overflow-hidden text-sm leading-relaxed text-mid opacity-0 transition-all duration-500 ease-out group-hover:max-h-24 group-hover:opacity-100">
                     {p.blurb}
                   </p>
                 </div>
-              </a>
+              </Link>
             </RevealItem>
           ))}
         </RevealGroup>
@@ -108,5 +190,55 @@ export default function PortfolioPage() {
         </Reveal>
       </section>
     </>
+  );
+}
+
+function WorkCard({ w }: { w: WorkItem }) {
+  const external = Boolean(w.url || w.video);
+  const href = w.url ?? w.href ?? "/portfolio";
+  return (
+    <a
+      href={href}
+      target={external ? "_blank" : undefined}
+      rel={external ? "noopener noreferrer" : undefined}
+      className="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/[0.08] bg-void transition-colors duration-300 hover:border-white/20"
+    >
+      <div className="relative aspect-[4/3] w-full overflow-hidden">
+        <Image
+          src={w.image}
+          alt={`${w.name} — ${w.type} by BLXCK Marketing`}
+          fill
+          sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+          className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+        />
+        {w.video && (
+          <span className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black/20">
+            <span className="flex h-14 w-14 items-center justify-center rounded-full border border-white/40 bg-black/40 backdrop-blur-sm transition-transform duration-300 group-hover:scale-110">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 16 16"
+                fill="currentColor"
+                aria-hidden
+                className="ml-0.5 text-hi"
+              >
+                <path d="M4 2.5v11l9-5.5z" />
+              </svg>
+            </span>
+          </span>
+        )}
+      </div>
+      <div className="flex items-center justify-between gap-4 border-t border-white/[0.08] p-5">
+        <div className="flex flex-col gap-1">
+          <span className="font-heading text-base leading-snug text-hi">{w.name}</span>
+          <span className="text-[0.68rem] uppercase tracking-[0.16em] text-lo">
+            {w.type}
+          </span>
+        </div>
+        <span className="shrink-0 text-sm text-mid transition-colors group-hover:text-hi">
+          {w.url ? "See it live ↗" : w.video ? "Watch ↗" : "→"}
+        </span>
+      </div>
+    </a>
   );
 }
