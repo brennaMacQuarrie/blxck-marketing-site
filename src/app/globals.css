@@ -92,12 +92,13 @@ html.lenis body {
     letter-spacing: 0.005em;
     line-height: 1;
   }
-  /* Subheaders (section titles) → Space Age. */
+  /* Section titles → Milker. Space Age is reserved for sparing accents
+     (offering titles on service pages, footer CTA, mobile menu). */
   h2 {
-    font-family: var(--font-display);
+    font-family: var(--font-heading);
     font-weight: 400;
-    letter-spacing: 0.01em;
-    line-height: 1.08;
+    letter-spacing: 0.005em;
+    line-height: 1.05;
   }
   /* Smaller headings (card titles, etc.) stay clean and legible. */
   h3,

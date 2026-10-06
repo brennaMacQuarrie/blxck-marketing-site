@@ -213,7 +213,9 @@ export default async function ServiceDetailPage({
                           <span className="text-xs font-semibold uppercase tracking-[0.2em] text-lo">
                             {String(i + 1).padStart(2, "0")} / {String(writeup.offerings.length).padStart(2, "0")}
                           </span>
-                          <h3 className="text-xl text-hi sm:text-2xl">{o.title}</h3>
+                          <h3 className="font-display text-lg font-normal uppercase leading-snug tracking-[0.02em] text-hi md:text-xl">
+                            {o.title}
+                          </h3>
                         </div>
                         <div>
                           <p className="leading-relaxed text-mid">{o.copy}</p>
