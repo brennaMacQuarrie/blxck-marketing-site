@@ -1,6 +1,6 @@
 /**
  * Global site configuration — brand facts, contact details, nav, and the
- * env-driven integrations (Calendly, Resend). Single source of truth.
+ * env-driven integrations (Calendly link, Resend). Single source of truth.
  */
 
 export const site = {
@@ -22,7 +22,7 @@ export const site = {
     instagram: "https://instagram.com/blxckmarketing",
     linkedin: "https://linkedin.com/company/blxckmarketing",
   },
-  // Set NEXT_PUBLIC_CALENDLY_URL in the environment to enable the embedded booker.
+  // Booking link (opened in a new tab from /contact). Override with NEXT_PUBLIC_CALENDLY_URL.
   calendlyUrl:
     process.env.NEXT_PUBLIC_CALENDLY_URL ??
     "https://calendly.com/blxckmarketing/blxck-meeting",

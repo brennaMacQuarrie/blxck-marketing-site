@@ -9,6 +9,7 @@ import { ButtonLink } from "@/components/ui/Button";
 import { Eclipse } from "@/components/ui/Eclipse";
 import { SectionNav, type NavSection } from "@/components/ui/SectionNav";
 import { SectionHeader } from "@/components/ui/SectionHeader";
+import { LogoCarousel } from "@/components/ui/LogoCarousel";
 
 export const metadata: Metadata = {
   title: "Portfolio",
@@ -79,21 +80,9 @@ export default function PortfolioPage() {
       >
         <div className="mx-auto max-w-6xl px-(--spacing-gutter)">
           <SectionHeader n={num("clients")} label="Trusted by" title="Brands we work with." />
-          <RevealGroup className="mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.08] sm:grid-cols-4">
-            {clientLogos.map((l) => (
-              <RevealItem key={l.name} className="h-full">
-                <div className="flex h-24 items-center justify-center bg-void px-6 md:h-28 md:px-8">
-                  <Image
-                    src={l.src}
-                    alt={l.name}
-                    width={160}
-                    height={64}
-                    className="h-auto max-h-12 w-auto max-w-full object-contain opacity-60 transition-opacity duration-300 hover:opacity-100 md:max-h-14"
-                  />
-                </div>
-              </RevealItem>
-            ))}
-          </RevealGroup>
+          <Reveal className="mt-10">
+            <LogoCarousel logos={clientLogos} />
+          </Reveal>
         </div>
       </section>
 
@@ -213,7 +202,9 @@ function WorkCard({ w }: { w: WorkItem }) {
       rel={external ? "noopener noreferrer" : undefined}
       className="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/[0.08] bg-void transition-colors duration-300 hover:border-[color:var(--ac)]"
     >
-      <div className="relative aspect-[4/3] w-full overflow-hidden">
+      <div
+        className={`relative w-full overflow-hidden ${w.video ? "aspect-video" : "aspect-square"}`}
+      >
         <Image
           src={w.image}
           alt={`${w.name} — ${w.type} by BLXCK Marketing`}

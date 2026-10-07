@@ -3,7 +3,6 @@ import { site } from "@/lib/site";
 import { Reveal } from "@/components/motion/Reveal";
 import { Eclipse } from "@/components/ui/Eclipse";
 import { ContactForm } from "@/components/contact/ContactForm";
-import { CalendlyEmbed } from "@/components/contact/CalendlyEmbed";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -14,6 +13,24 @@ export const metadata: Metadata = {
     description: "Send a message or book a call with BLXCK Marketing.",
   },
 };
+
+const nextSteps = [
+  {
+    n: "01",
+    title: "We read it properly",
+    copy: "A strategist — not a bot — reviews your message and looks at your brand before replying.",
+  },
+  {
+    n: "02",
+    title: "You hear back within a day",
+    copy: "A clear reply within one business day, with honest thoughts on where to start.",
+  },
+  {
+    n: "03",
+    title: "A focused first call",
+    copy: "If it's a fit, we book a short call to map goals, timeline, and budget — no hard sell.",
+  },
+];
 
 const details = [
   { label: "Email", value: site.contact.email, href: `mailto:${site.contact.email}` },
@@ -52,50 +69,74 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* ---------------- Form + details / Calendly ---------------- */}
+      {/* ---------------- Form / what happens next ---------------- */}
       <section className="pb-24 md:pb-32">
-        <div className="mx-auto grid max-w-6xl gap-12 px-(--spacing-gutter) lg:grid-cols-2 lg:gap-16">
-          {/* Left: form + details */}
-          <Reveal className="flex flex-col gap-10">
-            <div>
-              <h2 className="mb-6 text-xl font-semibold tracking-tight text-hi">
-                Send a message
-              </h2>
-              <ContactForm />
-            </div>
-
-            <div className="grid gap-6 border-t border-white/[0.08] pt-8 sm:grid-cols-3">
-              {details.map((d) => (
-                <div key={d.label} className="flex flex-col gap-1.5">
-                  <span className="text-xs uppercase tracking-[0.2em] text-lo">
-                    {d.label}
-                  </span>
-                  {d.href ? (
-                    <a
-                      href={d.href}
-                      className="text-sm text-mid transition-colors hover:text-teal"
-                    >
-                      {d.value}
-                    </a>
-                  ) : (
-                    <span className="text-sm text-mid">{d.value}</span>
-                  )}
-                </div>
-              ))}
-            </div>
+        <div className="mx-auto grid max-w-6xl gap-12 px-(--spacing-gutter) lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
+          {/* Left: form */}
+          <Reveal>
+            <h2 className="mb-6 text-2xl text-hi">
+              Send a message
+            </h2>
+            <ContactForm />
           </Reveal>
 
-          {/* Right: Calendly */}
-          <Reveal delay={0.1} className="flex flex-col gap-6">
-            <div>
-              <h2 className="mb-1.5 text-xl font-semibold tracking-tight text-hi">
-                Prefer to book a call?
+          {/* Right: what happens next + details */}
+          <Reveal delay={0.1}>
+            <aside
+              className="section-accent flex flex-col gap-8 overflow-hidden rounded-2xl border border-white/[0.08] bg-ink p-7 md:p-9"
+              style={{ ["--ac" as string]: "var(--color-teal)" }}
+            >
+              <h2 className="text-2xl text-hi">
+                What happens next
               </h2>
-              <p className="text-sm text-mid">
-                Grab a time that works — we&apos;ll come prepared.
-              </p>
-            </div>
-            <CalendlyEmbed url={site.calendlyUrl} />
+
+              <ol className="flex flex-col gap-6">
+                {nextSteps.map((s) => (
+                  <li key={s.n} className="flex gap-4">
+                    <span className="section-chip shrink-0">{s.n}</span>
+                    <div className="flex flex-col gap-1">
+                      <span className="text-sm font-semibold text-hi">{s.title}</span>
+                      <span className="text-sm leading-relaxed text-mid">{s.copy}</span>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+
+              <div className="flex flex-col gap-4 border-t border-white/[0.08] pt-7">
+                {details.map((d) => (
+                  <div key={d.label} className="flex items-baseline justify-between gap-6">
+                    <span className="text-xs uppercase tracking-[0.2em] text-lo">
+                      {d.label}
+                    </span>
+                    {d.href ? (
+                      <a
+                        href={d.href}
+                        className="text-right text-sm text-mid transition-colors hover:text-teal"
+                      >
+                        {d.value}
+                      </a>
+                    ) : (
+                      <span className="text-right text-sm text-mid">{d.value}</span>
+                    )}
+                  </div>
+                ))}
+              </div>
+
+              <a
+                href={site.calendlyUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center justify-between rounded-xl border border-white/[0.1] px-5 py-4 text-sm transition-colors hover:border-teal/50 hover:bg-white/[0.02]"
+              >
+                <span className="flex flex-col gap-0.5">
+                  <span className="font-semibold text-hi">Prefer to talk first?</span>
+                  <span className="text-mid">Book a call at a time that suits you.</span>
+                </span>
+                <span className="text-teal transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                  ↗
+                </span>
+              </a>
+            </aside>
           </Reveal>
         </div>
       </section>

@@ -307,7 +307,9 @@ export default async function ServiceDetailPage({
                       rel={external ? "noopener noreferrer" : undefined}
                       className="group relative block overflow-hidden rounded-2xl border border-white/[0.08] transition-colors hover:border-[color:var(--ac)]"
                     >
-                      <div className="relative aspect-[4/3] w-full">
+                      <div
+                        className={`relative w-full ${w.video ? "aspect-video" : "aspect-square"}`}
+                      >
                         <Image
                           src={w.image}
                           alt={`${w.name} — ${w.type} by BLXCK Marketing`}

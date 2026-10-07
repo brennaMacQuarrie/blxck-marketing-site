@@ -236,7 +236,7 @@ export default function MedicalMarketingPage() {
               className="left-1/2 top-1/2 h-[40vmin] w-[70vmin] -translate-x-1/2 -translate-y-1/2 opacity-30"
             />
             <div className="relative flex flex-col items-center gap-6">
-              <h2 className="max-w-2xl text-balance text-3xl font-bold leading-[1.1] tracking-tight text-hi sm:text-4xl md:text-5xl">
+              <h2 className="max-w-2xl text-balance text-3xl leading-[1.05] text-hi sm:text-4xl md:text-5xl">
                 Start with a real audit.
               </h2>
               <p className="max-w-xl text-base leading-relaxed text-mid">
