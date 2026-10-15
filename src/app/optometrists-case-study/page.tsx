@@ -7,6 +7,7 @@ import {
   adClicks,
   siteVisits,
   siteContacts,
+  headline,
   compare,
   meta,
 } from "@/lib/case-studies/optometrists";
@@ -97,6 +98,27 @@ export default function OptometristsCaseStudy() {
             </Reveal>
           </div>
 
+          <RevealGroup className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.08] sm:grid-cols-2 lg:grid-cols-4">
+            {headline.map((s) => (
+              <RevealItem key={s.section} className="h-full">
+                <div className="flex h-full flex-col gap-2 bg-void p-6">
+                  <span className="text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-lo">{s.section}</span>
+                  <span className="flex items-center gap-2 font-heading text-4xl leading-none text-hi tabular-nums md:text-5xl">
+                    {s.trend && <TrendMark trend={s.trend} size="lg" />}
+                    {s.value}
+                  </span>
+                  <span className="mt-1 text-sm font-semibold text-hi">{s.label}</span>
+                  {s.from && s.to && (
+                    <span className="inline-flex w-fit items-center gap-1.5 rounded-full border border-white/[0.1] bg-carbon px-2.5 py-1 text-xs tabular-nums">
+                      <span className="text-lo line-through decoration-lo/60">{s.from}</span>
+                      <span className="text-lo" aria-hidden>→</span>
+                      <span className="font-semibold text-hi">{s.to}</span>
+                    </span>
+                  )}
+                </div>
+              </RevealItem>
+            ))}
+          </RevealGroup>
         </div>
       </section>
 
@@ -183,9 +205,9 @@ export default function OptometristsCaseStudy() {
           <RevealGroup className="mt-10 grid gap-8 lg:grid-cols-2">
             <RevealItem>
               <div className="rounded-2xl border border-white/[0.08] bg-ink/70 p-6 md:p-8">
-                <h3 className="text-base font-semibold text-hi">Google Ads conversions per month</h3>
+                <h3 className="text-base font-semibold text-hi">Patient contacts from Google Ads, per month</h3>
                 <p className="mt-1 text-sm text-lo">
-                  387 in the first full month. 684 by March 2026. Same monthly budget throughout.
+                  Calls, forms, emails and directions. 387 in the first full month, 684 by March 2026, on the same monthly budget throughout.
                 </p>
                 <div className="mt-6">
                   <MonthlyBars
@@ -204,9 +226,9 @@ export default function OptometristsCaseStudy() {
             </RevealItem>
             <RevealItem>
               <div className="rounded-2xl border border-white/[0.08] bg-ink/70 p-6 md:p-8">
-                <h3 className="text-base font-semibold text-hi">Patient contacts from the website</h3>
+                <h3 className="text-base font-semibold text-hi">Calls, bookings and emails from the website, per month</h3>
                 <p className="mt-1 text-sm text-lo">
-                  Visits halved in 2026 when out-of-town blog traffic dropped. Local contacts didn&rsquo;t.
+                  Steady at 500 to 680 a month for 18 months. Total visits fell in 2026, but the visitors who left were out-of-province blog readers who never contacted a clinic.
                 </p>
                 <div className="mt-6">
                   <MonthlyBars
