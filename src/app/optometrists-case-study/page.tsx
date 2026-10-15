@@ -132,41 +132,31 @@ export default function OptometristsCaseStudy() {
       >
         <div className="mx-auto max-w-6xl px-(--spacing-gutter)">
           <SectionHeader n={1} label="Then vs now" title="Same clinics. Different return." />
-          <Reveal className="mt-10 overflow-x-auto rounded-2xl border border-white/[0.08]">
-            <table className="w-full min-w-[560px] text-sm">
-              <thead>
-                <tr className="text-left text-[0.68rem] uppercase tracking-[0.16em] text-lo">
-                  <th className="px-5 py-4 font-semibold"></th>
-                  <th className="px-5 py-4 text-right font-semibold text-lo">
-                    <span className="text-sm tracking-[0.2em]">{compare.thenLabel}</span>
-                    <span className="block normal-case tracking-normal text-lo/70">{compare.thenPeriod}</span>
-                  </th>
-                  <th className="bg-gold/[0.08] px-5 py-4 text-right font-semibold text-gold">
-                    <span className="text-sm tracking-[0.2em]">{compare.nowLabel}</span>
-                    <span className="block normal-case tracking-normal text-gold/70">{compare.nowPeriod}</span>
-                  </th>
-                  <th className="px-5 py-4 text-right font-semibold text-good">Change</th>
-                </tr>
-              </thead>
-              <tbody className="tabular-nums">
-                {compare.rows.map((r) => (
-                  <tr key={r.k} className="border-t border-white/[0.08]">
-                    <td className="px-5 py-3.5 text-hi">{r.k}</td>
-                    <td className="px-5 py-3.5 text-right text-lo">{r.then}</td>
-                    <td className="bg-gold/[0.08] px-5 py-3.5 text-right font-semibold text-gold">{r.now}</td>
-                    <td className="px-5 py-3.5 text-right font-semibold text-good">
-                      <span className="inline-flex items-center gap-1.5">
-                        <TrendMark trend={r.trend} />
-                        {r.delta}
-                      </span>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </Reveal>
-          <p className="mt-4 text-xs leading-relaxed text-lo">
-            <span className="text-good">▲</span> higher is better · <span className="text-good">▼</span> lower is better. Spend and cost figures are indexed to the previous agency at 100%. Previous-agency figures come from that agency&rsquo;s own year-end reports.
+          <RevealGroup className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {compare.boxes.map((b) => (
+              <RevealItem key={`${b.channel}-${b.label}`} className="h-full">
+                <div className="flex h-full flex-col gap-3 rounded-2xl border border-white/[0.08] bg-ink/70 p-6">
+                  <span className="text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-lo">{b.channel}</span>
+                  <span className="text-base font-semibold leading-snug text-hi">{b.label}</span>
+                  <span className="flex items-center gap-2 font-heading text-4xl leading-none text-good tabular-nums">
+                    <TrendMark trend={b.trend} size="lg" />
+                    {b.delta}
+                    <span className="font-body text-sm font-semibold text-good/80">{b.trend === "up" ? "more" : "less"}</span>
+                  </span>
+                  {b.from && b.to && (
+                    <span className="inline-flex w-fit items-center gap-1.5 rounded-full border border-white/[0.1] bg-carbon px-2.5 py-1 text-xs tabular-nums">
+                      <span className="text-lo line-through decoration-lo/60">{b.from}</span>
+                      <span className="text-lo" aria-hidden>→</span>
+                      <span className="font-semibold text-good">{b.to}</span>
+                    </span>
+                  )}
+                  <span className="text-sm leading-relaxed text-mid">{b.detail}</span>
+                </div>
+              </RevealItem>
+            ))}
+          </RevealGroup>
+          <p className="mt-5 text-xs leading-relaxed text-lo">
+            <span className="text-lo">{compare.thenPeriod}</span> compared with <span className="text-lo">{compare.nowPeriod}</span>. Previous-agency figures come from that agency&rsquo;s own year-end reports. Spend and cost shown as percentage change only.
           </p>
         </div>
       </section>

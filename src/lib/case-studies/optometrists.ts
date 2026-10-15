@@ -66,20 +66,16 @@ export const headline: {
  * Jan 2025 – Sep 2026 (Meta). All per-month or rate figures.
  */
 export const compare = {
-  thenLabel: "Before",
   thenPeriod: "Previous agency · Oct 2023 – Sep 2024",
-  nowLabel: "After",
   nowPeriod: "BLXCK · Oct 2025 – Sep 2026",
-  rows: [
-    { k: "Google Ads · patient contacts per month", then: "317", now: "575", delta: "82%", trend: "up" },
-    { k: "Google Ads · monthly spend", then: "100%", now: "41%", delta: "59%", trend: "down" },
-    { k: "Google Ads · cost per contact", then: "100%", now: "22%", delta: "78%", trend: "down" },
-    { k: "Google Ads · click-through rate", then: "3.9%", now: "4.7%", delta: "0.8 pts", trend: "up" },
-    { k: "Google Ads · cost per click", then: "100%", now: "45%", delta: "55%", trend: "down" },
-    { k: "Meta · clicks to the site per month", then: "584", now: "720", delta: "23%", trend: "up" },
-    { k: "Meta · click-through rate", then: "0.47%", now: "1.14%", delta: "2.4×", trend: "up" },
-    { k: "Meta · cost per click", then: "100%", now: "76%", delta: "24%", trend: "down" },
-  ] as { k: string; then: string; now: string; delta: string; trend: Trend }[],
+  boxes: [
+    { channel: "Google Ads", label: "Patient contacts per month", delta: "82%", trend: "up", from: "317", to: "575", detail: "Calls, forms, emails and directions from ads." },
+    { channel: "Google Ads", label: "Monthly ad spend", delta: "59%", trend: "down", detail: "Less than half the previous budget, same five clinics." },
+    { channel: "Google Ads", label: "Cost per patient contact", delta: "78%", trend: "down", detail: "Each contact now costs under a quarter of what it did." },
+    { channel: "Meta Ads", label: "Clicks to the website per month", delta: "23%", trend: "up", from: "584", to: "720", detail: "On a similar monthly budget." },
+    { channel: "Meta Ads", label: "Click-through rate", delta: "2.4×", trend: "up", from: "0.47%", to: "1.14%", detail: "More of the people who see an ad act on it." },
+    { channel: "Meta Ads", label: "Cost per click", delta: "24%", trend: "down", detail: "Cheaper traffic from the same platform." },
+  ] as { channel: string; label: string; delta: string; trend: Trend; from?: string; to?: string; detail: string }[],
 };
 
 /** Meta Ads, Jan 2025 – Sep 2026. No lead events tracked on Meta; reach + clicks. */
