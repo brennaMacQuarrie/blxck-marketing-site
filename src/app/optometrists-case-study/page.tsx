@@ -284,6 +284,8 @@ export default function OptometristsCaseStudy() {
           {[
             ["Web Development", "/services/web-development"],
             ["Advertising", "/services/advertising"],
+            ["Analytics", "/services/analytics"],
+            ["Strategy", "/services/strategy"],
             ["Social Media Management", "/services/social-media-management"],
             ["SEO", "/services/seo"],
           ].map(([name, href]) => (
