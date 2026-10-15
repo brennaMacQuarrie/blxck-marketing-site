@@ -45,10 +45,18 @@ export const siteContacts = [
 /** Headline tiles. Four, each true at a glance, no dollars. */
 export type Trend = "up" | "down";
 
-export const headline: { value: string; label: string; note: string; trend?: Trend }[] = [
-  { value: "82%", label: "More patient contacts per month from Google Ads", note: "vs. the previous agency's last 12 months", trend: "up" },
-  { value: "59%", label: "Less ad spend to get there", note: "Same five clinics, same market", trend: "down" },
-  { value: "78%", label: "Lower cost per patient contact", note: "Calls, forms, emails and directions", trend: "down" },
+export const headline: {
+  value: string;
+  label: string;
+  /** Before → after, shown as a pill under the number. */
+  from?: string;
+  to?: string;
+  note: string;
+  trend?: Trend;
+}[] = [
+  { value: "82%", label: "More patient contacts from Google Ads", from: "317 / mo", to: "575 / mo", note: "vs. the previous agency's last 12 months", trend: "up" },
+  { value: "59%", label: "Less ad spend", from: "100%", to: "41%", note: "Same five clinics, same market", trend: "down" },
+  { value: "78%", label: "Lower cost per patient contact", from: "100%", to: "22%", note: "Calls, forms, emails and directions", trend: "down" },
   { value: "10,100+", label: "Patient contacts from the website", note: "Since relaunch, Apr 2025 – Sep 2026" },
 ];
 
