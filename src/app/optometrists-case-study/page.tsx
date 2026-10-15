@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { site } from "@/lib/site";
 import {
@@ -18,6 +17,7 @@ import { Eclipse } from "@/components/ui/Eclipse";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { AuditBanner } from "@/components/home/AuditBanner";
 import { MonthlyBars } from "@/components/case-study/MonthlyBars";
+import { BeforeAfterSlider } from "@/components/case-study/BeforeAfterSlider";
 
 const title = "Optometrists' Clinic Case Study";
 const description =
@@ -147,49 +147,24 @@ export default function OptometristsCaseStudy() {
         style={{ ["--ac" as string]: accent.site }}
       >
         <div className="mx-auto max-w-6xl px-(--spacing-gutter)">
-          <SectionHeader n={2} label="The website" title="Before and after." />
-          <RevealGroup className="mt-10 grid gap-5 md:grid-cols-2">
-            <RevealItem>
-              <figure>
-                <div className="relative aspect-[16/10] overflow-hidden rounded-2xl border border-white/[0.08]">
-                  <Image
-                    src="/work/optometrists-before.webp"
-                    alt="The previous Optometrists' Clinic homepage on Wix"
-                    fill
-                    sizes="(min-width: 768px) 50vw, 100vw"
-                    className="object-cover object-top opacity-75 saturate-50"
-                  />
-                  <span className="absolute left-4 top-4 rounded-full border border-white/20 bg-void/85 px-3 py-1 text-xs font-bold uppercase tracking-[0.22em] text-mid backdrop-blur-sm">
-                    Before
-                  </span>
-                </div>
-                <figcaption className="mt-3 flex items-baseline justify-between gap-4 text-sm">
-                  <span className="font-semibold uppercase tracking-[0.18em] text-lo">Before</span>
-                  <span className="text-mid">Wix. 1 MB of page code. No call tracking.</span>
-                </figcaption>
-              </figure>
-            </RevealItem>
-            <RevealItem>
-              <figure>
-                <div className="relative aspect-[16/10] overflow-hidden rounded-2xl border border-gold/60 shadow-[0_0_40px_-10px_color-mix(in_oklab,var(--color-gold)_55%,transparent)]">
-                  <Image
-                    src="/work/optometrists-after.webp"
-                    alt="The new Optometrists' Clinic homepage built by BLXCK"
-                    fill
-                    sizes="(min-width: 768px) 50vw, 100vw"
-                    className="object-cover object-top"
-                  />
-                  <span className="absolute left-4 top-4 rounded-full bg-gold px-3 py-1 text-xs font-bold uppercase tracking-[0.22em] text-void">
-                    After
-                  </span>
-                </div>
-                <figcaption className="mt-3 flex items-baseline justify-between gap-4 text-sm">
-                  <span className="font-semibold uppercase tracking-[0.18em] text-gold">After</span>
-                  <span className="text-mid">WordPress. 60% less page code. Every call counted.</span>
-                </figcaption>
-              </figure>
-            </RevealItem>
-          </RevealGroup>
+          <SectionHeader n={2} label="The website" title="See the difference." />
+          <Reveal className="mt-10">
+            <BeforeAfterSlider
+              before={{ src: "/work/optometrists-before.webp", alt: "The previous Optometrists' Clinic homepage on Wix" }}
+              after={{ src: "/work/optometrists-after.webp", alt: "The new Optometrists' Clinic homepage built by BLXCK" }}
+              initial={55}
+            />
+          </Reveal>
+          <div className="mt-4 grid gap-2 text-sm sm:grid-cols-2">
+            <p className="text-mid">
+              <span className="mr-2 font-semibold uppercase tracking-[0.18em] text-lo">Before</span>
+              Wix. 1 MB of page code. No call tracking.
+            </p>
+            <p className="text-mid sm:text-right">
+              <span className="mr-2 font-semibold uppercase tracking-[0.18em] text-gold">After</span>
+              WordPress. 60% less page code. Every call counted.
+            </p>
+          </div>
         </div>
       </section>
 
