@@ -53,10 +53,10 @@ export const headline: {
   to?: string;
   trend?: Trend;
 }[] = [
-  { section: "Google Ads", value: "82%", label: "More patient contacts per month", from: "317", to: "575", trend: "up" },
-  { section: "Website", value: "60%", label: "Less page code than the old site", from: "1 MB", to: "0.4 MB", trend: "down" },
-  { section: "Local traffic", value: "7.4%", label: "Of visitors call, book or email", from: "4.0%", to: "7.4%", trend: "up" },
-  { section: "Meta Ads", value: "2.4×", label: "Higher click-through rate", from: "0.47%", to: "1.14%", trend: "up" },
+  { section: "Google Ads", value: "82%", label: "More calls and booking requests every month", from: "317 a month", to: "575 a month", trend: "up" },
+  { section: "Website", value: "60%", label: "Smaller, faster homepage than before", from: "1 MB", to: "0.4 MB", trend: "down" },
+  { section: "Website visitors", value: "7 in 100", label: "Visitors now call, book or email the clinic", from: "4 in 100", to: "7 in 100", trend: "up" },
+  { section: "Meta Ads", value: "2.4×", label: "More people click the ad when they see it", from: "5 in 1,000", to: "11 in 1,000", trend: "up" },
 ];
 
 /**
@@ -68,18 +68,18 @@ export const compare = {
   thenPeriod: "Previous agency · Oct 2023 – Sep 2024",
   nowPeriod: "BLXCK · Oct 2025 – Sep 2026",
   boxes: [
-    { channel: "Google Ads", label: "Patient contacts per month", delta: "82%", trend: "up", from: "317", to: "575", detail: "Calls, forms, emails and directions from ads." },
-    { channel: "Google Ads", label: "Monthly ad spend", delta: "59%", trend: "down", detail: "Less than half the previous budget, same five clinics." },
-    { channel: "Google Ads", label: "Cost per patient contact", delta: "78%", trend: "down", detail: "Each contact now costs under a quarter of what it did." },
-    { channel: "Meta Ads", label: "Clicks to the website per month", delta: "23%", trend: "up", from: "584", to: "720", detail: "On a similar monthly budget." },
-    { channel: "Meta Ads", label: "Click-through rate", delta: "2.4×", trend: "up", from: "0.47%", to: "1.14%", detail: "More of the people who see an ad act on it." },
-    { channel: "Website", label: "Visitors who call, book or email", delta: "85%", trend: "up", from: "4.0%", to: "7.4%", detail: "Higher-quality local traffic. Jul–Sep 2026 vs. the same months a year earlier." },
+    { channel: "Google Ads", label: "Calls and booking requests each month", delta: "82%", trend: "up", from: "317", to: "575", detail: "People who called, filled in a form, emailed or got directions after seeing an ad." },
+    { channel: "Google Ads", label: "Money spent on ads each month", delta: "59%", trend: "down", detail: "Less than half of what the previous agency was spending." },
+    { channel: "Google Ads", label: "What each new patient enquiry costs", delta: "78%", trend: "down", detail: "For every call or booking request, the clinic now pays less than a quarter of what it used to." },
+    { channel: "Meta Ads", label: "People clicking through to the website each month", delta: "23%", trend: "up", from: "584", to: "720", detail: "From Facebook and Instagram ads, on about the same budget." },
+    { channel: "Meta Ads", label: "How often people click the ad when they see it", delta: "2.4×", trend: "up", from: "5 in 1,000", to: "11 in 1,000", detail: "More than twice as many of the people who see an ad tap on it." },
+    { channel: "Website", label: "Visitors who call, book or email", delta: "85%", trend: "up", from: "4 in 100", to: "7 in 100", detail: "The site turns far more of its visitors into real patient enquiries." },
   ] as { channel: string; label: string; delta: string; trend: Trend; from?: string; to?: string; detail: string }[],
 };
 
 /** Meta Ads, Jan 2025 – Sep 2026. No lead events tracked on Meta; reach + clicks. */
 export const meta: { value: string; label: string; note: string; trend?: Trend }[] = [
-  { value: "485K", label: "People reached by the clinic's video ad", note: "One always-on campaign" },
-  { value: "15,000+", label: "Clicks through to the website", note: "24% cheaper per click than before" },
-  { value: "2.4×", label: "Click-through rate vs. the previous agency", note: "0.47% → 1.14%", trend: "up" },
+  { value: "485K", label: "People who saw the clinic's video ad", note: "On Facebook and Instagram, one always-on campaign" },
+  { value: "15,000+", label: "Times someone clicked through to the website", note: "Each click cost 24% less than under the previous agency" },
+  { value: "2.4×", label: "More people click the ad when they see it", note: "Compared with the previous agency's ads", trend: "up" },
 ];

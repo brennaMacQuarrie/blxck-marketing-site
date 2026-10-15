@@ -129,7 +129,7 @@ export default function OptometristsCaseStudy() {
         style={{ ["--ac" as string]: accent.compare }}
       >
         <div className="mx-auto max-w-6xl px-(--spacing-gutter)">
-          <SectionHeader n={1} label="Then vs now" title="Same clinics. Different return." />
+          <SectionHeader n={1} label="Then vs now" title="Same clinics. Better results for less." />
           <RevealGroup className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {compare.boxes.map((b) => (
               <RevealItem key={`${b.channel}-${b.label}`} className="h-full">
@@ -154,7 +154,7 @@ export default function OptometristsCaseStudy() {
             ))}
           </RevealGroup>
           <p className="mt-5 text-xs leading-relaxed text-lo">
-            <span className="text-lo">{compare.thenPeriod}</span> compared with <span className="text-lo">{compare.nowPeriod}</span>. Previous-agency figures come from that agency&rsquo;s own year-end reports. Spend and cost shown as percentage change only.
+            Before: {compare.thenPeriod}. After: {compare.nowPeriod}. The before numbers come from the previous agency&rsquo;s own year-end reports. Spending is shown as a percentage change, not in dollars.
           </p>
         </div>
       </section>
@@ -205,9 +205,9 @@ export default function OptometristsCaseStudy() {
           <RevealGroup className="mt-10 grid gap-8 lg:grid-cols-2">
             <RevealItem>
               <div className="rounded-2xl border border-white/[0.08] bg-ink/70 p-6 md:p-8">
-                <h3 className="text-base font-semibold text-hi">Patient contacts from Google Ads, per month</h3>
+                <h3 className="text-base font-semibold text-hi">Calls and booking requests from Google Ads, each month</h3>
                 <p className="mt-1 text-sm text-lo">
-                  Calls, forms, emails and directions. 387 in the first full month, 684 by March 2026, on the same monthly budget throughout.
+                  387 in the first full month. 684 by March 2026. The monthly budget never changed.
                 </p>
                 <div className="mt-6">
                   <MonthlyBars
@@ -226,9 +226,9 @@ export default function OptometristsCaseStudy() {
             </RevealItem>
             <RevealItem>
               <div className="rounded-2xl border border-white/[0.08] bg-ink/70 p-6 md:p-8">
-                <h3 className="text-base font-semibold text-hi">Calls, bookings and emails from the website, per month</h3>
+                <h3 className="text-base font-semibold text-hi">Calls and booking requests from the website, each month</h3>
                 <p className="mt-1 text-sm text-lo">
-                  Steady at 500 to 680 a month for 18 months. Total visits fell in 2026, but the visitors who left were out-of-province blog readers who never contacted a clinic.
+                  Steady at 500 to 680 every month. Fewer people visit the site than before, but the ones who stopped coming were out-of-province blog readers who never contacted a clinic.
                 </p>
                 <div className="mt-6">
                   <MonthlyBars
