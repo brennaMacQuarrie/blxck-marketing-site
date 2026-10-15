@@ -172,12 +172,12 @@ export default function OptometristsCaseStudy() {
           <RevealGroup className="mt-10 grid gap-px overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.08] md:grid-cols-3">
             {[
               {
-                t: "Rebuilt the site",
-                d: "Fast WordPress build with a dedicated page for each of the five clinics.",
+                t: "Optimized the site for action",
+                d: "Fast WordPress build, a page for each of the five clinics, and clear calls to book, call or get directions on every one.",
               },
               {
-                t: "One campaign per clinic",
-                d: "Five location-based Google Ads campaigns, each optimizing toward calls and bookings.",
+                t: "Optimized the campaign structure",
+                d: "Location-based Google Ads campaigns built around each clinic, each optimizing toward calls and bookings.",
               },
               {
                 t: "Counted every call",
