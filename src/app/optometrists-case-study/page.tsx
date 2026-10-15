@@ -17,6 +17,7 @@ import { Eclipse } from "@/components/ui/Eclipse";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { AuditBanner } from "@/components/home/AuditBanner";
 import { MonthlyBars } from "@/components/case-study/MonthlyBars";
+import { TrendMark } from "@/components/case-study/TrendMark";
 import { BeforeAfterSlider } from "@/components/case-study/BeforeAfterSlider";
 
 const title = "Optometrists' Clinic Case Study";
@@ -88,7 +89,7 @@ export default function OptometristsCaseStudy() {
               <BeforeAfterSlider
                 before={{ src: "/work/optometrists-before.webp", alt: "The previous Optometrists' Clinic homepage on Wix" }}
                 after={{ src: "/work/optometrists-after.webp", alt: "The new Optometrists' Clinic homepage built by BLXCK" }}
-                initial={55}
+                initial={45}
               />
               <div className="mt-3 flex flex-wrap justify-between gap-x-6 gap-y-1 text-xs text-lo">
                 <span><span className="mr-1.5 font-semibold uppercase tracking-[0.18em]">Before</span>Wix. 1 MB of page code. No call tracking.</span>
@@ -101,7 +102,8 @@ export default function OptometristsCaseStudy() {
             {headline.map((s) => (
               <RevealItem key={s.label} className="h-full">
                 <div className="flex h-full flex-col gap-2 bg-void p-6">
-                  <span className="font-heading text-4xl leading-none text-teal tabular-nums md:text-5xl">
+                  <span className="flex items-center gap-2 font-heading text-4xl leading-none text-teal tabular-nums md:text-5xl">
+                    {s.trend && <TrendMark trend={s.trend} size="lg" />}
                     {s.value}
                   </span>
                   <span className="mt-2 text-sm font-semibold text-hi">{s.label}</span>
@@ -134,7 +136,7 @@ export default function OptometristsCaseStudy() {
                     <span className="text-sm tracking-[0.2em]">{compare.nowLabel}</span>
                     <span className="block normal-case tracking-normal text-gold/70">{compare.nowPeriod}</span>
                   </th>
-                  <th className="px-5 py-4 text-right font-semibold text-gold">Change</th>
+                  <th className="px-5 py-4 text-right font-semibold text-good">Change</th>
                 </tr>
               </thead>
               <tbody className="tabular-nums">
@@ -143,14 +145,19 @@ export default function OptometristsCaseStudy() {
                     <td className="px-5 py-3.5 text-hi">{r.k}</td>
                     <td className="px-5 py-3.5 text-right text-lo">{r.then}</td>
                     <td className="bg-gold/[0.08] px-5 py-3.5 text-right font-semibold text-gold">{r.now}</td>
-                    <td className="px-5 py-3.5 text-right font-semibold text-gold">{r.delta}</td>
+                    <td className="px-5 py-3.5 text-right font-semibold text-good">
+                      <span className="inline-flex items-center gap-1.5">
+                        <TrendMark trend={r.trend} />
+                        {r.delta}
+                      </span>
+                    </td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </Reveal>
           <p className="mt-4 text-xs leading-relaxed text-lo">
-            Spend and cost figures are indexed to the previous agency at 100%. Previous-agency figures come from that agency&rsquo;s own year-end reports.
+            <span className="text-good">▲</span> higher is better · <span className="text-good">▼</span> lower is better. Spend and cost figures are indexed to the previous agency at 100%. Previous-agency figures come from that agency&rsquo;s own year-end reports.
           </p>
         </div>
       </section>
@@ -258,7 +265,10 @@ export default function OptometristsCaseStudy() {
             {meta.map((s) => (
               <RevealItem key={s.label} className="h-full">
                 <div className="flex h-full flex-col gap-2 bg-void p-6">
-                  <span className="font-heading text-4xl leading-none text-hi tabular-nums">{s.value}</span>
+                  <span className="flex items-center gap-2 font-heading text-4xl leading-none text-hi tabular-nums">
+                    {s.trend && <TrendMark trend={s.trend} size="lg" />}
+                    {s.value}
+                  </span>
                   <span className="mt-2 text-sm font-semibold text-hi">{s.label}</span>
                   <span className="text-xs leading-relaxed text-lo">{s.note}</span>
                 </div>

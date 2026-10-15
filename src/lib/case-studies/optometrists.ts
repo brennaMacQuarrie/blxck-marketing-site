@@ -43,10 +43,12 @@ export const siteContacts = [
 ];
 
 /** Headline tiles. Four, each true at a glance, no dollars. */
-export const headline = [
-  { value: "+82%", label: "Patient contacts per month from Google Ads", note: "vs. the previous agency's last 12 months" },
-  { value: "59%", label: "Less ad spend to get there", note: "Same five clinics, same market" },
-  { value: "78%", label: "Lower cost per patient contact", note: "Calls, forms, emails and directions" },
+export type Trend = "up" | "down";
+
+export const headline: { value: string; label: string; note: string; trend?: Trend }[] = [
+  { value: "82%", label: "More patient contacts per month from Google Ads", note: "vs. the previous agency's last 12 months", trend: "up" },
+  { value: "59%", label: "Less ad spend to get there", note: "Same five clinics, same market", trend: "down" },
+  { value: "78%", label: "Lower cost per patient contact", note: "Calls, forms, emails and directions", trend: "down" },
   { value: "10,100+", label: "Patient contacts from the website", note: "Since relaunch, Apr 2025 – Sep 2026" },
 ];
 
@@ -61,20 +63,20 @@ export const compare = {
   nowLabel: "After",
   nowPeriod: "BLXCK · Oct 2025 – Sep 2026",
   rows: [
-    { k: "Google Ads · patient contacts per month", then: "317", now: "575", delta: "+82%" },
-    { k: "Google Ads · monthly spend", then: "100%", now: "41%", delta: "−59%" },
-    { k: "Google Ads · cost per contact", then: "100%", now: "22%", delta: "−78%" },
-    { k: "Google Ads · click-through rate", then: "3.9%", now: "4.7%", delta: "+0.8 pts" },
-    { k: "Google Ads · cost per click", then: "100%", now: "45%", delta: "−55%" },
-    { k: "Meta · clicks to the site per month", then: "584", now: "720", delta: "+23%" },
-    { k: "Meta · click-through rate", then: "0.47%", now: "1.14%", delta: "2.4×" },
-    { k: "Meta · cost per click", then: "100%", now: "76%", delta: "−24%" },
-  ],
+    { k: "Google Ads · patient contacts per month", then: "317", now: "575", delta: "82%", trend: "up" },
+    { k: "Google Ads · monthly spend", then: "100%", now: "41%", delta: "59%", trend: "down" },
+    { k: "Google Ads · cost per contact", then: "100%", now: "22%", delta: "78%", trend: "down" },
+    { k: "Google Ads · click-through rate", then: "3.9%", now: "4.7%", delta: "0.8 pts", trend: "up" },
+    { k: "Google Ads · cost per click", then: "100%", now: "45%", delta: "55%", trend: "down" },
+    { k: "Meta · clicks to the site per month", then: "584", now: "720", delta: "23%", trend: "up" },
+    { k: "Meta · click-through rate", then: "0.47%", now: "1.14%", delta: "2.4×", trend: "up" },
+    { k: "Meta · cost per click", then: "100%", now: "76%", delta: "24%", trend: "down" },
+  ] as { k: string; then: string; now: string; delta: string; trend: Trend }[],
 };
 
 /** Meta Ads, Jan 2025 – Sep 2026. No lead events tracked on Meta; reach + clicks. */
-export const meta = [
+export const meta: { value: string; label: string; note: string; trend?: Trend }[] = [
   { value: "485K", label: "People reached by the clinic's video ad", note: "One always-on campaign" },
   { value: "15,000+", label: "Clicks through to the website", note: "24% cheaper per click than before" },
-  { value: "2.4×", label: "Click-through rate vs. the previous agency", note: "0.47% → 1.14%" },
+  { value: "2.4×", label: "Click-through rate vs. the previous agency", note: "0.47% → 1.14%", trend: "up" },
 ];

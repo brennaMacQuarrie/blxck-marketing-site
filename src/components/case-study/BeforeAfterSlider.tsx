@@ -6,7 +6,7 @@ import { useCallback, useId, useRef, useState } from "react";
 type Props = {
   before: { src: string; alt: string };
   after: { src: string; alt: string };
-  /** Starting divider position, 0–100 (percent of width showing "after"). */
+  /** Starting divider position, 0–100 (percent of width showing "before", on the left). */
   initial?: number;
   className?: string;
 };
@@ -66,7 +66,7 @@ export function BeforeAfterSlider({ before, after, initial = 50, className = "" 
         {/* After: on top, clipped to the divider */}
         <div
           className="absolute inset-0"
-          style={{ clipPath: `inset(0 ${100 - pos}% 0 0)` }}
+          style={{ clipPath: `inset(0 0 0 ${pos}%)` }}
           aria-hidden
         >
           <Image
@@ -116,7 +116,7 @@ export function BeforeAfterSlider({ before, after, initial = 50, className = "" 
           value={Math.round(pos)}
           onChange={(e) => setPos(Number(e.target.value))}
           className="absolute inset-x-0 bottom-0 h-full w-full cursor-grab opacity-0"
-          aria-valuetext={`${Math.round(pos)}% after`}
+          aria-valuetext={`${100 - Math.round(pos)}% after`}
         />
       </div>
     </div>

@@ -20,6 +20,8 @@
   --color-lavender: #b794df;
   --color-gold: #cca95d;
   --color-silver: #bcbebe;
+  /* Semantic "improved" colour for deltas and trend arrows. */
+  --color-good: #5fd19a;
 
   /* Text */
   --color-hi: #f4f5f7;
