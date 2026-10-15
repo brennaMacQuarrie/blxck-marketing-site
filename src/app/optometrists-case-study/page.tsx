@@ -103,7 +103,7 @@ export default function OptometristsCaseStudy() {
               <RevealItem key={s.label} className="h-full">
                 <div className="flex h-full flex-col gap-2 bg-void p-6">
                   <span
-                    className={`flex items-center gap-2 font-heading text-4xl leading-none tabular-nums md:text-5xl ${s.trend ? "text-good" : "text-hi"}`}
+                    className="flex items-center gap-2 font-heading text-4xl leading-none text-hi tabular-nums md:text-5xl"
                   >
                     {s.trend && <TrendMark trend={s.trend} size="lg" />}
                     {s.value}
@@ -113,7 +113,7 @@ export default function OptometristsCaseStudy() {
                     <span className="inline-flex w-fit items-center gap-1.5 rounded-full border border-white/[0.1] bg-carbon px-2.5 py-1 text-xs tabular-nums">
                       <span className="text-lo line-through decoration-lo/60">{s.from}</span>
                       <span className="text-lo" aria-hidden>→</span>
-                      <span className="font-semibold text-good">{s.to}</span>
+                      <span className="font-semibold text-hi">{s.to}</span>
                     </span>
                   )}
                   <span className="text-xs leading-relaxed text-lo">{s.note}</span>
@@ -138,16 +138,16 @@ export default function OptometristsCaseStudy() {
                 <div className="flex h-full flex-col gap-3 rounded-2xl border border-white/[0.08] bg-ink/70 p-6">
                   <span className="text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-lo">{b.channel}</span>
                   <span className="text-base font-semibold leading-snug text-hi">{b.label}</span>
-                  <span className="flex items-center gap-2 font-heading text-4xl leading-none text-good tabular-nums">
+                  <span className="flex items-center gap-2 font-heading text-4xl leading-none text-hi tabular-nums">
                     <TrendMark trend={b.trend} size="lg" />
                     {b.delta}
-                    <span className="font-body text-sm font-semibold text-good/80">{b.trend === "up" ? "more" : "less"}</span>
+                    <span className="font-body text-sm font-semibold text-mid">{b.trend === "up" ? "more" : "less"}</span>
                   </span>
                   {b.from && b.to && (
                     <span className="inline-flex w-fit items-center gap-1.5 rounded-full border border-white/[0.1] bg-carbon px-2.5 py-1 text-xs tabular-nums">
                       <span className="text-lo line-through decoration-lo/60">{b.from}</span>
                       <span className="text-lo" aria-hidden>→</span>
-                      <span className="font-semibold text-good">{b.to}</span>
+                      <span className="font-semibold text-hi">{b.to}</span>
                     </span>
                   )}
                   <span className="text-sm leading-relaxed text-mid">{b.detail}</span>
