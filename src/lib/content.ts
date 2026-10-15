@@ -1181,6 +1181,8 @@ export type Project = {
   image: string;
   accent: "teal" | "lavender" | "gold" | "silver";
   blurb: string;
+  /** Optional case-study route; cards fall back to /contact without it. */
+  href?: string;
 };
 
 export const projects: Project[] = [
@@ -1225,7 +1227,8 @@ export const projects: Project[] = [
     sector: "Medical",
     image: "/portfolio/optometrists.png",
     accent: "teal",
-    blurb: "Local-search dominance for a growing optometry practice.",
+    blurb: "Twice the patient calls on the same ad budget.",
+    href: "/optometrists-case-study",
   },
   {
     name: "Apex Labs",

@@ -7,7 +7,14 @@ export const site = {
   name: "BLXCK Marketing",
   shortName: "BLXCK",
   domain: "blxckmarketing.com",
-  url: "https://blxckmarketing.com",
+  // Absolute base for metadata (OG images, canonical). Follows the domain
+  // Vercel is actually serving in production, so share images resolve before
+  // and after the custom domain is attached. Override with NEXT_PUBLIC_SITE_URL.
+  url:
+    process.env.NEXT_PUBLIC_SITE_URL ??
+    (process.env.VERCEL_PROJECT_PRODUCTION_URL
+      ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+      : "https://blxckmarketing.com"),
   tagline: "Make your business impossible to ignore.",
   description:
     "BLXCK Marketing is an Edmonton-based full-service agency — strategy, content, advertising, and web — built to make growing brands impossible to ignore.",

@@ -141,7 +141,7 @@ export default function PortfolioPage() {
           {projects.map((p) => (
             <RevealItem key={p.name} className="h-full">
               <Link
-                href="/contact"
+                href={p.href ?? "/contact"}
                 className="group relative block overflow-hidden rounded-2xl border border-white/[0.08]"
                 style={{ ["--ac" as string]: accentColor[p.accent] }}
               >

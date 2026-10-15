@@ -39,7 +39,7 @@ export function PortfolioShowcase() {
               return (
                 <li key={p.name}>
                   <a
-                    href="/portfolio"
+                    href={p.href ?? "/portfolio"}
                     onMouseEnter={() => setActive(i)}
                     onFocus={() => setActive(i)}
                     className="group block border-t border-white/[0.08] py-5 md:py-6"
