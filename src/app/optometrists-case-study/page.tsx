@@ -296,7 +296,7 @@ export default function OptometristsCaseStudy() {
             {meta.map((s) => (
               <RevealItem key={s.label} className="h-full">
                 <div className="flex h-full flex-col gap-2 bg-void p-6">
-                  <span className="font-heading text-4xl leading-none text-teal tabular-nums">{s.value}</span>
+                  <span className="font-heading text-4xl leading-none text-hi tabular-nums">{s.value}</span>
                   <span className="mt-2 text-sm font-semibold text-hi">{s.label}</span>
                   <span className="text-xs leading-relaxed text-lo">{s.note}</span>
                 </div>
