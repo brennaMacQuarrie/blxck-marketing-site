@@ -26,9 +26,13 @@ const title = "Optometrists' Clinic Case Study";
 const description =
   "How BLXCK rebuilt The Optometrists' Clinic website and nearly doubled patient contacts from Google Ads on 59% less ad spend.";
 
+/** Keep the page out of search results until it lives on blxckmarketing.com. */
+const onMainDomain = site.url.includes("blxckmarketing.com");
+
 export const metadata: Metadata = {
   title,
   description,
+  robots: onMainDomain ? undefined : { index: false, follow: false },
   openGraph: {
     title: `${title} — ${site.name}`,
     description,
