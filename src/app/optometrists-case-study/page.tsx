@@ -283,6 +283,7 @@ export default function OptometristsCaseStudy() {
           <span className="eyebrow mr-2">Services used</span>
           {[
             ["Web Development", "/services/web-development"],
+            ["Hosting", "/services/hosting"],
             ["Advertising", "/services/advertising"],
             ["Analytics", "/services/analytics"],
             ["Strategy", "/services/strategy"],
