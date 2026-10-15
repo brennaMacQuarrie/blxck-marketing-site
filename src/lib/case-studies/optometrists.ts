@@ -42,23 +42,7 @@ export const siteContacts = [
   668, 512, 594, 515, 455, 499, 592, 597, 642,
 ];
 
-/** Headline tiles. Four, each true at a glance, no dollars. */
 export type Trend = "up" | "down";
-
-export const headline: {
-  value: string;
-  label: string;
-  /** Before → after, shown as a pill under the number. */
-  from?: string;
-  to?: string;
-  note: string;
-  trend?: Trend;
-}[] = [
-  { value: "82%", label: "More patient contacts from Google Ads", from: "317 / mo", to: "575 / mo", note: "vs. the previous agency's last 12 months", trend: "up" },
-  { value: "59%", label: "Less ad spend", from: "100%", to: "41%", note: "Same five clinics, same market", trend: "down" },
-  { value: "78%", label: "Lower cost per patient contact", from: "100%", to: "22%", note: "Calls, forms, emails and directions", trend: "down" },
-  { value: "7.4%", label: "Of site visitors call, book or email", from: "4.0%", to: "7.4%", note: "Higher-quality local traffic: Jul–Sep 2026 vs. the same months a year earlier", trend: "up" },
-];
 
 /**
  * Then vs now. Previous agency = Yellow Pages, Oct 2023 – Sep 2024 (Google)
@@ -74,7 +58,7 @@ export const compare = {
     { channel: "Google Ads", label: "Cost per patient contact", delta: "78%", trend: "down", detail: "Each contact now costs under a quarter of what it did." },
     { channel: "Meta Ads", label: "Clicks to the website per month", delta: "23%", trend: "up", from: "584", to: "720", detail: "On a similar monthly budget." },
     { channel: "Meta Ads", label: "Click-through rate", delta: "2.4×", trend: "up", from: "0.47%", to: "1.14%", detail: "More of the people who see an ad act on it." },
-    { channel: "Meta Ads", label: "Cost per click", delta: "24%", trend: "down", detail: "Cheaper traffic from the same platform." },
+    { channel: "Website", label: "Visitors who call, book or email", delta: "85%", trend: "up", from: "4.0%", to: "7.4%", detail: "Higher-quality local traffic. Jul–Sep 2026 vs. the same months a year earlier." },
   ] as { channel: string; label: string; delta: string; trend: Trend; from?: string; to?: string; detail: string }[],
 };
 

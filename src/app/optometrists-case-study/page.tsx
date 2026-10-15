@@ -7,7 +7,6 @@ import {
   adClicks,
   siteVisits,
   siteContacts,
-  headline,
   compare,
   meta,
 } from "@/lib/case-studies/optometrists";
@@ -53,7 +52,7 @@ export default function OptometristsCaseStudy() {
     <>
       {/* ---------------- Hero ---------------- */}
       <section
-        className="relative overflow-hidden pt-32 pb-14 md:pt-40 md:pb-16"
+        className="relative overflow-hidden pt-32 pb-20 md:pt-40 md:pb-24"
         style={{ ["--ac" as string]: accent.did }}
       >
         <Eclipse
@@ -98,29 +97,6 @@ export default function OptometristsCaseStudy() {
             </Reveal>
           </div>
 
-          <RevealGroup className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.08] sm:grid-cols-2 lg:grid-cols-4">
-            {headline.map((s) => (
-              <RevealItem key={s.label} className="h-full">
-                <div className="flex h-full flex-col gap-2 bg-void p-6">
-                  <span
-                    className="flex items-center gap-2 font-heading text-4xl leading-none text-hi tabular-nums md:text-5xl"
-                  >
-                    {s.trend && <TrendMark trend={s.trend} size="lg" />}
-                    {s.value}
-                  </span>
-                  <span className="mt-2 text-sm font-semibold text-hi">{s.label}</span>
-                  {s.from && s.to && (
-                    <span className="inline-flex w-fit items-center gap-1.5 rounded-full border border-white/[0.1] bg-carbon px-2.5 py-1 text-xs tabular-nums">
-                      <span className="text-lo line-through decoration-lo/60">{s.from}</span>
-                      <span className="text-lo" aria-hidden>→</span>
-                      <span className="font-semibold text-hi">{s.to}</span>
-                    </span>
-                  )}
-                  <span className="text-xs leading-relaxed text-lo">{s.note}</span>
-                </div>
-              </RevealItem>
-            ))}
-          </RevealGroup>
         </div>
       </section>
 
