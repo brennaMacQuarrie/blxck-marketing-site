@@ -44,6 +44,21 @@ export const siteContacts = [
 
 export type Trend = "up" | "down";
 
+/** Hero tiles: the single standout figure from each section of the page. */
+export const headline: {
+  section: string;
+  value: string;
+  label: string;
+  from?: string;
+  to?: string;
+  trend?: Trend;
+}[] = [
+  { section: "Google Ads", value: "82%", label: "More patient contacts per month", from: "317", to: "575", trend: "up" },
+  { section: "Website", value: "60%", label: "Less page code than the old site", from: "1 MB", to: "0.4 MB", trend: "down" },
+  { section: "Local traffic", value: "7.4%", label: "Of visitors call, book or email", from: "4.0%", to: "7.4%", trend: "up" },
+  { section: "Meta Ads", value: "2.4×", label: "Higher click-through rate", from: "0.47%", to: "1.14%", trend: "up" },
+];
+
 /**
  * Then vs now. Previous agency = Yellow Pages, Oct 2023 – Sep 2024 (Google)
  * and Jan – Oct 2024 (Facebook). BLXCK = Oct 2025 – Sep 2026 (Google) and
