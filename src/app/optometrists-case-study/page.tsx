@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { site } from "@/lib/site";
+import { projects } from "@/lib/content";
 import {
   months,
   adConversions,
@@ -271,6 +273,52 @@ export default function OptometristsCaseStudy() {
                 </div>
               </RevealItem>
             ))}
+          </RevealGroup>
+        </div>
+      </section>
+
+      {/* ---------------- More work ---------------- */}
+      <section
+        id="more-work"
+        className="section-accent bg-void py-20 md:py-24"
+        style={{ ["--ac" as string]: "var(--color-silver)" }}
+      >
+        <div className="mx-auto max-w-6xl px-(--spacing-gutter)">
+          <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
+            <SectionHeader n={5} label="More work" title="Other brands we've grown." />
+            <div className="shrink-0">
+              <ButtonLink href="/portfolio" variant="ghost" withArrow>
+                View portfolio
+              </ButtonLink>
+            </div>
+          </div>
+          <RevealGroup className="mt-10 grid gap-5 sm:grid-cols-3">
+            {projects
+              .filter((p) => ["REX Equipment", "Hansen Distillery", "Tiger Gold"].includes(p.name))
+              .map((p) => (
+                <RevealItem key={p.name} className="h-full">
+                  <Link
+                    href={p.href ?? "/portfolio"}
+                    className="group relative block overflow-hidden rounded-2xl border border-white/[0.08] transition-colors hover:border-white/25"
+                  >
+                    <div className="relative aspect-[4/3] w-full">
+                      <Image
+                        src={p.image}
+                        alt={`${p.name} by BLXCK Marketing`}
+                        fill
+                        sizes="(min-width: 640px) 33vw, 100vw"
+                        className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                      />
+                      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
+                    </div>
+                    <div className="absolute bottom-0 left-0 right-0 flex flex-col gap-1 p-5">
+                      <span className="text-[0.68rem] uppercase tracking-[0.16em] text-mid">{p.sector}</span>
+                      <span className="font-heading text-xl text-hi">{p.name}</span>
+                      <span className="text-sm leading-snug text-mid">{p.blurb}</span>
+                    </div>
+                  </Link>
+                </RevealItem>
+              ))}
           </RevealGroup>
         </div>
       </section>
