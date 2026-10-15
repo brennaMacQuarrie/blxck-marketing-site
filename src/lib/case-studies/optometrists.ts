@@ -57,7 +57,7 @@ export const headline: {
   { value: "82%", label: "More patient contacts from Google Ads", from: "317 / mo", to: "575 / mo", note: "vs. the previous agency's last 12 months", trend: "up" },
   { value: "59%", label: "Less ad spend", from: "100%", to: "41%", note: "Same five clinics, same market", trend: "down" },
   { value: "78%", label: "Lower cost per patient contact", from: "100%", to: "22%", note: "Calls, forms, emails and directions", trend: "down" },
-  { value: "10,100+", label: "Patient contacts from the website", note: "Since relaunch, Apr 2025 – Sep 2026" },
+  { value: "7.4%", label: "Of site visitors call, book or email", from: "4.0%", to: "7.4%", note: "Higher-quality local traffic: Jul–Sep 2026 vs. the same months a year earlier", trend: "up" },
 ];
 
 /**
