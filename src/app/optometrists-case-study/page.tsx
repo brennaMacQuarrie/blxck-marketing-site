@@ -156,7 +156,7 @@ export default function OptometristsCaseStudy() {
             ))}
           </RevealGroup>
           <p className="mt-5 text-xs leading-relaxed text-lo">
-            Before: {compare.thenPeriod}. After: {compare.nowPeriod}. The before numbers come from the previous agency&rsquo;s own year-end reports. Spending is shown as a percentage change, not in dollars.
+            Before: {compare.thenPeriod}. After: {compare.nowPeriod}, the last twelve months with complete call tracking. The before numbers come from the previous agency&rsquo;s own year-end reports. Spending is shown as a percentage change, not in dollars.
           </p>
         </div>
       </section>
@@ -203,13 +203,13 @@ export default function OptometristsCaseStudy() {
         style={{ ["--ac" as string]: accent.results }}
       >
         <div className="mx-auto max-w-6xl px-(--spacing-gutter)">
-          <SectionHeader n={3} label="Results" title="Month by month." />
+          <SectionHeader n={3} label="Results" title="Month by month." lede="April 2025 to July 2026. Later months are left off: a change to call reporting in Google Ads makes them not directly comparable." />
           <RevealGroup className="mt-10 grid gap-8 lg:grid-cols-2">
             <RevealItem>
               <div className="rounded-2xl border border-white/[0.08] bg-ink/70 p-6 md:p-8">
                 <h3 className="text-base font-semibold text-hi">Calls and booking requests from Google Ads, each month</h3>
                 <p className="mt-1 text-sm text-lo">
-                  387 in the first full month. 684 by March 2026. The monthly budget never changed.
+                  387 in the first full month. 684 by March 2026. The budget was about 60% less than the previous agency&rsquo;s and held flat throughout.
                 </p>
                 <div className="mt-6">
                   <MonthlyBars
@@ -230,7 +230,7 @@ export default function OptometristsCaseStudy() {
               <div className="rounded-2xl border border-white/[0.08] bg-ink/70 p-6 md:p-8">
                 <h3 className="text-base font-semibold text-hi">Calls and booking requests from the website, each month</h3>
                 <p className="mt-1 text-sm text-lo">
-                  Steady at 500 to 680 every month. Fewer people visit the site than before, but the ones who stopped coming were out-of-province blog readers who never contacted a clinic.
+                  Steady at 500 to 680 every month. Total visits fell in early 2026, but analytics show the visitors who left were mostly US and UK readers of general eye-health blog posts. Visits to the five clinic pages held steady.
                 </p>
                 <div className="mt-6">
                   <MonthlyBars

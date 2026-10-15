@@ -1227,7 +1227,7 @@ export const projects: Project[] = [
     sector: "Medical",
     image: "/portfolio/optometrists.png",
     accent: "teal",
-    blurb: "82% more patient calls on less than half the ad spend.",
+    blurb: "84% more patient calls on 60% less ad spend.",
     href: "/optometrists-case-study",
   },
   {
