@@ -19,29 +19,29 @@ export const serviceGroups: ServiceGroup[] = [
     key: "consulting",
     title: "Consulting",
     blurb:
-      "A clear, honest look at where your marketing actually stands — and the plan to move it forward.",
+      "When growth stalls, there's always a reason. We find it, set you up to fix it, and hand you the keys.",
     accent: "teal",
     items: [
       {
         name: "Social Content Consulting",
-        detail: "We teach your team to make social content that actually lands.",
-        long: "Most businesses know they need social content — they just don't know what to make, why their current posts aren't landing, or how to keep up. We sit down with your team and teach you the formats, hooks, and cadence that work for your audience, so you can plan and produce content in-house with real confidence instead of guessing.",
+        detail: "Find out why your content isn't landing — and learn to make content that does.",
+        long: "If you're posting and nothing's happening, it's rarely a lack of effort. It's usually the formats, the hooks, or a mismatch with how your audience actually watches. We pinpoint what's holding your content back, then set your team up to plan and produce content that works — on your own.",
       },
       {
         name: "Digital Ads",
-        detail: "We help you understand paid media before you spend on it.",
-        long: "Running ads without understanding them is just burning money with extra steps. We walk you through how campaigns are structured, what the numbers actually mean, and how to brief or run paid media yourself — so every dollar you put behind ads is a decision you understand, not a leap of faith.",
+        detail: "Find out why your ads aren't paying off — before you spend another dollar.",
+        long: "When ads don't pay for themselves, something specific is wrong — the structure, the targeting, the tracking, or where the budget's going. We find exactly what's costing you, fix the foundations, and make sure you understand your own numbers well enough to run or brief campaigns with confidence.",
       },
       {
         name: "Business & Marketing Audits",
         detail:
-          "A clear, honest look at what's working — and what's quietly wasting money.",
-        long: "You can't fix what you don't know is broken. A proper audit gives you a clear, honest look at where your marketing is working, where it's wasting money, and what gaps are quietly costing you leads and sales.",
+          "Stop guessing why growth has stalled. Get a clear, honest diagnosis.",
+        long: "When leads slow down or spend stops paying off, most businesses guess at the cause — and guessing gets expensive. An audit replaces it with a clear, honest picture of what's working, what's quietly leaking money, and what to fix first.",
       },
       {
         name: "Goal Setting & Brand Positioning",
-        detail: "Define the target, then position the brand to own it.",
-        long: "If your team doesn't agree on where you're going, your marketing will reflect that. We facilitate focused goal setting sessions that get your goals out of someone's head and into a framework your whole team can execute against.",
+        detail: "When marketing feels scattered, the problem is usually clarity.",
+        long: "If your team can't say in one sentence who you're for and why you win, every campaign pulls in a slightly different direction. We facilitate the conversations that get your goals and positioning out of people's heads and into a framework your whole team can run with.",
       },
     ],
   },
@@ -175,24 +175,24 @@ export function siblingServices(slug: string): ServiceEntry[] {
 /** "What's included" bullets per service slug — concrete, no fabricated stats. */
 export const servicePoints: Record<string, string[]> = {
   "social-content-consulting": [
-    "A content playbook your team can actually run",
-    "The hooks, formats, and cadence that work for your audience",
-    "Hands-on training so you're confident producing in-house",
+    "A clear diagnosis of why your content isn't landing",
+    "A content system built around your audience and capacity",
+    "Your team trained to run it without us",
   ],
   "digital-ads": [
-    "A plain-English breakdown of how paid media really works",
-    "How to read the numbers that actually matter",
-    "The know-how to brief or run campaigns without wasting budget",
+    "A frank read on what's wasting your ad spend",
+    "The right platforms, budget split and creative direction",
+    "The know-how to judge results and brief campaigns yourself",
   ],
   "business-and-marketing-audits": [
-    "A full review of your current marketing, spend, and presence",
+    "A top-to-bottom diagnosis of your marketing and presence",
     "A clear picture of where money is working and where it's leaking",
-    "A prioritized list of fixes — biggest, fastest wins first",
+    "A prioritized plan you keep — biggest, fastest wins first",
   ],
   "goal-setting-and-brand-positioning": [
-    "Facilitated goal-setting your whole team can rally behind",
+    "The misalignments holding your marketing back, surfaced",
     "Clear positioning: who you're for and why you win",
-    "A written framework to execute against, not just talk about",
+    "A written framework your whole team can execute against",
   ],
   advertising: [
     "Full-funnel campaigns across the platforms that fit your audience",
@@ -263,13 +263,13 @@ export function getServicePoints(slug: string): string[] {
 /** A short "how we approach it" paragraph per service slug. */
 export const serviceApproach: Record<string, string> = {
   "social-content-consulting":
-    "We start by understanding your audience, your resources, and what you've already tried. Then we hand you a repeatable system — formats, hooks, a content calendar — and coach your team until posting feels like second nature rather than a scramble.",
+    "We start with what you've already posted and what your audience actually responds to, so the diagnosis is specific to you — not generic best practice. Then we build a system around your team's real capacity and coach you until you don't need us.",
   "digital-ads":
-    "We demystify the platforms and the metrics, then walk you through how to plan, brief, and judge a campaign. You come away able to spend with intent — reading results and adjusting — instead of hoping something works.",
+    "We look at your accounts the way a doctor reads a chart: structure, targeting, tracking, spend. Most problems show up fast. We explain what we find in plain language, fix the foundations, and make sure you leave able to read your own numbers.",
   "business-and-marketing-audits":
-    "We dig into your analytics, spend, funnel, and online presence, then lay it all out in plain language. No jargon, no upsell — just a clear picture of where you stand and a prioritized list of what to do next.",
+    "We dig into your analytics, spend, funnel, and online presence, then lay it all out in plain language. No jargon, no pitch — just a clear picture of where you stand and a prioritized list of what to do next, whoever ends up doing it.",
   "goal-setting-and-brand-positioning":
-    "We facilitate the harder conversations about where you're headed and what genuinely sets you apart, then capture the answers in a framework your whole team can actually execute against.",
+    "We facilitate the harder conversations about where you're headed and what genuinely sets you apart, then capture the answers in a framework your whole team can execute against — long after we've left the room.",
   advertising:
     "We plan around your margins and real conversion value, launch lean, and optimize relentlessly — so budget keeps flowing toward what's working and away from what isn't.",
   analytics:
@@ -320,48 +320,48 @@ export type ServiceWriteup = {
 export const serviceWriteups: Record<string, ServiceWriteup> = {
   "social-content-consulting": {
     intro: [
-      "Most businesses know they need social content — video especially. They just don't know where to start, what to make, or why their current content isn't landing. We help you cut through the noise and build an approach that fits how your audience actually consumes content and how your team can realistically execute it.",
-      "This isn't about churning out content for content's sake. It's about making intentional decisions on format, platform, frequency, and style — so your time and budget go somewhere useful.",
+      "Most businesses aren't short on effort with social — they're short on answers. Why isn't anyone watching? Why do a few posts land and most don't? What should we even be making? Those questions almost always have specific, fixable answers.",
+      "We look at your content, your audience, and your team's realistic capacity, find what's actually holding you back, and build you a system you can run yourselves. The goal is your independence, not a retainer.",
     ],
     offerings: [
       {
-        title: "Strategy & Direction",
-        copy: "Before a single frame is shot, we build the strategic foundation your content needs to perform. We assess your brand, your audience, your platforms, and your goals — then map out an approach that makes sense for your business and your capacity.",
+        title: "Diagnose",
+        copy: "We review what you've posted, how it performed, and how your audience behaves on each platform — then tell you plainly why your content isn't landing and what's worth changing.",
         bullets: [
+          "Existing content audit & performance review",
           "Content strategy session",
           "Platform-specific format recommendations (Reels, Shorts, TikTok, Stories)",
-          "Content pillars & posting cadence planning",
         ],
       },
       {
-        title: "Concept & Development",
-        copy: "Great content starts with a great idea. We help you develop concepts that are on-brand, built for the platform, and designed to stop the scroll — so you're not just filling a feed, you're building an audience.",
+        title: "Set you up",
+        copy: "Then we build the system: what to make, how often, and how to make it stop the scroll — sized to what your team can realistically keep up.",
         bullets: [
+          "Content pillars & posting cadence planning",
           "Scripting & concept development",
           "Hook writing & narrative structure",
           "Format selection (talking head, B-roll, voiceover, UGC-style)",
         ],
       },
       {
-        title: "Review & Optimization",
-        copy: "Already posting but not seeing results? We audit what you have, identify what's working and what isn't, and give you a clear, actionable roadmap to improve performance without starting from scratch.",
+        title: "Set you free",
+        copy: "We coach your team through the first rounds until it feels like second nature, and stay a call away if you want a second set of eyes.",
         bullets: [
-          "Existing content audit & performance review",
           "Actionable feedback & optimization recommendations",
-          "Ongoing consulting & content review calls",
+          "Ongoing consulting & content review calls, if and when you want them",
         ],
       },
     ],
   },
   "digital-ads": {
     intro: [
-      "Running ads without a strategic foundation is just burning money with extra steps. Before we touch a campaign, we make sure we understand your goals, your margins, your audience, and what success actually looks like for your business.",
-      "Our consulting sessions cut through the platform noise and give you a clear picture of where your ad spend should go, what's working, and what needs to change.",
+      "If your ads aren't paying for themselves, something specific is wrong — and it's rarely the platform. Underperforming accounts tend to share the same few problems: a messy structure, targeting that's too broad or too narrow, tracking that doesn't tell the truth, or budget spread across the wrong channels.",
+      "We find exactly which of those is costing you, fix the foundations, and make sure you understand your own numbers well enough to run — or confidently brief — your campaigns.",
     ],
     offerings: [
       {
-        title: "Account Audit & Assessment",
-        copy: "If your ads aren't performing the way you expect, the problem is usually structural. We go through your existing accounts with a fine-tooth comb — campaign architecture, targeting, creative, bidding, and tracking — and tell you exactly what needs to change and why.",
+        title: "Diagnose",
+        copy: "We go through your accounts with a fine-tooth comb — campaign architecture, targeting, creative, bidding, and tracking — and tell you exactly what's wasting money and why.",
         bullets: [
           "Full ad account audit",
           "Campaign structure & targeting review",
@@ -369,8 +369,8 @@ export const serviceWriteups: Record<string, ServiceWriteup> = {
         ],
       },
       {
-        title: "Platform & Budget Strategy",
-        copy: "Not every platform is right for every business. We help you make smart decisions about where to spend, how much to allocate, and what kind of creative will perform best across Google, Meta, YouTube, and beyond.",
+        title: "Set you up",
+        copy: "Then we put the right foundations in place: where you should be spending, how much, and what kind of creative will actually perform across Google, Meta, YouTube, and beyond.",
         bullets: [
           "Platform recommendations & selection",
           "Budget allocation strategy",
@@ -378,46 +378,47 @@ export const serviceWriteups: Record<string, ServiceWriteup> = {
         ],
       },
       {
-        title: "Ongoing Strategic Support",
-        copy: "Ad platforms change constantly. Ongoing consulting keeps your strategy sharp, your targeting refined, and your spend accountable — so you always know what your campaigns are doing and why.",
+        title: "Set you free",
+        copy: "We teach you to read the numbers and make the calls yourself. If you'd like a sounding board as platforms change, we're there for that too.",
         bullets: [
-          "Monthly strategy touchpoints",
           "Performance interpretation & recommendations",
           "Campaign refinement guidance",
+          "Monthly strategy touchpoints, if you want them",
         ],
       },
     ],
   },
   "business-and-marketing-audits": {
     intro: [
-      "You can't fix what you don't know is broken. A proper audit gives you a clear, honest look at where your marketing is working, where it's wasting money, and what gaps are quietly costing you leads and sales.",
-      "We go through your digital presence top to bottom and come back with a prioritized action plan — not a 40-page report you'll never read.",
+      "When leads slow down or spend stops paying off, most businesses guess at the cause — and guessing gets expensive. An audit replaces the guessing with a clear, honest picture of what's working, what's quietly leaking money, and what's really holding you back.",
+      "We go through your business top to bottom and hand you a prioritized plan in plain language — not a 40-page report you'll never read. What you do with it is entirely up to you.",
     ],
     offerings: [
       {
-        title: "Digital Presence Review",
-        copy: "We assess everything your audience sees when they encounter your brand online — your website, your social profiles, your search visibility, and your ad presence — and identify where gaps and inconsistencies are costing you.",
+        title: "Diagnose",
+        copy: "We look at everything your customers see — your website, social, search visibility, and ads — and then at the numbers behind it, to find where gaps and leaks are costing you.",
         bullets: [
           "Website & UX review",
           "Social media & brand consistency audit",
           "Google Business Profile & local presence review",
-        ],
-      },
-      {
-        title: "Marketing Performance Analysis",
-        copy: "Beyond the surface, we dig into the data — what your campaigns are actually delivering, what your content is doing, and whether your marketing spend is generating a measurable return.",
-        bullets: [
           "Ad account performance review",
           "Email marketing audit",
           "SEO & content gap analysis",
         ],
       },
       {
-        title: "Actionable Recommendations",
-        copy: "An audit is only useful if it leads somewhere. You get a prioritized report that tells you exactly what to fix first, what to build toward, and what to stop doing — so you leave with a clear path forward.",
+        title: "Set you up",
+        copy: "You get a prioritized plan: what to fix first, what to build toward, and what to stop doing altogether.",
         bullets: [
           "Prioritized action plan",
           "Quick wins vs. long-term initiatives breakdown",
+        ],
+      },
+      {
+        title: "Set you free",
+        copy: "The report is yours to keep and written so your team can act on it. If you'd like help putting it into practice, that's available — never assumed.",
+        bullets: [
+          "A detailed report that's yours to keep",
           "Optional implementation support",
         ],
       },
@@ -425,31 +426,32 @@ export const serviceWriteups: Record<string, ServiceWriteup> = {
   },
   "goal-setting-and-brand-positioning": {
     intro: [
-      "If your team doesn't agree on where you're going, your marketing will reflect that. We facilitate focused sessions that get your goals out of someone's head and into a framework your whole team can execute against.",
-      "Brand positioning is the foundation everything else is built on — your messaging, your visuals, your targeting. Getting it right early saves you from expensive pivots later.",
+      "When marketing feels scattered, it's usually not a marketing problem — it's a clarity problem. If your team can't say in one sentence who you're for and why you win, every campaign, post, and hire pulls in a slightly different direction.",
+      "We facilitate the conversations that get your goals and positioning out of people's heads and onto paper, then hand you a framework your whole team can execute against — with or without us.",
     ],
     offerings: [
       {
-        title: "Brand Positioning",
-        copy: "We help you define exactly who you are, who you're for, and why you're the right choice — then build a positioning framework that makes your marketing clearer, more consistent, and more compelling across every channel.",
+        title: "Diagnose",
+        copy: "We start by finding where things are fuzzy: who you're really competing with, who you're really for, and where your team isn't on the same page.",
         bullets: [
           "Target audience & competitor analysis",
-          "Unique value proposition development",
-          "Messaging framework & brand story",
+          "Facilitated sessions to surface where your team isn't aligned",
         ],
       },
       {
-        title: "Goal Setting & Planning",
-        copy: "Vague goals produce vague results. We work with you to define specific, measurable objectives — and map out the marketing priorities that will actually move the needle toward them.",
+        title: "Set you up",
+        copy: "Then we define it clearly: why you're the right choice, the story you tell, and specific, measurable goals with the priorities that will actually move them.",
         bullets: [
+          "Unique value proposition development",
+          "Messaging framework & brand story",
           "Short- and long-term goal mapping",
           "KPI definition & success metrics",
           "Marketing priority roadmap",
         ],
       },
       {
-        title: "Brand Voice & Tone",
-        copy: "How you say something matters as much as what you say. We help you establish a consistent voice that reflects your brand's personality and resonates with your audience — whether it's a social caption or a sales proposal.",
+        title: "Set you free",
+        copy: "We hand over the tools that keep everyone consistent — so your voice sounds the same in a social caption as it does in a sales proposal, whoever's writing it.",
         bullets: [
           "Tone of voice guidelines",
           "Messaging do's and don'ts",
@@ -946,6 +948,17 @@ export const serviceWriteups: Record<string, ServiceWriteup> = {
       },
     ],
   },
+};
+
+/**
+ * Consulting is diagnose → set up → set free. For clients who'd rather hand
+ * the work off, each consulting service points to its done-for-you match.
+ */
+export const doneForYou: Record<string, { slug: string; label: string }> = {
+  "social-content-consulting": { slug: "social-media-management", label: "Social Media Management" },
+  "digital-ads": { slug: "advertising", label: "Advertising" },
+  "business-and-marketing-audits": { slug: "strategy", label: "Strategy" },
+  "goal-setting-and-brand-positioning": { slug: "strategy", label: "Strategy" },
 };
 
 export function getServiceWriteup(slug: string): ServiceWriteup | undefined {

@@ -10,6 +10,7 @@ import {
   getServiceApproach,
   getServiceWork,
   getServiceWriteup,
+  doneForYou,
 } from "@/lib/content";
 import { site } from "@/lib/site";
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
@@ -77,10 +78,14 @@ export default async function ServiceDetailPage({
   const intro = writeup?.intro ?? [svc.long ?? svc.detail];
   const ac = accentColor[svc.accent];
   const hasOffer = Boolean(writeup?.offerings.length) || points.length > 0;
+  // Consulting is framed as diagnose → set up → set free, not a sale.
+  const consulting = svc.groupKey === "consulting";
+  const handOff = consulting ? doneForYou[slug] : undefined;
+  const offerLabel = consulting ? "How it works" : "What we offer";
 
   const sections: NavSection[] = [
     approach && { id: "approach", label: "Approach", accent: sectionColor.approach },
-    hasOffer && { id: "offer", label: "What we offer", accent: sectionColor.offer },
+    hasOffer && { id: "offer", label: offerLabel, accent: sectionColor.offer },
     relatedWork.length > 0 && { id: "work", label: "Our work", accent: sectionColor.work },
     siblings.length > 0 && {
       id: "more",
@@ -135,11 +140,17 @@ export default async function ServiceDetailPage({
           <Reveal delay={0.15}>
             <div className="mt-10 flex flex-wrap items-center gap-3">
               <ButtonLink href="/contact" variant="primary" withArrow>
-                Start a project
+                {consulting ? "Book a diagnosis" : "Start a project"}
               </ButtonLink>
-              <ButtonLink href="/contact" variant="ghost" withArrow={false}>
-                Book a free audit
-              </ButtonLink>
+              {handOff ? (
+                <ButtonLink href={`/services/${handOff.slug}`} variant="ghost" withArrow={false}>
+                  Rather we just do it?
+                </ButtonLink>
+              ) : (
+                <ButtonLink href="/contact" variant="ghost" withArrow={false}>
+                  Book a free audit
+                </ButtonLink>
+              )}
             </div>
           </Reveal>
         </div>
@@ -177,8 +188,8 @@ export default async function ServiceDetailPage({
           <div className="mx-auto max-w-5xl px-(--spacing-gutter)">
             <SectionHeader
               n={num("offer")}
-              label="What we offer"
-              title={`${svc.name}, broken down.`}
+              label={offerLabel}
+              title={consulting ? "Diagnose. Set up. Set free." : `${svc.name}, broken down.`}
             />
 
             {writeup && writeup.offerings.length > 0 ? (
@@ -258,16 +269,24 @@ export default async function ServiceDetailPage({
             <Reveal className="mt-10 flex flex-col items-start justify-between gap-6 rounded-2xl border border-[color:color-mix(in_oklab,var(--ac)_30%,transparent)] bg-[color:color-mix(in_oklab,var(--ac)_7%,transparent)] p-6 sm:flex-row sm:items-center md:p-8">
               <div>
                 <p className="text-base font-semibold tracking-tight text-hi">
-                  Custom packages available.
+                  {handOff ? "Rather we just handle it?" : "Custom packages available."}
                 </p>
                 <p className="mt-1 text-sm leading-relaxed text-mid">
-                  Every engagement is scoped to your goals, your stage, and your budget.
+                  {handOff
+                    ? `Most clients leave able to run it themselves. If you'd rather hand it off, we can do the work for you through ${handOff.label}.`
+                    : "Every engagement is scoped to your goals, your stage, and your budget."}
                 </p>
               </div>
               <div className="shrink-0">
-                <ButtonLink href={site.calculatorUrl} variant="primary" withArrow>
-                  Get an estimate
-                </ButtonLink>
+                {handOff ? (
+                  <ButtonLink href={`/services/${handOff.slug}`} variant="ghost" withArrow>
+                    See {handOff.label}
+                  </ButtonLink>
+                ) : (
+                  <ButtonLink href={site.calculatorUrl} variant="primary" withArrow>
+                    Get an estimate
+                  </ButtonLink>
+                )}
               </div>
             </Reveal>
           </div>
