@@ -982,7 +982,7 @@ export const serviceImage: Record<string, string> = {
   branding: "/work/transcend.webp",
   "social-media-management": "/work/yt-hansen-reel.jpg",
   strategy: "/portfolio/csa.jpg",
-  videography: "/work/yt-ardent.jpg",
+  videography: "/work/yt-arpa-ymca.jpg",
   photography: "/portfolio/hansen.jpg",
   "jingles-and-radio-ads": "/work/yt-dynaline.jpg",
   "graphic-design": "/portfolio/azimuth.png",
