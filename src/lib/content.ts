@@ -1052,6 +1052,33 @@ export const work: WorkItem[] = [
   },
 ];
 
+/* ------------------------------------------------------------------ */
+/*  Case studies — listed under "Our work" (add new ones here).        */
+/* ------------------------------------------------------------------ */
+
+export type CaseStudy = {
+  title: string;
+  client: string;
+  sector: string;
+  href: string;
+  image: string;
+  blurb: string;
+  accent: "teal" | "lavender" | "gold";
+};
+
+export const caseStudies: CaseStudy[] = [
+  {
+    title: "Optometrists' Clinic",
+    client: "The Optometrists' Clinic",
+    sector: "Optometry · Web & Paid Ads",
+    href: "/optometrists-case-study",
+    image: "/work/optometrists-after.webp",
+    blurb:
+      "A rebuilt website and leaner Google Ads that nearly doubled patient contacts on 59% less ad spend.",
+    accent: "teal",
+  },
+];
+
 /** Portfolio sections, in the order the original site presented them. */
 export const workSections: {
   tag: string;

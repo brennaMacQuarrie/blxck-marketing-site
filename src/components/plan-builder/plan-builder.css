@@ -54,7 +54,7 @@
 .bx-link:hover { color: var(--text); }
 
 /* ---------- Service tiles ---------- */
-.bx-steplabel { font-family: var(--f-body); font-size: 12px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--dim); margin: 0 0 12px; }
+.bx-steplabel { font-family: var(--font-display); font-size: 14px; font-weight: 400; letter-spacing: .04em; text-transform: lowercase; color: var(--dim); margin: 0 0 12px; }
 .bx-tiles { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 12px; margin-bottom: 40px; }
 .bx-tile {
   position: relative; text-align: left; background: var(--surface); border: 1px solid var(--line);
@@ -98,8 +98,8 @@
 .bx-pbody { padding: 4px 20px 8px; }
 .bx-break { display: flex; align-items: center; gap: 12px; margin: 26px 0 4px; }
 .bx-break::before, .bx-break::after { content: ""; flex: 1; height: 2px; background: var(--g3); border-radius: 1px; opacity: .8; }
-.bx-break span { font-family: var(--f-body); font-size: 12px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); white-space: nowrap; }
-.bx-sub { font-family: var(--f-body); font-size: 12px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--teal); padding: 18px 0 4px; }
+.bx-break span { font-family: var(--font-display); font-size: 14px; font-weight: 400; letter-spacing: .04em; text-transform: lowercase; color: var(--gold); white-space: nowrap; }
+.bx-sub { font-family: var(--font-display); font-size: 14px; font-weight: 400; letter-spacing: .04em; text-transform: lowercase; color: var(--teal); padding: 18px 0 4px; }
 
 .bx-row {
   display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 8px 20px; align-items: center;
@@ -165,7 +165,7 @@
 .bx-vday { margin: 16px 0 6px; }
 .bx-vday .vd-opts { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 10px; }
 .bx-vday .vd-o { background: var(--bg); border: 1px solid var(--line-strong); border-radius: 8px; padding: 12px 14px; display: grid; gap: 2px; }
-.bx-vday .vd-k { font-family: var(--f-body); font-size: 12px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--teal); margin-bottom: 4px; }
+.bx-vday .vd-k { font-family: var(--font-display); font-size: 14px; font-weight: 400; letter-spacing: .04em; text-transform: lowercase; color: var(--teal); margin-bottom: 4px; }
 .bx-vday .vd-o b { font-size: 16px; }
 .bx-vday .vd-o span { font-size: 12.5px; color: var(--muted); }
 .bx-vday .vd-o .vd-p { color: var(--gold); font-weight: 600; font-variant-numeric: tabular-nums; margin-top: 4px; }
@@ -194,7 +194,7 @@
 /* ---------- Summary ---------- */
 .bx-sum { position: sticky; top: var(--bx-top); background: var(--surface); border-radius: var(--r); border: 1px solid var(--line); overflow: hidden; max-height: calc(100vh - var(--bx-top) - 16px); display: flex; flex-direction: column; }
 .bx-shead { background: var(--g3); padding: 18px 20px 20px; color: #fff; text-shadow: 0 1px 14px rgba(0,0,0,.2); flex: none; }
-.bx-shead .s-lbl { font-family: var(--f-body); font-size: 12px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; }
+.bx-shead .s-lbl { font-family: var(--font-display); font-size: 14px; font-weight: 400; letter-spacing: .04em; text-transform: lowercase; }
 .bx-shead .s-total { font-family: var(--f-head); font-weight: 400; font-size: 44px; line-height: 1.05; font-variant-numeric: tabular-nums; margin-top: 6px; }
 .bx-shead .s-total small { font-size: 16px; font-weight: 400; }
 .bx-shead .s-once { font-size: 14px; font-weight: 600; margin-top: 2px; font-variant-numeric: tabular-nums; }
@@ -213,7 +213,7 @@
 .bx-lines { display: grid; gap: 2px; }
 #bx-onetime:not(:empty) { margin-top: 4px; padding-top: 16px; border-top: 2px solid var(--line-strong); }
 #bx-onetime h4 { color: var(--gold); }
-.bx-lines h4 { margin: 0 0 6px; font-family: var(--f-body); font-size: 12px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--dim); font-weight: 400; }
+.bx-lines h4 { margin: 0 0 6px; font-family: var(--font-display); font-size: 14px; font-weight: 400; letter-spacing: .04em; text-transform: lowercase; color: var(--dim); font-weight: 400; }
 .bx-grp { padding: 8px 0; border-top: 1px solid var(--line); }
 .bx-grp:first-of-type { border-top: 0; }
 .bx-l { display: flex; justify-content: space-between; gap: 12px; font-variant-numeric: tabular-nums; }
@@ -266,7 +266,7 @@
   }
   .bx-mbar .mb-figs { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 2px 18px; min-width: 0; }
   .bx-mbar .mb-fig { display: grid; gap: 0; }
-  .bx-mbar .mb-lbl { font-family: var(--f-body); font-size: 12px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--dim); }
+  .bx-mbar .mb-lbl { font-family: var(--font-display); font-size: 14px; font-weight: 400; letter-spacing: .04em; text-transform: lowercase; color: var(--dim); }
   .bx-mbar .mb-t { font-family: var(--f-head); font-weight: 400; font-size: 19px; line-height: 1.15; font-variant-numeric: tabular-nums; }
   .bx-mbar .mb-t small { font-family: var(--f-body); font-size: 12px; font-weight: 500; color: var(--muted); margin-left: 2px; }
   .bx-mbar .mb-s { flex-basis: 100%; font-size: 12px; color: var(--good); }

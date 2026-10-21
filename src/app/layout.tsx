@@ -4,6 +4,7 @@ import { spaceAge, milker } from "@/lib/fonts";
 import { site } from "@/lib/site";
 import SmoothScroll from "@/components/providers/SmoothScroll";
 import { Navbar } from "@/components/layout/Navbar";
+import { PageTransition } from "@/components/layout/PageTransition";
 import { Footer } from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
@@ -53,6 +54,7 @@ export default function RootLayout({
     >
       <body className="flex min-h-full flex-col bg-ink text-hi">
         <SmoothScroll>
+          <PageTransition />
           <Navbar />
           <main className="flex-1">{children}</main>
           <Footer />

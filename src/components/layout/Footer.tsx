@@ -1,8 +1,16 @@
 import Link from "next/link";
-import { nav, site } from "@/lib/site";
+import { site } from "@/lib/site";
 import { Logo } from "@/components/layout/Logo";
 import { ButtonLink } from "@/components/ui/Button";
 import { Reveal } from "@/components/motion/Reveal";
+
+const footerLinks = [
+  { label: "Services", href: "/services" },
+  { label: "Case studies", href: "/case-studies" },
+  { label: "Portfolio", href: "/portfolio" },
+  { label: "Custom plan builder", href: "/custom-plan-builder" },
+  { label: "Contact", href: "/contact" },
+];
 
 export function Footer() {
   const year = 2026;
@@ -45,7 +53,7 @@ export function Footer() {
 
           <nav className="flex flex-col gap-3">
             <span className="eyebrow mb-1">Navigate</span>
-            {nav.map((item) => (
+            {footerLinks.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}

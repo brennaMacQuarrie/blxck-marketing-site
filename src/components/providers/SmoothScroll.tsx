@@ -89,9 +89,15 @@ export default function SmoothScroll({
   useEffect(() => {
     const id = requestAnimationFrame(() => {
       const lenis = lenisRef.current;
-      window.scrollTo(0, 0);
+      // Honor in-page targets on arrival (e.g. /portfolio#web), else top.
+      const hash = window.location.hash.slice(1);
+      const target = hash ? document.getElementById(decodeURIComponent(hash)) : null;
+      const top = target
+        ? target.getBoundingClientRect().top + window.scrollY - 112
+        : 0;
+      window.scrollTo(0, top);
       if (lenis) {
-        lenis.scrollTo(0, { immediate: true, force: true });
+        lenis.scrollTo(top, { immediate: true, force: true });
         lenis.resize();
       }
       ScrollTrigger.refresh();

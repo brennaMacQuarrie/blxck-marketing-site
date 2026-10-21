@@ -37,9 +37,9 @@ export const site = {
   calculatorUrl: process.env.NEXT_PUBLIC_CALCULATOR_URL ?? "/custom-plan-builder",
 } as const;
 
+/** Main nav. The logo links home; Services and Our work open menus. */
 export const nav = [
-  { label: "Home", href: "/" },
   { label: "Services", href: "/services" },
-  { label: "Portfolio", href: "/portfolio" },
+  { label: "Our work", href: "/case-studies" },
   { label: "Contact", href: "/contact" },
 ] as const;
