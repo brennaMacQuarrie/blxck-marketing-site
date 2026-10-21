@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { projects, work, workSections, clientLogos } from "@/lib/content";
+import { work, workSections, clientLogos, caseStudies } from "@/lib/content";
 import type { WorkItem } from "@/lib/content";
 import { site } from "@/lib/site";
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
@@ -35,7 +35,7 @@ const navSections: NavSection[] = [
     label: sec.title.replace(" Content", ""),
     accent: accentColor[sec.accent],
   })),
-  { id: "industries", label: "Industries", accent: "var(--color-teal)" },
+  { id: "case-studies", label: "Case studies", accent: "var(--color-gold)" },
 ];
 const num = (id: string) => navSections.findIndex((x) => x.id === id) + 1;
 
@@ -75,14 +75,29 @@ export default function PortfolioPage() {
       {/* ---------------- Client logos ---------------- */}
       <section
         id="clients"
-        className="section-accent bg-void py-20 md:py-24"
+        className="section-accent relative overflow-hidden bg-carbon py-20 md:py-28"
         style={{ ["--ac" as string]: "var(--color-silver)" }}
       >
-        <div className="mx-auto max-w-6xl px-(--spacing-gutter)">
-          <SectionHeader n={num("clients")} label="Trusted by" title="Brands we work with." />
-          <Reveal className="mt-10">
-            <LogoCarousel logos={clientLogos} />
-          </Reveal>
+        {/* A lit band — brighter than the surrounding sections. */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(60% 70% at 20% 30%, rgb(126 190 197 / 0.16), transparent 70%), radial-gradient(55% 70% at 80% 70%, rgb(183 148 223 / 0.16), transparent 70%), radial-gradient(40% 60% at 55% 10%, rgb(204 169 93 / 0.12), transparent 70%)",
+          }}
+        />
+        <div className="relative mx-auto max-w-6xl px-(--spacing-gutter)">
+          <SectionHeader
+            n={num("clients")}
+            label="Trusted by"
+            title="Brands we work with."
+            lede={`${clientLogos.length}+ businesses — from local favourites to national networks.`}
+          />
+        </div>
+        <div className="relative mt-12 flex flex-col gap-8 md:gap-10">
+          <LogoCarousel logos={clientLogos.slice(0, Math.ceil(clientLogos.length / 2))} seconds={55} />
+          <LogoCarousel logos={clientLogos.slice(Math.ceil(clientLogos.length / 2))} seconds={60} reverse />
         </div>
       </section>
 
@@ -124,55 +139,53 @@ export default function PortfolioPage() {
         );
       })}
 
-      {/* ---------------- Brands & industries ---------------- */}
+      {/* ---------------- Case studies ---------------- */}
       <section
-        id="industries"
+        id="case-studies"
         className="section-accent py-20 md:py-28"
-        style={{ ["--ac" as string]: "var(--color-teal)" }}
+        style={{ ["--ac" as string]: "var(--color-gold)" }}
       >
         <div className="mx-auto max-w-6xl px-(--spacing-gutter)">
-          <SectionHeader
-            n={num("industries")}
-            label="Across industries"
-            title="Brands we've grown."
-          />
+          <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
+            <SectionHeader
+              n={num("case-studies")}
+              label="Case studies"
+              title="The full story."
+              lede="The problem, what we changed, and the numbers that moved."
+            />
+            <div className="shrink-0">
+              <ButtonLink href="/case-studies" variant="ghost" withArrow>
+                All case studies
+              </ButtonLink>
+            </div>
+          </div>
         </div>
-        <RevealGroup className="mx-auto mt-10 grid max-w-6xl gap-5 px-(--spacing-gutter) sm:grid-cols-2 lg:grid-cols-3">
-          {projects.map((p) => (
-            <RevealItem key={p.name} className="h-full">
+        <RevealGroup className="mx-auto mt-10 grid max-w-6xl gap-6 px-(--spacing-gutter) md:grid-cols-2">
+          {caseStudies.map((c) => (
+            <RevealItem key={c.href} className="h-full">
               <Link
-                href={p.href ?? "/contact"}
-                className="group relative block overflow-hidden rounded-2xl border border-white/[0.08]"
-                style={{ ["--ac" as string]: accentColor[p.accent] }}
+                href={c.href}
+                className="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/[0.08] bg-ink transition-colors duration-300 hover:border-[color:var(--ac)]"
               >
-                <div className="relative aspect-[4/5] w-full">
+                <div className="relative aspect-[16/10] w-full overflow-hidden">
                   <Image
-                    src={p.image}
-                    alt={`${p.name} — ${p.sector} work by BLXCK Marketing`}
+                    src={c.image}
+                    alt={`${c.client} — case study by BLXCK Marketing`}
                     fill
-                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                    className="object-cover transition-transform duration-[900ms] ease-out group-hover:scale-105"
-                  />
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
-                  {/* accent line that grows on hover */}
-                  <span
-                    className="absolute bottom-0 left-0 h-[3px] w-0 transition-all duration-500 ease-out group-hover:w-full"
-                    style={{ background: "var(--ac)" }}
+                    sizes="(min-width: 768px) 50vw, 100vw"
+                    className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
                   />
                 </div>
-
-                {/* sector badge */}
-                <span className="absolute left-4 top-4 rounded-full border border-white/15 bg-black/40 px-3 py-1 text-[0.62rem] uppercase tracking-[0.18em] text-mid backdrop-blur-sm">
-                  {p.sector}
-                </span>
-
-                <div className="absolute inset-x-0 bottom-0 flex flex-col gap-1.5 p-6">
-                  <h3 className="font-heading text-xl text-hi md:text-2xl">
-                    {p.name}
-                  </h3>
-                  <p className="max-h-0 overflow-hidden text-sm leading-relaxed text-mid opacity-0 transition-all duration-500 ease-out group-hover:max-h-24 group-hover:opacity-100">
-                    {p.blurb}
-                  </p>
+                <div className="flex flex-1 flex-col gap-3 border-t border-white/[0.08] p-6 md:p-8">
+                  <span className="text-xs uppercase tracking-[0.18em]" style={{ color: "var(--ac)" }}>
+                    {c.sector}
+                  </span>
+                  <h3 className="text-2xl text-hi">{c.title}</h3>
+                  <p className="leading-relaxed text-mid">{c.blurb}</p>
+                  <span className="mt-auto pt-3 text-sm text-hi">
+                    Read the case study{" "}
+                    <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
+                  </span>
                 </div>
               </Link>
             </RevealItem>
@@ -180,9 +193,7 @@ export default function PortfolioPage() {
         </RevealGroup>
 
         <Reveal className="mx-auto mt-16 flex max-w-6xl flex-col items-center gap-6 px-(--spacing-gutter) text-center">
-          <p className="max-w-xl text-mid">
-            Your brand could be next on this list.
-          </p>
+          <p className="max-w-xl text-mid">Your brand could be next.</p>
           <ButtonLink href="/contact" variant="primary" withArrow>
             Start a project
           </ButtonLink>

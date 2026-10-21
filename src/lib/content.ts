@@ -1147,7 +1147,7 @@ export const workSections: {
   },
 ];
 
-/** Client logos (white on transparent), from the original portfolio strip. */
+/** Client logos (transparent; lightened where needed to read on dark). */
 export const clientLogos: { name: string; src: string }[] = [
   { name: "SnapThat", src: "/clients/snapthat.webp" },
   { name: "Alberta ENT Sleep", src: "/clients/alberta-ent-sleep.webp" },
@@ -1165,6 +1165,23 @@ export const clientLogos: { name: string; src: string }[] = [
   { name: "Simply Decks", src: "/clients/simply-decks.webp" },
   { name: "TiOS", src: "/clients/tios.webp" },
   { name: "Optometrists' Clinic", src: "/clients/optometrists.webp" },
+  { name: "Backyard Grills", src: "/clients/backyard-grills.webp" },
+  { name: "Bhatti Realty Group", src: "/clients/bhatti.webp" },
+  { name: "Chrome Spa Salon", src: "/clients/chrome.webp" },
+  { name: "David B. Caseley, Portfolio Manager", src: "/clients/david-caseley.webp" },
+  { name: "Dynaline", src: "/clients/dynaline.webp" },
+  { name: "Frank Melo Builders", src: "/clients/frank-melo.webp" },
+  { name: "Kalteam Construction", src: "/clients/kalteam.webp" },
+  { name: "Living Skies", src: "/clients/living-skies.webp" },
+  { name: "Night Rider LEDs", src: "/clients/night-rider.webp" },
+  { name: "OES Group Chartered LLP", src: "/clients/oes-group.webp" },
+  { name: "Pactum Law", src: "/clients/pactum-law.webp" },
+  { name: "Parkland Courier & Logistics", src: "/clients/parkland-courier.webp" },
+  { name: "Red Cedar Chiropractic", src: "/clients/red-cedar.webp" },
+  { name: "Scripts Medical Pharmacy", src: "/clients/scripts.webp" },
+  { name: "Token Naturals", src: "/clients/token.webp" },
+  { name: "Transcend Contracting", src: "/clients/transcend-contracting.webp" },
+  { name: "KP Consulting", src: "/clients/kp-consulting.webp" },
 ];
 
 /** Which work tag (if any) a given service slug should showcase. */

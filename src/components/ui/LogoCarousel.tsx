@@ -9,9 +9,11 @@ import Image from "next/image";
 export function LogoCarousel({
   logos,
   seconds = 45,
+  reverse = false,
 }: {
   logos: { name: string; src: string }[];
   seconds?: number;
+  reverse?: boolean;
 }) {
   const row = (dup: boolean) => (
     <ul
@@ -25,7 +27,7 @@ export function LogoCarousel({
             alt={dup ? "" : l.name}
             width={160}
             height={64}
-            className="h-auto max-h-10 w-auto max-w-[150px] object-contain opacity-60 transition-opacity duration-300 hover:opacity-100 md:max-h-12 md:max-w-[170px]"
+            className="logo-img h-auto max-h-12 w-auto max-w-[170px] object-contain md:max-h-14 md:max-w-[200px]"
           />
         </li>
       ))}
@@ -36,7 +38,10 @@ export function LogoCarousel({
     <div className="logo-carousel group relative overflow-hidden">
       <div
         className="logo-track flex w-max"
-        style={{ animationDuration: `${seconds}s` }}
+        style={{
+          animationDuration: `${seconds}s`,
+          animationDirection: reverse ? "reverse" : "normal",
+        }}
       >
         {row(false)}
         {row(true)}
@@ -52,6 +57,13 @@ export function LogoCarousel({
         }
         .logo-carousel:hover .logo-track {
           animation-play-state: paused;
+        }
+        .logo-img {
+          transition: transform .35s cubic-bezier(.16,1,.3,1), filter .35s ease;
+        }
+        .logo-img:hover {
+          transform: scale(1.08);
+          filter: drop-shadow(0 0 14px rgb(255 255 255 / 0.28));
         }
         @keyframes logo-scroll {
           from { transform: translateX(0); }

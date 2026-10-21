@@ -62,12 +62,6 @@ export function Footer() {
                 {item.label}
               </Link>
             ))}
-            <Link
-              href="/medical-marketing"
-              className="w-fit text-sm text-mid transition-colors hover:text-hi"
-            >
-              Medical Marketing
-            </Link>
           </nav>
 
           <div className="flex flex-col gap-3">
