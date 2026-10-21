@@ -1,6 +1,6 @@
 /**
  * Global site configuration — brand facts, contact details, nav, and the
- * env-driven integrations (Calendly link, Resend). Single source of truth.
+ * env-driven integrations (Calendly link, SendGrid). Single source of truth.
  */
 
 export const site = {

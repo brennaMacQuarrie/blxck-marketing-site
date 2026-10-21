@@ -1,10 +1,10 @@
-import { Resend } from "resend";
 import { site } from "@/lib/site";
+import { sendEmail } from "@/lib/email";
 
 /**
- * Plan builder quote → emails the full plan to the BLXCK inbox via Resend
- * (reply-to the customer). Requires RESEND_API_KEY; responds 503 when it's
- * missing so the builder falls back to a prefilled email.
+ * Plan builder quote → emails the full plan to the BLXCK inbox via SendGrid
+ * (reply-to the customer). Responds 503 when SendGrid isn't configured so
+ * the builder falls back to a prefilled email.
  */
 export async function POST(request: Request) {
   let data: Record<string, unknown>;
@@ -29,37 +29,28 @@ export async function POST(request: Request) {
     return Response.json({ ok: false, error: "invalid_email" }, { status: 400 });
   }
 
-  const apiKey = process.env.RESEND_API_KEY;
-  if (!apiKey) {
-    return Response.json({ ok: false, error: "not_configured" }, { status: 503 });
-  }
+  const subject = `Plan builder quote — ${name}${business ? ` · ${business}` : ""}`;
+  const text = [
+    `Name: ${name}`,
+    `Email: ${email}`,
+    `Business: ${business || "—"}`,
+    ...(message ? ["", message] : []),
+    "",
+    "----------------------------------------",
+    plan,
+  ].join("\n");
 
-  try {
-    const resend = new Resend(apiKey);
-    const from = process.env.CONTACT_FROM || "BLXCK Website <onboarding@resend.dev>";
-    const subject = `Plan builder quote — ${name}${business ? ` · ${business}` : ""}`;
-    const text = [
-      `Name: ${name}`,
-      `Email: ${email}`,
-      `Business: ${business || "—"}`,
-      ...(message ? ["", message] : []),
-      "",
-      "----------------------------------------",
-      plan,
-    ].join("\n");
-
-    const { error } = await resend.emails.send({
-      from,
-      to: site.contact.email,
-      replyTo: email,
-      subject,
-      text,
-    });
-    if (error) {
-      return Response.json({ ok: false, error: "send_failed" }, { status: 502 });
-    }
-    return Response.json({ ok: true });
-  } catch {
-    return Response.json({ ok: false, error: "send_failed" }, { status: 502 });
+  const result = await sendEmail({
+    to: site.contact.email,
+    replyTo: email,
+    subject,
+    text,
+  });
+  if (!result.ok) {
+    return Response.json(
+      { ok: false, error: result.error },
+      { status: result.error === "not_configured" ? 503 : 502 },
+    );
   }
+  return Response.json({ ok: true });
 }

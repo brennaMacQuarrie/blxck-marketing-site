@@ -15,7 +15,7 @@ export function Footer() {
             <span className="eyebrow">Start the conversation</span>
           </Reveal>
           <Reveal delay={0.05}>
-            <h2 className="max-w-4xl text-balance font-display text-4xl uppercase leading-[0.95] text-hi sm:text-6xl">
+            <h2 className="max-w-4xl text-balance font-display text-4xl lowercase leading-[1.02] text-hi sm:text-6xl">
               Ready to become{" "}
               <span className="text-spectrum">impossible to ignore?</span>
             </h2>

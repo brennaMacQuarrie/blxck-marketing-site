@@ -1,10 +1,9 @@
-import { Resend } from "resend";
 import { site } from "@/lib/site";
+import { sendEmail } from "@/lib/email";
 
 /**
- * Contact form handler → sends an email via Resend to the BLXCK inbox.
- * Requires RESEND_API_KEY. Until a domain is verified in Resend, set
- * CONTACT_FROM to a verified sender (defaults to Resend's test sender).
+ * Contact form handler → sends an email via SendGrid to the BLXCK inbox.
+ * Requires SENDGRID_API_KEY and CONTACT_FROM (a SendGrid-verified sender).
  */
 export async function POST(request: Request) {
   let data: Record<string, unknown>;
@@ -30,37 +29,27 @@ export async function POST(request: Request) {
     return Response.json({ ok: false, error: "invalid_email" }, { status: 400 });
   }
 
-  const apiKey = process.env.RESEND_API_KEY;
-  if (!apiKey) {
-    return Response.json({ ok: false, error: "not_configured" }, { status: 503 });
+  const subject = `New enquiry — ${name}${company ? ` · ${company}` : ""}`;
+  const text = [
+    `Name: ${name}`,
+    `Email: ${email}`,
+    `Company: ${company || "—"}`,
+    `Interested in: ${interest || "—"}`,
+    "",
+    message,
+  ].join("\n");
+
+  const result = await sendEmail({
+    to: site.contact.email,
+    replyTo: email,
+    subject,
+    text,
+  });
+  if (!result.ok) {
+    return Response.json(
+      { ok: false, error: result.error },
+      { status: result.error === "not_configured" ? 503 : 502 },
+    );
   }
-
-  try {
-    const resend = new Resend(apiKey);
-    const from = process.env.CONTACT_FROM || "BLXCK Website <onboarding@resend.dev>";
-    const subject = `New enquiry — ${name}${company ? ` · ${company}` : ""}`;
-    const text = [
-      `Name: ${name}`,
-      `Email: ${email}`,
-      `Company: ${company || "—"}`,
-      `Interested in: ${interest || "—"}`,
-      "",
-      message,
-    ].join("\n");
-
-    const { error } = await resend.emails.send({
-      from,
-      to: site.contact.email,
-      replyTo: email,
-      subject,
-      text,
-    });
-
-    if (error) {
-      return Response.json({ ok: false, error: "send_failed" }, { status: 502 });
-    }
-    return Response.json({ ok: true });
-  } catch {
-    return Response.json({ ok: false, error: "send_failed" }, { status: 502 });
-  }
+  return Response.json({ ok: true });
 }

@@ -240,7 +240,7 @@ export function Navbar() {
                         className="flex w-full items-center justify-between py-3 text-left"
                         aria-expanded={mobileServices}
                       >
-                        <span className="font-display text-3xl uppercase text-hi">
+                        <span className="font-display text-3xl lowercase text-hi">
                           Services
                         </span>
                         <span
@@ -303,7 +303,7 @@ export function Navbar() {
                   <li key={item.href} className="border-b border-white/[0.06]">
                     <Link
                       href={item.href}
-                      className="block py-3 font-display text-3xl uppercase text-hi"
+                      className="block py-3 font-display text-3xl lowercase text-hi"
                     >
                       {item.label}
                     </Link>
