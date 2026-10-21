@@ -12,6 +12,7 @@ import {
   getServiceWriteup,
   doneForYou,
   serviceImage,
+  workHeading,
 } from "@/lib/content";
 import { site } from "@/lib/site";
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
@@ -362,7 +363,7 @@ export default async function ServiceDetailPage({
               <SectionHeader
                 n={num("work")}
                 label="Selected work"
-                title={`${svc.name}, in the wild.`}
+                title={workHeading[slug] ?? `${svc.name}, in the wild.`}
               />
               <div className="shrink-0">
                 <ButtonLink href="/portfolio" variant="ghost" withArrow>
@@ -411,8 +412,7 @@ export default async function ServiceDetailPage({
                           </span>
                         )}
                       </div>
-                      <div className="absolute bottom-0 left-0 right-0 flex items-end justify-between p-5">
-                        <span className="font-heading text-lg text-hi">{w.name}</span>
+                      <div className="absolute bottom-0 left-0 right-0 flex items-end justify-end p-5">
                         <span className="text-[0.68rem] uppercase tracking-[0.16em] text-mid">
                           {w.type}
                         </span>

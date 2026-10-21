@@ -961,6 +961,16 @@ export const doneForYou: Record<string, { slug: string; label: string }> = {
   "goal-setting-and-brand-positioning": { slug: "strategy", label: "Strategy" },
 };
 
+/** Friendly "in the wild" headings for the selected-work section. */
+export const workHeading: Record<string, string> = {
+  "web-development": "Our websites, in the wild.",
+  branding: "Our brands, in the wild.",
+  "graphic-design": "Our graphic designs, in the wild.",
+  videography: "Our videos, in the wild.",
+  "social-media-management": "Our social content, in the wild.",
+  "social-content-consulting": "Our social content, in the wild.",
+};
+
 /** Hero image per service page (from the portfolio) — breaks up the dark. */
 export const serviceImage: Record<string, string> = {
   "social-content-consulting": "/work/yt-token-naturals.jpg",
@@ -1158,10 +1168,9 @@ export const clientLogos: { name: string; src: string }[] = [
 ];
 
 /** Which work tag (if any) a given service slug should showcase. */
+// Hosting and SEO intentionally have no portfolio section.
 const serviceWorkTag: Record<string, string> = {
   "web-development": "web",
-  hosting: "web",
-  seo: "web",
   branding: "branding",
   "graphic-design": "branding",
   videography: "video",
