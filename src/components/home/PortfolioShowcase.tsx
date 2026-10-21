@@ -15,6 +15,7 @@ const accentColor: Record<string, string> = {
 
 export function PortfolioShowcase() {
   const [active, setActive] = useState(0);
+  const [hovered, setHovered] = useState<number | null>(null);
 
   return (
     <section className="border-t border-white/[0.06] bg-ink py-24 md:py-32">
@@ -31,99 +32,108 @@ export function PortfolioShowcase() {
           </div>
         </div>
 
-        <div className="mt-14 grid gap-10 lg:grid-cols-[1fr_0.82fr] lg:gap-16">
-          {/* Project list */}
-          <ul className="flex flex-col">
+        {/* Desktop: 3×3 grid over one full-bleed image. Hovering a project
+            swaps the background to it; the hovered cell goes dark. */}
+        <div
+          className="relative mt-14 hidden overflow-hidden rounded-2xl border border-white/10 bg-carbon md:block"
+          onMouseLeave={() => setHovered(null)}
+        >
+          {projects.map((p, i) => (
+            <Image
+              key={p.name}
+              src={p.image}
+              alt=""
+              aria-hidden
+              fill
+              sizes="(min-width: 1152px) 1152px, 100vw"
+              priority={i === 0}
+              className={`object-cover transition-all duration-700 ease-out ${
+                active === i ? "scale-100 opacity-100" : "scale-105 opacity-0"
+              }`}
+            />
+          ))}
+          <div className="pointer-events-none absolute inset-0 bg-black/30" />
+
+          <ul className="relative grid grid-cols-3">
             {projects.map((p, i) => {
-              const isActive = active === i;
+              const on = hovered === i;
               return (
-                <li key={p.name}>
+                <li
+                  key={p.name}
+                  className="border-white/15 [&:not(:nth-child(3n))]:border-r [&:nth-child(n+4)]:border-t"
+                >
                   <a
                     href={p.href ?? "/portfolio"}
-                    onMouseEnter={() => setActive(i)}
-                    onFocus={() => setActive(i)}
-                    className="group block border-t border-white/[0.08] py-5 md:py-6"
+                    onMouseEnter={() => {
+                      setHovered(i);
+                      setActive(i);
+                    }}
+                    onFocus={() => {
+                      setHovered(i);
+                      setActive(i);
+                    }}
+                    className={`flex aspect-[16/10] flex-col items-center justify-between px-6 pb-6 pt-10 text-center transition-colors duration-500 ${
+                      on ? "bg-void/85 backdrop-blur-sm" : "bg-transparent"
+                    }`}
                     style={{ ["--ac" as string]: accentColor[p.accent] }}
                   >
-                    <div className="flex items-baseline justify-between gap-4">
-                      <div className="flex items-baseline gap-4 md:gap-6">
-                        <span
-                          className="text-xs tabular-nums transition-colors duration-300"
-                          style={{ color: isActive ? "var(--ac)" : "var(--color-lo)" }}
-                        >
-                          0{i + 1}
-                        </span>
-                        <h3
-                          className={`text-2xl font-semibold tracking-tight transition-all duration-300 md:text-4xl ${
-                            isActive
-                              ? "translate-x-1 text-hi lg:translate-x-2"
-                              : "text-lo group-hover:text-mid"
-                          }`}
-                        >
-                          {p.name}
-                        </h3>
-                      </div>
-                      <span className="hidden shrink-0 text-xs uppercase tracking-[0.2em] text-lo sm:block">
+                    <span className="flex flex-col items-center gap-2 [text-shadow:0_1px_12px_rgba(0,0,0,0.6)]">
+                      <span
+                        className="text-[0.7rem] uppercase tracking-[0.22em]"
+                        style={{ color: "var(--ac)" }}
+                      >
                         {p.sector}
                       </span>
-                    </div>
-
-                    {/* Inline image for touch / small screens */}
-                    <div className="mt-4 overflow-hidden rounded-xl border border-white/10 lg:hidden">
-                      <div className="relative aspect-video w-full">
-                        <Image
-                          src={p.image}
-                          alt={`${p.name} — ${p.sector} work by BLXCK Marketing`}
-                          fill
-                          sizes="100vw"
-                          className="object-cover"
-                        />
-                      </div>
-                    </div>
+                      <span className="text-lg font-semibold text-hi lg:text-xl">
+                        {p.name}
+                      </span>
+                    </span>
+                    <span
+                      className={`text-xs uppercase tracking-[0.2em] text-hi transition-all duration-500 ${
+                        on ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0"
+                      }`}
+                    >
+                      View more →
+                    </span>
                   </a>
                 </li>
               );
             })}
-            <li className="border-t border-white/[0.08]" aria-hidden />
           </ul>
+        </div>
 
-          {/* Sticky crossfading preview (desktop) */}
-          <div className="hidden lg:block">
-            <div className="sticky top-28">
-              <div
-                className="pointer-events-none absolute -inset-6 -z-10 rounded-[2rem] opacity-25 blur-3xl transition-colors duration-500"
-                style={{ background: accentColor[projects[active].accent] }}
-              />
-              <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-white/10 bg-carbon">
-                {projects.map((p, i) => (
+        {/* Mobile: stacked image cards */}
+        <ul className="mt-10 grid gap-4 md:hidden">
+          {projects.map((p) => (
+            <li key={p.name}>
+              <a
+                href={p.href ?? "/portfolio"}
+                className="relative block overflow-hidden rounded-xl border border-white/10"
+                style={{ ["--ac" as string]: accentColor[p.accent] }}
+              >
+                <div className="relative aspect-[16/10] w-full">
                   <Image
-                    key={p.name}
                     src={p.image}
                     alt={`${p.name} — ${p.sector} work by BLXCK Marketing`}
                     fill
-                    sizes="(min-width: 1024px) 42vw, 100vw"
-                    priority={i === 0}
-                    className={`object-cover transition-all duration-700 ease-out ${
-                      active === i
-                        ? "scale-100 opacity-100"
-                        : "scale-105 opacity-0"
-                    }`}
+                    sizes="100vw"
+                    className="object-cover"
                   />
-                ))}
-                {/* legibility gradient + caption */}
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-                <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between">
-                  <span className="font-heading text-xl text-hi">
-                    {projects[active].name}
-                  </span>
-                  <span className="text-xs uppercase tracking-[0.2em] text-mid">
-                    {projects[active].sector}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
+                </div>
+                <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-4">
+                  <span className="text-lg font-semibold text-hi">{p.name}</span>
+                  <span
+                    className="text-[0.68rem] uppercase tracking-[0.2em]"
+                    style={{ color: "var(--ac)" }}
+                  >
+                    {p.sector}
                   </span>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
+              </a>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );

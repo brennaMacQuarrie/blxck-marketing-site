@@ -21,13 +21,10 @@ export function AuditBanner() {
             <p className="max-w-2xl text-base leading-relaxed text-mid">
               {auditOffer.body}
             </p>
-            <div className="mt-2 flex flex-wrap items-center gap-5">
+            <div className="mt-2">
               <ButtonLink href="/contact" variant="gold" withArrow>
                 Book your audit
               </ButtonLink>
-              <span className="text-xs uppercase tracking-[0.2em] text-lo">
-                {auditOffer.note}
-              </span>
             </div>
           </div>
         </Reveal>

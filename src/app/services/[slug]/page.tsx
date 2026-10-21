@@ -11,6 +11,7 @@ import {
   getServiceWork,
   getServiceWriteup,
   doneForYou,
+  serviceImage,
 } from "@/lib/content";
 import { site } from "@/lib/site";
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
@@ -77,14 +78,17 @@ export default async function ServiceDetailPage({
   const writeup = getServiceWriteup(slug);
   const intro = writeup?.intro ?? [svc.long ?? svc.detail];
   const ac = accentColor[svc.accent];
+  const heroImage = serviceImage[slug];
   const hasOffer = Boolean(writeup?.offerings.length) || points.length > 0;
-  // Consulting is framed as diagnose → set up → set free, not a sale.
+  // Consulting leads with the client's problem: find the blind spots, give
+  // them the tools, hand them the keys. No separate approach section.
   const consulting = svc.groupKey === "consulting";
   const handOff = consulting ? doneForYou[slug] : undefined;
-  const offerLabel = consulting ? "How it works" : "What we offer";
+  const offerLabel = consulting ? "How we help" : "What we offer";
+  const showApproach = Boolean(approach) && !consulting;
 
   const sections: NavSection[] = [
-    approach && { id: "approach", label: "Approach", accent: sectionColor.approach },
+    showApproach && { id: "approach", label: "Approach", accent: sectionColor.approach },
     hasOffer && { id: "offer", label: offerLabel, accent: sectionColor.offer },
     relatedWork.length > 0 && { id: "work", label: "Our work", accent: sectionColor.work },
     siblings.length > 0 && {
@@ -106,7 +110,8 @@ export default async function ServiceDetailPage({
           color={svc.accent}
           className="right-[-6%] top-[-16%] h-[52vmin] w-[52vmin] opacity-40"
         />
-        <div className="relative z-10 mx-auto w-full max-w-4xl px-(--spacing-gutter)">
+        <div className="relative z-10 mx-auto grid w-full max-w-6xl items-center gap-12 px-(--spacing-gutter) lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
+          <div>
           <Reveal>
             <nav className="eyebrow flex items-center gap-2">
               <Link href="/services" className="transition-colors hover:text-mid">
@@ -117,7 +122,7 @@ export default async function ServiceDetailPage({
             </nav>
           </Reveal>
           <Reveal delay={0.05}>
-            <h1 className="mt-6 text-[clamp(2.4rem,7vw,5rem)] leading-[1] tracking-[-0.01em] text-hi">
+            <h1 className="mt-6 text-[clamp(2.4rem,7vw,5rem)] leading-[1] lg:text-[clamp(2.4rem,4.4vw,4.1rem)] tracking-[-0.01em] text-hi">
               {svc.name}
             </h1>
           </Reveal>
@@ -140,19 +145,40 @@ export default async function ServiceDetailPage({
           <Reveal delay={0.15}>
             <div className="mt-10 flex flex-wrap items-center gap-3">
               <ButtonLink href="/contact" variant="primary" withArrow>
-                {consulting ? "Book a diagnosis" : "Start a project"}
+                {consulting ? "Find your blind spots" : "Start a project"}
               </ButtonLink>
-              {handOff ? (
-                <ButtonLink href={`/services/${handOff.slug}`} variant="ghost" withArrow={false}>
-                  Rather we just do it?
-                </ButtonLink>
-              ) : (
+              {!consulting && (
                 <ButtonLink href="/contact" variant="ghost" withArrow={false}>
                   Book a free audit
                 </ButtonLink>
               )}
             </div>
           </Reveal>
+          </div>
+
+          {heroImage && (
+            <Reveal delay={0.1} direction="left">
+              <div className="relative">
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute -inset-6 -z-10 rounded-[2rem] opacity-30 blur-3xl"
+                  style={{ background: "var(--ac)" }}
+                />
+                <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 bg-carbon lg:aspect-[4/5]">
+                  <Image
+                    src={heroImage}
+                    alt=""
+                    aria-hidden
+                    fill
+                    priority
+                    sizes="(min-width: 1024px) 40vw, 100vw"
+                    className="object-cover"
+                  />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                </div>
+              </div>
+            </Reveal>
+          )}
         </div>
       </section>
 
@@ -161,7 +187,7 @@ export default async function ServiceDetailPage({
       )}
 
       {/* ---------------- Approach ---------------- */}
-      {approach && (
+      {showApproach && (
         <section
           id="approach"
           className="section-accent bg-ink py-20 md:py-28"
@@ -185,14 +211,53 @@ export default async function ServiceDetailPage({
           className="section-accent bg-void py-20 md:py-28"
           style={{ ["--ac" as string]: sectionColor.offer }}
         >
-          <div className="mx-auto max-w-5xl px-(--spacing-gutter)">
+          <div className={`mx-auto px-(--spacing-gutter) ${consulting ? "max-w-6xl" : "max-w-5xl"}`}>
             <SectionHeader
               n={num("offer")}
               label={offerLabel}
-              title={consulting ? "Diagnose. Set up. Set free." : `${svc.name}, broken down.`}
+              title={consulting ? "How we help you get unstuck." : `${svc.name}, broken down.`}
             />
 
-            {writeup && writeup.offerings.length > 0 ? (
+            {writeup && writeup.offerings.length > 0 && consulting ? (
+              /* Three steps as one connected row — no sub-numbering. */
+              <RevealGroup className="consult-steps relative mt-12 grid gap-4 lg:grid-cols-3 lg:gap-6">
+                {writeup.offerings.map((o, i) => (
+                  <RevealItem key={o.title} className="h-full">
+                    <article className="relative flex h-full flex-col gap-4 rounded-2xl border border-white/[0.08] bg-ink/70 p-6 md:p-8">
+                      {i < writeup.offerings.length - 1 && (
+                        <span
+                          aria-hidden
+                          className="absolute left-1/2 top-full z-10 flex h-4 w-8 -translate-x-1/2 items-center justify-center lg:left-full lg:top-1/2 lg:h-8 lg:w-6 lg:-translate-y-1/2 lg:translate-x-0"
+                          style={{ color: "var(--ac)" }}
+                        >
+                          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" className="rotate-90 lg:rotate-0">
+                            <path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                        </span>
+                      )}
+                      <h3 className="font-display text-xl font-normal lowercase leading-snug text-hi">
+                        {o.title}
+                      </h3>
+                      <p className="leading-relaxed text-mid">{o.copy}</p>
+                      {o.bullets && o.bullets.length > 0 && (
+                        <ul className="mt-auto flex flex-col gap-3 border-t border-white/[0.06] pt-5">
+                          {o.bullets.map((b) => (
+                            <li key={b} className="flex gap-3 text-sm leading-relaxed text-mid">
+                              <span
+                                className="mt-[0.55em] inline-block h-1.5 w-1.5 shrink-0 rounded-full"
+                                style={{ background: "var(--ac)" }}
+                                aria-hidden
+                              />
+                              {b}
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </article>
+                  </RevealItem>
+                ))}
+              </RevealGroup>
+            ) : writeup && writeup.offerings.length > 0 ? (
               <>
                 {/* Quick index of the offerings */}
                 <Reveal className="mt-8 flex flex-wrap gap-2">
@@ -202,9 +267,6 @@ export default async function ServiceDetailPage({
                       href={`#offer-${i + 1}`}
                       className="rounded-full border border-white/[0.1] px-3 py-1.5 text-xs text-mid transition-colors hover:border-[color:var(--ac)] hover:text-hi"
                     >
-                      <span className="mr-1.5 tabular-nums" style={{ color: "var(--ac)" }}>
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
                       {o.title}
                     </a>
                   ))}
@@ -220,14 +282,9 @@ export default async function ServiceDetailPage({
                           borderLeft: "2px solid color-mix(in oklab, var(--ac) 60%, transparent)",
                         }}
                       >
-                        <div className="flex flex-col gap-3">
-                          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-lo">
-                            {String(i + 1).padStart(2, "0")} / {String(writeup.offerings.length).padStart(2, "0")}
-                          </span>
-                          <h3 className="font-display text-lg font-normal lowercase leading-snug tracking-[0.02em] text-hi md:text-xl">
-                            {o.title}
-                          </h3>
-                        </div>
+                        <h3 className="font-display text-lg font-normal lowercase leading-snug tracking-[0.02em] text-hi md:text-xl">
+                          {o.title}
+                        </h3>
                         <div>
                           <p className="leading-relaxed text-mid">{o.copy}</p>
                           {o.bullets && o.bullets.length > 0 && (
@@ -273,7 +330,7 @@ export default async function ServiceDetailPage({
                 </p>
                 <p className="mt-1 text-sm leading-relaxed text-mid">
                   {handOff
-                    ? `Most clients leave able to run it themselves. If you'd rather hand it off, we can do the work for you through ${handOff.label}.`
+                    ? `Plenty of clients take it from here on their own. If you'd rather hand it to us, we can do the work for you through ${handOff.label}.`
                     : "Every engagement is scoped to your goals, your stage, and your budget."}
                 </p>
               </div>
@@ -383,9 +440,21 @@ export default async function ServiceDetailPage({
                 <Link
                   key={s.slug}
                   href={`/services/${s.slug}`}
-                  className="group flex items-start justify-between gap-4 bg-void p-6 transition-colors duration-300 hover:bg-carbon"
+                  className="group flex items-start gap-4 bg-void p-5 transition-colors duration-300 hover:bg-carbon"
                 >
-                  <div className="flex flex-col gap-1.5">
+                  {serviceImage[s.slug] && (
+                    <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-lg border border-white/10">
+                      <Image
+                        src={serviceImage[s.slug]}
+                        alt=""
+                        aria-hidden
+                        fill
+                        sizes="64px"
+                        className="object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                    </div>
+                  )}
+                  <div className="flex flex-1 flex-col gap-1.5">
                     <h3 className="text-base font-semibold tracking-tight text-hi">
                       {s.name}
                     </h3>

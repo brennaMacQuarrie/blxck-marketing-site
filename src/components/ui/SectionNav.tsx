@@ -122,7 +122,7 @@ export function SectionNav({
                     : { color: "var(--color-lo)" }
                 }
               >
-                <span className="tabular-nums opacity-70">
+                <span className="tabular-nums">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 {s.label}

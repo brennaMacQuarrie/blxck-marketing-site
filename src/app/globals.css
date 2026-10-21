@@ -26,7 +26,7 @@
   /* Text */
   --color-hi: #f4f5f7;
   --color-mid: #bcbebe;
-  --color-lo: #7c8088;
+  --color-lo: #9a9ea6; /* ≥5.5:1 on every surface (WCAG AA) */
 
   /* Type */
   --font-display: var(--font-space-age), "Arial Narrow", sans-serif;
