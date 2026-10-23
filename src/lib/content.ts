@@ -1013,7 +1013,6 @@ export const work: WorkItem[] = [
   // Web builds (website screenshots)
   { name: "Inferno Defence Systems", type: "Website", image: "/work/inferno.webp", url: "https://infernodefencesystems.com", tags: ["web"] },
   { name: "Simply Decks", type: "Website", image: "/work/simply-decks.webp", url: "https://simplydecks.ca", tags: ["web"] },
-  { name: "TiOS", type: "Website & Branding", image: "/work/tios.webp", url: "https://tios.tech", tags: ["web", "branding"] },
   { name: "True Aesthetics", type: "Website", image: "/work/true-aesthetics.webp", url: "https://trueaestheticsyeg.com", tags: ["web"] },
   {
     name: "Transcend Together",

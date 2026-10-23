@@ -52,12 +52,12 @@ export default function PortfolioPage() {
           <Reveal>
             <span className="eyebrow flex items-center gap-3">
               <span className="inline-block h-px w-8 bg-teal/60" />
-              Selected work
+              Our work
             </span>
           </Reveal>
           <Reveal delay={0.05}>
             <h1 className="mt-6 font-heading text-[clamp(2.6rem,8vw,6rem)] font-normal leading-[0.98] tracking-[-0.01em] text-hi">
-              The work.
+              Portfolio.
             </h1>
           </Reveal>
           <Reveal delay={0.1}>
@@ -95,9 +95,8 @@ export default function PortfolioPage() {
             lede={`${clientLogos.length}+ businesses — from local favourites to national networks.`}
           />
         </div>
-        <div className="relative mt-12 flex flex-col gap-8 md:gap-10">
-          <LogoCarousel logos={clientLogos.slice(0, Math.ceil(clientLogos.length / 2))} seconds={55} />
-          <LogoCarousel logos={clientLogos.slice(Math.ceil(clientLogos.length / 2))} seconds={60} reverse />
+        <div className="relative mt-12">
+          <LogoCarousel logos={clientLogos} />
         </div>
       </section>
 
