@@ -968,6 +968,7 @@ export const workHeading: Record<string, string> = {
   "graphic-design": "Our graphic designs, in the wild.",
   videography: "Our videos, in the wild.",
   photography: "Our photography, in the wild.",
+  "jingles-and-radio-ads": "Our jingles, in the wild.",
   advertising: "Our ads, in the wild.",
   "social-media-management": "Our social content, in the wild.",
   "social-content-consulting": "Our social content, in the wild.",
@@ -986,7 +987,7 @@ export const serviceImage: Record<string, string> = {
   strategy: "/portfolio/csa.jpg",
   videography: "/work/yt-arpa-ymca.jpg",
   photography: "/portfolio/hansen.jpg",
-  "jingles-and-radio-ads": "/work/yt-dynaline.jpg",
+  "jingles-and-radio-ads": "/work/jingles/yt-ardent-jingle.jpg",
   "graphic-design": "/portfolio/azimuth.png",
   "web-development": "/work/web/inferno.webp",
   hosting: "/work/web/solar-ninjas.webp",
@@ -1111,6 +1112,16 @@ export const work: WorkItem[] = [
   { name: "Living Skies Music Festival", type: "Social Ad", image: "/work/ads/living-skies-shamrocks.webp", tags: ["ads"] },
   { name: "Chrome Spa Salon", type: "Print & Social Ad", image: "/work/ads/chrome-students-save.webp", tags: ["ads"] },
   { name: "David B. Caseley", type: "Video Ad", image: "/work/ads/david-caseley-riding-bulls.webp", tags: ["ads"], contain: "dark" },
+
+  // Jingles & radio
+  {
+    name: "Ardent Roof Systems",
+    type: "Radio Jingle · Crazy About Roofs",
+    image: "/work/jingles/yt-ardent-jingle.jpg",
+    tags: ["audio"],
+    href: "https://youtu.be/VtamRfEBqX4",
+    video: true,
+  },
 ];
 
 /* ------------------------------------------------------------------ */
@@ -1173,6 +1184,14 @@ export const workSections: {
     service: "videography",
     blurb: "Brand stories and campaign video, from concept to final cut.",
     accent: "gold",
+  },
+  {
+    tag: "audio",
+    short: "Jingles",
+    title: "Jingles & Radio",
+    service: "jingles-and-radio-ads",
+    blurb: "Written, scored and produced in-house — sound that sticks.",
+    accent: "teal",
   },
   {
     tag: "photo",
@@ -1254,6 +1273,7 @@ const serviceWorkTag: Record<string, string[]> = {
   photography: ["photo"],
   advertising: ["ads"],
   videography: ["video"],
+  "jingles-and-radio-ads": ["audio"],
   "social-content-consulting": ["social"],
   "social-media-management": ["social"],
 };
