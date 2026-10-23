@@ -1163,7 +1163,7 @@ export const caseStudies: CaseStudy[] = [
     href: "/ardent-case-study",
     image: "/work/web/ardent.webp",
     blurb:
-      "A roofing brand built from the ground up: five times the website audience, Calgary up 58%, and a radio jingle that doubled the reach of the Free Roof Giveaway.",
+      "An established roofer, a much bigger audience: five times the website visitors, Calgary up 58%, and a radio jingle that doubled the reach of the Free Roof Giveaway.",
     accent: "gold",
   },
 ];

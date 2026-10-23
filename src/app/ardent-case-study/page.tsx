@@ -26,7 +26,7 @@ import { TrendMark } from "@/components/case-study/TrendMark";
 
 const title = "Ardent Roof Systems Case Study";
 const description =
-  "How BLXCK built the Ardent Roof Systems brand from the ground up: five times the website audience, Calgary up 58%, and a radio jingle that doubled the reach of the Free Roof Giveaway.";
+  "How BLXCK took Ardent Roof Systems, an established Edmonton and Calgary roofer, to five times the website audience, Calgary up 58%, and a radio jingle that doubled the reach of the Free Roof Giveaway.";
 
 /** Keep the page out of search results until it lives on blxckmarketing.com. */
 const onMainDomain = site.url.includes("blxckmarketing.com");
@@ -81,15 +81,16 @@ export default function ArdentCaseStudy() {
               </Reveal>
               <Reveal delay={0.05}>
                 <h1 className="mt-6 text-balance text-[clamp(2.3rem,5vw,4.2rem)] leading-[1] text-hi">
-                  A roofing brand built from the ground up.
+                  Great roofs. Now a name people know.
                 </h1>
               </Reveal>
               <Reveal delay={0.1}>
                 <p className="mt-6 max-w-xl text-lg leading-relaxed text-mid">
-                  Ardent Roof Systems installs and repairs roofs across Edmonton and
-                  Calgary. Since 2024, BLXCK has been its marketing department:
-                  brand, website, ads, video, events and, since May 2026, a radio
-                  jingle people can&rsquo;t get out of their heads.
+                  Ardent Roof Systems has been installing and repairing roofs across
+                  Edmonton and Calgary for years. In 2024 they brought BLXCK in to
+                  run their marketing: a refreshed brand, a new website, ads, video,
+                  events and, since May 2026, a radio jingle people can&rsquo;t get
+                  out of their heads.
                 </p>
               </Reveal>
               <Reveal delay={0.15}>
@@ -120,7 +121,7 @@ export default function ArdentCaseStudy() {
                 />
               </a>
               <div className="mt-3 flex flex-wrap justify-between gap-x-6 gap-y-1 text-xs text-lo">
-                <span><span className="mr-1.5 font-semibold uppercase tracking-[0.18em]">2024</span>New logo, brand guide and website.</span>
+                <span><span className="mr-1.5 font-semibold uppercase tracking-[0.18em]">2024</span>Refreshed logo, brand guide and new website.</span>
                 <span><span className="mr-1.5 font-semibold uppercase tracking-[0.18em] text-gold">2026</span>On the radio in two cities.</span>
               </div>
             </Reveal>
@@ -198,8 +199,8 @@ export default function ArdentCaseStudy() {
           <RevealGroup className="mt-10 grid gap-px overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.08] sm:grid-cols-2 lg:grid-cols-4">
             {[
               {
-                t: "Built the brand",
-                d: "A new shield logo and brand guide, business cards for the crew, a brand story video, and a website with a page for every service in Edmonton and Calgary.",
+                t: "Refreshed the brand",
+                d: "A sharper shield logo and brand guide, business cards for the crew, a brand story video, and a new website with a page for every service in Edmonton and Calgary.",
               },
               {
                 t: "Kept the ads always on",
