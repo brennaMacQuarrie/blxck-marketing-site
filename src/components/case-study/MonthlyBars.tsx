@@ -14,6 +14,8 @@ type Props = {
   highlight?: number[];
   /** Pre-built hover text per bar (server-safe: strings, not functions). */
   tooltips?: string[];
+  /** Shade every month from `from` to the end and label it (e.g. a campaign going live). */
+  band?: { from: number; label: string };
   ariaLabel: string;
 };
 
@@ -37,6 +39,7 @@ export function MonthlyBars({
   color = "var(--ac)",
   highlight = [],
   tooltips,
+  band,
   ariaLabel,
 }: Props) {
   const format = (v: number) => Math.round(v).toLocaleString("en-CA");
@@ -56,6 +59,39 @@ export function MonthlyBars({
         className="block h-auto w-full overflow-visible"
         onMouseLeave={() => setHover(null)}
       >
+        {band && band.from < n && (
+          <g>
+            <rect
+              x={ML + band.from * slot}
+              y={MT}
+              width={pw - band.from * slot}
+              height={ph}
+              fill={color}
+              opacity={0.07}
+              rx={3}
+            />
+            <line
+              x1={ML + band.from * slot}
+              x2={ML + band.from * slot}
+              y1={MT}
+              y2={MT + ph}
+              stroke={color}
+              strokeWidth={1}
+              strokeDasharray="3 3"
+              opacity={0.6}
+            />
+            <text
+              x={ML + band.from * slot + 5}
+              y={MT - 7}
+              fontSize={10}
+              fontWeight={600}
+              letterSpacing={1}
+              fill={color}
+            >
+              {band.label.toUpperCase()}
+            </text>
+          </g>
+        )}
         {ticks.map((t) => (
           <g key={t}>
             <line

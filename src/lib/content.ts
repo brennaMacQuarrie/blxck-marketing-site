@@ -1149,6 +1149,16 @@ export const caseStudies: CaseStudy[] = [
       "A rebuilt website and leaner Google Ads that nearly doubled patient contacts on 59% less ad spend.",
     accent: "teal",
   },
+  {
+    title: "Ardent Roof Systems",
+    client: "Ardent Roof Systems",
+    sector: "Roofing · Brand, Ads & Radio",
+    href: "/ardent-case-study",
+    image: "/work/web/ardent.webp",
+    blurb:
+      "A roofing brand built from the ground up: five times the website audience, Calgary up 58%, and a radio jingle that doubled the reach of the Free Roof Giveaway.",
+    accent: "gold",
+  },
 ];
 
 /** Portfolio sections, in the order the original site presented them. */

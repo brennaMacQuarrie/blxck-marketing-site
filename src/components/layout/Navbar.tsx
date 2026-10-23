@@ -55,7 +55,7 @@ export function Navbar() {
     label === "Services" ? "services" : label === "Our work" ? "work" : null;
   const isActive = (label: string, href: string) =>
     label === "Our work"
-      ? ["/case-studies", "/portfolio", "/optometrists-case-study"].some((p) =>
+      ? ["/case-studies", "/portfolio", "/optometrists-case-study", "/ardent-case-study"].some((p) =>
           pathname.startsWith(p),
         )
       : pathname.startsWith(href);
