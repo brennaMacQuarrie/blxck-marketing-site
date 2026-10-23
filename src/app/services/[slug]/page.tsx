@@ -373,27 +373,26 @@ export default async function ServiceDetailPage({
               </div>
             </div>
 
-            <RevealGroup className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            <RevealGroup className="mt-10 columns-1 gap-5 sm:columns-2 lg:columns-3">
               {relatedWork.map((w) => {
                 const href = w.url ?? w.href ?? "/portfolio";
                 const external = Boolean(w.url || w.video);
                 return (
-                  <RevealItem key={w.image} className="h-full">
+                  <RevealItem key={w.image} className="mb-5 break-inside-avoid">
                     <a
                       href={href}
                       target={external ? "_blank" : undefined}
                       rel={external ? "noopener noreferrer" : undefined}
                       className="group relative block overflow-hidden rounded-2xl border border-white/[0.08] transition-colors hover:border-[color:var(--ac)]"
                     >
-                      <div
-                        className={`relative w-full ${workMedia(w).aspect} ${workMedia(w).panel}`}
-                      >
+                      <div className={`relative w-full ${workMedia(w).panel}`}>
                         <Image
                           src={w.image}
                           alt={`${w.name} — ${w.type} by BLXCK Marketing`}
-                          fill
+                          width={workMedia(w).width}
+                          height={workMedia(w).height}
                           sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                          className={`${workMedia(w).img} transition-transform duration-700 ease-out group-hover:scale-105`}
+                          className="h-auto w-full transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                         />
                         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
                         {w.video && (

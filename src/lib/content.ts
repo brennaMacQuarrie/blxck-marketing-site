@@ -1009,8 +1009,6 @@ export type WorkItem = {
   href?: string; // where the card links (defaults to /portfolio)
   url?: string; // live site, shown as "See it live"
   video?: boolean; // show a play overlay and open the video externally
-  /** Card shape: square (default), portrait (4:5) or video (16:9). */
-  shape?: "square" | "portrait";
   /** Logos/flat art: show the whole image on a plain panel instead of cropping. */
   contain?: "light" | "dark";
 };
@@ -1087,15 +1085,15 @@ export const work: WorkItem[] = [
   },
 
   // Photography
-  { name: "Hansen Distillery", type: "Product Photography", image: "/work/photography/hansen-1.webp", tags: ["photo"], shape: "portrait" },
-  { name: "Token Naturals", type: "Product Photography", image: "/work/photography/token-2.webp", tags: ["photo"], shape: "portrait" },
-  { name: "REX Equipment", type: "Product Photography", image: "/work/photography/rex-2.webp", tags: ["photo"], shape: "portrait" },
-  { name: "Hansen Distillery", type: "Product Photography", image: "/work/photography/hansen-2.webp", tags: ["photo"], shape: "portrait" },
-  { name: "Token Naturals", type: "Product Photography", image: "/work/photography/token-3.webp", tags: ["photo"], shape: "portrait" },
-  { name: "Ottavo", type: "Interior Photography", image: "/work/photography/ottavo.webp", tags: ["photo"], shape: "portrait" },
-  { name: "Hansen Distillery", type: "Product Photography", image: "/work/photography/hansen-3.webp", tags: ["photo"], shape: "portrait" },
-  { name: "REX Equipment", type: "Product Photography", image: "/work/photography/rex-1.webp", tags: ["photo"], shape: "portrait" },
-  { name: "Token Naturals", type: "Product Photography", image: "/work/photography/token-1.webp", tags: ["photo"], shape: "portrait" },
+  { name: "Hansen Distillery", type: "Product Photography", image: "/work/photography/hansen-1.webp", tags: ["photo"] },
+  { name: "Token Naturals", type: "Product Photography", image: "/work/photography/token-2.webp", tags: ["photo"] },
+  { name: "REX Equipment", type: "Product Photography", image: "/work/photography/rex-2.webp", tags: ["photo"] },
+  { name: "Hansen Distillery", type: "Product Photography", image: "/work/photography/hansen-2.webp", tags: ["photo"] },
+  { name: "Token Naturals", type: "Product Photography", image: "/work/photography/token-3.webp", tags: ["photo"] },
+  { name: "Ottavo", type: "Interior Photography", image: "/work/photography/ottavo.webp", tags: ["photo"] },
+  { name: "Hansen Distillery", type: "Product Photography", image: "/work/photography/hansen-3.webp", tags: ["photo"] },
+  { name: "REX Equipment", type: "Product Photography", image: "/work/photography/rex-1.webp", tags: ["photo"] },
+  { name: "Token Naturals", type: "Product Photography", image: "/work/photography/token-1.webp", tags: ["photo"] },
 
   // Branding (logos)
   { name: "Hansen Distillery", type: "Logo & Identity", image: "/work/branding/hansen.webp", tags: ["branding"], contain: "light" },
@@ -1105,14 +1103,14 @@ export const work: WorkItem[] = [
   { name: "AIM Industrial Cleaning", type: "Logo & Identity", image: "/work/branding/aim.webp", tags: ["branding"], contain: "dark" },
 
   // Graphic design
-  { name: "Living Skies Music Festival", type: "Festival Poster", image: "/work/design/living-skies-poster.webp", tags: ["design"], shape: "portrait" },
-  { name: "Hansen Distillery", type: "Seasonal Graphic", image: "/work/design/hansen-st-patricks.webp", tags: ["design"], shape: "portrait" },
+  { name: "Living Skies Music Festival", type: "Festival Poster", image: "/work/design/living-skies-poster.webp", tags: ["design"] },
+  { name: "Hansen Distillery", type: "Seasonal Graphic", image: "/work/design/hansen-st-patricks.webp", tags: ["design"] },
 
   // Advertising (ad creative)
-  { name: "REX Equipment", type: "Social Ad", image: "/work/ads/rex-field-day-sale.webp", tags: ["ads"], shape: "portrait" },
-  { name: "Living Skies Music Festival", type: "Social Ad", image: "/work/ads/living-skies-shamrocks.webp", tags: ["ads"], shape: "portrait" },
-  { name: "Chrome Spa Salon", type: "Print & Social Ad", image: "/work/ads/chrome-students-save.webp", tags: ["ads"], shape: "portrait" },
-  { name: "David B. Caseley", type: "Video Ad", image: "/work/ads/david-caseley-riding-bulls.webp", tags: ["ads"], shape: "portrait", contain: "dark" },
+  { name: "REX Equipment", type: "Social Ad", image: "/work/ads/rex-field-day-sale.webp", tags: ["ads"] },
+  { name: "Living Skies Music Festival", type: "Social Ad", image: "/work/ads/living-skies-shamrocks.webp", tags: ["ads"] },
+  { name: "Chrome Spa Salon", type: "Print & Social Ad", image: "/work/ads/chrome-students-save.webp", tags: ["ads"] },
+  { name: "David B. Caseley", type: "Video Ad", image: "/work/ads/david-caseley-riding-bulls.webp", tags: ["ads"], contain: "dark" },
 ];
 
 /* ------------------------------------------------------------------ */

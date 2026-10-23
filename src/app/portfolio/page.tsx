@@ -127,9 +127,9 @@ export default function PortfolioPage() {
                 </div>
               </div>
 
-              <RevealGroup className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              <RevealGroup className="mt-10 columns-1 gap-5 sm:columns-2 lg:columns-3">
                 {items.map((w) => (
-                  <RevealItem key={`${sec.tag}-${w.image}`} className="h-full">
+                  <RevealItem key={`${sec.tag}-${w.image}`} className="mb-5 break-inside-avoid">
                     <WorkCard w={w} />
                   </RevealItem>
                 ))}
@@ -211,17 +211,16 @@ function WorkCard({ w }: { w: WorkItem }) {
       href={href}
       target={external ? "_blank" : undefined}
       rel={external ? "noopener noreferrer" : undefined}
-      className="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/[0.08] bg-void transition-colors duration-300 hover:border-[color:var(--ac)]"
+      className="group flex flex-col overflow-hidden rounded-2xl border border-white/[0.08] bg-void transition-colors duration-300 hover:border-[color:var(--ac)]"
     >
-      <div
-        className={`relative w-full overflow-hidden ${workMedia(w).aspect} ${workMedia(w).panel}`}
-      >
+      <div className={`relative w-full overflow-hidden ${workMedia(w).panel}`}>
         <Image
           src={w.image}
           alt={`${w.name} — ${w.type} by BLXCK Marketing`}
-          fill
+          width={workMedia(w).width}
+          height={workMedia(w).height}
           sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-          className={`${workMedia(w).img} transition-transform duration-700 ease-out group-hover:scale-105`}
+          className="h-auto w-full transition-transform duration-700 ease-out group-hover:scale-[1.03]"
         />
         {w.video && (
           <span className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black/20">

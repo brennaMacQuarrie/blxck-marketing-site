@@ -1,14 +1,18 @@
 import type { WorkItem } from "@/lib/content";
+import { workDimensions } from "@/lib/work-dimensions";
 
-/** Card frame + image classes for a portfolio item, based on its shape. */
+/**
+ * How to frame a portfolio item. Graphics are never cropped: the image is
+ * rendered at its natural aspect ratio (cards sit in a masonry layout).
+ * Logos get a plain light/dark panel with breathing room around them.
+ */
 export function workMedia(w: WorkItem) {
-  const aspect = w.video
-    ? "aspect-video"
-    : w.shape === "portrait"
-      ? "aspect-[4/5]"
-      : "aspect-square";
+  const [width, height] = workDimensions[w.image] ?? [1600, 1000];
   const panel =
-    w.contain === "light" ? "bg-[#f2f0eb]" : w.contain === "dark" ? "bg-carbon" : "";
-  const img = w.contain ? "object-contain p-[12%]" : "object-cover";
-  return { aspect, panel, img };
+    w.contain === "light"
+      ? "bg-[#f2f0eb] p-[12%]"
+      : w.contain === "dark"
+        ? "bg-carbon p-[12%]"
+        : "";
+  return { width, height, panel };
 }
