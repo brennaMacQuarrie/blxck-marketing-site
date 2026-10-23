@@ -12,6 +12,7 @@ import {
   getServiceWriteup,
   doneForYou,
   serviceImage,
+  serviceImagePosition,
   workHeading,
 } from "@/lib/content";
 import { site } from "@/lib/site";
@@ -175,6 +176,7 @@ export default async function ServiceDetailPage({
                     priority
                     sizes="(min-width: 1024px) 40vw, 100vw"
                     className="object-cover"
+                    style={{ objectPosition: serviceImagePosition[slug] }}
                   />
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
                 </div>

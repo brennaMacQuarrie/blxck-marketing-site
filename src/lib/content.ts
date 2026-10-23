@@ -976,8 +976,8 @@ export const workHeading: Record<string, string> = {
 
 /** Hero image per service page (from the portfolio) — breaks up the dark. */
 export const serviceImage: Record<string, string> = {
-  "social-content-consulting": "/work/yt-token-naturals.jpg",
-  "digital-ads": "/portfolio/apex-labs.png",
+  "social-content-consulting": "/portfolio/social-digital-video.webp",
+  "digital-ads": "/portfolio/social-digital-video.webp",
   "business-and-marketing-audits": "/portfolio/rex-equipment.jpg",
   "goal-setting-and-brand-positioning": "/portfolio/atma-cena.webp",
   advertising: "/portfolio/tiger-gold.webp",
@@ -985,13 +985,20 @@ export const serviceImage: Record<string, string> = {
   branding: "/work/web/transcend.webp",
   "social-media-management": "/work/yt-hansen-reel.jpg",
   strategy: "/portfolio/csa.jpg",
-  videography: "/work/yt-arpa-ymca.jpg",
+  videography: "/portfolio/social-digital-video.webp",
   photography: "/portfolio/hansen.jpg",
   "jingles-and-radio-ads": "/work/jingles/yt-ardent-jingle.jpg",
   "graphic-design": "/portfolio/azimuth.png",
   "web-development": "/work/web/inferno.webp",
   hosting: "/work/web/solar-ninjas.webp",
   seo: "/work/web/true-aesthetics.webp",
+};
+
+/** Optional focal point for hero crops (CSS object-position). */
+export const serviceImagePosition: Record<string, string> = {
+  "social-content-consulting": "35% center",
+  "digital-ads": "35% center",
+  videography: "35% center",
 };
 
 export function getServiceWriteup(slug: string): ServiceWriteup | undefined {
