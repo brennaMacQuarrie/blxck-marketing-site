@@ -2,7 +2,7 @@
 export const workDimensions: Record<string, [number, number]> = {
   "/work/ads/chrome-students-save.webp": [1236, 1600],
   "/work/ads/david-caseley-riding-bulls.webp": [1366, 768],
-  "/work/ads/living-skies-shamrocks.webp": [1080, 1350],
+  "/work/ads/living-skies-yorkton-poster.webp": [1035, 1600],
   "/work/ads/rex-field-day-sale.webp": [1080, 1350],
   "/work/ardent-case-study-og.jpg": [1200, 630],
   "/work/atma-cena-video.webp": [1080, 1080],
@@ -13,6 +13,7 @@ export const workDimensions: Record<string, [number, number]> = {
   "/work/branding/sundays.webp": [1200, 357],
   "/work/design/hansen-st-patricks.webp": [1080, 1350],
   "/work/design/living-skies-poster.webp": [1035, 1600],
+  "/work/digital-ads-advertising.webp": [1080, 1350],
   "/work/jingles/yt-ardent-jingle.jpg": [1280, 720],
   "/work/optometrists-after.webp": [1600, 978],
   "/work/optometrists-before.webp": [1600, 1174],
