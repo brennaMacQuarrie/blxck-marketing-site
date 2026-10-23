@@ -979,7 +979,7 @@ export const serviceImage: Record<string, string> = {
   "goal-setting-and-brand-positioning": "/portfolio/atma-cena.webp",
   advertising: "/portfolio/tiger-gold.webp",
   analytics: "/work/optometrists-after.webp",
-  branding: "/work/transcend.webp",
+  branding: "/work/web/transcend.webp",
   "social-media-management": "/work/yt-hansen-reel.jpg",
   strategy: "/portfolio/csa.jpg",
   videography: "/work/yt-arpa-ymca.jpg",
@@ -987,8 +987,8 @@ export const serviceImage: Record<string, string> = {
   "jingles-and-radio-ads": "/work/yt-dynaline.jpg",
   "graphic-design": "/portfolio/azimuth.png",
   "web-development": "/work/inferno.webp",
-  hosting: "/work/solar-ninjas.webp",
-  seo: "/work/true-aesthetics.webp",
+  hosting: "/work/web/solar-ninjas.webp",
+  seo: "/work/web/true-aesthetics.webp",
 };
 
 export function getServiceWriteup(slug: string): ServiceWriteup | undefined {
@@ -1012,15 +1012,15 @@ export type WorkItem = {
 export const work: WorkItem[] = [
   // Web builds (website screenshots)
   { name: "Inferno Defence Systems", type: "Website", image: "/work/inferno.webp", url: "https://infernodefencesystems.com", tags: ["web"] },
-  { name: "Simply Decks", type: "Website", image: "/work/simply-decks.webp", url: "https://simplydecks.ca", tags: ["web"] },
-  { name: "True Aesthetics", type: "Website", image: "/work/true-aesthetics.webp", url: "https://trueaestheticsyeg.com", tags: ["web"] },
+  { name: "Simply Decks", type: "Website", image: "/work/web/simply-decks.webp", url: "https://simplydecks.ca", tags: ["web"] },
+  { name: "True Aesthetics", type: "Website", image: "/work/web/true-aesthetics.webp", url: "https://trueaestheticsyeg.com", tags: ["web"] },
   {
     name: "Transcend Together",
     type: "Website & Branding",
-    image: "/work/transcend.webp", url: "https://transcendtogether.ca",
+    image: "/work/web/transcend.webp", url: "https://transcendtogether.ca",
     tags: ["web", "branding"],
   },
-  { name: "Solar Ninjas", type: "Website", image: "/work/solar-ninjas.webp", url: "https://solarninjas.energy", tags: ["web"] },
+  { name: "Solar Ninjas", type: "Website", image: "/work/web/solar-ninjas.webp", url: "https://solarninjas.energy", tags: ["web"] },
   {
     name: "Ardent Roof Systems",
     type: "Website & Branding",
