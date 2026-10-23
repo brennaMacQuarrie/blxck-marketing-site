@@ -82,7 +82,7 @@ export function MonthlyBars({
             />
             <text
               x={ML + band.from * slot + 5}
-              y={MT - 7}
+              y={3}
               fontSize={10}
               fontWeight={600}
               letterSpacing={1}

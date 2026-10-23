@@ -269,7 +269,7 @@ export default function ArdentCaseStudy() {
                     values={directVisits}
                     max={2100}
                     ticks={[0, 500, 1000, 1500, 2000]}
-                    highlight={[14, 26, 27]}
+                    highlight={[14, 23, 26]}
                     band={{ from: jingleFrom, label: "Jingle on air" }}
                     ariaLabel="Direct visits to the Ardent Roof Systems website per month, June 2024 to September 2026"
                     tooltips={directVisits.map(
