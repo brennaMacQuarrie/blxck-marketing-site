@@ -967,6 +967,8 @@ export const workHeading: Record<string, string> = {
   branding: "Our brands, in the wild.",
   "graphic-design": "Our graphic designs, in the wild.",
   videography: "Our videos, in the wild.",
+  photography: "Our photography, in the wild.",
+  advertising: "Our ads, in the wild.",
   "social-media-management": "Our social content, in the wild.",
   "social-content-consulting": "Our social content, in the wild.",
 };
@@ -986,7 +988,7 @@ export const serviceImage: Record<string, string> = {
   photography: "/portfolio/hansen.jpg",
   "jingles-and-radio-ads": "/work/yt-dynaline.jpg",
   "graphic-design": "/portfolio/azimuth.png",
-  "web-development": "/work/inferno.webp",
+  "web-development": "/work/web/inferno.webp",
   hosting: "/work/web/solar-ninjas.webp",
   seo: "/work/web/true-aesthetics.webp",
 };
@@ -1007,11 +1009,15 @@ export type WorkItem = {
   href?: string; // where the card links (defaults to /portfolio)
   url?: string; // live site, shown as "See it live"
   video?: boolean; // show a play overlay and open the video externally
+  /** Card shape: square (default), portrait (4:5) or video (16:9). */
+  shape?: "square" | "portrait";
+  /** Logos/flat art: show the whole image on a plain panel instead of cropping. */
+  contain?: "light" | "dark";
 };
 
 export const work: WorkItem[] = [
   // Web builds (website screenshots)
-  { name: "Inferno Defence Systems", type: "Website", image: "/work/inferno.webp", url: "https://infernodefencesystems.com", tags: ["web"] },
+  { name: "Inferno Defence Systems", type: "Website", image: "/work/web/inferno.webp", url: "https://infernodefencesystems.com", tags: ["web"] },
   { name: "Simply Decks", type: "Website", image: "/work/web/simply-decks.webp", url: "https://simplydecks.ca", tags: ["web"] },
   { name: "True Aesthetics", type: "Website", image: "/work/web/true-aesthetics.webp", url: "https://trueaestheticsyeg.com", tags: ["web"] },
   {
@@ -1024,7 +1030,7 @@ export const work: WorkItem[] = [
   {
     name: "Ardent Roof Systems",
     type: "Website & Branding",
-    image: "/work/ardent.webp", url: "https://ardentroofsystems.com",
+    image: "/work/web/ardent.webp", url: "https://ardentroofsystems.com",
     tags: ["web", "branding"],
   },
 
@@ -1079,6 +1085,34 @@ export const work: WorkItem[] = [
     href: "https://youtu.be/xbkWyX3APnQ",
     video: true,
   },
+
+  // Photography
+  { name: "Hansen Distillery", type: "Product Photography", image: "/work/photography/hansen-1.webp", tags: ["photo"], shape: "portrait" },
+  { name: "Token Naturals", type: "Product Photography", image: "/work/photography/token-2.webp", tags: ["photo"], shape: "portrait" },
+  { name: "REX Equipment", type: "Product Photography", image: "/work/photography/rex-2.webp", tags: ["photo"], shape: "portrait" },
+  { name: "Hansen Distillery", type: "Product Photography", image: "/work/photography/hansen-2.webp", tags: ["photo"], shape: "portrait" },
+  { name: "Token Naturals", type: "Product Photography", image: "/work/photography/token-3.webp", tags: ["photo"], shape: "portrait" },
+  { name: "Ottavo", type: "Interior Photography", image: "/work/photography/ottavo.webp", tags: ["photo"], shape: "portrait" },
+  { name: "Hansen Distillery", type: "Product Photography", image: "/work/photography/hansen-3.webp", tags: ["photo"], shape: "portrait" },
+  { name: "REX Equipment", type: "Product Photography", image: "/work/photography/rex-1.webp", tags: ["photo"], shape: "portrait" },
+  { name: "Token Naturals", type: "Product Photography", image: "/work/photography/token-1.webp", tags: ["photo"], shape: "portrait" },
+
+  // Branding (logos)
+  { name: "Hansen Distillery", type: "Logo & Identity", image: "/work/branding/hansen.webp", tags: ["branding"], contain: "light" },
+  { name: "SnapThat", type: "Logo & Identity", image: "/work/branding/snapthat.webp", tags: ["branding"], contain: "dark" },
+  { name: "Sundays Promotional Products", type: "Logo & Identity", image: "/work/branding/sundays.webp", tags: ["branding"], contain: "light" },
+  { name: "Frank Melo Builders", type: "Logo & Identity", image: "/work/branding/frank-melo.webp", tags: ["branding"], contain: "light" },
+  { name: "AIM Industrial Cleaning", type: "Logo & Identity", image: "/work/branding/aim.webp", tags: ["branding"], contain: "dark" },
+
+  // Graphic design
+  { name: "Living Skies Music Festival", type: "Festival Poster", image: "/work/design/living-skies-poster.webp", tags: ["design"], shape: "portrait" },
+  { name: "Hansen Distillery", type: "Seasonal Graphic", image: "/work/design/hansen-st-patricks.webp", tags: ["design"], shape: "portrait" },
+
+  // Advertising (ad creative)
+  { name: "REX Equipment", type: "Social Ad", image: "/work/ads/rex-field-day-sale.webp", tags: ["ads"], shape: "portrait" },
+  { name: "Living Skies Music Festival", type: "Social Ad", image: "/work/ads/living-skies-shamrocks.webp", tags: ["ads"], shape: "portrait" },
+  { name: "Chrome Spa Salon", type: "Print & Social Ad", image: "/work/ads/chrome-students-save.webp", tags: ["ads"], shape: "portrait" },
+  { name: "David B. Caseley", type: "Video Ad", image: "/work/ads/david-caseley-riding-bulls.webp", tags: ["ads"], shape: "portrait", contain: "dark" },
 ];
 
 /* ------------------------------------------------------------------ */
@@ -1115,34 +1149,64 @@ export const workSections: {
   service: string;
   blurb: string;
   accent: "teal" | "lavender" | "gold" | "silver";
+  /** Short label for the in-page section bar. */
+  short: string;
 }[] = [
   {
     tag: "web",
-    accent: "teal",
+    short: "Web",
     title: "Web Development",
     service: "web-development",
     blurb: "Fast, conversion-focused sites built for the businesses behind them.",
+    accent: "teal",
   },
   {
     tag: "social",
-    accent: "lavender",
+    short: "Social",
     title: "Social Media Content",
     service: "social-media-management",
     blurb: "Short-form content made to stop the scroll and build an audience.",
+    accent: "lavender",
   },
   {
     tag: "video",
-    accent: "gold",
+    short: "Video",
     title: "Videography",
     service: "videography",
     blurb: "Brand stories and campaign video, from concept to final cut.",
+    accent: "gold",
+  },
+  {
+    tag: "photo",
+    short: "Photography",
+    title: "Photography",
+    service: "photography",
+    blurb: "Product and brand imagery that makes people stop and look twice.",
+    accent: "teal",
   },
   {
     tag: "branding",
-    accent: "silver",
+    short: "Branding",
     title: "Branding",
     service: "branding",
     blurb: "Identities built to be recognized — and carried across every touchpoint.",
+    accent: "silver",
+  },
+  {
+    tag: "design",
+    short: "Design",
+    title: "Graphic Design",
+    service: "graphic-design",
+    blurb: "Posters, campaigns and seasonal graphics with a job to do.",
+    accent: "lavender",
+  },
+  {
+    tag: "ads",
+    short: "Ads",
+    title: "Advertising",
+    service: "advertising",
+    blurb: "Ad creative built to earn the click — and the sale.",
+    accent: "gold",
   },
 ];
 
@@ -1185,18 +1249,20 @@ export const clientLogos: { name: string; src: string }[] = [
 
 /** Which work tag (if any) a given service slug should showcase. */
 // Hosting and SEO intentionally have no portfolio section.
-const serviceWorkTag: Record<string, string> = {
-  "web-development": "web",
-  branding: "branding",
-  "graphic-design": "branding",
-  videography: "video",
-  "social-content-consulting": "social",
-  "social-media-management": "social",
+const serviceWorkTag: Record<string, string[]> = {
+  "web-development": ["web"],
+  branding: ["branding"],
+  "graphic-design": ["design", "ads"],
+  photography: ["photo"],
+  advertising: ["ads"],
+  videography: ["video"],
+  "social-content-consulting": ["social"],
+  "social-media-management": ["social"],
 };
 
 export function getServiceWork(slug: string): WorkItem[] {
-  const tag = serviceWorkTag[slug];
-  return tag ? work.filter((w) => w.tags.includes(tag)) : [];
+  const tags = serviceWorkTag[slug] ?? [];
+  return work.filter((w) => w.tags.some((t) => tags.includes(t)));
 }
 
 export type Package = {

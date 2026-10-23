@@ -15,6 +15,7 @@ import {
   workHeading,
 } from "@/lib/content";
 import { site } from "@/lib/site";
+import { workMedia } from "@/lib/work-media";
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
 import { ButtonLink } from "@/components/ui/Button";
 import { Eclipse } from "@/components/ui/Eclipse";
@@ -377,7 +378,7 @@ export default async function ServiceDetailPage({
                 const href = w.url ?? w.href ?? "/portfolio";
                 const external = Boolean(w.url || w.video);
                 return (
-                  <RevealItem key={`${w.name}-${w.type}`} className="h-full">
+                  <RevealItem key={w.image} className="h-full">
                     <a
                       href={href}
                       target={external ? "_blank" : undefined}
@@ -385,14 +386,14 @@ export default async function ServiceDetailPage({
                       className="group relative block overflow-hidden rounded-2xl border border-white/[0.08] transition-colors hover:border-[color:var(--ac)]"
                     >
                       <div
-                        className={`relative w-full ${w.video ? "aspect-video" : "aspect-square"}`}
+                        className={`relative w-full ${workMedia(w).aspect} ${workMedia(w).panel}`}
                       >
                         <Image
                           src={w.image}
                           alt={`${w.name} — ${w.type} by BLXCK Marketing`}
                           fill
                           sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                          className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                          className={`${workMedia(w).img} transition-transform duration-700 ease-out group-hover:scale-105`}
                         />
                         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
                         {w.video && (
