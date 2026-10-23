@@ -977,10 +977,10 @@ export const workHeading: Record<string, string> = {
 /** Hero image per service page (from the portfolio) — breaks up the dark. */
 export const serviceImage: Record<string, string> = {
   "social-content-consulting": "/portfolio/social-digital-video.webp",
-  "digital-ads": "/portfolio/social-digital-video.webp",
+  "digital-ads": "/work/digital-ads-advertising.webp",
   "business-and-marketing-audits": "/portfolio/rex-equipment.jpg",
   "goal-setting-and-brand-positioning": "/portfolio/atma-cena.webp",
-  advertising: "/portfolio/tiger-gold.webp",
+  advertising: "/work/digital-ads-advertising.webp",
   analytics: "/work/optometrists-after.webp",
   branding: "/work/web/transcend.webp",
   "social-media-management": "/work/yt-hansen-reel.jpg",
@@ -997,7 +997,6 @@ export const serviceImage: Record<string, string> = {
 /** Optional focal point for hero crops (CSS object-position). */
 export const serviceImagePosition: Record<string, string> = {
   "social-content-consulting": "35% center",
-  "digital-ads": "35% center",
   videography: "35% center",
 };
 
