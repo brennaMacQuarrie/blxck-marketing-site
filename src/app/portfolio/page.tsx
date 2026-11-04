@@ -4,7 +4,7 @@ import Link from "next/link";
 import { work, workSections, clientLogos, caseStudies } from "@/lib/content";
 import type { WorkItem } from "@/lib/content";
 import { site } from "@/lib/site";
-import { workMedia } from "@/lib/work-media";
+import { workMedia, groupWork } from "@/lib/work-media";
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
 import { ButtonLink } from "@/components/ui/Button";
 import { Eclipse } from "@/components/ui/Eclipse";
@@ -127,13 +127,24 @@ export default function PortfolioPage() {
                 </div>
               </div>
 
-              <RevealGroup className="mt-10 columns-1 gap-5 sm:columns-2 lg:columns-3">
-                {items.map((w) => (
-                  <RevealItem key={`${sec.tag}-${w.image}`} className="mb-5 break-inside-avoid">
-                    <WorkCard w={w} />
-                  </RevealItem>
-                ))}
-              </RevealGroup>
+              {groupWork(items).map((g) => (
+                <div key={g.group ?? "all"} className="mt-10">
+                  {g.group && (
+                    <Reveal>
+                      <h3 className="eyebrow mb-5" style={{ color: "var(--ac)" }}>
+                        {g.group}
+                      </h3>
+                    </Reveal>
+                  )}
+                  <RevealGroup amount={0.05} className="columns-1 gap-5 sm:columns-2 lg:columns-3">
+                    {g.items.map((w) => (
+                      <RevealItem key={`${sec.tag}-${w.image}`} className="mb-5 break-inside-avoid">
+                        <WorkCard w={w} />
+                      </RevealItem>
+                    ))}
+                  </RevealGroup>
+                </div>
+              ))}
             </div>
           </section>
         );

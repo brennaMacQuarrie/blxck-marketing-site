@@ -79,7 +79,7 @@ export function PortfolioShowcase() {
                   >
                     <span className="flex flex-col items-center gap-2 [text-shadow:0_1px_12px_rgba(0,0,0,0.6)]">
                       <span
-                        className="text-[0.7rem] uppercase tracking-[0.22em]"
+                        className="rounded-full bg-black/60 px-3 py-1 text-[0.7rem] uppercase tracking-[0.22em] [text-shadow:none]"
                         style={{ color: "var(--ac)" }}
                       >
                         {p.sector}

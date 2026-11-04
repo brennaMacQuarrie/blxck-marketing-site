@@ -16,7 +16,7 @@ import {
   workHeading,
 } from "@/lib/content";
 import { site } from "@/lib/site";
-import { workMedia } from "@/lib/work-media";
+import { workMedia, groupWork } from "@/lib/work-media";
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
 import { ButtonLink } from "@/components/ui/Button";
 import { Eclipse } from "@/components/ui/Eclipse";
@@ -375,8 +375,17 @@ export default async function ServiceDetailPage({
               </div>
             </div>
 
-            <RevealGroup className="mt-10 columns-1 gap-5 sm:columns-2 lg:columns-3">
-              {relatedWork.map((w) => {
+            {groupWork(relatedWork).map((g) => (
+              <div key={g.group ?? "all"} className="mt-10">
+                {g.group && (
+                  <Reveal>
+                    <h3 className="eyebrow mb-5" style={{ color: "var(--ac)" }}>
+                      {g.group}
+                    </h3>
+                  </Reveal>
+                )}
+            <RevealGroup amount={0.05} className="columns-1 gap-5 sm:columns-2 lg:columns-3">
+              {g.items.map((w) => {
                 const href = w.url ?? w.href ?? "/portfolio";
                 const external = Boolean(w.url || w.video);
                 return (
@@ -424,6 +433,8 @@ export default async function ServiceDetailPage({
                 );
               })}
             </RevealGroup>
+              </div>
+            ))}
           </div>
         </section>
       )}
