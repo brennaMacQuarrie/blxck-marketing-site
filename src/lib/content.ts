@@ -976,28 +976,30 @@ export const workHeading: Record<string, string> = {
 
 /** Hero image per service page (from the portfolio) — breaks up the dark. */
 export const serviceImage: Record<string, string> = {
-  "social-content-consulting": "/portfolio/social-digital-video.webp",
-  "digital-ads": "/work/digital-ads-advertising.webp",
-  "business-and-marketing-audits": "/portfolio/rex-equipment.jpg",
-  "goal-setting-and-brand-positioning": "/portfolio/atma-cena.webp",
-  advertising: "/work/digital-ads-advertising.webp",
-  analytics: "/work/optometrists-after.webp",
+  "social-content-consulting": "/heroes/social-digital-video.webp",
+  "digital-ads": "/heroes/social-media-and-ads.webp",
+  "business-and-marketing-audits": "/heroes/business-marketing-audits.webp",
+  "goal-setting-and-brand-positioning": "/heroes/goal-setting-and-brand-positioning.webp",
+  advertising: "/heroes/social-media-and-ads.webp",
+  analytics: "/heroes/analytics.webp",
   branding: "/work/web/transcend.webp",
-  "social-media-management": "/work/yt-hansen-reel.jpg",
-  strategy: "/portfolio/csa.jpg",
-  videography: "/portfolio/social-digital-video.webp",
-  photography: "/portfolio/hansen.jpg",
-  "jingles-and-radio-ads": "/work/jingles/yt-ardent-jingle.jpg",
-  "graphic-design": "/portfolio/azimuth.png",
-  "web-development": "/work/web/inferno.webp",
+  "social-media-management": "/heroes/social-media-and-ads.webp",
+  strategy: "/projects/csa.jpg",
+  videography: "/heroes/social-digital-video.webp",
+  photography: "/heroes/photography.webp",
+  "jingles-and-radio-ads": "/heroes/jingles-and-radio-ads.webp",
+  "graphic-design": "/heroes/graphic-design.webp",
+  "web-development": "/heroes/web-development.webp",
   hosting: "/work/web/solar-ninjas.webp",
-  seo: "/work/web/true-aesthetics.webp",
+  seo: "/heroes/seo.webp",
 };
 
 /** Optional focal point for hero crops (CSS object-position). */
 export const serviceImagePosition: Record<string, string> = {
   "social-content-consulting": "35% center",
   videography: "35% center",
+  "business-and-marketing-audits": "62% center",
+  photography: "38% center",
 };
 
 export function getServiceWriteup(slug: string): ServiceWriteup | undefined {
@@ -1091,16 +1093,19 @@ export const work: WorkItem[] = [
     video: true,
   },
 
-  // Photography
-  { name: "Hansen Distillery", type: "Product Photography", image: "/work/photography/hansen-1.webp", tags: ["photo"] },
-  { name: "Token Naturals", type: "Product Photography", image: "/work/photography/token-2.webp", tags: ["photo"] },
-  { name: "REX Equipment", type: "Product Photography", image: "/work/photography/rex-2.webp", tags: ["photo"] },
-  { name: "Hansen Distillery", type: "Product Photography", image: "/work/photography/hansen-2.webp", tags: ["photo"] },
-  { name: "Token Naturals", type: "Product Photography", image: "/work/photography/token-3.webp", tags: ["photo"] },
-  { name: "Ottavo", type: "Interior Photography", image: "/work/photography/ottavo.webp", tags: ["photo"] },
-  { name: "Hansen Distillery", type: "Product Photography", image: "/work/photography/hansen-3.webp", tags: ["photo"] },
-  { name: "REX Equipment", type: "Product Photography", image: "/work/photography/rex-1.webp", tags: ["photo"] },
-  { name: "Token Naturals", type: "Product Photography", image: "/work/photography/token-1.webp", tags: ["photo"] },
+  // Photography (team's current selection)
+  { name: "Token Naturals", type: "Product Photography", image: "/work/photography/selects/token-bitters-soda.webp", tags: ["photo"] },
+  { name: "True Aesthetics", type: "Brand Photography", image: "/work/photography/selects/true-aesthetics-treatment.webp", tags: ["photo"] },
+  { name: "Hansen Distillery", type: "Product Photography", image: "/work/photography/selects/hansen-danny-r.webp", tags: ["photo"] },
+  { name: "Token Naturals", type: "Product Photography", image: "/work/photography/selects/token-key-lime.webp", tags: ["photo"] },
+  { name: "Advanced Facial & Nasal Surgical Centre", type: "Brand Photography", image: "/work/photography/selects/afnsc-surgery.webp", tags: ["photo"] },
+  { name: "Sundays Promotional Products", type: "Brand Photography", image: "/work/photography/selects/sundays-founders.webp", tags: ["photo"] },
+  { name: "Token Naturals", type: "Product Photography", image: "/work/photography/selects/token-prerolls-1.webp", tags: ["photo"] },
+  { name: "On-Site Shoot", type: "Brand Photography", image: "/work/photography/selects/on-site-crew.webp", tags: ["photo"] },
+  { name: "Token Naturals", type: "Product Photography", image: "/work/photography/selects/token-cherries.webp", tags: ["photo"] },
+  { name: "True Aesthetics", type: "Interior Photography", image: "/work/photography/selects/true-aesthetics-room.webp", tags: ["photo"] },
+  { name: "Token Naturals", type: "Product Photography", image: "/work/photography/selects/token-dark-chocolate-mint.webp", tags: ["photo"] },
+  { name: "Token Naturals", type: "Product Photography", image: "/work/photography/selects/token-prerolls-2.webp", tags: ["photo"] },
 
   // Branding (logos)
   { name: "Hansen Distillery", type: "Logo & Identity", image: "/work/branding/hansen.webp", tags: ["branding"], contain: "light" },
@@ -1109,9 +1114,19 @@ export const work: WorkItem[] = [
   { name: "Frank Melo Builders", type: "Logo & Identity", image: "/work/branding/frank-melo.webp", tags: ["branding"], contain: "light" },
   { name: "AIM Industrial Cleaning", type: "Logo & Identity", image: "/work/branding/aim.webp", tags: ["branding"], contain: "dark" },
 
-  // Graphic design
-  { name: "Living Skies Music Festival", type: "Festival Poster", image: "/work/design/living-skies-poster.webp", tags: ["design"] },
-  { name: "Hansen Distillery", type: "Seasonal Graphic", image: "/work/design/hansen-st-patricks.webp", tags: ["design"] },
+  // Graphic design (team's current selection)
+  { name: "Token Naturals", type: "Campaign Graphic", image: "/work/design/selects/token-behind-teal.webp", tags: ["design"] },
+  { name: "Parkland Courier & Logistics", type: "Promo Graphic", image: "/work/design/selects/parkland-florists.webp", tags: ["design"] },
+  { name: "Tiger Gold", type: "Social Graphic", image: "/work/design/selects/tiger-gold.webp", tags: ["design"] },
+  { name: "ATMA CENA", type: "Training Promo", image: "/work/design/selects/atma-cena-foundations.webp", tags: ["design"] },
+  { name: "Mid-Range Trips+", type: "Product Graphic", image: "/work/design/selects/mid-range-trips.webp", tags: ["design"] },
+  { name: "Sundays Promotional Products", type: "Promo Graphic", image: "/work/design/selects/sundays-promo.webp", tags: ["design"] },
+  { name: "REX Equipment", type: "Product Graphic", image: "/work/design/selects/rex-fire-pump.webp", tags: ["design"] },
+  { name: "Optometrists' Clinic", type: "Social Graphic", image: "/work/design/selects/optometrists.webp", tags: ["design"] },
+  { name: "Natural History", type: "Product Graphic", image: "/work/design/selects/natural-history-grape-galena.webp", tags: ["design"] },
+  { name: "Chrome Spa Salon", type: "Promo Graphic", image: "/work/design/selects/chrome-students-save.webp", tags: ["design"] },
+  { name: "Token Naturals", type: "Campaign Graphic", image: "/work/design/selects/token-coming-soon.webp", tags: ["design"] },
+  { name: "Token Naturals", type: "Campaign Graphic", image: "/work/design/selects/token-behind-green.webp", tags: ["design"] },
 
   // Advertising (ad creative)
   { name: "REX Equipment", type: "Social Ad", image: "/work/ads/rex-field-day-sale.webp", tags: ["ads"] },
@@ -1285,7 +1300,7 @@ export const clientLogos: { name: string; src: string }[] = [
 const serviceWorkTag: Record<string, string[]> = {
   "web-development": ["web"],
   branding: ["branding"],
-  "graphic-design": ["design", "ads"],
+  "graphic-design": ["design"],
   photography: ["photo"],
   advertising: ["ads"],
   videography: ["video"],
@@ -1373,14 +1388,14 @@ export const projects: Project[] = [
   {
     name: "Hansen Distillery",
     sector: "Alcohol",
-    image: "/portfolio/hansen.jpg",
+    image: "/projects/hansen.jpg",
     accent: "gold",
     blurb: "Craft-spirits brand and storefront built to pour off the shelf.",
   },
   {
     name: "ATMA CENA",
     sector: "Medical",
-    image: "/portfolio/atma-cena.webp",
+    image: "/projects/atma-cena.webp",
     accent: "lavender",
     blurb:
       "A premium identity and content system for a psychedelic-therapy brand.",
@@ -1388,28 +1403,28 @@ export const projects: Project[] = [
   {
     name: "REX Equipment",
     sector: "Farm Equipment",
-    image: "/portfolio/rex-equipment.jpg",
+    image: "/projects/rex-equipment.jpg",
     accent: "teal",
     blurb: "Heavy equipment, meet a site that actually converts.",
   },
   {
     name: "Tiger Gold",
     sector: "Capital",
-    image: "/portfolio/tiger-gold.webp",
+    image: "/projects/tiger-gold.webp",
     accent: "gold",
     blurb: "Paid media and creative that made the brand impossible to miss.",
   },
   {
     name: "Natural History",
     sector: "Cannabis",
-    image: "/portfolio/natural-history.jpg",
+    image: "/projects/natural-history.jpg",
     accent: "silver",
     blurb: "Brand and presence for cannabis, handled with restraint.",
   },
   {
     name: "Optometrists' Clinic",
     sector: "Medical",
-    image: "/portfolio/optometrists.png",
+    image: "/projects/optometrists.png",
     accent: "teal",
     blurb: "84% more patient calls on 60% less ad spend.",
     href: "/optometrists-case-study",
@@ -1417,21 +1432,21 @@ export const projects: Project[] = [
   {
     name: "Apex Labs",
     sector: "Psychedelics",
-    image: "/portfolio/apex-labs.png",
+    image: "/projects/apex-labs.png",
     accent: "lavender",
     blurb: "A compliant, elevated brand in an emerging category.",
   },
   {
     name: "Azimuth Collective",
     sector: "Cannabis",
-    image: "/portfolio/azimuth.png",
+    image: "/projects/azimuth.png",
     accent: "silver",
     blurb: "Positioning and presence for a cannabis brand with range.",
   },
   {
     name: "Canadian Sniper Association",
     sector: "Non-Profit",
-    image: "/portfolio/csa.jpg",
+    image: "/projects/csa.jpg",
     accent: "gold",
     blurb: "Digital presence for a community with a precise mission.",
   },
@@ -1570,11 +1585,11 @@ export const medical = {
     },
   ],
   clients: [
-    { name: "ATMA CENA", sector: "Psychedelic Therapy · Network", image: "/portfolio/atma-cena.webp" },
-    { name: "Apex Labs", sector: "Psychedelics", image: "/portfolio/apex-labs.png" },
-    { name: "Natural History", sector: "Cannabis", image: "/portfolio/natural-history.jpg" },
-    { name: "Azimuth Collective", sector: "Cannabis", image: "/portfolio/azimuth.png" },
-    { name: "Optometrists' Clinic", sector: "Optometry", image: "/portfolio/optometrists.png" },
+    { name: "ATMA CENA", sector: "Psychedelic Therapy · Network", image: "/projects/atma-cena.webp" },
+    { name: "Apex Labs", sector: "Psychedelics", image: "/projects/apex-labs.png" },
+    { name: "Natural History", sector: "Cannabis", image: "/projects/natural-history.jpg" },
+    { name: "Azimuth Collective", sector: "Cannabis", image: "/projects/azimuth.png" },
+    { name: "Optometrists' Clinic", sector: "Optometry", image: "/projects/optometrists.png" },
   ],
   steps: [
     {

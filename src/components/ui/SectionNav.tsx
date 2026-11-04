@@ -64,7 +64,9 @@ export function SectionNav({
     const pill = active ? pillRefs.current[active] : null;
     const list = listRef.current;
     if (!pill || !list) return;
-    const left = pill.offsetLeft - list.clientWidth / 2 + pill.clientWidth / 2;
+    const p = pill.getBoundingClientRect();
+    const l = list.getBoundingClientRect();
+    const left = list.scrollLeft + p.left - l.left - (l.width - p.width) / 2;
     list.scrollTo({ left, behavior: "smooth" });
   }, [active]);
 
@@ -98,7 +100,7 @@ export function SectionNav({
         {/* Section pills */}
         <div
           ref={listRef}
-          className="-mx-2 flex min-w-0 flex-1 items-center gap-1 overflow-x-auto px-2 [scrollbar-width:none] md:justify-end [&::-webkit-scrollbar]:hidden"
+          className="-mx-2 flex min-w-0 flex-1 items-center gap-1 overflow-x-auto px-2 [mask-image:linear-gradient(90deg,transparent,#000_12px,#000_calc(100%-12px),transparent)] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         >
           {sections.map((s, i) => {
             const on = s.id === active;
@@ -111,7 +113,7 @@ export function SectionNav({
                 type="button"
                 onClick={() => go(s.id)}
                 aria-current={on ? "true" : undefined}
-                className="flex shrink-0 items-center gap-1.5 rounded-full px-3 py-1.5 text-[0.8rem] font-medium transition-all duration-300"
+                className="flex shrink-0 items-center gap-1.5 rounded-full px-3 py-1.5 text-[0.8rem] font-medium transition-all duration-300 md:first:ml-auto"
                 style={
                   on
                     ? {
@@ -122,9 +124,11 @@ export function SectionNav({
                     : { color: "var(--color-lo)" }
                 }
               >
-                <span className="tabular-nums">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
+                {sections.length <= 6 && (
+                  <span className="tabular-nums">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                )}
                 {s.label}
               </button>
             );

@@ -23,6 +23,7 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { AuditBanner } from "@/components/home/AuditBanner";
 import { MonthlyBars } from "@/components/case-study/MonthlyBars";
 import { TrendMark } from "@/components/case-study/TrendMark";
+import { BeforeAfterSlider } from "@/components/case-study/BeforeAfterSlider";
 
 const title = "Ardent Roof Systems Case Study";
 const description =
@@ -105,21 +106,11 @@ export default function ArdentCaseStudy() {
               </Reveal>
             </div>
             <Reveal delay={0.15} direction="left">
-              <a
-                href="https://ardentroofsystems.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative block aspect-[4/3] w-full overflow-hidden rounded-2xl border border-white/[0.08] bg-ink"
-              >
-                <Image
-                  src="/work/web/ardent.webp"
-                  alt="The Ardent Roof Systems website built by BLXCK"
-                  fill
-                  priority
-                  sizes="(min-width: 1024px) 55vw, 100vw"
-                  className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-                />
-              </a>
+              <BeforeAfterSlider
+                before={{ src: "/work/web/ardent-before.webp", alt: "The previous Ardent Roof Systems homepage" }}
+                after={{ src: "/work/web/ardent-after.webp", alt: "The new Ardent Roof Systems homepage built by BLXCK" }}
+                initial={45}
+              />
               <div className="mt-3 flex flex-wrap justify-between gap-x-6 gap-y-1 text-xs text-lo">
                 <span><span className="mr-1.5 font-semibold uppercase tracking-[0.18em]">2024</span>Refreshed logo, brand guide and new website.</span>
                 <span><span className="mr-1.5 font-semibold uppercase tracking-[0.18em] text-gold">2026</span>On the radio in two cities.</span>
