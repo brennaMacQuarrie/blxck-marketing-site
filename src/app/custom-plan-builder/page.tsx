@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 export default function CustomPlanBuilderPage() {
   return (
     <>
-      <section className="relative overflow-hidden pt-32 pb-12 md:pt-40 md:pb-14">
+      <section className="space-bg-1 relative overflow-hidden pt-32 pb-12 md:pt-40 md:pb-14">
         <Eclipse
           color="lavender"
           className="right-[-6%] top-[-18%] h-[52vmin] w-[52vmin] opacity-35"

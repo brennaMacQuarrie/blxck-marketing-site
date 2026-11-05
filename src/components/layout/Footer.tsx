@@ -15,7 +15,7 @@ const footerLinks = [
 export function Footer() {
   const year = 2026;
   return (
-    <footer className="border-t border-white/[0.06] bg-void">
+    <footer className="space-bg-3 border-t border-white/[0.06]">
       <div className="mx-auto max-w-6xl px-(--spacing-gutter)">
         {/* CTA */}
         <div className="flex flex-col items-start gap-8 py-20 md:py-28">

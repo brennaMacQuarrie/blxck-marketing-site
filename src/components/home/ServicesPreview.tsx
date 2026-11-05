@@ -13,7 +13,7 @@ const accentColor: Record<string, string> = {
 
 export function ServicesPreview() {
   return (
-    <section className="border-t border-white/[0.06] bg-void py-24 md:py-32">
+    <section className="space-bg-1 border-t border-white/[0.06] py-24 md:py-32">
       <div className="mx-auto max-w-6xl px-(--spacing-gutter)">
         <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
           <SectionHeading

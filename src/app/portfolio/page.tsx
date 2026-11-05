@@ -4,7 +4,7 @@ import Link from "next/link";
 import { work, workSections, clientLogos, caseStudies } from "@/lib/content";
 import type { WorkItem } from "@/lib/content";
 import { site } from "@/lib/site";
-import { workMedia, groupWork } from "@/lib/work-media";
+import { workMedia, workGrid, groupWork } from "@/lib/work-media";
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
 import { ButtonLink } from "@/components/ui/Button";
 import { Eclipse } from "@/components/ui/Eclipse";
@@ -44,7 +44,7 @@ export default function PortfolioPage() {
   return (
     <>
       {/* ---------------- Intro ---------------- */}
-      <section className="relative overflow-hidden pt-32 pb-14 md:pt-40">
+      <section className="space-bg-1 relative overflow-hidden pt-32 pb-14 md:pt-40">
         <Eclipse
           color="lavender"
           className="left-1/2 top-[-18%] h-[56vmin] w-[80vmin] -translate-x-1/2 opacity-35"
@@ -136,9 +136,9 @@ export default function PortfolioPage() {
                       </h3>
                     </Reveal>
                   )}
-                  <RevealGroup amount={0.05} className="columns-1 gap-5 sm:columns-2 lg:columns-3">
+                  <RevealGroup amount={0.05} className={workGrid(g.items)}>
                     {g.items.map((w) => (
-                      <RevealItem key={`${sec.tag}-${w.image}`} className="mb-5 break-inside-avoid">
+                      <RevealItem key={`${sec.tag}-${w.image}`} className="h-full">
                         <WorkCard w={w} />
                       </RevealItem>
                     ))}
@@ -222,20 +222,19 @@ function WorkCard({ w }: { w: WorkItem }) {
       href={href}
       target={external ? "_blank" : undefined}
       rel={external ? "noopener noreferrer" : undefined}
-      className={`group flex flex-col overflow-hidden ${
+      className={`group flex h-full flex-col overflow-hidden ${
         workMedia(w).bare
           ? ""
           : "rounded-2xl border border-white/[0.08] bg-void transition-colors duration-300 hover:border-[color:var(--ac)]"
       }`}
     >
-      <div className={`relative w-full overflow-hidden ${workMedia(w).panel}`}>
+      <div className={`relative w-full overflow-hidden ${workMedia(w).tile} ${workMedia(w).panel}`}>
         <Image
           src={w.image}
           alt={`${w.name} — ${w.type} by BLXCK Marketing`}
-          width={workMedia(w).width}
-          height={workMedia(w).height}
+          fill
           sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-          className="h-auto w-full transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+          className={`${workMedia(w).img} transition-transform duration-700 ease-out group-hover:scale-[1.03]`}
         />
         {w.video && (
           <span className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black/20">
@@ -255,7 +254,7 @@ function WorkCard({ w }: { w: WorkItem }) {
         )}
       </div>
       <div
-        className={`flex items-center justify-between gap-4 ${
+        className={`mt-auto flex items-center justify-between gap-4 ${
           workMedia(w).bare ? "px-1 pb-2 pt-3" : "border-t border-white/[0.08] p-5"
         }`}
       >

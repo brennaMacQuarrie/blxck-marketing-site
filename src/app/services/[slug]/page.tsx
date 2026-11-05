@@ -14,10 +14,11 @@ import {
   serviceImage,
   serviceImagePosition,
   transparentHeroes,
+  lightHeroes,
   workHeading,
 } from "@/lib/content";
 import { site } from "@/lib/site";
-import { workMedia, groupWork } from "@/lib/work-media";
+import { workMedia, workGrid, groupWork } from "@/lib/work-media";
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
 import { ButtonLink } from "@/components/ui/Button";
 import { Eclipse } from "@/components/ui/Eclipse";
@@ -107,7 +108,7 @@ export default async function ServiceDetailPage({
     <>
       {/* ---------------- Hero ---------------- */}
       <section
-        className="relative overflow-hidden pt-32 pb-16 md:pt-40 md:pb-20"
+        className="space-bg-2 relative overflow-hidden pt-32 pb-16 md:pt-40 md:pb-20"
         style={{ ["--ac" as string]: ac }}
       >
         <Eclipse
@@ -162,7 +163,19 @@ export default async function ServiceDetailPage({
 
           {heroImage && (
             <Reveal delay={0.1} direction="left">
-              {transparentHeroes.has(heroImage) ? (
+              {lightHeroes.has(heroImage) ? (
+                <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-[#f2f0eb] lg:aspect-[4/5]">
+                  <Image
+                    src={heroImage}
+                    alt=""
+                    aria-hidden
+                    fill
+                    priority
+                    sizes="(min-width: 1024px) 40vw, 100vw"
+                    className="object-contain p-[8%]"
+                  />
+                </div>
+              ) : transparentHeroes.has(heroImage) ? (
                 <div className="relative aspect-[4/3]">
                   <Image
                     src={heroImage}
@@ -399,34 +412,30 @@ export default async function ServiceDetailPage({
                     </h3>
                   </Reveal>
                 )}
-            <RevealGroup amount={0.05} className="columns-1 gap-5 sm:columns-2 lg:columns-3">
+            <RevealGroup amount={0.05} className={workGrid(g.items)}>
               {g.items.map((w) => {
                 const href = w.url ?? w.href ?? "/portfolio";
                 const external = Boolean(w.url || w.video);
                 return (
-                  <RevealItem key={w.image} className="mb-5 break-inside-avoid">
+                  <RevealItem key={w.image} className="h-full">
                     <a
                       href={href}
                       target={external ? "_blank" : undefined}
                       rel={external ? "noopener noreferrer" : undefined}
-                      className={`group relative block overflow-hidden ${
+                      className={`group flex h-full flex-col overflow-hidden ${
                         workMedia(w).bare
                           ? ""
                           : "rounded-2xl border border-white/[0.08] transition-colors hover:border-[color:var(--ac)]"
                       }`}
                     >
-                      <div className={`relative w-full ${workMedia(w).panel}`}>
+                      <div className={`relative w-full overflow-hidden ${workMedia(w).tile} ${workMedia(w).panel}`}>
                         <Image
                           src={w.image}
                           alt={`${w.name} — ${w.type} by BLXCK Marketing`}
-                          width={workMedia(w).width}
-                          height={workMedia(w).height}
+                          fill
                           sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                          className="h-auto w-full transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                          className={`${workMedia(w).img} transition-transform duration-700 ease-out group-hover:scale-[1.03]`}
                         />
-                        {!workMedia(w).bare && (
-                          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-                        )}
                         {w.video && (
                           <span className="pointer-events-none absolute inset-0 flex items-center justify-center">
                             <span className="flex h-14 w-14 items-center justify-center rounded-full border border-white/40 bg-black/40 backdrop-blur-sm transition-transform duration-300 group-hover:scale-110">
@@ -445,8 +454,8 @@ export default async function ServiceDetailPage({
                         )}
                       </div>
                       <div
-                        className={`flex items-end justify-end ${
-                          workMedia(w).bare ? "pt-2" : "absolute bottom-0 left-0 right-0 p-5"
+                        className={`mt-auto flex items-end justify-end ${
+                          workMedia(w).bare ? "pt-2" : "p-4"
                         }`}
                       >
                         <span className="text-[0.68rem] uppercase tracking-[0.16em] text-mid">
@@ -483,7 +492,11 @@ export default async function ServiceDetailPage({
                   {serviceImage[s.slug] && (
                     <div
                       className={`relative h-16 w-16 shrink-0 overflow-hidden ${
-                        transparentHeroes.has(serviceImage[s.slug]) ? "" : "rounded-lg border border-white/10"
+                        lightHeroes.has(serviceImage[s.slug])
+                          ? "rounded-lg bg-[#f2f0eb]"
+                          : transparentHeroes.has(serviceImage[s.slug])
+                            ? ""
+                            : "rounded-lg border border-white/10"
                       }`}
                     >
                       <Image
@@ -492,7 +505,7 @@ export default async function ServiceDetailPage({
                         aria-hidden
                         fill
                         sizes="64px"
-                        className={`${transparentHeroes.has(serviceImage[s.slug]) ? "object-contain" : "object-cover"} transition-transform duration-500 group-hover:scale-110`}
+                        className={`${transparentHeroes.has(serviceImage[s.slug]) || lightHeroes.has(serviceImage[s.slug]) ? "object-contain" : "object-cover"} transition-transform duration-500 group-hover:scale-110`}
                       />
                     </div>
                   )}

@@ -995,10 +995,10 @@ export const serviceImage: Record<string, string> = {
 };
 
 /** Transparent hero artwork: shown whole, directly on the page, with no frame. */
-export const transparentHeroes = new Set([
-  "/heroes/web-development.webp",
-  "/work/web/solar-ninjas.webp",
-]);
+export const transparentHeroes = new Set(["/work/web/solar-ninjas.webp"]);
+
+/** Transparent hero artwork with dark lettering: needs a light panel to read. */
+export const lightHeroes = new Set(["/heroes/web-development.webp"]);
 
 /** Optional focal point for hero crops (CSS object-position). */
 export const serviceImagePosition: Record<string, string> = {
@@ -1340,7 +1340,6 @@ export const work: WorkItem[] = [
   { name: "Natural History Cannabis", type: "Product Graphic", image: "/work/design/selects/natural-history-grape-galena.webp", tags: ["design"] },
   { name: "Chrome Spa Salon", type: "Promo Graphic", image: "/work/design/selects/chrome-students-save.webp", tags: ["design"] },
   { name: "Token Naturals", type: "Campaign Graphic", image: "/work/design/selects/token-coming-soon.webp", tags: ["design"] },
-  { name: "Token Naturals", type: "Campaign Graphic", image: "/work/design/selects/token-behind-green.webp", tags: ["design"] },
 
   // Advertising (ad creative)
   { name: "REX Equipment", type: "Social Ad", image: "/work/ads/rex-field-day-sale.webp", tags: ["ads"] },

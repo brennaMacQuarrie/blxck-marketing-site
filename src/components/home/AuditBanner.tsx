@@ -6,7 +6,7 @@ export function AuditBanner() {
   return (
     <section className="border-t border-white/[0.06] bg-ink py-24 md:py-32">
       <div className="mx-auto max-w-6xl px-(--spacing-gutter)">
-        <Reveal className="relative overflow-hidden rounded-3xl border border-white/[0.08] bg-carbon px-8 py-14 md:px-16 md:py-20">
+        <Reveal className="brand-gradient relative overflow-hidden rounded-3xl border border-white/[0.1] px-8 py-14 md:px-16 md:py-20">
           {/* One restrained gold wash. */}
           <div
             aria-hidden

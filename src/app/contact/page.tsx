@@ -42,7 +42,7 @@ export default function ContactPage() {
   return (
     <>
       {/* ---------------- Intro ---------------- */}
-      <section className="relative overflow-hidden pt-32 pb-14 md:pt-40">
+      <section className="space-bg-1 relative overflow-hidden pt-32 pb-14 md:pt-40">
         <Eclipse
           color="teal"
           className="right-[-6%] top-[-16%] h-[52vmin] w-[52vmin] opacity-40"

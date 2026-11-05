@@ -26,7 +26,7 @@ const accentColor: Record<string, string> = {
 export default function CaseStudiesPage() {
   return (
     <>
-      <section className="relative overflow-hidden pt-32 pb-14 md:pt-40">
+      <section className="space-bg-1 relative overflow-hidden pt-32 pb-14 md:pt-40">
         <Eclipse
           color="gold"
           className="left-1/2 top-[-18%] h-[56vmin] w-[80vmin] -translate-x-1/2 opacity-30"

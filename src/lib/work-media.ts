@@ -1,22 +1,31 @@
 import type { WorkItem } from "@/lib/content";
-import { workDimensions } from "@/lib/work-dimensions";
 
 /**
- * How to frame a portfolio item. Graphics are never cropped: the image is
- * rendered at its natural aspect ratio (cards sit in a masonry layout).
- * Transparent artwork ("bare") sits directly on the page with no card.
+ * How to frame a portfolio item in the tidy tile grid. Tiles are the same
+ * shape within a type of work, and graphics are never cropped: each image is
+ * shown whole and centred in its tile. Transparent artwork ("bare") sits
+ * directly on the page with no card.
  */
 export function workMedia(w: WorkItem) {
-  const [width, height] = workDimensions[w.image] ?? [1600, 1000];
-  const mockup = w.image.startsWith("/work/web/");
-  const bare = mockup || Boolean(w.transparent);
-  const panel =
-    w.contain === "light"
-      ? "bg-[#f2f0eb] p-[12%]"
-      : w.transparent
-        ? "p-[10%]"
-        : "";
-  return { width, height, panel, bare };
+  const bare = w.image.startsWith("/work/web/") || Boolean(w.transparent);
+  const tile = w.tags.includes("social")
+    ? "aspect-[9/16]"
+    : w.video
+      ? "aspect-video"
+      : w.tags.some((t) => t === "web" || t === "branding")
+        ? "aspect-[4/3]"
+        : "aspect-[4/5]";
+  const panel = w.contain === "light" ? "bg-[#f2f0eb]" : bare ? "" : "bg-carbon";
+  const logo = w.contain === "light" || w.transparent;
+  const img = `object-contain ${logo ? "p-[12%]" : ""}`;
+  return { tile, panel, img, bare };
+}
+
+/** Grid columns: vertical reels fit four across, everything else three. */
+export function workGrid(items: WorkItem[]) {
+  return items.every((w) => w.tags.includes("social"))
+    ? "grid grid-cols-2 gap-5 lg:grid-cols-4"
+    : "grid gap-5 sm:grid-cols-2 lg:grid-cols-3";
 }
 
 /** Split work into sub-headed groups, ungrouped items first, keeping order. */

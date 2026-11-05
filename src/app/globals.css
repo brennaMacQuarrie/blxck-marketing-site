@@ -169,6 +169,34 @@ html.lenis body {
     color: transparent;
   }
 
+  /* Soft blue → purple → gold panel. */
+  .brand-gradient {
+    background: linear-gradient(
+      120deg,
+      color-mix(in oklab, var(--color-teal) 26%, var(--color-carbon)),
+      color-mix(in oklab, var(--color-lavender) 26%, var(--color-carbon)) 55%,
+      color-mix(in oklab, var(--color-gold) 26%, var(--color-carbon))
+    );
+  }
+
+  /* Starfield backgrounds. bg1 and bg3 carry a 40% veil so all text on top
+     keeps at least 4.5:1 contrast at the brightest part of the glow. */
+  .space-bg-1,
+  .space-bg-2,
+  .space-bg-3 {
+    background-size: cover;
+    background-position: center;
+  }
+  .space-bg-1 {
+    background-image: linear-gradient(rgb(10 11 14 / 0.4), rgb(10 11 14 / 0.4)), url("/bg/bg1.webp");
+  }
+  .space-bg-2 {
+    background-image: url("/bg/bg2.webp");
+  }
+  .space-bg-3 {
+    background-image: linear-gradient(rgb(10 11 14 / 0.4), rgb(10 11 14 / 0.4)), url("/bg/bg3.webp");
+  }
+
   /* Colour-coded section: soft accent wash from the top-left corner and a
      fading accent rule along the top edge. Set --ac on the element. */
   .section-accent {
@@ -184,6 +212,11 @@ html.lenis body {
     pointer-events: none;
     background: radial-gradient(
       ellipse 70% 55% at 0% 0%,
+      color-mix(in oklab, var(--ac) 18%, transparent),
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 55% 50% at 100% 100%,
       color-mix(in oklab, var(--ac) 9%, transparent),
       transparent 70%
     );

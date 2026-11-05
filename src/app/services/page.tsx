@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { serviceGroups, packages, slugify, serviceImage, transparentHeroes } from "@/lib/content";
+import { serviceGroups, packages, slugify, serviceImage, transparentHeroes, lightHeroes } from "@/lib/content";
 import { site } from "@/lib/site";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
@@ -64,7 +64,7 @@ export default function ServicesPage() {
   return (
     <>
       {/* ---------------- Intro ---------------- */}
-      <section className="relative flex min-h-[60svh] items-center overflow-hidden pt-32 pb-12 md:pt-28">
+      <section className="space-bg-1 relative flex min-h-[60svh] items-center overflow-hidden pt-32 pb-12 md:pt-28">
         <Eclipse
           color="teal"
           className="right-[-8%] top-[-20%] h-[60vmin] w-[60vmin] opacity-40"
@@ -123,12 +123,6 @@ export default function ServicesPage() {
               {/* group header */}
               <Reveal>
                 <div className="flex flex-col gap-5 lg:sticky lg:top-36">
-                  <div className="flex items-center gap-3">
-                    <span className="section-chip">0{idx + 1}</span>
-                    <span className="eyebrow" style={{ color: "var(--ac)" }}>
-                      {g.items.length} services
-                    </span>
-                  </div>
                   <h2 className="font-heading text-4xl leading-none text-hi md:text-5xl">
                     {g.title}
                   </h2>
@@ -139,14 +133,18 @@ export default function ServicesPage() {
                     {g.items.map((it) => {
                       const slug = slugify(it.name);
                       return (
-                        <div key={slug} data-svc={slug} className="svc-shot absolute inset-0">
+                        <div
+                          key={slug}
+                          data-svc={slug}
+                          className={`svc-shot absolute inset-0 ${lightHeroes.has(serviceImage[slug]) ? "bg-[#f2f0eb]" : ""}`}
+                        >
                           <Image
                             src={serviceImage[slug]}
                             alt=""
                             aria-hidden
                             fill
                             sizes="384px"
-                            className={transparentHeroes.has(serviceImage[slug]) ? "object-contain p-4 pb-10" : "object-cover"}
+                            className={transparentHeroes.has(serviceImage[slug]) || lightHeroes.has(serviceImage[slug]) ? "object-contain p-4 pb-10" : "object-cover"}
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent" />
                           <span className="absolute bottom-4 left-4 right-4 text-sm font-semibold text-hi">

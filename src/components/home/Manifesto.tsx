@@ -38,13 +38,13 @@ export function Manifesto() {
   return (
     <section
       ref={root}
-      className="border-t border-white/[0.06] bg-ink py-28 md:py-40"
+      className="space-bg-3 border-t border-white/[0.06] py-28 md:py-40"
     >
       <div className="mx-auto max-w-4xl px-(--spacing-gutter)">
         <span className="eyebrow mb-10 block">Why BLXCK</span>
         <p className="text-2xl font-medium leading-[1.4] tracking-tight sm:text-3xl md:text-[2.6rem] md:leading-[1.35]">
           {words.map((w, i) => (
-            <span key={i} className="mf-word text-[#3a3d44]">
+            <span key={i} className="mf-word text-[#8d8f9a]">
               {w}{" "}
             </span>
           ))}
