@@ -1027,8 +1027,6 @@ export type WorkItem = {
   url?: string; // live site, shown as "See it live"
   video?: boolean; // show a play overlay and open the video externally
   group?: string; // sub-heading within a section (e.g. "Video Ads")
-  /** Dark artwork that needs a light panel to stay readable on the dark page. */
-  contain?: "light";
   /** Transparent artwork (logos): sits directly on the page, no card or panel. */
   transparent?: boolean;
 };
@@ -1324,7 +1322,7 @@ export const work: WorkItem[] = [
 
   // Branding (logos)
   { name: "Hansen Distillery", type: "Logo & Identity", image: "/work/branding/logo-hansen.webp", tags: ["branding"], transparent: true },
-  { name: "Sundays Promotional Products", type: "Logo & Identity", image: "/work/branding/logo-sundays.webp", tags: ["branding"], contain: "light" },
+  { name: "Sundays Promotional Products", type: "Logo & Identity", image: "/work/branding/logo-sundays-dark.webp", tags: ["branding"], transparent: true },
   { name: "Frank Melo Builders", type: "Logo & Identity", image: "/work/branding/logo-frank-melo.webp", tags: ["branding"], transparent: true },
   { name: "AIM Industrial Cleaning", type: "Logo & Identity", image: "/work/branding/aim.webp", tags: ["branding"], transparent: true },
   { name: "Pactum Law", type: "Logo & Identity", image: "/work/branding/logo-pactum-law.webp", tags: ["branding"], transparent: true },
