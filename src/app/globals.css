@@ -179,31 +179,16 @@ html.lenis body {
     );
   }
 
-  /* Soft white glow behind artwork with dark lettering, fading into the page
-     so there's no visible box. Solid through the middle so dark text stays
-     readable; reaches zero at the element's edge so nothing clips hard. */
+  /* Faint white glow behind artwork with dark lettering, fading into the page
+     so there's no visible box. Reaches zero at the element's edge. */
   .white-glow {
     background: radial-gradient(
       closest-side,
-      #fff 0%,
-      #fff 34%,
-      rgb(255 255 255 / 0.86) 50%,
-      rgb(255 255 255 / 0.6) 64%,
-      rgb(255 255 255 / 0.3) 78%,
-      rgb(255 255 255 / 0.09) 91%,
-      rgb(255 255 255 / 0) 100%
-    );
-  }
-
-  /* Same glow with a wider core, for a logo that nearly fills its tile. */
-  .white-glow-logo {
-    background: radial-gradient(
-      closest-side,
-      #fff 0%,
-      #fff 46%,
-      rgb(255 255 255 / 0.8) 62%,
-      rgb(255 255 255 / 0.5) 76%,
-      rgb(255 255 255 / 0.2) 88%,
+      rgb(255 255 255 / 0.6) 0%,
+      rgb(255 255 255 / 0.58) 35%,
+      rgb(255 255 255 / 0.48) 55%,
+      rgb(255 255 255 / 0.3) 72%,
+      rgb(255 255 255 / 0.12) 87%,
       rgb(255 255 255 / 0) 100%
     );
   }

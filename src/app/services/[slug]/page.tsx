@@ -169,7 +169,7 @@ export default async function ServiceDetailPage({
                   <div
                     aria-hidden
                     className="white-glow pointer-events-none absolute"
-                    style={{ left: "-24%", width: "140%", top: "-34%", height: "135%" }}
+                    style={{ left: "-20%", width: "100%", top: "-27%", height: "90%" }}
                   />
                   <Image
                     src={heroImage}

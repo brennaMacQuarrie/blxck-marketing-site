@@ -16,7 +16,7 @@ export function workMedia(w: WorkItem) {
       : w.tags.some((t) => t === "web" || t === "branding")
         ? "aspect-[4/3]"
         : "aspect-[4/5]";
-  const panel = light ? "white-glow-logo" : bare ? "" : "bg-carbon";
+  const panel = light ? "white-glow" : bare ? "" : "bg-carbon";
   const img = `object-contain ${light ? "p-[16%]" : w.transparent ? "p-[12%]" : ""}`;
   return { tile, panel, img, bare };
 }
