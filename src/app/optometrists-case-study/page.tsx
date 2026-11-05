@@ -67,42 +67,39 @@ export default function OptometristsCaseStudy() {
           className="right-[-8%] top-[-18%] h-[56vmin] w-[56vmin] opacity-40"
         />
         <div className="relative z-10 mx-auto w-full max-w-6xl px-(--spacing-gutter)">
-          <div className="grid items-center gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:gap-14">
-            <div>
-              <Reveal>
-                <nav className="eyebrow flex items-center gap-2">
-                  <Link href="/portfolio" className="transition-colors hover:text-mid">
-                    Portfolio
-                  </Link>
-                  <span>/</span>
-                  <span style={{ color: "var(--ac)" }}>Case study</span>
-                </nav>
-              </Reveal>
-              <Reveal delay={0.05}>
-                <h1 className="mt-6 text-balance text-[clamp(2.3rem,5vw,4.2rem)] leading-[1] text-hi">
-                  More patients. Less than half the ad spend.
-                </h1>
-              </Reveal>
-              <Reveal delay={0.1}>
-                <p className="mt-6 max-w-xl text-lg leading-relaxed text-mid">
-                  The Optometrists&rsquo; Clinic has served Edmonton since 1938 across
-                  five locations. In 2025 they moved their website, Google Ads and
-                  Meta Ads from a national directory company to BLXCK.
-                </p>
-              </Reveal>
+          <Reveal>
+            <nav className="eyebrow flex items-center gap-2">
+              <Link href="/portfolio" className="transition-colors hover:text-mid">
+                Portfolio
+              </Link>
+              <span>/</span>
+              <span style={{ color: "var(--ac)" }}>Case study</span>
+            </nav>
+          </Reveal>
+          <Reveal delay={0.05}>
+            <h1 className="mt-6 max-w-5xl text-balance text-[clamp(2.4rem,6vw,5rem)] leading-[1] text-hi">
+              More patients. Less than half the ad spend.
+            </h1>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <p className="mt-8 max-w-2xl text-lg leading-relaxed text-mid">
+              The Optometrists&rsquo; Clinic has served Edmonton since 1938 across
+              five locations. In 2025 they moved their website, Google Ads and
+              Meta Ads from a national directory company to BLXCK.
+            </p>
+          </Reveal>
+
+          <Reveal delay={0.15} amount={0.1} className="mt-12">
+            <BeforeAfterSlider
+              before={{ src: "/work/optometrists-before.webp", alt: "The previous Optometrists' Clinic homepage on Wix" }}
+              after={{ src: "/work/optometrists-after.webp", alt: "The new Optometrists' Clinic homepage built by BLXCK" }}
+              initial={45}
+            />
+            <div className="mt-3 flex flex-wrap justify-between gap-x-6 gap-y-1 text-xs text-lo">
+              <span><span className="mr-1.5 font-semibold uppercase tracking-[0.18em]">Before</span>Wix. 1 MB of page code. No call tracking.</span>
+              <span><span className="mr-1.5 font-semibold uppercase tracking-[0.18em] text-gold">After</span>WordPress. 60% less page code. Every call counted.</span>
             </div>
-            <Reveal delay={0.15} direction="left">
-              <BeforeAfterSlider
-                before={{ src: "/work/optometrists-before.webp", alt: "The previous Optometrists' Clinic homepage on Wix" }}
-                after={{ src: "/work/optometrists-after.webp", alt: "The new Optometrists' Clinic homepage built by BLXCK" }}
-                initial={45}
-              />
-              <div className="mt-3 flex flex-wrap justify-between gap-x-6 gap-y-1 text-xs text-lo">
-                <span><span className="mr-1.5 font-semibold uppercase tracking-[0.18em]">Before</span>Wix. 1 MB of page code. No call tracking.</span>
-                <span><span className="mr-1.5 font-semibold uppercase tracking-[0.18em] text-gold">After</span>WordPress. 60% less page code. Every call counted.</span>
-              </div>
-            </Reveal>
-          </div>
+          </Reveal>
 
           <RevealGroup className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.08] sm:grid-cols-2 lg:grid-cols-4">
             {headline.map((s) => (
@@ -242,7 +239,7 @@ export default function OptometristsCaseStudy() {
                     values={siteContacts}
                     max={780}
                     ticks={[0, 200, 400, 600]}
-                    highlight={[4, 17]}
+                    highlight={[4, 15]}
                     ariaLabel="Patient contacts tracked on the website per month"
                     tooltips={siteContacts.map(
                       (v, i) =>

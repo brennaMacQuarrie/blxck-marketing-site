@@ -4,17 +4,19 @@ import { workDimensions } from "@/lib/work-dimensions";
 /**
  * How to frame a portfolio item. Graphics are never cropped: the image is
  * rendered at its natural aspect ratio (cards sit in a masonry layout).
- * Logos get a plain light/dark panel with breathing room around them.
+ * Transparent artwork ("bare") sits directly on the page with no card.
  */
 export function workMedia(w: WorkItem) {
   const [width, height] = workDimensions[w.image] ?? [1600, 1000];
+  const mockup = w.image.startsWith("/work/web/");
+  const bare = mockup || Boolean(w.transparent);
   const panel =
     w.contain === "light"
       ? "bg-[#f2f0eb] p-[12%]"
-      : w.contain === "dark"
-        ? "bg-carbon p-[12%]"
+      : w.transparent
+        ? "p-[10%]"
         : "";
-  return { width, height, panel };
+  return { width, height, panel, bare };
 }
 
 /** Split work into sub-headed groups, ungrouped items first, keeping order. */

@@ -982,7 +982,7 @@ export const serviceImage: Record<string, string> = {
   "goal-setting-and-brand-positioning": "/heroes/goal-setting-and-brand-positioning.webp",
   advertising: "/heroes/social-media-and-ads.webp",
   analytics: "/heroes/analytics.webp",
-  branding: "/work/web/transcend.webp",
+  branding: "/heroes/web-development.webp",
   "social-media-management": "/heroes/social-media-and-ads.webp",
   strategy: "/projects/csa.jpg",
   videography: "/heroes/social-digital-video.webp",
@@ -993,6 +993,12 @@ export const serviceImage: Record<string, string> = {
   hosting: "/work/web/solar-ninjas.webp",
   seo: "/heroes/seo.webp",
 };
+
+/** Transparent hero artwork: shown whole, directly on the page, with no frame. */
+export const transparentHeroes = new Set([
+  "/heroes/web-development.webp",
+  "/work/web/solar-ninjas.webp",
+]);
 
 /** Optional focal point for hero crops (CSS object-position). */
 export const serviceImagePosition: Record<string, string> = {
@@ -1019,8 +1025,10 @@ export type WorkItem = {
   url?: string; // live site, shown as "See it live"
   video?: boolean; // show a play overlay and open the video externally
   group?: string; // sub-heading within a section (e.g. "Video Ads")
-  /** Logos/flat art: show the whole image on a plain panel instead of cropping. */
-  contain?: "light" | "dark";
+  /** Dark artwork that needs a light panel to stay readable on the dark page. */
+  contain?: "light";
+  /** Transparent artwork (logos): sits directly on the page, no card or panel. */
+  transparent?: boolean;
 };
 
 export const work: WorkItem[] = [
@@ -1223,6 +1231,15 @@ export const work: WorkItem[] = [
     href: "https://youtu.be/IjfpNgAINhE",
     video: true,
   },
+  {
+    name: "Tiger Gold",
+    type: "Explainer Video",
+    image: "/work/video/EMwg0mrclM4.webp",
+    tags: ["video"],
+    group: "Explainer & Automation",
+    href: "https://youtu.be/EMwg0mrclM4",
+    video: true,
+  },
 
   // Social content (Shorts from the Social Reels playlist)
   {
@@ -1305,11 +1322,11 @@ export const work: WorkItem[] = [
   { name: "Token Naturals", type: "Product Photography", image: "/work/photography/selects/token-prerolls-2.webp", tags: ["photo"] },
 
   // Branding (logos)
-  { name: "Hansen Distillery", type: "Logo & Identity", image: "/work/branding/hansen.webp", tags: ["branding"], contain: "light" },
-  { name: "SnapThat", type: "Logo & Identity", image: "/work/branding/snapthat.webp", tags: ["branding"], contain: "dark" },
+  { name: "Hansen Distillery", type: "Logo & Identity", image: "/work/branding/hansen-white.webp", tags: ["branding"], transparent: true },
+  { name: "SnapThat", type: "Logo & Identity", image: "/work/branding/snapthat.webp", tags: ["branding"], transparent: true },
   { name: "Sundays Promotional Products", type: "Logo & Identity", image: "/work/branding/sundays.webp", tags: ["branding"], contain: "light" },
-  { name: "Frank Melo Builders", type: "Logo & Identity", image: "/work/branding/frank-melo.webp", tags: ["branding"], contain: "light" },
-  { name: "AIM Industrial Cleaning", type: "Logo & Identity", image: "/work/branding/aim.webp", tags: ["branding"], contain: "dark" },
+  { name: "Frank Melo Builders", type: "Logo & Identity", image: "/work/branding/frank-melo-white.webp", tags: ["branding"], transparent: true },
+  { name: "AIM Industrial Cleaning", type: "Logo & Identity", image: "/work/branding/aim.webp", tags: ["branding"], transparent: true },
 
   // Graphic design (team's current selection)
   { name: "Token Naturals", type: "Campaign Graphic", image: "/work/design/selects/token-behind-teal.webp", tags: ["design"] },
@@ -1329,7 +1346,7 @@ export const work: WorkItem[] = [
   { name: "REX Equipment", type: "Social Ad", image: "/work/ads/rex-field-day-sale.webp", tags: ["ads"] },
   { name: "Living Skies Music Festival", type: "Festival Poster (Yorkton)", image: "/work/ads/living-skies-yorkton-poster.webp", tags: ["ads"] },
   { name: "Chrome Spa Salon", type: "Print & Social Ad", image: "/work/ads/chrome-students-save.webp", tags: ["ads"] },
-  { name: "David B. Caseley", type: "Video Ad", image: "/work/ads/david-caseley-riding-bulls.webp", tags: ["ads"], contain: "dark" },
+  { name: "David B. Caseley", type: "Video Ad", image: "/work/ads/david-caseley-riding-bulls.webp", tags: ["ads"] },
 
   // Jingles & radio
   {

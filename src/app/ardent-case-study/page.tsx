@@ -69,54 +69,53 @@ export default function ArdentCaseStudy() {
           className="right-[-8%] top-[-18%] h-[56vmin] w-[56vmin] opacity-40"
         />
         <div className="relative z-10 mx-auto w-full max-w-6xl px-(--spacing-gutter)">
-          <div className="grid items-center gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:gap-14">
-            <div>
-              <Reveal>
-                <nav className="eyebrow flex items-center gap-2">
-                  <Link href="/portfolio" className="transition-colors hover:text-mid">
-                    Portfolio
-                  </Link>
-                  <span>/</span>
-                  <span style={{ color: "var(--ac)" }}>Case study</span>
-                </nav>
-              </Reveal>
-              <Reveal delay={0.05}>
-                <h1 className="mt-6 text-balance text-[clamp(2.3rem,5vw,4.2rem)] leading-[1] text-hi">
-                  Great roofs. Now a name people know.
-                </h1>
-              </Reveal>
-              <Reveal delay={0.1}>
-                <p className="mt-6 max-w-xl text-lg leading-relaxed text-mid">
-                  Ardent Roof Systems has been installing and repairing roofs across
-                  Edmonton and Calgary for years. In 2024 they brought BLXCK in to
-                  run their marketing: a refreshed brand, a new website, ads, video,
-                  events and, since May 2026, a radio jingle people can&rsquo;t get
-                  out of their heads.
-                </p>
-              </Reveal>
-              <Reveal delay={0.15}>
-                <div className="mt-8 flex flex-wrap gap-3">
-                  <ButtonLink href={jingleUrl} variant="ghost" withArrow>
-                    Hear the jingle
-                  </ButtonLink>
-                  <ButtonLink href={brandVideoUrl} variant="ghost" withArrow>
-                    Watch the brand story
-                  </ButtonLink>
-                </div>
-              </Reveal>
-            </div>
-            <Reveal delay={0.15} direction="left">
-              <BeforeAfterSlider
-                before={{ src: "/work/web/ardent-before.webp", alt: "The previous Ardent Roof Systems homepage" }}
-                after={{ src: "/work/web/ardent-after.webp", alt: "The new Ardent Roof Systems homepage built by BLXCK" }}
-                initial={45}
-              />
-              <div className="mt-3 flex flex-wrap justify-between gap-x-6 gap-y-1 text-xs text-lo">
-                <span><span className="mr-1.5 font-semibold uppercase tracking-[0.18em]">2024</span>Refreshed logo, brand guide and new website.</span>
-                <span><span className="mr-1.5 font-semibold uppercase tracking-[0.18em] text-gold">2026</span>On the radio in two cities.</span>
+          <Reveal>
+            <nav className="eyebrow flex items-center gap-2">
+              <Link href="/portfolio" className="transition-colors hover:text-mid">
+                Portfolio
+              </Link>
+              <span>/</span>
+              <span style={{ color: "var(--ac)" }}>Case study</span>
+            </nav>
+          </Reveal>
+          <Reveal delay={0.05}>
+            <h1 className="mt-6 max-w-5xl text-balance text-[clamp(2.4rem,6vw,5rem)] leading-[1] text-hi">
+              Great roofs. Now a name people know.
+            </h1>
+          </Reveal>
+          <div className="mt-8 grid items-end gap-8 lg:grid-cols-[1.5fr_1fr] lg:gap-16">
+            <Reveal delay={0.1}>
+              <p className="max-w-2xl text-lg leading-relaxed text-mid">
+                Ardent Roof Systems has been installing and repairing roofs across
+                Edmonton and Calgary for years. In 2024 they brought BLXCK in to
+                run their marketing: a refreshed brand, a new website, ads, video,
+                events and, since May 2026, a radio jingle people can&rsquo;t get
+                out of their heads.
+              </p>
+            </Reveal>
+            <Reveal delay={0.15}>
+              <div className="flex flex-wrap gap-3 lg:justify-end">
+                <ButtonLink href={jingleUrl} variant="ghost" withArrow>
+                  Hear the jingle
+                </ButtonLink>
+                <ButtonLink href={brandVideoUrl} variant="ghost" withArrow>
+                  Watch the brand story
+                </ButtonLink>
               </div>
             </Reveal>
           </div>
+
+          <Reveal delay={0.15} amount={0.1} className="mt-12">
+            <BeforeAfterSlider
+              before={{ src: "/work/web/ardent-before.webp", alt: "The previous Ardent Roof Systems homepage" }}
+              after={{ src: "/work/web/ardent-after.webp", alt: "The new Ardent Roof Systems homepage built by BLXCK" }}
+              initial={45}
+            />
+            <div className="mt-3 flex flex-wrap justify-between gap-x-6 gap-y-1 text-xs text-lo">
+              <span><span className="mr-1.5 font-semibold uppercase tracking-[0.18em]">2024</span>Refreshed logo, brand guide and new website.</span>
+              <span><span className="mr-1.5 font-semibold uppercase tracking-[0.18em] text-gold">2026</span>On the radio in two cities.</span>
+            </div>
+          </Reveal>
 
           <RevealGroup className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.08] sm:grid-cols-2 lg:grid-cols-4">
             {headline.map((s) => (

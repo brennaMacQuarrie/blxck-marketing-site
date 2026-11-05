@@ -13,6 +13,7 @@ import {
   doneForYou,
   serviceImage,
   serviceImagePosition,
+  transparentHeroes,
   workHeading,
 } from "@/lib/content";
 import { site } from "@/lib/site";
@@ -161,13 +162,8 @@ export default async function ServiceDetailPage({
 
           {heroImage && (
             <Reveal delay={0.1} direction="left">
-              <div className="relative">
-                <div
-                  aria-hidden
-                  className="pointer-events-none absolute -inset-6 -z-10 rounded-[2rem] opacity-30 blur-3xl"
-                  style={{ background: "var(--ac)" }}
-                />
-                <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 bg-carbon lg:aspect-[4/5]">
+              {transparentHeroes.has(heroImage) ? (
+                <div className="relative aspect-[4/3]">
                   <Image
                     src={heroImage}
                     alt=""
@@ -175,12 +171,31 @@ export default async function ServiceDetailPage({
                     fill
                     priority
                     sizes="(min-width: 1024px) 40vw, 100vw"
-                    className="object-cover"
-                    style={{ objectPosition: serviceImagePosition[slug] }}
+                    className="object-contain"
                   />
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
                 </div>
-              </div>
+              ) : (
+                <div className="relative">
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute -inset-6 -z-10 rounded-[2rem] opacity-30 blur-3xl"
+                    style={{ background: "var(--ac)" }}
+                  />
+                  <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 bg-carbon lg:aspect-[4/5]">
+                    <Image
+                      src={heroImage}
+                      alt=""
+                      aria-hidden
+                      fill
+                      priority
+                      sizes="(min-width: 1024px) 40vw, 100vw"
+                      className="object-cover"
+                      style={{ objectPosition: serviceImagePosition[slug] }}
+                    />
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                  </div>
+                </div>
+              )}
             </Reveal>
           )}
         </div>
@@ -394,7 +409,11 @@ export default async function ServiceDetailPage({
                       href={href}
                       target={external ? "_blank" : undefined}
                       rel={external ? "noopener noreferrer" : undefined}
-                      className="group relative block overflow-hidden rounded-2xl border border-white/[0.08] transition-colors hover:border-[color:var(--ac)]"
+                      className={`group relative block overflow-hidden ${
+                        workMedia(w).bare
+                          ? ""
+                          : "rounded-2xl border border-white/[0.08] transition-colors hover:border-[color:var(--ac)]"
+                      }`}
                     >
                       <div className={`relative w-full ${workMedia(w).panel}`}>
                         <Image
@@ -405,7 +424,9 @@ export default async function ServiceDetailPage({
                           sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                           className="h-auto w-full transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                         />
-                        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                        {!workMedia(w).bare && (
+                          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                        )}
                         {w.video && (
                           <span className="pointer-events-none absolute inset-0 flex items-center justify-center">
                             <span className="flex h-14 w-14 items-center justify-center rounded-full border border-white/40 bg-black/40 backdrop-blur-sm transition-transform duration-300 group-hover:scale-110">
@@ -423,7 +444,11 @@ export default async function ServiceDetailPage({
                           </span>
                         )}
                       </div>
-                      <div className="absolute bottom-0 left-0 right-0 flex items-end justify-end p-5">
+                      <div
+                        className={`flex items-end justify-end ${
+                          workMedia(w).bare ? "pt-2" : "absolute bottom-0 left-0 right-0 p-5"
+                        }`}
+                      >
                         <span className="text-[0.68rem] uppercase tracking-[0.16em] text-mid">
                           {w.type}
                         </span>
@@ -456,14 +481,18 @@ export default async function ServiceDetailPage({
                   className="group flex items-start gap-4 bg-void p-5 transition-colors duration-300 hover:bg-carbon"
                 >
                   {serviceImage[s.slug] && (
-                    <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-lg border border-white/10">
+                    <div
+                      className={`relative h-16 w-16 shrink-0 overflow-hidden ${
+                        transparentHeroes.has(serviceImage[s.slug]) ? "" : "rounded-lg border border-white/10"
+                      }`}
+                    >
                       <Image
                         src={serviceImage[s.slug]}
                         alt=""
                         aria-hidden
                         fill
                         sizes="64px"
-                        className="object-cover transition-transform duration-500 group-hover:scale-110"
+                        className={`${transparentHeroes.has(serviceImage[s.slug]) ? "object-contain" : "object-cover"} transition-transform duration-500 group-hover:scale-110`}
                       />
                     </div>
                   )}

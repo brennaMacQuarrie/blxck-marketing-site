@@ -222,7 +222,11 @@ function WorkCard({ w }: { w: WorkItem }) {
       href={href}
       target={external ? "_blank" : undefined}
       rel={external ? "noopener noreferrer" : undefined}
-      className="group flex flex-col overflow-hidden rounded-2xl border border-white/[0.08] bg-void transition-colors duration-300 hover:border-[color:var(--ac)]"
+      className={`group flex flex-col overflow-hidden ${
+        workMedia(w).bare
+          ? ""
+          : "rounded-2xl border border-white/[0.08] bg-void transition-colors duration-300 hover:border-[color:var(--ac)]"
+      }`}
     >
       <div className={`relative w-full overflow-hidden ${workMedia(w).panel}`}>
         <Image
@@ -250,7 +254,11 @@ function WorkCard({ w }: { w: WorkItem }) {
           </span>
         )}
       </div>
-      <div className="flex items-center justify-between gap-4 border-t border-white/[0.08] p-5">
+      <div
+        className={`flex items-center justify-between gap-4 ${
+          workMedia(w).bare ? "px-1 pb-2 pt-3" : "border-t border-white/[0.08] p-5"
+        }`}
+      >
         <div className="flex flex-col gap-1">
           <span className="font-heading text-base leading-snug text-hi">{w.name}</span>
           <span className="text-[0.68rem] uppercase tracking-[0.16em] text-lo">
