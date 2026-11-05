@@ -99,9 +99,6 @@ export default function ServicesPage() {
                 <ButtonLink href="/contact" variant="primary" withArrow>
                   Start a project
                 </ButtonLink>
-                <ButtonLink href={site.calculatorUrl} variant="ghost" withArrow={false}>
-                  Build a custom plan
-                </ButtonLink>
               </div>
             </Reveal>
           </div>
@@ -272,7 +269,7 @@ export default function ServicesPage() {
 
                   <div className="mt-auto pt-2">
                     <ButtonLink
-                      href={site.calculatorUrl}
+                      href="/contact"
                       variant={p.featured ? "primary" : "ghost"}
                       withArrow
                       className="w-full"

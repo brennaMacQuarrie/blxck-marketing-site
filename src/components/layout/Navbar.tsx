@@ -55,7 +55,7 @@ export function Navbar() {
     label === "Services" ? "services" : label === "Our work" ? "work" : null;
   const isActive = (label: string, href: string) =>
     label === "Our work"
-      ? ["/case-studies", "/portfolio", "/optometrists-case-study", "/ardent-case-study"].some((p) =>
+      ? ["/our-work", "/case-studies", "/portfolio", "/optometrists-case-study", "/ardent-case-study"].some((p) =>
           pathname.startsWith(p),
         )
       : pathname.startsWith(href);
@@ -192,15 +192,6 @@ export function Navbar() {
                 className="group flex items-center gap-1.5 text-sm text-hi"
               >
                 All services
-                <span className="transition-transform duration-300 group-hover:translate-x-1">
-                  →
-                </span>
-              </Link>
-              <Link
-                href={site.calculatorUrl}
-                className="group flex items-center gap-1.5 text-sm text-mid transition-colors hover:text-hi"
-              >
-                Build a custom plan
                 <span className="transition-transform duration-300 group-hover:translate-x-1">
                   →
                 </span>

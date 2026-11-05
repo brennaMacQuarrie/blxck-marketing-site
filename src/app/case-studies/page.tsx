@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
 import { caseStudies } from "@/lib/content";
 import { site } from "@/lib/site";
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
 import { ButtonLink } from "@/components/ui/Button";
 import { Eclipse } from "@/components/ui/Eclipse";
+import { CaseStudyCard } from "@/components/work/CaseStudyCard";
 
 export const metadata: Metadata = {
   title: "Case Studies",
@@ -15,12 +14,6 @@ export const metadata: Metadata = {
     title: `Case Studies — ${site.name}`,
     description: "The problem, what we changed, and the numbers that moved.",
   },
-};
-
-const accentColor: Record<string, string> = {
-  teal: "var(--color-teal)",
-  lavender: "var(--color-lavender)",
-  gold: "var(--color-gold)",
 };
 
 export default function CaseStudiesPage() {
@@ -56,34 +49,7 @@ export default function CaseStudiesPage() {
         <RevealGroup className="mx-auto grid max-w-6xl gap-6 px-(--spacing-gutter) md:grid-cols-2">
           {caseStudies.map((c) => (
             <RevealItem key={c.href} className="h-full">
-              <Link
-                href={c.href}
-                className="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/[0.08] bg-ink transition-colors duration-300 hover:border-[color:var(--ac)]"
-                style={{ ["--ac" as string]: accentColor[c.accent] }}
-              >
-                <div className="relative aspect-[16/10] w-full overflow-hidden">
-                  <Image
-                    src={c.image}
-                    alt={`${c.client} — case study by BLXCK Marketing`}
-                    fill
-                    sizes="(min-width: 768px) 50vw, 100vw"
-                    className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
-                  />
-                </div>
-                <div className="flex flex-1 flex-col gap-3 border-t border-white/[0.08] p-6 md:p-8">
-                  <span className="text-xs uppercase tracking-[0.18em]" style={{ color: "var(--ac)" }}>
-                    {c.sector}
-                  </span>
-                  <h2 className="text-2xl text-hi md:text-3xl">{c.title}</h2>
-                  <p className="leading-relaxed text-mid">{c.blurb}</p>
-                  <span className="mt-auto pt-3 text-sm text-hi">
-                    Read the case study{" "}
-                    <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">
-                      →
-                    </span>
-                  </span>
-                </div>
-              </Link>
+              <CaseStudyCard study={c} />
             </RevealItem>
           ))}
         </RevealGroup>

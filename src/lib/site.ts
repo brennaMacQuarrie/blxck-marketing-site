@@ -33,13 +33,11 @@ export const site = {
   calendlyUrl:
     process.env.NEXT_PUBLIC_CALENDLY_URL ??
     "https://calendly.com/blxckmarketing/blxck-meeting",
-  // Estimate/quote calculator — set NEXT_PUBLIC_CALCULATOR_URL once live.
-  calculatorUrl: process.env.NEXT_PUBLIC_CALCULATOR_URL ?? "/custom-plan-builder",
 } as const;
 
 /** Main nav. The logo links home; Services and Our work open menus. */
 export const nav = [
   { label: "Services", href: "/services" },
-  { label: "Our work", href: "/case-studies" },
+  { label: "Our work", href: "/our-work" },
   { label: "Contact", href: "/contact" },
 ] as const;

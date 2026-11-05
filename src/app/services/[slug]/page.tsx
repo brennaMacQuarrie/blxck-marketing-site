@@ -359,7 +359,7 @@ export default async function ServiceDetailPage({
                     See {handOff.label}
                   </ButtonLink>
                 ) : (
-                  <ButtonLink href={site.calculatorUrl} variant="primary" withArrow>
+                  <ButtonLink href="/contact" variant="primary" withArrow>
                     Get an estimate
                   </ButtonLink>
                 )}
