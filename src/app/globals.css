@@ -179,6 +179,35 @@ html.lenis body {
     );
   }
 
+  /* Soft white glow behind artwork with dark lettering, fading into the page
+     so there's no visible box. Solid through the middle so dark text stays
+     readable; reaches zero at the element's edge so nothing clips hard. */
+  .white-glow {
+    background: radial-gradient(
+      closest-side,
+      #fff 0%,
+      #fff 34%,
+      rgb(255 255 255 / 0.86) 50%,
+      rgb(255 255 255 / 0.6) 64%,
+      rgb(255 255 255 / 0.3) 78%,
+      rgb(255 255 255 / 0.09) 91%,
+      rgb(255 255 255 / 0) 100%
+    );
+  }
+
+  /* Same glow with a wider core, for a logo that nearly fills its tile. */
+  .white-glow-logo {
+    background: radial-gradient(
+      closest-side,
+      #fff 0%,
+      #fff 46%,
+      rgb(255 255 255 / 0.8) 62%,
+      rgb(255 255 255 / 0.5) 76%,
+      rgb(255 255 255 / 0.2) 88%,
+      rgb(255 255 255 / 0) 100%
+    );
+  }
+
   /* Starfield backgrounds. bg1 and bg3 carry a 40% veil so all text on top
      keeps at least 4.5:1 contrast at the brightest part of the glow. */
   .space-bg-1,

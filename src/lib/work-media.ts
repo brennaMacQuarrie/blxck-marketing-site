@@ -4,10 +4,11 @@ import type { WorkItem } from "@/lib/content";
  * How to frame a portfolio item in the tidy tile grid. Tiles are the same
  * shape within a type of work, and graphics are never cropped: each image is
  * shown whole and centred in its tile. Transparent artwork ("bare") sits
- * directly on the page with no card.
+ * directly on the page with no card; dark lettering gets a soft white glow.
  */
 export function workMedia(w: WorkItem) {
-  const bare = w.image.startsWith("/work/web/") || Boolean(w.transparent);
+  const light = w.contain === "light";
+  const bare = w.image.startsWith("/work/web/") || Boolean(w.transparent) || light;
   const tile = w.tags.includes("social")
     ? "aspect-[9/16]"
     : w.video
@@ -15,9 +16,8 @@ export function workMedia(w: WorkItem) {
       : w.tags.some((t) => t === "web" || t === "branding")
         ? "aspect-[4/3]"
         : "aspect-[4/5]";
-  const panel = w.contain === "light" ? "bg-[#f2f0eb]" : bare ? "" : "bg-carbon";
-  const logo = w.contain === "light" || w.transparent;
-  const img = `object-contain ${logo ? "p-[12%]" : ""}`;
+  const panel = light ? "white-glow-logo" : bare ? "" : "bg-carbon";
+  const img = `object-contain ${light ? "p-[16%]" : w.transparent ? "p-[12%]" : ""}`;
   return { tile, panel, img, bare };
 }
 

@@ -164,7 +164,13 @@ export default async function ServiceDetailPage({
           {heroImage && (
             <Reveal delay={0.1} direction="left">
               {lightHeroes.has(heroImage) ? (
-                <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-[#f2f0eb] lg:aspect-[4/5]">
+                <div className="relative aspect-[7/6]">
+                  {/* Glow sits behind the logo in the artwork's top-left. */}
+                  <div
+                    aria-hidden
+                    className="white-glow pointer-events-none absolute"
+                    style={{ left: "-24%", width: "140%", top: "-34%", height: "135%" }}
+                  />
                   <Image
                     src={heroImage}
                     alt=""
@@ -172,7 +178,7 @@ export default async function ServiceDetailPage({
                     fill
                     priority
                     sizes="(min-width: 1024px) 40vw, 100vw"
-                    className="object-contain p-[8%]"
+                    className="object-contain"
                   />
                 </div>
               ) : transparentHeroes.has(heroImage) ? (
