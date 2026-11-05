@@ -1042,14 +1042,14 @@ export const work: WorkItem[] = [
     name: "Transcend Together",
     type: "Website & Branding",
     image: "/work/web/transcend.webp", url: "https://transcendtogether.ca",
-    tags: ["web", "branding"],
+    tags: ["web"],
   },
   { name: "Solar Ninjas", type: "Website", image: "/work/web/solar-ninjas.webp", url: "https://solarninjas.energy", tags: ["web"] },
   {
     name: "Ardent Roof Systems",
     type: "Website & Branding",
     image: "/work/web/ardent.webp", url: "https://ardentroofsystems.com",
-    tags: ["web", "branding"],
+    tags: ["web"],
   },
 
   // Videography (from the YouTube playlists, grouped by type)
@@ -1323,11 +1323,15 @@ export const work: WorkItem[] = [
   { name: "Token Naturals", type: "Product Photography", image: "/work/photography/selects/token-prerolls-2.webp", tags: ["photo"] },
 
   // Branding (logos)
-  { name: "Hansen Distillery", type: "Logo & Identity", image: "/work/branding/hansen-white.webp", tags: ["branding"], transparent: true },
-  { name: "SnapThat", type: "Logo & Identity", image: "/work/branding/snapthat.webp", tags: ["branding"], transparent: true },
-  { name: "Sundays Promotional Products", type: "Logo & Identity", image: "/work/branding/sundays.webp", tags: ["branding"], contain: "light" },
-  { name: "Frank Melo Builders", type: "Logo & Identity", image: "/work/branding/frank-melo-white.webp", tags: ["branding"], transparent: true },
+  { name: "Hansen Distillery", type: "Logo & Identity", image: "/work/branding/logo-hansen.webp", tags: ["branding"], transparent: true },
+  { name: "Sundays Promotional Products", type: "Logo & Identity", image: "/work/branding/logo-sundays.webp", tags: ["branding"], contain: "light" },
+  { name: "Frank Melo Builders", type: "Logo & Identity", image: "/work/branding/logo-frank-melo.webp", tags: ["branding"], transparent: true },
   { name: "AIM Industrial Cleaning", type: "Logo & Identity", image: "/work/branding/aim.webp", tags: ["branding"], transparent: true },
+  { name: "Pactum Law", type: "Logo & Identity", image: "/work/branding/logo-pactum-law.webp", tags: ["branding"], transparent: true },
+  { name: "KalTeam Construction", type: "Logo & Identity", image: "/work/branding/logo-kalteam.webp", tags: ["branding"], transparent: true },
+  { name: "Alberta ENT Sleep", type: "Logo & Identity", image: "/work/branding/logo-alberta-ent-sleep.webp", tags: ["branding"], transparent: true },
+  { name: "SnapThat", type: "Logo & Identity", image: "/work/branding/logo-snapthat.webp", tags: ["branding"], transparent: true },
+  { name: "Transcend Psychological", type: "Logo & Identity", image: "/work/branding/logo-transcend.webp", tags: ["branding"], transparent: true },
 
   // Graphic design (team's current selection)
   { name: "Token Naturals", type: "Campaign Graphic", image: "/work/design/selects/token-behind-teal.webp", tags: ["design"] },
