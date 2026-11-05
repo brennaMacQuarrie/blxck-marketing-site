@@ -1313,7 +1313,6 @@ export const work: WorkItem[] = [
   { name: "Hansen Distillery", type: "Product Photography", image: "/work/photography/selects/hansen-danny-r.webp", tags: ["photo"] },
   { name: "Token Naturals", type: "Product Photography", image: "/work/photography/selects/token-key-lime.webp", tags: ["photo"] },
   { name: "Advanced Facial & Nasal Surgical Centre", type: "Brand Photography", image: "/work/photography/selects/afnsc-surgery.webp", tags: ["photo"] },
-  { name: "Sundays Promotional Products", type: "Brand Photography", image: "/work/photography/selects/sundays-founders.webp", tags: ["photo"] },
   { name: "Token Naturals", type: "Product Photography", image: "/work/photography/selects/token-prerolls-1.webp", tags: ["photo"] },
   { name: "Eagle Maintenance", type: "Brand Photography", image: "/work/photography/selects/on-site-crew.webp", tags: ["photo"] },
   { name: "Token Naturals", type: "Product Photography", image: "/work/photography/selects/token-cherries.webp", tags: ["photo"] },

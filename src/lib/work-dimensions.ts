@@ -41,7 +41,6 @@ export const workDimensions: Record<string, [number, number]> = {
   "/work/photography/selects/afnsc-surgery.webp": [1080, 1350],
   "/work/photography/selects/hansen-danny-r.webp": [1080, 1350],
   "/work/photography/selects/on-site-crew.webp": [1280, 1600],
-  "/work/photography/selects/sundays-founders.webp": [1391, 1131],
   "/work/photography/selects/token-bitters-soda.webp": [1200, 1600],
   "/work/photography/selects/token-cherries.webp": [1600, 1200],
   "/work/photography/selects/token-dark-chocolate-mint.webp": [896, 1152],
