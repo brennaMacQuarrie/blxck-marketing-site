@@ -14,7 +14,6 @@ import {
   serviceImage,
   serviceImagePosition,
   transparentHeroes,
-  lightHeroes,
   workHeading,
 } from "@/lib/content";
 import { site } from "@/lib/site";
@@ -163,26 +162,8 @@ export default async function ServiceDetailPage({
 
           {heroImage && (
             <Reveal delay={0.1} direction="left">
-              {lightHeroes.has(heroImage) ? (
+              {transparentHeroes.has(heroImage) ? (
                 <div className="relative aspect-[7/6]">
-                  {/* Glow sits behind the logo in the artwork's top-left. */}
-                  <div
-                    aria-hidden
-                    className="white-glow pointer-events-none absolute"
-                    style={{ left: "-20%", width: "100%", top: "-27%", height: "90%" }}
-                  />
-                  <Image
-                    src={heroImage}
-                    alt=""
-                    aria-hidden
-                    fill
-                    priority
-                    sizes="(min-width: 1024px) 40vw, 100vw"
-                    className="object-contain"
-                  />
-                </div>
-              ) : transparentHeroes.has(heroImage) ? (
-                <div className="relative aspect-[4/3]">
                   <Image
                     src={heroImage}
                     alt=""
@@ -498,11 +479,9 @@ export default async function ServiceDetailPage({
                   {serviceImage[s.slug] && (
                     <div
                       className={`relative h-16 w-16 shrink-0 overflow-hidden ${
-                        lightHeroes.has(serviceImage[s.slug])
-                          ? "rounded-lg bg-[#f2f0eb]"
-                          : transparentHeroes.has(serviceImage[s.slug])
-                            ? ""
-                            : "rounded-lg border border-white/10"
+                        transparentHeroes.has(serviceImage[s.slug])
+                          ? ""
+                          : "rounded-lg border border-white/10"
                       }`}
                     >
                       <Image
@@ -511,7 +490,7 @@ export default async function ServiceDetailPage({
                         aria-hidden
                         fill
                         sizes="64px"
-                        className={`${transparentHeroes.has(serviceImage[s.slug]) || lightHeroes.has(serviceImage[s.slug]) ? "object-contain" : "object-cover"} transition-transform duration-500 group-hover:scale-110`}
+                        className={`${transparentHeroes.has(serviceImage[s.slug]) ? "object-contain" : "object-cover"} transition-transform duration-500 group-hover:scale-110`}
                       />
                     </div>
                   )}

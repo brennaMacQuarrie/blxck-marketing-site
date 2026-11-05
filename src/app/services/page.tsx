@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { serviceGroups, packages, slugify, serviceImage, transparentHeroes, lightHeroes } from "@/lib/content";
+import { serviceGroups, packages, slugify, serviceImage, transparentHeroes } from "@/lib/content";
 import { site } from "@/lib/site";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
@@ -136,7 +136,7 @@ export default function ServicesPage() {
                         <div
                           key={slug}
                           data-svc={slug}
-                          className={`svc-shot absolute inset-0 ${lightHeroes.has(serviceImage[slug]) ? "bg-[#f2f0eb]" : ""}`}
+                          className="svc-shot absolute inset-0"
                         >
                           <Image
                             src={serviceImage[slug]}
@@ -144,7 +144,7 @@ export default function ServicesPage() {
                             aria-hidden
                             fill
                             sizes="384px"
-                            className={transparentHeroes.has(serviceImage[slug]) || lightHeroes.has(serviceImage[slug]) ? "object-contain p-4 pb-10" : "object-cover"}
+                            className={transparentHeroes.has(serviceImage[slug]) ? "object-contain p-4 pb-10" : "object-cover"}
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent" />
                           <span className="absolute bottom-4 left-4 right-4 text-sm font-semibold text-hi">

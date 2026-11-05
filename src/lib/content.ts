@@ -982,23 +982,20 @@ export const serviceImage: Record<string, string> = {
   "goal-setting-and-brand-positioning": "/heroes/goal-setting-and-brand-positioning.webp",
   advertising: "/heroes/social-media-and-ads.webp",
   analytics: "/heroes/analytics.webp",
-  branding: "/heroes/web-development.webp",
+  branding: "/heroes/sundays-web.webp",
   "social-media-management": "/heroes/social-media-and-ads.webp",
   strategy: "/heroes/strategy-blocks.webp",
   videography: "/heroes/social-digital-video.webp",
   photography: "/heroes/photography.webp",
   "jingles-and-radio-ads": "/heroes/jingles-and-radio-ads.webp",
   "graphic-design": "/heroes/graphic-design.webp",
-  "web-development": "/heroes/web-development.webp",
+  "web-development": "/heroes/sundays-web.webp",
   hosting: "/heroes/hosting.webp",
   seo: "/heroes/seo.webp",
 };
 
 /** Transparent hero artwork: shown whole, directly on the page, with no frame. */
-export const transparentHeroes = new Set<string>();
-
-/** Transparent hero artwork with dark lettering: needs a light panel to read. */
-export const lightHeroes = new Set(["/heroes/web-development.webp"]);
+export const transparentHeroes = new Set(["/heroes/sundays-web.webp"]);
 
 /** Optional focal point for hero crops (CSS object-position). */
 export const serviceImagePosition: Record<string, string> = {
