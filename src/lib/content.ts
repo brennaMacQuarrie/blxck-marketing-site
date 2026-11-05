@@ -1345,7 +1345,6 @@ export const work: WorkItem[] = [
   { name: "REX Equipment", type: "Social Ad", image: "/work/ads/rex-field-day-sale.webp", tags: ["ads"] },
   { name: "Living Skies Music Festival", type: "Festival Poster (Yorkton)", image: "/work/ads/living-skies-yorkton-poster.webp", tags: ["ads"] },
   { name: "Chrome Spa Salon", type: "Print & Social Ad", image: "/work/ads/chrome-students-save.webp", tags: ["ads"] },
-  { name: "David B. Caseley", type: "Video Ad", image: "/work/ads/david-caseley-riding-bulls.webp", tags: ["ads"] },
 
   // Jingles & radio
   {
