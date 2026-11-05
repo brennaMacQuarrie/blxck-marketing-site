@@ -984,18 +984,18 @@ export const serviceImage: Record<string, string> = {
   analytics: "/heroes/analytics.webp",
   branding: "/heroes/web-development.webp",
   "social-media-management": "/heroes/social-media-and-ads.webp",
-  strategy: "/heroes/strategy.webp",
+  strategy: "/heroes/strategy-blocks.webp",
   videography: "/heroes/social-digital-video.webp",
   photography: "/heroes/photography.webp",
   "jingles-and-radio-ads": "/heroes/jingles-and-radio-ads.webp",
   "graphic-design": "/heroes/graphic-design.webp",
   "web-development": "/heroes/web-development.webp",
-  hosting: "/work/web/solar-ninjas.webp",
+  hosting: "/heroes/hosting.webp",
   seo: "/heroes/seo.webp",
 };
 
 /** Transparent hero artwork: shown whole, directly on the page, with no frame. */
-export const transparentHeroes = new Set(["/work/web/solar-ninjas.webp"]);
+export const transparentHeroes = new Set<string>();
 
 /** Transparent hero artwork with dark lettering: needs a light panel to read. */
 export const lightHeroes = new Set(["/heroes/web-development.webp"]);
@@ -1006,7 +1006,8 @@ export const serviceImagePosition: Record<string, string> = {
   videography: "35% center",
   "business-and-marketing-audits": "62% center",
   photography: "38% center",
-  strategy: "45% center",
+  strategy: "center 85%",
+  hosting: "50% center",
 };
 
 export function getServiceWriteup(slug: string): ServiceWriteup | undefined {
