@@ -18,7 +18,7 @@ export function PortfolioShowcase() {
   const [hovered, setHovered] = useState<number | null>(null);
 
   return (
-    <section className="space-bg-2 border-t border-white/[0.06] py-24 md:py-32">
+    <section className="border-t border-white/[0.06] py-24 md:py-32">
       <div className="mx-auto max-w-6xl px-(--spacing-gutter)">
         <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
           <SectionHeading

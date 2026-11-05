@@ -38,7 +38,7 @@ export function Manifesto() {
   return (
     <section
       ref={root}
-      className="space-bg-3 border-t border-white/[0.06] py-28 md:py-40"
+      className="border-t border-white/[0.06] py-28 md:py-40"
     >
       <div className="mx-auto max-w-4xl px-(--spacing-gutter)">
         <span className="eyebrow mb-10 block">Why BLXCK</span>
