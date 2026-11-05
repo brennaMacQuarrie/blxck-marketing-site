@@ -984,7 +984,7 @@ export const serviceImage: Record<string, string> = {
   analytics: "/heroes/analytics.webp",
   branding: "/heroes/web-development.webp",
   "social-media-management": "/heroes/social-media-and-ads.webp",
-  strategy: "/projects/csa.jpg",
+  strategy: "/heroes/strategy.webp",
   videography: "/heroes/social-digital-video.webp",
   photography: "/heroes/photography.webp",
   "jingles-and-radio-ads": "/heroes/jingles-and-radio-ads.webp",
@@ -1006,6 +1006,7 @@ export const serviceImagePosition: Record<string, string> = {
   videography: "35% center",
   "business-and-marketing-audits": "62% center",
   photography: "38% center",
+  strategy: "45% center",
 };
 
 export function getServiceWriteup(slug: string): ServiceWriteup | undefined {
