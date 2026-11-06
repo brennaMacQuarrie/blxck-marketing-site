@@ -27,7 +27,7 @@ import { BeforeAfterSlider } from "@/components/case-study/BeforeAfterSlider";
 
 const title = "Ardent Roof Systems Case Study";
 const description =
-  "How BLXCK took Ardent Roof Systems, an established Edmonton and Calgary roofer, to five times the website audience, Calgary up 58%, and a radio jingle that doubled the reach of the Free Roof Giveaway.";
+  "How BLXCK took Ardent Roof Systems, an established Edmonton and Calgary roofer, to five times the website audience, Calgary up 58%, and a Free Roof Giveaway month with 2.3× the website visitors once the jingle was on air.";
 
 /** Keep the page out of search results until it lives on blxckmarketing.com. */
 const onMainDomain = site.url.includes("blxckmarketing.com");

@@ -24,7 +24,7 @@ import { BeforeAfterSlider } from "@/components/case-study/BeforeAfterSlider";
 
 const title = "Optometrists' Clinic Case Study";
 const description =
-  "How BLXCK rebuilt The Optometrists' Clinic website and nearly doubled patient contacts from Google Ads on 59% less ad spend.";
+  "How BLXCK rebuilt The Optometrists' Clinic website and nearly doubled patient contacts from Google Ads on 60% less ad spend.";
 
 /** Keep the page out of search results until it lives on blxckmarketing.com. */
 const onMainDomain = site.url.includes("blxckmarketing.com");

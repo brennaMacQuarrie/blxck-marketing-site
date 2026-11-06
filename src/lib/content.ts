@@ -1379,7 +1379,7 @@ export const caseStudies: CaseStudy[] = [
     href: "/optometrists-case-study",
     image: "/work/optometrists-after.webp",
     blurb:
-      "A rebuilt website and leaner Google Ads that nearly doubled patient contacts on 59% less ad spend.",
+      "A rebuilt website and leaner Google Ads that nearly doubled patient contacts on 60% less ad spend.",
     accent: "teal",
   },
   {
@@ -1389,7 +1389,7 @@ export const caseStudies: CaseStudy[] = [
     href: "/ardent-case-study",
     image: "/work/web/ardent.webp",
     blurb:
-      "An established roofer, a much bigger audience: five times the website visitors, Calgary up 58%, and a radio jingle that doubled the reach of the Free Roof Giveaway.",
+      "An established roofer, a much bigger audience: five times the website visitors, Calgary up 58%, and a Free Roof Giveaway month with 2.3× the visitors once the jingle was on air.",
     accent: "gold",
   },
 ];

@@ -61,8 +61,8 @@ export const headline: {
   to?: string;
   trend?: Trend;
 }[] = [
-  { section: "Website", value: "5×", label: "More people visiting the website each month", from: "about 260 a month", to: "about 1,400 a month", trend: "up" },
-  { section: "Radio", value: "2.3×", label: "More people reached by the Free Roof Giveaway with the jingle on air", from: "1,544 people", to: "3,574 people", trend: "up" },
+  { section: "Website", value: "5×", label: "More monthly website visitors than in the site's first six months", from: "about 260 a month", to: "about 1,400 a month", trend: "up" },
+  { section: "Radio", value: "2.3×", label: "More website visitors in the August giveaway month, with the jingle on air", from: "1,544 visitors", to: "3,574 visitors", trend: "up" },
   { section: "Meta Ads", value: "2.3×", label: "More clicks from Facebook and Instagram ads on the same budget", from: "2,050", to: "4,638", trend: "up" },
   { section: "Calgary", value: "58%", label: "More Calgary visitors as the brand grew in its second city", from: "2,488 visits", to: "3,923 visits", trend: "up" },
 ];
@@ -75,9 +75,9 @@ export const compare = {
   thenPeriod: "2025",
   nowPeriod: "2026, jingle on air from May",
   boxes: [
-    { channel: "Website", label: "People visiting the site each month", delta: "64%", trend: "up", from: "1,036", to: "1,699", detail: "Peak roofing season, May to September, against the same months a year earlier." },
+    { channel: "Website", label: "Website visitors each month in peak season, year over year", delta: "64%", trend: "up", from: "1,036", to: "1,699", detail: "May to September 2026 against the same months of 2025. Still 35% more with the giveaway month left out." },
     { channel: "Website", label: "Visitors who typed the address in", delta: "59%", trend: "up", from: "2,048", to: "3,259", detail: "Direct visits, the kind a jingle creates: no search, no ad, just the name remembered. May to September. Still 35% more with the giveaway month left out." },
-    { channel: "Radio", label: "People reached by the Free Roof Giveaway", delta: "2.3×", trend: "up", from: "1,544", to: "3,574", detail: "Same contest, same month. In 2026 the jingle and a giveaway radio spot carried it, and the busiest week brought 2,041 visits in seven days." },
+    { channel: "Radio", label: "Website visitors in the giveaway month", delta: "2.3×", trend: "up", from: "1,544", to: "3,574", detail: "All website visitors in August, the month of the Free Roof Giveaway both years. In 2026 the jingle and a giveaway radio spot were on air, and the busiest week brought 2,041 visits in seven days." },
     { channel: "Meta Ads", label: "Clicks to the website each month", delta: "2.3×", trend: "up", from: "410", to: "928", detail: "Facebook and Instagram, May to September, on the same budget as the year before. Each click now costs 55% less." },
     { channel: "Meta Ads", label: "People who saw the ads", delta: "65%", trend: "up", from: "249K", to: "410K", detail: "Reach on Facebook and Instagram, May to September, for about the same spend." },
     { channel: "Google Ads", label: "What each enquiry costs", delta: "26%", trend: "down", detail: "The Google Ads budget was cut in half in late 2025. Each call, form or email it brings in now costs 26% less. January to September 2026 against the same months of 2025." },
@@ -87,7 +87,7 @@ export const compare = {
 /** Radio: the jingle went on air in May 2026 in Edmonton and Calgary. */
 export const radio: { value: string; label: string; note: string; trend?: Trend }[] = [
   { value: "59%", label: "More people typing the address in", note: "May to September 2026 against the same months of 2025", trend: "up" },
-  { value: "2.3×", label: "More people reached by the roof giveaway", note: "3,574 people in August 2026 against 1,544 in August 2025, with the jingle and a giveaway radio spot behind it", trend: "up" },
+  { value: "2.3×", label: "More website visitors in the giveaway month", note: "3,574 people in August 2026 against 1,544 in August 2025, with the jingle and a giveaway radio spot on air", trend: "up" },
   { value: "779", label: "Visits on the busiest day", note: "24 August 2026, the first day of giveaway voting. Nearly 700 different people in one day" },
 ];
 
