@@ -173,8 +173,8 @@ export default function OptometristsCaseStudy() {
           <RevealGroup className="mt-10 grid gap-px overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.08] md:grid-cols-3">
             {[
               {
-                t: "Optimized the site for action",
-                d: "Fast WordPress build, a page for each of the five clinics, and clear calls to book, call or get directions on every one.",
+                t: "Modernized the website",
+                d: "A clearer, friendlier, more modern site with a page for each of the five clinics and clear buttons to book, call or get directions on every one.",
               },
               {
                 t: "Optimized the campaign structure",
