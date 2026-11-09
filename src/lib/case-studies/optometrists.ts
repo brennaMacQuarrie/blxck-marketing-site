@@ -60,7 +60,7 @@ export const headline: {
 }[] = [
   { section: "Google Ads", value: "84%", label: "More calls and booking requests every month", from: "317 a month", to: "584 a month", trend: "up" },
   { section: "Cost per enquiry", value: "78%", label: "Less paid for each call or booking request from Google Ads", trend: "down" },
-  { section: "Website visitors", value: "7.4%", label: "Of website visitors call, book or email the clinic", trend: "up" },
+  { section: "Website", value: "83%", label: "Higher conversion rate: more visitors call, book or email", from: "4.0%", to: "7.4%", trend: "up" },
   { section: "Meta Ads", value: "23%", label: "Less spent, 23% more clicks to the website each month", from: "584 a month", to: "720 a month", trend: "up" },
 ];
 
@@ -78,7 +78,7 @@ export const compare = {
     { channel: "Google Ads", label: "What each new patient enquiry costs", delta: "78%", trend: "down", detail: "For every call or booking request, the clinic now pays less than a quarter of what it used to." },
     { channel: "Meta Ads", label: "People clicking through to the website each month", delta: "23%", trend: "up", from: "584", to: "720", detail: "From Facebook and Instagram ads, on about 7% less spend than the previous agency." },
     { channel: "Meta Ads", label: "What each click to the website costs", delta: "24%", trend: "down", detail: "Each click from Facebook and Instagram costs about a quarter less. Jan 2025 – Sep 2026 vs. Jan – Oct 2024." },
-    { channel: "Website", label: "Share of visitors who call, book or email", delta: "83%", trend: "up", from: "4.0 in 100", to: "7.4 in 100", detail: "Jul – Sep 2026 vs. the same months of 2025, both on the new site. The share rose as low-value blog traffic from outside Canada fell away, leaving mostly local patients." },
+    { channel: "Website", label: "Conversion rate: visitors who call, book or email", delta: "83%", trend: "up", from: "4.0%", to: "7.4%", detail: "Jul – Sep 2026 vs. the same months of 2025, both on the new site. The share rose as low-value blog traffic from outside Canada fell away, leaving mostly local patients." },
   ] as { channel: string; label: string; delta: string; trend: Trend; from?: string; to?: string; detail: string }[],
 };
 
