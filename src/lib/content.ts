@@ -1389,7 +1389,7 @@ export const caseStudies: CaseStudy[] = [
     href: "/ardent-case-study",
     image: "/work/web/ardent.webp",
     blurb:
-      "An established roofer, a much bigger audience: five times the website visitors, Calgary up 58%, and a Free Roof Giveaway month with 2.3× the visitors once the jingle was on air.",
+      "An established roofer, a much bigger audience: five times the website visitors, Calgary up 58%, and 2.3× the visitors in its Free Roof Giveaway month.",
     accent: "gold",
   },
 ];

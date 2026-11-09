@@ -5,7 +5,6 @@ import { site } from "@/lib/site";
 import { projects } from "@/lib/content";
 import {
   months,
-  jingleFrom,
   siteUsers,
   siteVisits,
   directVisits,
@@ -27,7 +26,7 @@ import { BeforeAfterSlider } from "@/components/case-study/BeforeAfterSlider";
 
 const title = "Ardent Roof Systems Case Study";
 const description =
-  "How BLXCK took Ardent Roof Systems, an established Edmonton and Calgary roofer, to five times the website audience, Calgary up 58%, and a Free Roof Giveaway month with 2.3× the website visitors once the jingle was on air.";
+  "How BLXCK took Ardent Roof Systems, an established Edmonton and Calgary roofer, to five times the website audience, Calgary up 58%, and 2.3× the website visitors in its Free Roof Giveaway month.";
 
 /** Keep the page out of search results until it lives on blxckmarketing.com. */
 const onMainDomain = site.url.includes("blxckmarketing.com");
@@ -228,7 +227,7 @@ export default function ArdentCaseStudy() {
               <div className="rounded-2xl border border-white/[0.08] bg-ink/70 p-6 md:p-8">
                 <h3 className="text-base font-semibold text-hi">People visiting the website, each month</h3>
                 <p className="mt-1 text-sm text-lo">
-                  About 260 a month in the first six months. About 1,400 a month in 2026. August 2026, with the giveaway on the radio, was the biggest month yet: 3,574 people.
+                  About 260 a month in the first six months. About 1,400 a month in 2026. The biggest month yet was August 2026, during the Free Roof Giveaway: 3,574 people.
                 </p>
                 <div className="mt-6">
                   <MonthlyBars
@@ -237,7 +236,6 @@ export default function ArdentCaseStudy() {
                     max={3800}
                     ticks={[0, 1000, 2000, 3000]}
                     highlight={[0, 14, 26]}
-                    band={{ from: jingleFrom, label: "Jingle on air" }}
                     ariaLabel="People visiting the Ardent Roof Systems website per month, June 2024 to September 2026"
                     tooltips={siteUsers.map(
                       (v, i) => `${v.toLocaleString("en-CA")} people · ${siteVisits[i].toLocaleString("en-CA")} visits`,
@@ -250,7 +248,7 @@ export default function ArdentCaseStudy() {
               <div className="rounded-2xl border border-white/[0.08] bg-ink/70 p-6 md:p-8">
                 <h3 className="text-base font-semibold text-hi">Visitors who typed the address in, each month</h3>
                 <p className="mt-1 text-sm text-lo">
-                  Direct visits are the ones no ad or search can claim. Four of the five months since the jingle went on air have beaten the same month a year earlier, and the giveaway month nearly doubled.
+                  People who typed the address in, with no search or ad link. The two spikes are the Free Roof Giveaway, in August 2025 and August 2026.
                 </p>
                 <div className="mt-6">
                   <MonthlyBars
@@ -258,8 +256,7 @@ export default function ArdentCaseStudy() {
                     values={directVisits}
                     max={2100}
                     ticks={[0, 500, 1000, 1500, 2000]}
-                    highlight={[14, 23, 26]}
-                    band={{ from: jingleFrom, label: "Jingle on air" }}
+                    highlight={[14, 26]}
                     ariaLabel="Direct visits to the Ardent Roof Systems website per month, June 2024 to September 2026"
                     tooltips={directVisits.map(
                       (v, i) =>
@@ -302,9 +299,6 @@ export default function ArdentCaseStudy() {
               </RevealItem>
             ))}
           </RevealGroup>
-          <p className="mt-5 text-xs leading-relaxed text-lo">
-            Radio can&rsquo;t be tracked click by click. What it leaves behind is people who remember the name: they type the address in, search for Ardent by name, and turn up for the brand&rsquo;s own events. Those are the numbers above.
-          </p>
         </div>
       </section>
 
