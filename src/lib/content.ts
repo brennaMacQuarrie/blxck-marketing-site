@@ -1313,7 +1313,7 @@ export const work: WorkItem[] = [
   { name: "AIM Industrial Cleaning", type: "Logo & Identity", image: "/work/branding/aim.webp", tags: ["branding"], transparent: true },
   { name: "KalTeam Construction", type: "Logo & Identity", image: "/work/branding/logo-kalteam.webp", tags: ["branding"], transparent: true },
   { name: "Alberta ENT Sleep", type: "Logo & Identity", image: "/work/branding/logo-alberta-ent-sleep.webp", tags: ["branding"], transparent: true },
-  { name: "SnapThat", type: "Logo & Identity", image: "/work/branding/logo-snapthat.webp", tags: ["branding"], transparent: true },
+  { name: "SnapThat", type: "Logo & Identity", image: "/work/branding/logo-snapthat-2.webp", tags: ["branding"], transparent: true },
   { name: "Transcend Psychological", type: "Logo & Identity", image: "/work/branding/logo-transcend.webp", tags: ["branding"], transparent: true },
 
   // Graphic design (team's current selection)
