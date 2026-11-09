@@ -59,7 +59,7 @@ export function BeforeAfterSlider({ before, after, initial = 50, className = "" 
           alt={before.alt}
           fill
           sizes="(min-width: 1152px) 1120px, 100vw"
-          className="object-cover object-top opacity-80 saturate-50"
+          className="object-cover object-top"
           draggable={false}
           priority={false}
         />
@@ -74,7 +74,7 @@ export function BeforeAfterSlider({ before, after, initial = 50, className = "" 
             alt=""
             fill
             sizes="(min-width: 1152px) 1120px, 100vw"
-            className="object-cover object-top brightness-[1.08] contrast-[1.05] saturate-[1.35]"
+            className="object-cover object-top"
             draggable={false}
           />
         </div>
