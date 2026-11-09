@@ -173,9 +173,6 @@ export default function ArdentCaseStudy() {
               </RevealItem>
             ))}
           </RevealGroup>
-          <p className="mt-5 text-xs leading-relaxed text-lo">
-            Before: {compare.thenPeriod}. After: {compare.nowPeriod}. Each box compares the same months of both years. All figures come from Ardent&rsquo;s own Google Analytics, Google Ads and Meta Ads accounts, pulled 23 October 2026. Spending is shown as a percentage change, not in dollars.
-          </p>
         </div>
       </section>
 
