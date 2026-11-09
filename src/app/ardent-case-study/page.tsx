@@ -110,6 +110,7 @@ export default function ArdentCaseStudy() {
               before={{ src: "/work/web/ardent-before.webp", alt: "The previous Ardent Roof Systems homepage" }}
               after={{ src: "/work/web/ardent-after.webp", alt: "The new Ardent Roof Systems homepage built by BLXCK" }}
               initial={45}
+              aspect={1600 / 895}
             />
             <div className="mt-3 flex flex-wrap justify-between gap-x-6 gap-y-1 text-xs text-lo">
               <span><span className="mr-1.5 font-semibold uppercase tracking-[0.18em]">2024</span>Refreshed logo, brand guide and new website.</span>

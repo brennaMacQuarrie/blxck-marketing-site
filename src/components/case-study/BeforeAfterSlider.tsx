@@ -8,6 +8,8 @@ type Props = {
   after: { src: string; alt: string };
   /** Starting divider position, 0–100 (percent of width showing "before", on the left). */
   initial?: number;
+  /** Frame shape as width / height; match the "before" screenshot so it shows in full. */
+  aspect?: number;
   className?: string;
 };
 
@@ -17,7 +19,7 @@ type Props = {
  * input gives keyboard and screen-reader control. The "after" image sits
  * on top and is clipped to the divider position.
  */
-export function BeforeAfterSlider({ before, after, initial = 50, className = "" }: Props) {
+export function BeforeAfterSlider({ before, after, initial = 50, aspect = 16 / 10, className = "" }: Props) {
   const [pos, setPos] = useState(initial);
   const [dragging, setDragging] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -45,8 +47,8 @@ export function BeforeAfterSlider({ before, after, initial = 50, className = "" 
     <div className={className}>
       <div
         ref={ref}
-        className={`relative aspect-[16/10] w-full select-none overflow-hidden rounded-2xl border border-white/[0.1] bg-carbon ${dragging ? "cursor-grabbing" : "cursor-grab"}`}
-        style={{ touchAction: "pan-y" }}
+        className={`relative w-full select-none overflow-hidden rounded-2xl border border-white/[0.1] bg-carbon ${dragging ? "cursor-grabbing" : "cursor-grab"}`}
+        style={{ aspectRatio: aspect, touchAction: "pan-y" }}
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}
         onPointerUp={stop}
