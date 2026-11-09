@@ -1,9 +1,9 @@
 import { site } from "@/lib/site";
-import { sendEmail } from "@/lib/email";
+import { enquiryInbox, sendEmail } from "@/lib/email";
 
 /**
  * Contact form handler → sends an email via SendGrid to the BLXCK inbox.
- * Requires SENDGRID_API_KEY and CONTACT_FROM (a SendGrid-verified sender).
+ * Requires SENDGRID_API_KEY and SENDGRID_FROM_EMAIL (a SendGrid-verified sender).
  */
 export async function POST(request: Request) {
   let data: Record<string, unknown>;
@@ -22,7 +22,7 @@ export async function POST(request: Request) {
   const trap = String(data.website ?? "").trim();
 
   if (trap) return Response.json({ ok: true }); // silently drop bots
-  if (!name || !email || !message) {
+  if (!name || !email) {
     return Response.json({ ok: false, error: "missing_fields" }, { status: 400 });
   }
   if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
@@ -36,11 +36,11 @@ export async function POST(request: Request) {
     `Company: ${company || "—"}`,
     `Interested in: ${interest || "—"}`,
     "",
-    message,
+    message || "(No message)",
   ].join("\n");
 
   const result = await sendEmail({
-    to: site.contact.email,
+    to: enquiryInbox(site.contact.email),
     replyTo: email,
     subject,
     text,

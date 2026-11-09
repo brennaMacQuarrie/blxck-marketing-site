@@ -1,5 +1,5 @@
 import { site } from "@/lib/site";
-import { sendEmail } from "@/lib/email";
+import { enquiryInbox, sendEmail } from "@/lib/email";
 
 /**
  * Plan builder quote → emails the full plan to the BLXCK inbox via SendGrid
@@ -41,7 +41,7 @@ export async function POST(request: Request) {
   ].join("\n");
 
   const result = await sendEmail({
-    to: site.contact.email,
+    to: enquiryInbox(site.contact.email),
     replyTo: email,
     subject,
     text,

@@ -3,8 +3,9 @@
  *
  * Env:
  *   SENDGRID_API_KEY — API key with "Mail Send" permission.
- *   CONTACT_FROM     — a sender verified in SendGrid, e.g.
- *                      "BLXCK Website <info@blxckmarketing.com>".
+ *   SENDGRID_FROM_EMAIL (or CONTACT_FROM) — a sender verified in SendGrid,
+ *                      e.g. "BLXCK Website <info@blxckmarketing.com>".
+ *   CONTACT_TO_EMAIL — optional inbox for enquiries; defaults to site.contact.email.
  */
 export type SendResult = { ok: true } | { ok: false; error: "not_configured" | "send_failed" };
 
@@ -20,7 +21,7 @@ export async function sendEmail(msg: {
   text: string;
 }): Promise<SendResult> {
   const apiKey = process.env.SENDGRID_API_KEY;
-  const from = process.env.CONTACT_FROM;
+  const from = process.env.SENDGRID_FROM_EMAIL || process.env.CONTACT_FROM;
   if (!apiKey || !from) return { ok: false, error: "not_configured" };
 
   try {
@@ -39,8 +40,14 @@ export async function sendEmail(msg: {
       }),
     });
     // SendGrid returns 202 Accepted on success.
+    if (!res.ok) console.error("SendGrid error", res.status, await res.text().catch(() => ""));
     return res.ok ? { ok: true } : { ok: false, error: "send_failed" };
   } catch {
     return { ok: false, error: "send_failed" };
   }
+}
+
+/** Where enquiries are delivered. */
+export function enquiryInbox(fallback: string): string {
+  return process.env.CONTACT_TO_EMAIL?.trim() || fallback;
 }

@@ -114,12 +114,11 @@ export function ContactForm() {
 
       <div className="flex flex-col gap-1.5">
         <label htmlFor="message" className="text-xs uppercase tracking-wider text-lo">
-          What can we help with? *
+          What can we help with?
         </label>
         <textarea
           id="message"
           name="message"
-          required
           rows={5}
           className={`${field} resize-none`}
           placeholder="Tell us a bit about your business and your goals…"
