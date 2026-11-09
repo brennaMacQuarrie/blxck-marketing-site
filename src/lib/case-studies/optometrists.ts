@@ -59,9 +59,9 @@ export const headline: {
   trend?: Trend;
 }[] = [
   { section: "Google Ads", value: "84%", label: "More calls and booking requests every month", from: "317 a month", to: "584 a month", trend: "up" },
-  { section: "Website", value: "60%", label: "Smaller, faster homepage than before", from: "1 MB", to: "0.4 MB", trend: "down" },
-  { section: "Website visitors", value: "7.4 in 100", label: "Visitors now call, book or email the clinic", from: "4.0 in 100", to: "7.4 in 100", trend: "up" },
-  { section: "Meta Ads", value: "2.4×", label: "More people click the ad when they see it", from: "4.7 in 1,000", to: "11.4 in 1,000", trend: "up" },
+  { section: "Cost per enquiry", value: "78%", label: "Less paid for each call or booking request from Google Ads", trend: "down" },
+  { section: "Website visitors", value: "7.4%", label: "Of website visitors call, book or email the clinic", trend: "up" },
+  { section: "Meta Ads", value: "23%", label: "Less spent, 23% more clicks to the website each month", from: "584 a month", to: "720 a month", trend: "up" },
 ];
 
 /**
@@ -76,15 +76,15 @@ export const compare = {
     { channel: "Google Ads", label: "Calls and booking requests each month", delta: "84%", trend: "up", from: "317", to: "584", detail: "People who called, filled in a form, emailed or got directions after seeing an ad." },
     { channel: "Google Ads", label: "Money spent on ads each month", delta: "60%", trend: "down", detail: "About 60% less than the previous agency was spending, and held flat for the whole period." },
     { channel: "Google Ads", label: "What each new patient enquiry costs", delta: "78%", trend: "down", detail: "For every call or booking request, the clinic now pays less than a quarter of what it used to." },
-    { channel: "Meta Ads", label: "People clicking through to the website each month", delta: "23%", trend: "up", from: "584", to: "720", detail: "From Facebook and Instagram ads, on about the same budget." },
-    { channel: "Meta Ads", label: "How often people click the ad when they see it", delta: "2.4×", trend: "up", from: "4.7 in 1,000", to: "11.4 in 1,000", detail: "More than twice as many of the people who see an ad tap on it. Jan 2025 – Sep 2026 vs. Jan – Oct 2024." },
-    { channel: "Website", label: "Visitors who call, book or email", delta: "83%", trend: "up", from: "4.0 in 100", to: "7.4 in 100", detail: "Jul – Sep 2026 vs. the same months a year earlier. The site turns far more of its visitors into real patient enquiries." },
+    { channel: "Meta Ads", label: "People clicking through to the website each month", delta: "23%", trend: "up", from: "584", to: "720", detail: "From Facebook and Instagram ads, on about 7% less spend than the previous agency." },
+    { channel: "Meta Ads", label: "What each click to the website costs", delta: "24%", trend: "down", detail: "Each click from Facebook and Instagram costs about a quarter less. Jan 2025 – Sep 2026 vs. Jan – Oct 2024." },
+    { channel: "Website", label: "Share of visitors who call, book or email", delta: "83%", trend: "up", from: "4.0 in 100", to: "7.4 in 100", detail: "Jul – Sep 2026 vs. the same months of 2025, both on the new site. The share rose as low-value blog traffic from outside Canada fell away, leaving mostly local patients." },
   ] as { channel: string; label: string; delta: string; trend: Trend; from?: string; to?: string; detail: string }[],
 };
 
 /** Meta Ads, Jan 2025 – Sep 2026. No lead events tracked on Meta; reach + clicks. */
 export const meta: { value: string; label: string; note: string; trend?: Trend }[] = [
   { value: "485K", label: "People who saw the clinic's video ad", note: "Facebook and Instagram, Jan 2025 – Sep 2026" },
-  { value: "15,000+", label: "Times someone clicked through to the website", note: "Jan 2025 – Sep 2026. Each click cost 24% less than under the previous agency" },
-  { value: "2.4×", label: "More people click the ad when they see it", note: "Jan 2025 – Sep 2026, compared with the previous agency's 2024 ads", trend: "up" },
+  { value: "15,000+", label: "Times someone clicked through to the website", note: "Jan 2025 – Sep 2026" },
+  { value: "24%", label: "Less paid for each click", note: "Jan 2025 – Sep 2026, compared with the previous agency's 2024 ads", trend: "down" },
 ];

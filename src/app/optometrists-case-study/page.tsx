@@ -157,7 +157,7 @@ export default function OptometristsCaseStudy() {
             ))}
           </RevealGroup>
           <p className="mt-5 text-xs leading-relaxed text-lo">
-            Before: {compare.thenPeriod}. After: {compare.nowPeriod}, the last twelve months with complete call tracking. The before numbers come from the previous agency&rsquo;s own year-end reports. Spending is shown as a percentage change, not in dollars.
+            Before: {compare.thenPeriod}. After: {compare.nowPeriod}. The before numbers come from the previous agency&rsquo;s own year-end reports. Spending is shown as a percentage change, not in dollars.
           </p>
         </div>
       </section>
@@ -181,7 +181,7 @@ export default function OptometristsCaseStudy() {
                 d: "Location-based Google Ads campaigns built around each clinic, each optimizing toward calls and bookings.",
               },
               {
-                t: "Counted every call",
+                t: "Tracked calls, forms and emails",
                 d: "Phone taps, forms and emails tracked on the site and fed back to the ads.",
               },
             ].map((m, i) => (
