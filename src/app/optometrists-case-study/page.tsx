@@ -96,8 +96,8 @@ export default function OptometristsCaseStudy() {
               initial={45}
             />
             <div className="mt-3 flex flex-wrap justify-between gap-x-6 gap-y-1 text-xs text-lo">
-              <span><span className="mr-1.5 font-semibold uppercase tracking-[0.18em]">Before</span>Wix. 1 MB of page code. No call tracking.</span>
-              <span><span className="mr-1.5 font-semibold uppercase tracking-[0.18em] text-gold">After</span>WordPress. 60% less page code. Every call counted.</span>
+              <span className="font-semibold uppercase tracking-[0.18em]">Before</span>
+              <span className="font-semibold uppercase tracking-[0.18em] text-gold">After</span>
             </div>
           </Reveal>
 
