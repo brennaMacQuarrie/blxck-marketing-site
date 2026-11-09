@@ -204,7 +204,7 @@ export default function OptometristsCaseStudy() {
         style={{ ["--ac" as string]: accent.results }}
       >
         <div className="mx-auto max-w-6xl px-(--spacing-gutter)">
-          <SectionHeader n={3} label="Results" title="Month by month." lede="April 2025 to July 2026. Later months are left off: a change to call reporting in Google Ads makes them not directly comparable." />
+          <SectionHeader n={3} label="Results" title="Month by month." lede="From the new site's launch in April 2025 to July 2026." />
           <RevealGroup className="mt-10 grid gap-8 lg:grid-cols-2">
             <RevealItem>
               <div className="rounded-2xl border border-white/[0.08] bg-ink/70 p-6 md:p-8">
