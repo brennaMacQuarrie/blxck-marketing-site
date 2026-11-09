@@ -86,7 +86,10 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="flex flex-col items-start justify-between gap-4 border-t border-white/[0.06] py-8 text-xs text-lo sm:flex-row sm:items-center">
           <span>
-            © {year} {site.name}. All rights reserved.
+            © {year} {site.name}. All rights reserved.{" "}
+            <Link href="/privacy-policy" className="ml-2 underline-offset-4 transition-colors hover:text-hi hover:underline">
+              Privacy policy
+            </Link>
           </span>
           <span className="tracking-wide">Built in Edmonton, Alberta.</span>
         </div>

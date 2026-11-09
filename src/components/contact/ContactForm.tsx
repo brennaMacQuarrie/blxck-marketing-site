@@ -36,6 +36,9 @@ export function ContactForm() {
         body: JSON.stringify(payload),
       });
       if (res.ok) {
+        // For GTM / GA4 conversion tracking.
+        const w = window as unknown as { dataLayer?: Record<string, unknown>[] };
+        (w.dataLayer ??= []).push({ event: "contact_form_submit", interest: payload.interest ?? "" });
         setStatus("success");
         form.reset();
       } else if (res.status === 503) {
