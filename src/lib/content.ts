@@ -1076,15 +1076,6 @@ export const work: WorkItem[] = [
     video: true,
   },
   {
-    name: "Solar Ninjas",
-    type: "Brand Video",
-    image: "/work/video/7zhqSh0wjMQ.webp",
-    tags: ["video"],
-    group: "Brand Story Videos",
-    href: "https://youtu.be/7zhqSh0wjMQ",
-    video: true,
-  },
-  {
     name: "Hansen Distillery",
     type: "DBH Gin Promo",
     image: "/work/video/MhY6fc96IUE.webp",
@@ -1310,7 +1301,6 @@ export const work: WorkItem[] = [
   { name: "Hansen Distillery", type: "Product Photography", image: "/work/photography/selects/hansen-danny-r.webp", tags: ["photo"] },
   { name: "Token Naturals", type: "Product Photography", image: "/work/photography/selects/token-key-lime.webp", tags: ["photo"] },
   { name: "Advanced Facial & Nasal Surgical Centre", type: "Brand Photography", image: "/work/photography/selects/afnsc-surgery.webp", tags: ["photo"] },
-  { name: "Token Naturals", type: "Product Photography", image: "/work/photography/selects/token-prerolls-1.webp", tags: ["photo"] },
   { name: "Eagle Maintenance", type: "Brand Photography", image: "/work/photography/selects/on-site-crew.webp", tags: ["photo"] },
   { name: "Token Naturals", type: "Product Photography", image: "/work/photography/selects/token-cherries.webp", tags: ["photo"] },
   { name: "True Aesthetics", type: "Interior Photography", image: "/work/photography/selects/true-aesthetics-room.webp", tags: ["photo"] },
@@ -1318,11 +1308,9 @@ export const work: WorkItem[] = [
   { name: "Token Naturals", type: "Product Photography", image: "/work/photography/selects/token-prerolls-2.webp", tags: ["photo"] },
 
   // Branding (logos)
-  { name: "Hansen Distillery", type: "Logo & Identity", image: "/work/branding/logo-hansen.webp", tags: ["branding"], transparent: true },
   { name: "Sundays Promotional Products", type: "Logo & Identity", image: "/work/branding/logo-sundays-dark.webp", tags: ["branding"], transparent: true },
   { name: "Frank Melo Builders", type: "Logo & Identity", image: "/work/branding/logo-frank-melo.webp", tags: ["branding"], transparent: true },
   { name: "AIM Industrial Cleaning", type: "Logo & Identity", image: "/work/branding/aim.webp", tags: ["branding"], transparent: true },
-  { name: "Pactum Law", type: "Logo & Identity", image: "/work/branding/logo-pactum-law.webp", tags: ["branding"], transparent: true },
   { name: "KalTeam Construction", type: "Logo & Identity", image: "/work/branding/logo-kalteam.webp", tags: ["branding"], transparent: true },
   { name: "Alberta ENT Sleep", type: "Logo & Identity", image: "/work/branding/logo-alberta-ent-sleep.webp", tags: ["branding"], transparent: true },
   { name: "SnapThat", type: "Logo & Identity", image: "/work/branding/logo-snapthat.webp", tags: ["branding"], transparent: true },
