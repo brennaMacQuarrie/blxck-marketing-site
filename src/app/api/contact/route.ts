@@ -1,5 +1,6 @@
 import { site } from "@/lib/site";
 import { enquiryInbox, sendEmail } from "@/lib/email";
+import { looksAutomated, passesRecaptcha } from "@/lib/spam";
 
 /**
  * Contact form handler → sends an email via SendGrid to the BLXCK inbox.
@@ -18,15 +19,17 @@ export async function POST(request: Request) {
   const company = String(data.company ?? "").trim();
   const interest = String(data.interest ?? "").trim();
   const message = String(data.message ?? "").trim();
-  // Honeypot — bots fill this hidden field; humans never see it.
-  const trap = String(data.website ?? "").trim();
-
-  if (trap) return Response.json({ ok: true }); // silently drop bots
+  // Honeypot, time-on-page and link checks: bots get a fake success.
+  if (looksAutomated(data, `${name} ${company} ${message}`)) return Response.json({ ok: true });
   if (!name || !email) {
     return Response.json({ ok: false, error: "missing_fields" }, { status: 400 });
   }
   if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
     return Response.json({ ok: false, error: "invalid_email" }, { status: 400 });
+  }
+
+  if (!(await passesRecaptcha(data.recaptcha, "contact"))) {
+    return Response.json({ ok: false, error: "spam" }, { status: 400 });
   }
 
   const subject = `New enquiry — ${name}${company ? ` · ${company}` : ""}`;

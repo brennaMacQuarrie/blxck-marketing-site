@@ -1,10 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import Script from "next/script";
+import { getRecaptchaToken, recaptchaSiteKey } from "@/lib/recaptcha-client";
 import { site } from "@/lib/site";
 import { Button } from "@/components/ui/Button";
 
-type Status = "idle" | "sending" | "success" | "error" | "unconfigured";
+type Status = "idle" | "sending" | "success" | "error" | "unconfigured" | "blocked";
 
 const field =
   "w-full rounded-xl border border-white/[0.1] bg-white/[0.02] px-4 py-3 text-sm text-hi placeholder:text-lo transition-colors focus:border-teal/60 focus:outline-none";
@@ -21,15 +23,22 @@ const interests = [
 
 export function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
+  // When the form appeared; the server rejects instant submissions.
+  const started = useRef(0);
+  useEffect(() => {
+    started.current = Date.now();
+  }, []);
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (status === "sending") return;
     const form = e.currentTarget;
     const fd = new FormData(form);
-    const payload = Object.fromEntries(fd.entries());
+    const payload: Record<string, FormDataEntryValue | number> = Object.fromEntries(fd.entries());
+    payload.started = started.current;
     setStatus("sending");
     try {
+      payload.recaptcha = await getRecaptchaToken("contact");
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -43,6 +52,8 @@ export function ContactForm() {
         form.reset();
       } else if (res.status === 503) {
         setStatus("unconfigured");
+      } else if (res.status === 400 && (await res.json().catch(() => ({}))).error === "spam") {
+        setStatus("blocked");
       } else {
         setStatus("error");
       }
@@ -72,6 +83,12 @@ export function ContactForm() {
 
   return (
     <form onSubmit={onSubmit} className="flex flex-col gap-4">
+      {recaptchaSiteKey && (
+        <Script
+          src={`https://www.google.com/recaptcha/api.js?render=${recaptchaSiteKey}`}
+          strategy="afterInteractive"
+        />
+      )}
       <div className="grid gap-4 sm:grid-cols-2">
         <div className="flex flex-col gap-1.5">
           <label htmlFor="name" className="text-xs uppercase tracking-wider text-lo">
@@ -152,6 +169,15 @@ export function ContactForm() {
             .
           </span>
         )}
+        {status === "blocked" && (
+          <span className="text-sm text-lavender">
+            We couldn&apos;t verify that message. Please email{" "}
+            <a href={`mailto:${site.contact.email}`} className="underline">
+              {site.contact.email}
+            </a>
+            .
+          </span>
+        )}
         {status === "unconfigured" && (
           <span className="text-sm text-lo">
             Form isn&apos;t live yet — email{" "}
@@ -162,6 +188,20 @@ export function ContactForm() {
           </span>
         )}
       </div>
+
+      {recaptchaSiteKey && (
+        <p className="text-xs leading-relaxed text-lo">
+          Protected by reCAPTCHA. Google&apos;s{" "}
+          <a href="https://policies.google.com/privacy" className="underline" target="_blank" rel="noreferrer">
+            Privacy Policy
+          </a>{" "}
+          and{" "}
+          <a href="https://policies.google.com/terms" className="underline" target="_blank" rel="noreferrer">
+            Terms of Service
+          </a>{" "}
+          apply.
+        </p>
+      )}
     </form>
   );
 }

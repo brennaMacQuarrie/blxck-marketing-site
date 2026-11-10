@@ -21,6 +21,7 @@ const sections: { h: string; p: React.ReactNode[] }[] = [
     p: [
       "When you send us a message, we receive the name, email address, company and message you enter. We use it only to reply to you and to discuss working together.",
       "We use Google Tag Manager and Google Analytics to understand how people find and use the site, such as which pages are visited and roughly where visitors are from. These tools use cookies and do not tell us who you are.",
+      "The contact form uses Google reCAPTCHA to block spam. reCAPTCHA collects information about your device and how you use the page, under Google's Privacy Policy and Terms of Service.",
     ],
   },
   {

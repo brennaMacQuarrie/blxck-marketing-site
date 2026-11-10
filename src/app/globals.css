@@ -339,3 +339,8 @@ html.lenis body {
     filter: blur(24px);
   }
 }
+
+/* reCAPTCHA v3: the contact form shows the required notice instead of the floating badge. */
+.grecaptcha-badge {
+  visibility: hidden;
+}
