@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { site } from "@/lib/site";
+import { ogImage, site } from "@/lib/site";
 import { Reveal } from "@/components/motion/Reveal";
 import { Eclipse } from "@/components/ui/Eclipse";
 import { ContactForm } from "@/components/contact/ContactForm";
@@ -7,10 +7,11 @@ import { ContactForm } from "@/components/contact/ContactForm";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Start a project with BLXCK Marketing. Send a message or book a call — Edmonton-based, working with growing brands globally.",
+    "Start a project with BLXCK Marketing. Send a message or give us a call — Edmonton-based, working with growing brands globally.",
   openGraph: {
+    images: [ogImage],
     title: `Contact — ${site.name}`,
-    description: "Send a message or book a call with BLXCK Marketing.",
+    description: "Send a message or call BLXCK Marketing.",
   },
 };
 
@@ -123,14 +124,12 @@ export default function ContactPage() {
               </div>
 
               <a
-                href={site.calendlyUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+                href={`tel:${site.contact.phone}`}
                 className="group flex items-center justify-between rounded-xl border border-white/[0.1] px-5 py-4 text-sm transition-colors hover:border-teal/50 hover:bg-white/[0.02]"
               >
                 <span className="flex flex-col gap-0.5">
                   <span className="font-semibold text-hi">Prefer to talk first?</span>
-                  <span className="text-mid">Book a call at a time that suits you.</span>
+                  <span className="text-mid">Call us on {site.contact.phoneDisplay}.</span>
                 </span>
                 <span className="text-teal transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
                   ↗

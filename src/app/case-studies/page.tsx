@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { caseStudies } from "@/lib/content";
-import { site } from "@/lib/site";
+import { ogImage, site } from "@/lib/site";
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
 import { ButtonLink } from "@/components/ui/Button";
 import { Eclipse } from "@/components/ui/Eclipse";
@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   description:
     "How BLXCK Marketing has helped businesses grow — the problem, what we changed, and the numbers that moved.",
   openGraph: {
+    images: [ogImage],
     title: `Case Studies — ${site.name}`,
     description: "The problem, what we changed, and the numbers that moved.",
   },

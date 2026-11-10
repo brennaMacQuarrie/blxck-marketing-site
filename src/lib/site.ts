@@ -1,6 +1,6 @@
 /**
  * Global site configuration — brand facts, contact details, nav, and the
- * env-driven integrations (Calendly link, SendGrid). Single source of truth.
+ * env-driven integrations (SendGrid). Single source of truth.
  */
 
 export const site = {
@@ -29,10 +29,6 @@ export const site = {
     instagram: "https://instagram.com/blxckmarketing",
     linkedin: "https://linkedin.com/company/blxckmarketing",
   },
-  // Booking link (opened in a new tab from /contact). Override with NEXT_PUBLIC_CALENDLY_URL.
-  calendlyUrl:
-    process.env.NEXT_PUBLIC_CALENDLY_URL ??
-    "https://calendly.com/blxckmarketing/blxck-meeting",
 } as const;
 
 /** Main nav. The logo links home; Services and Our work open menus. */
@@ -41,3 +37,6 @@ export const nav = [
   { label: "Our work", href: "/our-work" },
   { label: "Contact", href: "/contact" },
 ] as const;
+
+/** Site-wide sharing image (src/app/opengraph-image.tsx). Pages that set their own openGraph must list it. */
+export const ogImage = "/opengraph-image";

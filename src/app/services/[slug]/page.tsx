@@ -16,7 +16,7 @@ import {
   transparentHeroes,
   workHeading,
 } from "@/lib/content";
-import { site } from "@/lib/site";
+import { ogImage, site } from "@/lib/site";
 import { workMedia, workGrid, groupWork } from "@/lib/work-media";
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
 import { ButtonLink } from "@/components/ui/Button";
@@ -60,6 +60,7 @@ export async function generateMetadata({
     title: svc.name,
     description: desc,
     openGraph: {
+    images: [ogImage],
       title: `${svc.name} — ${site.name}`,
       description: desc,
     },

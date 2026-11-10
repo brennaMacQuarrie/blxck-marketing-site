@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Script from "next/script";
+import { useRouter } from "next/navigation";
 import { getRecaptchaToken, recaptchaSiteKey } from "@/lib/recaptcha-client";
 import { site } from "@/lib/site";
 import { Button } from "@/components/ui/Button";
@@ -23,6 +24,7 @@ const interests = [
 
 export function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
+  const router = useRouter();
   // When the form appeared; the server rejects instant submissions.
   const started = useRef(0);
   useEffect(() => {
@@ -50,6 +52,7 @@ export function ContactForm() {
         (w.dataLayer ??= []).push({ event: "contact_form_submit", interest: payload.interest ?? "" });
         setStatus("success");
         form.reset();
+        router.push("/thank-you");
       } else if (res.status === 503) {
         setStatus("unconfigured");
       } else if (res.status === 400 && (await res.json().catch(() => ({}))).error === "spam") {

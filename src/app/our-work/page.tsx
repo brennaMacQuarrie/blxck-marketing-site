@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { caseStudies, work, workSections } from "@/lib/content";
-import { site } from "@/lib/site";
+import { ogImage, site } from "@/lib/site";
 import { workMedia } from "@/lib/work-media";
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
 import { ButtonLink } from "@/components/ui/Button";
@@ -14,6 +14,7 @@ export const metadata: Metadata = {
   description:
     "Case studies and portfolio from BLXCK Marketing — the numbers we've moved and the work behind them.",
   openGraph: {
+    images: [ogImage],
     title: `Our Work — ${site.name}`,
     description: "Case studies and portfolio from BLXCK Marketing.",
   },

@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import "./globals.css";
 import { spaceAge, milker } from "@/lib/fonts";
-import { site } from "@/lib/site";
+import { ogImage, site } from "@/lib/site";
 import SmoothScroll from "@/components/providers/SmoothScroll";
 import { Navbar } from "@/components/layout/Navbar";
 import { PageTransition } from "@/components/layout/PageTransition";
@@ -26,6 +26,7 @@ export const metadata: Metadata = {
     "content creation",
   ],
   openGraph: {
+    images: [ogImage],
     type: "website",
     url: site.url,
     title: `${site.name} — ${site.tagline}`,

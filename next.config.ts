@@ -3,7 +3,6 @@ import type { NextConfig } from "next";
 /** Old WordPress URLs (blxckmarketing.com before Nov 2026) → their new homes. */
 const legacy: [string, string][] = [
   ["/packages", "/services"],
-  ["/thank-you", "/contact"],
   ["/case-studies/brand-rebuild-for-a-roofing-company-that-had-outgrown-its-website", "/ardent-case-study"],
   ["/case-studies/atma-cena-full-lms-migration-course-rebuild", "/case-studies"],
   ["/portfolio/ardent-roof-systems-website", "/ardent-case-study"],

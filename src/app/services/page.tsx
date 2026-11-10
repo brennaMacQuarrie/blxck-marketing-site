@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { serviceGroups, packages, slugify, serviceImage, transparentHeroes } from "@/lib/content";
-import { site } from "@/lib/site";
+import { ogImage, site } from "@/lib/site";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
 import { ButtonLink } from "@/components/ui/Button";
@@ -15,6 +15,7 @@ export const metadata: Metadata = {
   description:
     "Full-service marketing from BLXCK — consulting, marketing, in-house creation, and web. Strategy, advertising, content, branding, SEO and more, plus monthly packages.",
   openGraph: {
+    images: [ogImage],
     title: `Services — ${site.name}`,
     description:
       "Consulting, marketing, creation, and web — everything a growing brand needs, under one roof.",

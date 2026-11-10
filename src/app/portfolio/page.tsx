@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { work, workSections, clientLogos, caseStudies } from "@/lib/content";
 import type { WorkItem } from "@/lib/content";
-import { site } from "@/lib/site";
+import { ogImage, site } from "@/lib/site";
 import { workMedia, workGrid, groupWork } from "@/lib/work-media";
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
 import { ButtonLink } from "@/components/ui/Button";
@@ -17,6 +17,7 @@ export const metadata: Metadata = {
   description:
     "Selected work from BLXCK Marketing — brands across e-commerce, medical, cannabis, capital, and non-profit that we've made impossible to ignore.",
   openGraph: {
+    images: [ogImage],
     title: `Portfolio — ${site.name}`,
     description: "Selected work from BLXCK Marketing.",
   },
