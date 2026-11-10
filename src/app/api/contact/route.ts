@@ -1,10 +1,13 @@
 import { site } from "@/lib/site";
 import { enquiryInbox, sendEmail } from "@/lib/email";
 import { looksAutomated, passesRecaptcha } from "@/lib/spam";
+import { saveLead } from "@/lib/leads";
 
 /**
- * Contact form handler → sends an email via SendGrid to the BLXCK inbox.
- * Requires SENDGRID_API_KEY and SENDGRID_FROM_EMAIL (a SendGrid-verified sender).
+ * Contact form handler → emails the enquiry via SendGrid and saves it to the
+ * shared Supabase `leads` table (see lib/leads.ts). Succeeds if either works.
+ * Env: SENDGRID_API_KEY, SENDGRID_FROM_EMAIL, CONTACT_TO_EMAIL,
+ *      SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, LEAD_CLIENT.
  */
 export async function POST(request: Request) {
   let data: Record<string, unknown>;
@@ -42,13 +45,18 @@ export async function POST(request: Request) {
     message || "(No message)",
   ].join("\n");
 
-  const result = await sendEmail({
-    to: enquiryInbox(site.contact.email),
-    replyTo: email,
-    subject,
-    text,
-  });
-  if (!result.ok) {
+  const source = request.headers.get("x-forwarded-host") || request.headers.get("host") || "";
+  const [result, saved] = await Promise.all([
+    sendEmail({ to: enquiryInbox(site.contact.email), replyTo: email, subject, text }),
+    saveLead({
+      name,
+      email,
+      details: Object.fromEntries(
+        Object.entries({ company, interest, message, source }).filter(([, v]) => v),
+      ),
+    }),
+  ]);
+  if (!result.ok && !saved) {
     return Response.json(
       { ok: false, error: result.error },
       { status: result.error === "not_configured" ? 503 : 502 },
