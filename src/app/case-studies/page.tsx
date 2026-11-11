@@ -7,9 +7,10 @@ import { Eclipse } from "@/components/ui/Eclipse";
 import { CaseStudyCard } from "@/components/work/CaseStudyCard";
 
 export const metadata: Metadata = {
-  title: "Case Studies",
+  title: "Marketing Case Studies",
   description:
-    "How BLXCK Marketing has helped businesses grow — the problem, what we changed, and the numbers that moved.",
+    "How BLXCK Marketing has helped Alberta businesses grow: the problem, what we changed, and the numbers that moved.",
+  alternates: { canonical: "/case-studies" },
   openGraph: {
     images: [ogImage],
     title: `Case Studies — ${site.name}`,
@@ -26,18 +27,18 @@ export default function CaseStudiesPage() {
           className="left-1/2 top-[-18%] h-[56vmin] w-[80vmin] -translate-x-1/2 opacity-30"
         />
         <div className="relative z-10 mx-auto w-full max-w-6xl px-(--spacing-gutter)">
-          <Reveal>
+          <Reveal fade={false}>
             <span className="eyebrow flex items-center gap-3">
               <span className="inline-block h-px w-8 bg-gold/60" />
               Our work
             </span>
           </Reveal>
-          <Reveal delay={0.05}>
+          <Reveal fade={false} delay={0.05}>
             <h1 className="mt-6 font-heading text-[clamp(2.6rem,8vw,6rem)] font-normal leading-[0.98] tracking-[-0.01em] text-hi">
               Case studies.
             </h1>
           </Reveal>
-          <Reveal delay={0.1}>
+          <Reveal fade={false} delay={0.1}>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-mid">
               The problem, what we changed, and the numbers that moved — told
               in plain language.

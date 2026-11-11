@@ -11,9 +11,10 @@ import { AuditBanner } from "@/components/home/AuditBanner";
 import { SectionNav, type NavSection } from "@/components/ui/SectionNav";
 
 export const metadata: Metadata = {
-  title: "Services",
+  title: "Marketing Services in Edmonton & Across Canada",
   description:
-    "Full-service marketing from BLXCK — consulting, marketing, in-house creation, and web. Strategy, advertising, content, branding, SEO and more, plus monthly packages.",
+    "Strategy, advertising, social media, branding, video, photography, jingles, web design and SEO, all under one roof. Marketing services from Edmonton, Alberta.",
+  alternates: { canonical: "/services" },
   openGraph: {
     images: [ogImage],
     title: `Services — ${site.name}`,
@@ -76,26 +77,26 @@ export default function ServicesPage() {
         />
         <div className="relative z-10 mx-auto w-full max-w-6xl px-(--spacing-gutter)">
           <div className="max-w-3xl">
-            <Reveal>
+            <Reveal fade={false}>
               <span className="eyebrow flex items-center gap-3">
                 <span className="inline-block h-px w-8 bg-teal/60" />
                 Services
               </span>
             </Reveal>
-            <Reveal delay={0.05}>
+            <Reveal fade={false} delay={0.05}>
               <h1 className="mt-7 font-heading text-[clamp(2.6rem,7vw,5.5rem)] font-normal leading-[1.02] tracking-[-0.01em] text-hi">
                 Everything it takes{" "}
                 <span className="text-spectrum">to grow.</span>
               </h1>
             </Reveal>
-            <Reveal delay={0.1}>
+            <Reveal fade={false} delay={0.1}>
               <p className="mt-7 max-w-2xl text-lg leading-relaxed text-mid">
                 Strategy, in-house creative, paid media, and web — run by one
                 team, pointed at one goal: making your business impossible to
                 ignore.
               </p>
             </Reveal>
-            <Reveal delay={0.15}>
+            <Reveal fade={false} delay={0.15}>
               <div className="mt-10 flex flex-wrap items-center gap-3">
                 <ButtonLink href="/contact" variant="primary" withArrow>
                   Start a project

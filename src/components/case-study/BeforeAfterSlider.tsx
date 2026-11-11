@@ -63,7 +63,7 @@ export function BeforeAfterSlider({ before, after, initial = 50, aspect = 16 / 1
           sizes="(min-width: 1152px) 1120px, 100vw"
           className="object-cover object-top"
           draggable={false}
-          priority={false}
+          priority
         />
         {/* After: on top, clipped to the divider */}
         <div
@@ -78,6 +78,7 @@ export function BeforeAfterSlider({ before, after, initial = 50, aspect = 16 / 1
             sizes="(min-width: 1152px) 1120px, 100vw"
             className="object-cover object-top"
             draggable={false}
+            priority
           />
         </div>
         <span className="sr-only">{after.alt}</span>

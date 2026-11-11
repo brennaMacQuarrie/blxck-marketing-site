@@ -5,9 +5,10 @@ import { Eclipse } from "@/components/ui/Eclipse";
 import { ContactForm } from "@/components/contact/ContactForm";
 
 export const metadata: Metadata = {
-  title: "Contact",
+  title: "Contact Us",
   description:
-    "Start a project with BLXCK Marketing. Send a message or give us a call — Edmonton-based, working with growing brands globally.",
+    "Start a project with BLXCK Marketing. Send a message or call +1 (780) 722-0646. Based in Edmonton, working with businesses across Canada.",
+  alternates: { canonical: "/contact" },
   openGraph: {
     images: [ogImage],
     title: `Contact — ${site.name}`,
@@ -49,19 +50,19 @@ export default function ContactPage() {
           className="right-[-6%] top-[-16%] h-[52vmin] w-[52vmin] opacity-40"
         />
         <div className="relative z-10 mx-auto w-full max-w-6xl px-(--spacing-gutter)">
-          <Reveal>
+          <Reveal fade={false}>
             <span className="eyebrow flex items-center gap-3">
               <span className="inline-block h-px w-8 bg-teal/60" />
               Contact
             </span>
           </Reveal>
-          <Reveal delay={0.05}>
+          <Reveal fade={false} delay={0.05}>
             <h1 className="mt-6 font-heading text-[clamp(2.4rem,6.5vw,5rem)] font-normal leading-[1.02] tracking-[-0.01em] text-hi">
               Let&apos;s make you{" "}
               <span className="text-spectrum">impossible to ignore.</span>
             </h1>
           </Reveal>
-          <Reveal delay={0.1}>
+          <Reveal fade={false} delay={0.1}>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-mid">
               Tell us where you want to grow. We&apos;ll come back within one
               business day with a clear next step.

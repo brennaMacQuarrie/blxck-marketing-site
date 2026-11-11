@@ -9,6 +9,7 @@ import { Eclipse } from "@/components/ui/Eclipse";
 
 export const metadata: Metadata = {
   title: "Medical Marketing Solutions",
+  alternates: { canonical: "/medical-marketing" },
   description:
     "Full-business growth for medical and health companies — systems and technical audits, revenue-leak analysis, online-presence clarity, patient acquisition, training, and multi-clinic enablement.",
   openGraph: {
@@ -32,25 +33,25 @@ export default function MedicalMarketingPage() {
           className="pointer-events-none absolute inset-0 grid-veil opacity-[0.06]"
         />
         <div className="relative z-10 mx-auto w-full max-w-4xl px-(--spacing-gutter) text-center">
-          <Reveal>
+          <Reveal fade={false}>
             <span className="eyebrow inline-flex items-center gap-2">
               <span className="h-1.5 w-1.5 rounded-full bg-teal shadow-[0_0_8px_var(--color-teal)]" />
               {medical.eyebrow}
             </span>
           </Reveal>
-          <Reveal delay={0.05}>
+          <Reveal fade={false} delay={0.05}>
             <h1 className="mt-7 font-heading text-[clamp(2.3rem,6vw,4.5rem)] font-normal leading-[1.02] tracking-[-0.01em] text-hi">
               {medical.headlineLead}{" "}
               <span className="text-spectrum">{medical.headlineAccent}</span>{" "}
               {medical.headlineTail}
             </h1>
           </Reveal>
-          <Reveal delay={0.1}>
+          <Reveal fade={false} delay={0.1}>
             <p className="mx-auto mt-7 max-w-2xl text-lg leading-relaxed text-mid">
               {medical.sub}
             </p>
           </Reveal>
-          <Reveal delay={0.15}>
+          <Reveal fade={false} delay={0.15}>
             <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
               <ButtonLink href="/contact" variant="primary" withArrow>
                 Book a free audit
@@ -60,7 +61,7 @@ export default function MedicalMarketingPage() {
               </ButtonLink>
             </div>
           </Reveal>
-          <Reveal delay={0.2}>
+          <Reveal fade={false} delay={0.2}>
             <p className="mt-10 text-xs uppercase tracking-[0.22em] text-lo">
               {medical.trustLine}
             </p>

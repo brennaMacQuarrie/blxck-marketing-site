@@ -24,6 +24,7 @@ export function Reveal({
   className,
   once = true,
   amount = 0.3,
+  fade = true,
 }: {
   children: ReactNode;
   direction?: Direction;
@@ -31,12 +32,18 @@ export function Reveal({
   className?: string;
   once?: boolean;
   amount?: number;
+  /**
+   * Set false for content in the first screen: it then only slides, staying
+   * visible from the first paint instead of waiting for JavaScript to fade in
+   * (Google's Largest Contentful Paint counts hidden text as not yet loaded).
+   */
+  fade?: boolean;
 }) {
   const reduce = useReducedMotion();
   const { x, y } = offset[direction];
 
   const variants: Variants = {
-    hidden: { opacity: 0, x: reduce ? 0 : x, y: reduce ? 0 : y },
+    hidden: { ...(fade ? { opacity: 0 } : {}), x: reduce ? 0 : x, y: reduce ? 0 : y },
     show: {
       opacity: 1,
       x: 0,

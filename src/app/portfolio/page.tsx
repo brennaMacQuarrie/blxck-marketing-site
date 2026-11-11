@@ -13,9 +13,10 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { LogoCarousel } from "@/components/ui/LogoCarousel";
 
 export const metadata: Metadata = {
-  title: "Portfolio",
+  title: "Portfolio: Branding, Web Design, Video & Ads",
   description:
-    "Selected work from BLXCK Marketing — brands across e-commerce, medical, cannabis, capital, and non-profit that we've made impossible to ignore.",
+    "Branding, websites, video, photography, social and ad work from BLXCK Marketing, an Edmonton agency working with brands across Canada.",
+  alternates: { canonical: "/portfolio" },
   openGraph: {
     images: [ogImage],
     title: `Portfolio — ${site.name}`,
@@ -51,18 +52,18 @@ export default function PortfolioPage() {
           className="left-1/2 top-[-18%] h-[56vmin] w-[80vmin] -translate-x-1/2 opacity-35"
         />
         <div className="relative z-10 mx-auto w-full max-w-6xl px-(--spacing-gutter)">
-          <Reveal>
+          <Reveal fade={false}>
             <span className="eyebrow flex items-center gap-3">
               <span className="inline-block h-px w-8 bg-teal/60" />
               Our work
             </span>
           </Reveal>
-          <Reveal delay={0.05}>
+          <Reveal fade={false} delay={0.05}>
             <h1 className="mt-6 font-heading text-[clamp(2.6rem,8vw,6rem)] font-normal leading-[0.98] tracking-[-0.01em] text-hi">
               Portfolio.
             </h1>
           </Reveal>
-          <Reveal delay={0.1}>
+          <Reveal fade={false} delay={0.1}>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-mid">
               A selection of brands we&apos;ve helped grow — websites, social
               content, video, and branding across e-commerce, medical, cannabis,

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { site } from "@/lib/site";
+import { caseStudyLd, ldJson } from "@/lib/seo";
 import { projects } from "@/lib/content";
 import {
   months,
@@ -32,6 +33,7 @@ const onMainDomain = site.url.includes("blxckmarketing.com");
 export const metadata: Metadata = {
   title,
   description,
+  alternates: { canonical: "/optometrists-case-study" },
   robots: onMainDomain ? undefined : { index: false, follow: false },
   openGraph: {
     title: `${title} — ${site.name}`,
@@ -57,6 +59,10 @@ const accent = {
 export default function OptometristsCaseStudy() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={ldJson(caseStudyLd("/optometrists-case-study", title, description, "/work/optometrists-case-study-og.jpg"))}
+      />
       {/* ---------------- Hero ---------------- */}
       <section
         className="relative overflow-hidden pt-32 pb-20 md:pt-40 md:pb-24"
@@ -67,7 +73,7 @@ export default function OptometristsCaseStudy() {
           className="right-[-8%] top-[-18%] h-[56vmin] w-[56vmin] opacity-40"
         />
         <div className="relative z-10 mx-auto w-full max-w-6xl px-(--spacing-gutter)">
-          <Reveal>
+          <Reveal fade={false}>
             <nav className="eyebrow flex items-center gap-2">
               <Link href="/portfolio" className="transition-colors hover:text-mid">
                 Portfolio
@@ -76,12 +82,12 @@ export default function OptometristsCaseStudy() {
               <span style={{ color: "var(--ac)" }}>Case study</span>
             </nav>
           </Reveal>
-          <Reveal delay={0.05}>
+          <Reveal fade={false} delay={0.05}>
             <h1 className="mt-6 max-w-5xl text-balance text-[clamp(2.4rem,6vw,5rem)] leading-[1] text-hi">
               More patients. Less than half the ad spend.
             </h1>
           </Reveal>
-          <Reveal delay={0.1}>
+          <Reveal fade={false} delay={0.1}>
             <p className="mt-8 max-w-2xl text-lg leading-relaxed text-mid">
               The Optometrists&rsquo; Clinic has served Edmonton since 1938 across
               five locations. In 2025 they moved their website, Google Ads and
@@ -89,7 +95,7 @@ export default function OptometristsCaseStudy() {
             </p>
           </Reveal>
 
-          <Reveal delay={0.15} amount={0.1} className="mt-12">
+          <Reveal fade={false} delay={0.15} amount={0.1} className="mt-12">
             <BeforeAfterSlider
               before={{ src: "/work/optometrists-before.webp", alt: "The previous Optometrists' Clinic homepage on Wix" }}
               after={{ src: "/work/optometrists-after.webp", alt: "The new Optometrists' Clinic homepage built by BLXCK" }}

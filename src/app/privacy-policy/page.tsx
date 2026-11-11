@@ -4,6 +4,7 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description: "How BLXCK Marketing collects and uses information on blxckmarketing.com.",
+  alternates: { canonical: "/privacy-policy" },
 };
 
 const sections: { h: string; p: React.ReactNode[] }[] = [

@@ -17,6 +17,7 @@ import {
   workHeading,
 } from "@/lib/content";
 import { ogImage, site } from "@/lib/site";
+import { ldJson, serviceLd, serviceSeo } from "@/lib/seo";
 import { workMedia, workGrid, groupWork } from "@/lib/work-media";
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion/Reveal";
 import { ButtonLink } from "@/components/ui/Button";
@@ -55,10 +56,12 @@ export async function generateMetadata({
   const { slug } = await params;
   const svc = getService(slug);
   if (!svc) return { title: "Service not found" };
-  const desc = svc.long ?? svc.detail;
+  const seo = serviceSeo[slug];
+  const desc = seo?.description ?? svc.long ?? svc.detail;
   return {
-    title: svc.name,
+    title: seo?.title ?? svc.name,
     description: desc,
+    alternates: { canonical: `/services/${slug}` },
     openGraph: {
     images: [ogImage],
       title: `${svc.name} — ${site.name}`,
@@ -106,6 +109,12 @@ export default async function ServiceDetailPage({
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={ldJson(
+          serviceLd(slug, svc.name, serviceSeo[slug]?.description ?? svc.long ?? svc.detail),
+        )}
+      />
       {/* ---------------- Hero ---------------- */}
       <section
         className="space-bg-2 relative overflow-hidden pt-32 pb-16 md:pt-40 md:pb-20"
@@ -117,7 +126,7 @@ export default async function ServiceDetailPage({
         />
         <div className="relative z-10 mx-auto grid w-full max-w-6xl items-center gap-12 px-(--spacing-gutter) lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
           <div>
-          <Reveal>
+          <Reveal fade={false}>
             <nav className="eyebrow flex items-center gap-2">
               <Link href="/services" className="transition-colors hover:text-mid">
                 Services
@@ -126,12 +135,12 @@ export default async function ServiceDetailPage({
               <span style={{ color: "var(--ac)" }}>{svc.group}</span>
             </nav>
           </Reveal>
-          <Reveal delay={0.05}>
+          <Reveal fade={false} delay={0.05}>
             <h1 className="mt-6 text-[clamp(2.4rem,7vw,5rem)] leading-[1] lg:text-[clamp(2.4rem,4.4vw,4.1rem)] tracking-[-0.01em] text-hi">
               {svc.name}
             </h1>
           </Reveal>
-          <Reveal delay={0.1}>
+          <Reveal fade={false} delay={0.1}>
             <div className="mt-7 flex max-w-2xl flex-col gap-5">
               {intro.map((para, i) => (
                 <p
@@ -147,7 +156,7 @@ export default async function ServiceDetailPage({
               ))}
             </div>
           </Reveal>
-          <Reveal delay={0.15}>
+          <Reveal fade={false} delay={0.15}>
             <div className="mt-10 flex flex-wrap items-center gap-3">
               <ButtonLink href="/contact" variant="primary" withArrow>
                 {consulting ? "Find your blind spots" : "Start a project"}
@@ -162,7 +171,7 @@ export default async function ServiceDetailPage({
           </div>
 
           {heroImage && (
-            <Reveal delay={0.1} direction="left">
+            <Reveal fade={false} delay={0.1} direction="left">
               {transparentHeroes.has(heroImage) ? (
                 <div className="relative aspect-[7/6]">
                   <Image

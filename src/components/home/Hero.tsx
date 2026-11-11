@@ -21,8 +21,10 @@ export function Hero() {
         defaults: { ease: "expo.out", duration: reduce ? 0.001 : 1 },
       });
       tl.from(".h-line span", { yPercent: 115, stagger: 0.1 })
-        .from(".h-sub", { y: 18, opacity: 0 }, "-=0.7")
-        .from(".h-cta", { y: 18, opacity: 0 }, "-=0.6");
+        // Movement only, no fade: the text stays visible from the first paint
+        // (Google's Largest Contentful Paint waits for hidden text).
+        .from(".h-sub", { y: 18 }, "-=0.7")
+        .from(".h-cta", { y: 18 }, "-=0.6");
     },
     { scope: root },
   );

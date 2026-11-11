@@ -3,6 +3,7 @@ import Script from "next/script";
 import "./globals.css";
 import { spaceAge, milker } from "@/lib/fonts";
 import { ogImage, site } from "@/lib/site";
+import { ldJson, organizationLd } from "@/lib/seo";
 import SmoothScroll from "@/components/providers/SmoothScroll";
 import { Navbar } from "@/components/layout/Navbar";
 import { PageTransition } from "@/components/layout/PageTransition";
@@ -11,8 +12,8 @@ import { Footer } from "@/components/layout/Footer";
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} — ${site.tagline}`,
-    template: `%s — ${site.name}`,
+    default: `Marketing Agency in Edmonton, Alberta | ${site.name}`,
+    template: `%s | ${site.name}`,
   },
   description: site.description,
   keywords: [
@@ -24,10 +25,14 @@ export const metadata: Metadata = {
     "web development",
     "SEO",
     "content creation",
+    "Calgary marketing",
+    "Alberta marketing agency",
+    "Canada marketing agency",
   ],
   openGraph: {
     images: [ogImage],
     type: "website",
+    locale: "en_CA",
     url: site.url,
     title: `${site.name} — ${site.tagline}`,
     description: site.description,
@@ -54,7 +59,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html
-      lang="en"
+      lang="en-CA"
       className={`${spaceAge.variable} ${milker.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-ink text-hi">
@@ -69,6 +74,7 @@ export default function RootLayout({
             style={{ display: "none", visibility: "hidden" }}
           />
         </noscript>
+        <script type="application/ld+json" dangerouslySetInnerHTML={ldJson(organizationLd)} />
         <SmoothScroll>
           <PageTransition />
           <Navbar />

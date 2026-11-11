@@ -10,9 +10,10 @@ import { Eclipse } from "@/components/ui/Eclipse";
 import { CaseStudyCard } from "@/components/work/CaseStudyCard";
 
 export const metadata: Metadata = {
-  title: "Our Work",
+  title: "Our Work: Case Studies & Portfolio",
   description:
-    "Case studies and portfolio from BLXCK Marketing — the numbers we've moved and the work behind them.",
+    "Case studies and portfolio from BLXCK Marketing, an Edmonton marketing agency: the numbers we've moved and the work behind them.",
+  alternates: { canonical: "/our-work" },
   openGraph: {
     images: [ogImage],
     title: `Our Work — ${site.name}`,
@@ -35,12 +36,12 @@ export default function OurWorkPage() {
           className="left-1/2 top-[-18%] h-[56vmin] w-[80vmin] -translate-x-1/2 opacity-30"
         />
         <div className="relative z-10 mx-auto w-full max-w-6xl px-(--spacing-gutter)">
-          <Reveal>
+          <Reveal fade={false}>
             <h1 className="font-heading text-[clamp(2.6rem,8vw,6rem)] font-normal leading-[0.98] tracking-[-0.01em] text-hi">
               Our work.
             </h1>
           </Reveal>
-          <Reveal delay={0.05}>
+          <Reveal fade={false} delay={0.05}>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-mid">
               Read how the numbers moved in our case studies, or browse the work
               itself in the portfolio.
