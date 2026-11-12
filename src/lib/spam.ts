@@ -33,9 +33,9 @@ export async function passesRecaptcha(token: unknown, action: string): Promise<b
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: new URLSearchParams({ secret, response: token }),
     });
-    const r = (await res.json()) as { success?: boolean; score?: number; action?: string };
+    const r = (await res.json()) as { success?: boolean; score?: number; action?: string; "error-codes"?: string[] };
     if (!r.success || r.action !== action || (r.score ?? 0) < MIN_SCORE) {
-      console.warn("reCAPTCHA rejected", { score: r.score, action: r.action, success: r.success });
+      console.warn("reCAPTCHA rejected", { score: r.score, action: r.action, success: r.success, errors: r["error-codes"] });
       return false;
     }
     return true;
