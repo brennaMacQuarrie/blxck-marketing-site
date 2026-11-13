@@ -25,6 +25,21 @@ const legacy: [string, string][] = [
   ["/services/jingles-radio-ads", "/services/jingles-and-radio-ads"],
   ["/services/social-content-management", "/services/social-media-management"],
   ["/services/video-for-socials", "/services/videography"],
+  // WordPress category archives
+  ["/category/advertising", "/services/advertising"],
+  ["/category/branding", "/services/branding"],
+  ["/category/social-content-management", "/services/social-media-management"],
+  ["/category/videography", "/services/videography"],
+  ["/category/web-development", "/services/web-development"],
+  ["/category/uncategorized", "/"],
+  // Yoast sitemaps Google may still have on file
+  ["/sitemap_index.xml", "/sitemap.xml"],
+  ["/page-sitemap.xml", "/sitemap.xml"],
+  ["/portfolio-sitemap.xml", "/sitemap.xml"],
+  ["/services-sitemap.xml", "/sitemap.xml"],
+  ["/case-studies-sitemap.xml", "/sitemap.xml"],
+  ["/category-sitemap.xml", "/sitemap.xml"],
+  ["/home", "/"],
 ];
 
 const nextConfig: NextConfig = {
@@ -40,6 +55,9 @@ const nextConfig: NextConfig = {
       // Any other old WordPress portfolio or case study entry.
       { source: "/portfolio/:slug", destination: "/portfolio", permanent: true },
       { source: "/case-studies/:slug", destination: "/case-studies", permanent: true },
+      { source: "/category/:slug", destination: "/services", permanent: true },
+      { source: "/author/:path*", destination: "/", permanent: true },
+      { source: "/comments/feed", destination: "/", permanent: true },
       // WordPress feeds, admin and login.
       { source: "/feed/:path*", destination: "/", permanent: true },
       { source: "/wp-admin/:path*", destination: "/", permanent: false },
