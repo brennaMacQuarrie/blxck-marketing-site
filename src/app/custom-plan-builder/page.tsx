@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   // Internal for now: nothing links here, and search engines should skip it.
   robots: { index: false, follow: false },
   description:
-    "Build your marketing plan with BLXCK. Pick the services you need, set the details, and see your monthly price update live — with automatic bundle discounts.",
+    "Build your marketing plan with BLXCK. Pick the services you need, set the details, and see your monthly price update live.",
   openGraph: {
     title: `Custom Plan Builder — ${site.name}`,
     description:

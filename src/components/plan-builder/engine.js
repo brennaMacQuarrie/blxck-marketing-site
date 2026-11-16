@@ -44,8 +44,7 @@ export function initPlanBuilder(root, opts) {
     strategy: { none: 0, quarterly: 250, monthly: 400 },
     checkin: { monthly: 0, biweekly: 150, weekly: 450 },
     logo: 500, brandKit: { none: 0, basic: 500, premium: 2500 },
-    brandStory: 7500,
-    discounts: [[7, 0.20], [5, 0.15], [3, 0.10], [2, 0.05]]
+    brandStory: 7500
   };
 
   var CATS = [
@@ -82,7 +81,7 @@ export function initPlanBuilder(root, opts) {
     var s = blank();
     s.cats.social = true; s.cats.ads = true; s.cats.strategy = true;
     s.graphics = 4; s.carousels = 2; s.reels = 2; s.reelMode = "edit";
-    s.adsSocial = true; s.strategy = "quarterly";
+    s.adsGoogle = true; s.strategy = "quarterly";
     return s;
   }
   var S = example();
@@ -219,7 +218,7 @@ export function initPlanBuilder(root, opts) {
     var adsOn = adCount > 0;
     if (adsOn) {
       var ga = grp(monthly, "Paid ads");
-      // any mix of platforms counts as ONE service toward the bundle discount
+      // ad platform bundle: $650 one, $750 any two, $850 all three
       if (S.adsGoogle) add(ga, "Google Ads management", P.adsSingle);
       if (S.adsSocial) add(ga, "Social ads management (Meta, TikTok, LinkedIn)", P.adsSingle);
       if (S.adsChatGPT) add(ga, "ChatGPT ads management", P.adsSingle);
@@ -297,17 +296,14 @@ export function initPlanBuilder(root, opts) {
     }
 
     var subtotal = monthly.reduce(function (a, g) { return a + g.total; }, 0);
-    var count = services.length, pct = 0;
-    for (var i = 0; i < P.discounts.length; i++) if (count >= P.discounts[i][0]) { pct = P.discounts[i][1]; break; }
-    var discount = Math.round(subtotal * pct);
-    var total = subtotal - discount;
+    var total = subtotal;   // no service-count discount; the only bundle pricing is across ad platforms
     var onceTotal = once.reduce(function (a, g) { return a + g.total; }, 0);
     var auditPicked = S.cats.audits && S.fullAudit;
     var credit = (auditPicked && total > 0) ? P.auditCredit : 0;
     var comboSave = adCount > 1 ? adCount * P.adsSingle - P.ads[adCount] : 0;
 
-    return { monthly: monthly, once: once, quoted: quoted, services: services, count: count, pct: pct, subtotal: subtotal,
-             discount: discount, total: total, onceTotal: onceTotal, credit: credit, auditPicked: auditPicked, save: discount + comboSave, social: social };
+    return { monthly: monthly, once: once, quoted: quoted, services: services, subtotal: subtotal,
+             total: total, onceTotal: onceTotal, credit: credit, auditPicked: auditPicked, save: comboSave, social: social };
   }
 
   /* ---------- control builders ---------- */
@@ -661,34 +657,17 @@ export function initPlanBuilder(root, opts) {
     onceEl.textContent = R.onceTotal ? "+ " + money(R.onceTotal) + " one-time" : "";
     var save = document.getElementById("bx-save");
     save.hidden = !R.save;
-    save.textContent = "You save " + money(R.save) + "/mo by bundling";
+    save.textContent = "You save " + money(R.save) + "/mo by bundling ad platforms";
     document.getElementById("bx-mb-once").textContent = money(R.onceTotal);
     var mbNotes = [];
     if (R.save) mbNotes.push("Saving " + money(R.save) + "/mo");
     if (R.credit) mbNotes.push("Includes a " + money(R.credit) + " audit credit");
     document.getElementById("bx-mb-save").textContent = mbNotes.join(" · ");
 
-    // meter
-    var th = [2, 3, 5, 7];
-    document.getElementById("bx-m-count").textContent = plural(R.count, "service") + (R.pct ? " · " + Math.round(R.pct * 100) + "% off" : "");
-    var segs = document.querySelectorAll("#bx-meter .m-seg i"), labs = document.querySelectorAll("#bx-meter .m-labels span");
-    th.forEach(function (t, i) {
-      var lo = i === 0 ? 0 : th[i - 1];
-      var f = Math.max(0, Math.min(1, (R.count - lo) / (t - lo)));
-      segs[i].style.transform = "scaleX(" + f + ")";
-      labs[i].className = R.count >= t ? "on" : "";
-    });
-    var next = null; for (var i = 0; i < th.length; i++) if (R.count < th[i]) { next = i; break; }
-    var pcts = [5, 10, 15, 20];
-    document.getElementById("bx-m-next").textContent = next === null ? "Top bundle discount unlocked" :
-      "Add " + plural(th[next] - R.count, "more service") + " for " + pcts[next] + "% off";
 
     var m = document.getElementById("bx-monthly");
     if (R.monthly.length) {
       var html = lines(R.monthly, "Monthly", "");
-      if (R.discount) {
-        html += '<div class="bx-l minus" style="font-size:13px;padding-top:6px"><span>Bundle discount (' + Math.round(R.pct * 100) + '%, ' + plural(R.count, "service") + ')</span><span>' + money(-R.discount) + '</span></div>';
-      }
       html += '<div class="bx-l tot"><span>Monthly total</span><span>' + money(R.total) + '</span></div>';
       if (R.credit) {
         html += '<div class="bx-l minus" style="font-size:13px;padding-top:6px"><span>Audit credit toward your monthly services</span><span>' + money(-R.credit) + '</span></div>';
@@ -742,7 +721,7 @@ export function initPlanBuilder(root, opts) {
       S.cats[id] = !S.cats[id];
       // sensible defaults the first time a category is switched on
       if (S.cats[id]) {
-        if (id === "social" && S.graphics + S.carousels + S.reels === 0) S.graphics = 4;
+        if (id === "social" && S.graphics + S.carousels + S.reels === 0) { S.graphics = 4; S.carousels = 2; S.reels = 2; }
         if (id === "content" && !S.blogs && !S.newsletters) S.blogs = 1;
         if (id === "ads" && !IF.adsOn()) S.adsGoogle = true;
         if (id === "seo" && S.seo === "none") S.seo = "basic";
@@ -829,7 +808,6 @@ export function initPlanBuilder(root, opts) {
         out.push(g.cat + ": " + money(g.total) + "/mo");
         g.items.forEach(function (it) { out.push("  - " + it.label + ": " + (it.amt === 0 ? "included" : money(it.amt))); });
       });
-      if (R.discount) out.push("Bundle discount (" + Math.round(R.pct * 100) + "%, " + plural(R.count, "service") + "): " + money(-R.discount));
       out.push("Monthly total: " + money(R.total) + "/mo", "");
     }
     if (R.once.length) {

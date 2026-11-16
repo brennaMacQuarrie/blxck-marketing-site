@@ -201,14 +201,6 @@
 .bx-shead .s-save { display: inline-block; margin-top: 10px; background: rgba(22,22,26,.55); border-radius: 999px; padding: 4px 11px; font-size: 12.5px; font-weight: 600; text-shadow: none; }
 .bx-sbody { padding: 16px 20px 20px; overflow-y: auto; display: grid; gap: 16px; align-content: start; }
 
-.bx-meter .m-top { display: flex; justify-content: space-between; gap: 10px; font-size: 13px; margin-bottom: 8px; }
-.bx-meter .m-top b { font-weight: 700; }
-.bx-meter .m-top span { color: var(--muted); text-align: right; }
-.bx-meter .m-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; }
-.bx-meter .m-seg { height: 6px; border-radius: 3px; background: var(--surface-3); overflow: hidden; position: relative; }
-.bx-meter .m-seg i { position: absolute; inset: 0; background: var(--g1); transform-origin: left; transform: scaleX(0); transition: transform .35s ease; }
-.bx-meter .m-labels { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; font-size: 11px; color: var(--dim); margin-top: 5px; font-variant-numeric: tabular-nums; }
-.bx-meter .m-labels span.on { color: var(--text); font-weight: 600; }
 
 .bx-lines { display: grid; gap: 2px; }
 #bx-onetime:not(:empty) { margin-top: 4px; padding-top: 16px; border-top: 2px solid var(--line-strong); }
