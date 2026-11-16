@@ -10,7 +10,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "",
     "/services",
     "/our-work",
-    "/case-studies",
     "/ardent-case-study",
     "/optometrists-case-study",
     "/portfolio",

@@ -10,7 +10,8 @@ export const metadata: Metadata = {
   title: "Marketing Case Studies",
   description:
     "How BLXCK Marketing has helped Alberta businesses grow: the problem, what we changed, and the numbers that moved.",
-  alternates: { canonical: "/case-studies" },
+  // Same case study cards as /our-work, so /our-work is the version Google should index.
+  alternates: { canonical: "/our-work" },
   openGraph: {
     images: [ogImage],
     title: `Case Studies — ${site.name}`,
