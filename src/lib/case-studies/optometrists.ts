@@ -74,7 +74,7 @@ export const compare = {
   nowPeriod: "BLXCK · Aug 2025 – Jul 2026",
   boxes: [
     { channel: "Google Ads", label: "Calls and booking requests each month", delta: "84%", trend: "up", from: "317", to: "584", detail: "People who called, filled in a form, emailed or got directions after seeing an ad." },
-    { channel: "Google Ads", label: "Money spent on ads each month", delta: "60%", trend: "down", detail: "About 60% less than the previous agency was spending, and held flat for the whole period." },
+    { channel: "Google Ads", label: "Monthly Google Ads budget", delta: "60%", trend: "down", detail: "The clinic now spends less than half what the previous agency spent on Google Ads each month, and the budget has stayed the same since." },
     { channel: "Google Ads", label: "What each new patient enquiry costs", delta: "78%", trend: "down", detail: "For every call or booking request, the clinic now pays less than a quarter of what it used to." },
     { channel: "Meta Ads", label: "People clicking through to the website each month", delta: "23%", trend: "up", from: "584", to: "720", detail: "From Facebook and Instagram ads, on about 7% less spend than the previous agency." },
     { channel: "Meta Ads", label: "What each click to the website costs", delta: "24%", trend: "down", detail: "Each click from Facebook and Instagram costs about a quarter less. Jan 2025 – Sep 2026 vs. Jan – Oct 2024." },

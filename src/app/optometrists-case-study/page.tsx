@@ -216,7 +216,7 @@ export default function OptometristsCaseStudy() {
               <div className="rounded-2xl border border-white/[0.08] bg-ink/70 p-6 md:p-8">
                 <h3 className="text-base font-semibold text-hi">Calls and booking requests from Google Ads, each month</h3>
                 <p className="mt-1 text-sm text-lo">
-                  387 in the first full month. 684 by March 2026. The budget was about 60% less than the previous agency&rsquo;s and held flat throughout.
+                  387 in the first full month. 684 by March 2026. All on less than half the previous agency&rsquo;s monthly budget, kept the same the whole time.
                 </p>
                 <div className="mt-6">
                   <MonthlyBars
